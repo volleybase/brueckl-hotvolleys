@@ -1,0 +1,157 @@
+<html>
+ <head>
+ <title>br&uuml;ckl hotvolleys</title>
+ <link rel="shortcut icon" type="image/x-icon" href="/brueckl-hotvolleys/favicon.ico">
+ <style>
+*, html, body {
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;  
+  font-family:Arial,Helvetica,sans-serif;
+  font-size: 48pt;
+  font-weight: bold;
+  color: #111;
+  text-decoration: none;
+  text-align: center;
+}
+
+img.bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -400px;
+  margin-left: -640px;
+  width: 1280px;
+  height: 800px;
+  opacity: 0.1;
+}
+.x {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  margin-left: -320px;
+  width: 640px;
+  height: 400px;
+  background: url(/brueckl-hotvolleys/x/logo.jpeg);
+}
+img#img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 640px;
+  height: 400px;
+  opacity: 0;
+}
+#mask {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 640px;
+  height: 400px;
+}
+
+a.x1, a.x2 {
+  position: absolute;
+  padding: 100px 0px 75px;
+  border-radius: 140px;
+  background: blue;
+  color: aliceblue;
+  opacity: 0.6;
+}
+.x1 {
+  top: 550px;
+  left: 50%;
+  margin-left: -530px;
+  width: 480px;
+  height: 100px;
+}
+.x2 {
+  top: 550px;
+  left: 50%;
+  margin-left: 50px;
+  width: 480px;
+  height: 100px;
+}
+
+a.l1, a.l2 {
+  position: absolute;
+  top: 900px;
+  left: 50%;
+  height: 10px;
+  font-size: 8pt;
+}
+.l1 {
+  width: 180px;
+  margin-left: -380px;
+}
+.l2 {
+  width: 240px;
+  margin-left: 170px;
+}
+
+div#spacer {
+  position: absolute;
+  top: 950px;
+  height: 10px;
+  overflow: hidden;
+}
+ </style>
+ <script>
+var imgs = new Array();
+var index = -1, indexImg = 0;
+var nams = new Array("aufspiel.jpeg", "u11gruppe.jpeg", "angriff.jpeg", "u11w.jpeg", "block.jpeg");
+function init() {
+
+  // load the images
+  for (var i = 0, i2 = nams.length; i < i2; ++i) {
+    imgs[i] = new Image();
+    imgs[i].src = "/brueckl-hotvolleys/x/" + nams[i];
+  }
+  
+  Animation();
+}
+
+function Animation() {
+
+  var steps = 100, 
+      steps2 = 20, start2,
+      duration = 30;
+
+  // prepare indices
+  start2 = steps2 + 1;
+  if (++index >= steps) {
+    index = 0;
+	if (++indexImg >= imgs.length) {
+	  indexImg = 0;
+	}
+  } 
+  
+  var img = document.getElementById("img");
+
+  if (index == 0) {
+    img.src = imgs[indexImg].src;
+  } else if (index >= 1 && index <= steps2) {
+     img.style.opacity = "" + (index / steps2);
+  } else if (index >= steps - start2 && index <= steps - 2) {
+    img.style.opacity = "" + ((steps - 2 - index) / steps2);
+  }
+  
+  window.setTimeout("Animation()", duration);
+}
+ </script>
+ </head>
+ <body onload="init();">
+  <img class="bg" src="/brueckl-hotvolleys/x/logo2.png" />
+  <div class="x">
+   <img id="img" src="" />
+   <img id="mask" src="/brueckl-hotvolleys/x/maske.png" />
+  </div>
+  <a class="x1" href="/brueckl-hotvolleys/u10.html">Kinder</a>
+  <a class="x2" href="/brueckl-hotvolleys/u13.html">Jugendliche</a>
+
+  <a class="l1" href="mailto:brueckl-hotvolleys@gmx.at">brueckl-hotvolleys@gmx.at</a>
+  <a class="l2" href="http://www.facebook.com/bruecklhotvolleys">www.facebook.com/bruecklhotvolleys</a>
+  
+  <div id="spacer">&nbsp;</div>
+ </body>
+</html>
