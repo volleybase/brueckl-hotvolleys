@@ -1,0 +1,145 @@
+*, html, body {
+  margin: 0px;
+  padding: 0px;
+  border: 0py none;
+}
+div.free {
+  position: absolute;
+  width: 100mm;
+  height: 160mm;
+  left: 50%;
+  margin-left: -50mm;
+  top: 50%;
+  margin-top: -80mm;
+  background-color: lightgray;
+}
+div.court {
+  position: absolute;
+  width: 60mm;
+  height: 120mm;
+  left: 50%;
+  margin-left: -30mm;
+  top: 50%;
+  margin-top: -60mm;
+	  
+  background-color: blue;
+}
+div.court2 {
+  position: absolute;
+  width: 56mm;
+  height: 116mm;
+  left: 50%;
+  margin-left: -28mm;
+  top: 50%;
+  margin-top: -58mm;
+  
+  background-color: orange;
+}
+div.net {
+  position: absolute;
+  width: 70mm;
+  height: 3mm;
+  left: 50%;
+  margin-left: -35mm;
+  top: 50%;
+  margin-top: -2mm;
+  
+  background-color: blue;
+}
+div.ball, a.ball {
+  position:absolute;
+  width: 5mm;
+  height: 5mm;
+  background-color: white;
+  border-radius: 2.5mm;
+
+  -moz-transform: translate(-4.5mm, 55mm);
+  -o-transform: translate(-4.5mm, 55mm);
+  -ms-transform: translate(-4.5mm, 55mm);
+  -webkit-transform: translate(-4.5mm, 55mm);
+  transform: translate(-4.5mm, 55mm);
+}
+
+div.player, a.player {
+  position:absolute;
+  width: 10mm;
+  height: 10mm;
+  background-color: yellow;
+  border-radius: 5mm;
+	  
+  -moz-transform: translate(-7mm, 52.5mm) scale(1.2, 0.5);
+  -o-transform: translate(-7mm, 52.5mm) scale(1.2, 0.5);
+  -ms-transform: translate(-7mm, 52.5mm) scale(1.2, 0.5);
+  -webkit-transform: translate(-7mm, 52.5mm) scale(1.2, 0.5);
+  transform: translate(-7mm, 52.5mm) scale(1.2, 0.5);
+}
+div.player_rot30, a.player_rot30 {
+  position:absolute;
+  width: 10mm;
+  height: 10mm;
+  background-color: yellow;
+  border-radius: 5mm;
+
+  -moz-transform: translate(-7mm, 52.5mm) rotate(30deg) scale(1.2, 0.5); 
+  -mstransform: translate(-7mm, 52.5mm) rotate(30deg) scale(1.2, 0.5);
+  -o-transform: translate(-7mm, 52.5mm) rotate(30deg) scale(1.2, 0.5);
+  -webkit-transform: translate(-7mm, 52.5mm) rotate(30deg) scale(1.2, 0.5);
+  transform: translate(-7mm, 52.5mm) rotate(30deg) scale(1.2, 0.5);
+}
+div.player_rot30x, a.player_rot30x {
+  position:absolute;
+  width: 10mm;
+  height: 10mm;
+  background-color: yellow;
+  border-radius: 5mm;
+  
+  -moz-transform: translate(-7mm, 52.5mm) rotate(-30deg) scale(1.2, 0.5); 
+  -mstransform: translate(-7mm, 52.5mm) rotate(-30deg) scale(1.2, 0.5);
+  -o-transform: translate(-7mm, 52.5mm) rotate(-30deg) scale(1.2, 0.5);
+  -webkit-transform: translate(-7mm, 52.5mm) rotate(-30deg) scale(1.2, 0.5);
+  transform: translate(-7mm, 52.5mm) rotate(-30deg) scale(1.2, 0.5);
+}
+div.player_rot15, a.player_rot15 {
+  position:absolute;
+  width: 10mm;
+  height: 10mm;
+  background-color: yellow;
+  border-radius: 5mm;
+	  
+  -moz-transform: translate(-7mm, 52.5mm) rotate(15deg) scale(1.2, 0.5); 
+  -mstransform: translate(-7mm, 52.5mm) rotate(15deg) scale(1.2, 0.5);
+  -o-transform: translate(-7mm, 52.5mm) rotate(15deg) scale(1.2, 0.5);
+  -webkit-transform: translate(-7mm, 52.5mm) rotate(15deg) scale(1.2, 0.5);
+  transform: translate(-7mm, 52.5mm) rotate(15deg) scale(1.2, 0.5);
+}
+	  
+
+div.target, a.target {
+  position:absolute;
+  width: 15mm;
+  height: 15mm;
+  background-color: red;
+  border-radius: 7.5mm;
+  opacity: 0.8;
+   
+  -moz-transform: translate(-9.5mm, 50mm);
+  -o-transform: translate(-9.5mm, 50mm);
+  -ms-transform: translate(-9.5mm, 50mm);
+  -webkit-transform: translate(-9.5mm, 50mm);
+  transform: translate(-9.5mm, 50mm);
+}
+
+
+
+div.jerry, a.jerry {
+  background: red url(../image/jerry.gif) no-repeat center;
+}
+div.tom, a.tom {
+  background: dodgerblue url(../image/tom.gif) no-repeat center;
+}
+div.mickey, a.mickey {
+  background: linen url(../image/mickey.gif) no-repeat center;
+}
+div.mouse, a.mouse {
+  background: linen url(../image/maus.gif) no-repeat center;
+}
