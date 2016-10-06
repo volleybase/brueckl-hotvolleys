@@ -7,7 +7,7 @@
   margin: 0px;
   padding: 0px;
   border: 0px none;  
-  font-family:Arial,Helvetica,sans-serif;
+  font-family: Arial,Helvetica,sans-serif;
   font-size: 48pt;
   font-weight: bold;
   color: #111;
@@ -50,31 +50,7 @@ img#img {
   height: 400px;
 }
 
-/*
-a.x1, a.x2 {
-  position: absolute;
-  padding: 100px 0px 75px;
-  border-radius: 140px;
-  background: blue;
-  color: aliceblue;
-  opacity: 0.6;
-}
-.x1 {
-  top: 550px;
-  left: 50%;
-  margin-left: -530px;
-  width: 480px;
-  height: 100px;
-}
-.x2 {
-  top: 550px;
-  left: 50%;
-  margin-left: 50px;
-  width: 480px;
-  height: 100px;
-}
-*/
-div.x1, div.x2, a.a1w, a.a1m, a.a2w, a.a2m {
+div.x1, div.x2, a.a1, a.a2, a.a1w, a.a1m, a.a2w, a.a2m {
   position: absolute;
   padding: 100px 0px 75px;
   border-radius: 140px;
@@ -97,7 +73,7 @@ div.x1, div.x2, a.a1w, a.a1m, a.a2w, a.a2m {
   height: 150px;
   background: blue url(/brueckl-hotvolleys/bgj.png) no-repeat center;
 }
-a.a1w, a.a1m, a.a2w, a.a2m {
+a.a1, a.a2, a.a1w, a.a1m, a.a2w, a.a2m {
  left: 50%;
  width: 700px;
  padding: 0px;
@@ -106,6 +82,11 @@ a.a1w, a.a1m, a.a2w, a.a2m {
  color: #111;
  opacity: 0.7;
 }
+a.a1 {
+  top: 705px;
+  margin-left: -750px;
+  font-size: 70pt;
+}	 
 a.a1w {
   top: 625px;
   margin-left: -750px;
@@ -115,6 +96,11 @@ a.a1m {
   margin-left: -750px;
 }	 
 	 
+a.a2 {
+  top: 705px;
+  margin-left: 50px;
+  font-size: 70pt;
+}	 
 a.a2w {
   top: 625px;
   margin-left: 50px;
@@ -193,14 +179,15 @@ function Animation() {
    <img id="img" src="" />
    <img id="mask" src="/brueckl-hotvolleys/x/maske.png" />
   </div>
-  <!--a class="x1" href="/brueckl-hotvolleys/u10.html">Kinder</a>
-  <a class="x2" href="/brueckl-hotvolleys/u13.html">Jugendliche</a-->
+
   <div class="x1">&nbsp;</div>
-  <a class="a1w" href="/brueckl-hotvolleys/u10.html">M&auml;dchen</a>
-  <a class="a1m" href="/brueckl-hotvolleys/u13.html">Burschen</a>
+  <!--a class="a1w" href="/brueckl-hotvolleys/u10.html">M&auml;dchen</a>
+  <a class="a1m" href="/brueckl-hotvolleys/u13.html">Burschen</a-->
+  <a class="a1" href="/brueckl-hotvolleys/u10.html">Bis 10 - VS</a>
   <div class="x2">&nbsp;</div>
-  <a class="a2w" href="/brueckl-hotvolleys/u13.html">M&auml;dchen</a>
-  <a class="a2m" href="/brueckl-hotvolleys/u13.html">Burschen</a>
+  <a class="a2" href="/brueckl-hotvolleys/x10.html">&Uuml; 10 - &Auml;ltere</a>
+  <!--a class="a2w" href="/brueckl-hotvolleys/u13.html">M&auml;dchen</a>
+  <a class="a2m" href="/brueckl-hotvolleys/u13.html">Burschen</a-->
 	 
   <a class="link" href="http://www.facebook.com/bruecklhotvolleys">www.facebook.com/bruecklhotvolleys</a>
   
