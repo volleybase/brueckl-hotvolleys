@@ -8,6 +8,10 @@
   border: 0;
   padding: 0;
   background: aliceblue;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 html, body, h1, h3 {
   margin: 0;
@@ -29,9 +33,13 @@ function init() {
   if (div) {
     div.style.display = 'none';
   }
+  div = document.getElementById('ll');
+  if (div) {
+    div.style.display = 'none';
+  }
 }
 function toggle(id) {
-  var div = document.getElementById('ul');
+  var div = document.getElementById(id);
   if (div) {
     div.style.display = div.style.display == 'none' ? 'block' : 'none';
   }
@@ -46,6 +54,12 @@ function toggle(id) {
   <div id="ul">
     <a href="uld/grundlagen/"><h3>Grundlagen</h3></a>
     <a href="uld/aufspiel/"><h3>Aufspiel</h3></a>
+    <a href="uld/termine/GD.html"><h3>Spieltermine</h3></a>
   </div>
+  <h1 onclick="toggle('ll'); return false;" style="cursor: pointer;">LL</h1>
+  <div id="ll">
+    <a href="lld/termine/GD.html"><h3>Spieltermine</h3></a>
+  </div>
+  
 </body>
 </html>
