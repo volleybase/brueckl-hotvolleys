@@ -4,6 +4,7 @@
 <style>
 *, html, body {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
   text-align: center;
   border: 0;
   padding: 0;
@@ -41,7 +42,7 @@ a {
 <script>
 function init() {
   var toHide = ['u11', 'u12', 'u13', 'u15', 'll', 'ul', 'nw', 'ak'];
-  for (var i = 0; i < toHide.length; ++i) { 
+  for (var i = 0; i < toHide.length; ++i) {
     var div = document.getElementById(toHide[i]);
     if (div) {
       div.style.display = 'none';
@@ -63,7 +64,7 @@ function toggle(id) {
 
   <h1 onclick="toggle('nw'); return false;" style="cursor: pointer;">Nachwuchs<br><br>(U10 U11 U12 U13 U15)</h1>
   <div id="nw">
-    
+
     <h2 onclick="toggle('u11'); return false;" style="cursor: pointer;">U10 + U11</h1>
     <div id="u11">
       <a href="u11"><h3>Grundlagen</h3></a>
@@ -89,26 +90,26 @@ function toggle(id) {
       <a href="u15/termine15w.html"><h3>Spieltermine U15w</h3></a>
       <a href="u15/termine15m.html"><h3>Spieltermine U15m</h3></a>
     </div>
-    
+
   </div>
-  
+
   <br>
   <h1 onclick="toggle('ak'); return false;" style="cursor: pointer;"><br>Allgemeine Klasse<br>&nbsp;</h1>
   <div id="ak">
-    
+
     <h2 onclick="toggle('ul'); return false;" style="cursor: pointer;">UL</h2>
     <div id="ul">
       <a href="uld/grundlagen/"><h3>Grundlagen</h3></a>
       <a href="uld/aufspiel/"><h3>Aufspiel</h3></a>
       <a href="uld/termine/GD.html"><h3>Spieltermine</h3></a>
     </div>
-    
+
     <h2 onclick="toggle('ll'); return false;" style="cursor: pointer;">LL</h2>
     <div id="ll">
       <a href="lld/termine/GD.html"><h3>Spieltermine</h3></a>
     </div>
-        
+
   </div>
-  
+
 </body>
 </html>
