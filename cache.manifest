@@ -1,5 +1,7 @@
 CACHE MANIFEST 
 # 30.01.2017 14:10:54,54 
+
+CACHE:
 infos/index.html 
 infos/ov.html 
 infos/image/logo.png 
@@ -106,3 +108,6 @@ infos/uld/grundlagen/index.html
 infos/uld/grundlagen/positionen.png 
 infos/uld/grundlagen/spielfeld.png 
 infos/uld/termine/GD.html 
+
+NETWORK:
+infos/u10/tabelle.html 
