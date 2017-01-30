@@ -78,7 +78,7 @@ div#content {
 
           var list = xmlDoc.getElementsByTagName("tabelle");
           if (list && list.length) {
-            var msg = fill('', 52) + 'S/N Sätze   Punkte\n'
+            var msg = fill('', 51) + 'S/N  Sätze   Punkte\n'
                 + fill('', 45) + 'Sp.  +  -   +  -    +   -  P\n';
             for (var i = 0; i < list.length; ++i) {
               msg += fill('' + (i + 1), -2) + '. ' 

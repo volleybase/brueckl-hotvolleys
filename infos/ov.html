@@ -41,7 +41,7 @@ a {
 </style>
 <script>
 function init() {
-  var toHide = ['u11', 'u12', 'u13', 'u15', 'll', 'ul', 'nw', 'ak'];
+  var toHide = ['u10', 'u11', 'u12', 'u13', 'u15', 'll', 'ul', 'nw', 'ak'];
   for (var i = 0; i < toHide.length; ++i) {
     var div = document.getElementById(toHide[i]);
     if (div) {
@@ -66,26 +66,31 @@ function toggle(id) {
   <div id="nw">
 
     <a href="info/index.html"><h2>Infos</h2></a>
+
+    <h2 onclick="toggle('u10'); return false;" style="cursor: pointer;">U10</h1>
+    <div id="u10">
+      <a href="u11/index.html"><h3>Grundlagen</h3></a>
+      <a href="u10/termine.html"><h3>Spieltermine</h3></a>
+      <a href="u10/tabelle.html"><h3>Tabelle</h3></a>
+    </div>
     
-    <h2 onclick="toggle('u11'); return false;" style="cursor: pointer;">U10 + U11</h1>
+    <h2 onclick="toggle('u11'); return false;" style="cursor: pointer;">U11</h1>
     <div id="u11">
-      <a href="u11"><h3>Grundlagen</h3></a>
-      <a href="u11/termine10.html"><h3>Spieltermine U10</h3></a>
-      <a href="u11/termine11.html"><h3>Spieltermine U11</h3></a>
-      <a href="u11/tabelle10.html"><h3>Tabelle U10</h3></a>
-      <a href="u11/tabelle11.html"><h3>Tabelle U11</h3></a>      
+      <a href="u11/index.html"><h3>Grundlagen</h3></a>
+      <a href="u11/termine.html"><h3>Spieltermine</h3></a>
+      <a href="u11/tabelle.html"><h3>Tabelle</h3></a>      
     </div>
 
     <h2 onclick="toggle('u12'); return false;" style="cursor: pointer;">U12</h1>
     <div id="u12">
-      <a href="u12"><h3>Grundlagen</h3></a>
+      <a href="u12/index.html"><h3>Grundlagen</h3></a>
       <a href="u12/termine.html"><h3>Spieltermine</h3></a>
       <a href="u12/tabelle.html"><h3>Tabelle</h3></a>
     </div>
 
     <h2 onclick="toggle('u13'); return false;" style="cursor: pointer;">U13</h1>
     <div id="u13">
-      <a href="u13"><h3>Grundlagen</h3></a>
+      <a href="u13/index.html"><h3>Grundlagen</h3></a>
       <a href="u13/termine.html"><h3>Spieltermine</h3></a>
       <a href="u13/tabelle.html"><h3>Tabelle</h3></a>
     </div>
