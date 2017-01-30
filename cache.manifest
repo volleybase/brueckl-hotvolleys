@@ -6,12 +6,12 @@ infos/index.html
 infos/ov.html 
 infos/image/logo.png 
 infos/info/index.html 
-# infos/lld/tabelle.html 
+infos/lld/tabelle.html 
 infos/lld/termine/GD.html 
-# infos/u10/tabelle.html 
+infos/u10/tabelle.html 
 infos/u10/termine.html 
 infos/u11/index.html 
-# infos/u11/tabelle.html 
+infos/u11/tabelle.html 
 infos/u11/termine.html 
 infos/u11/image/ich-zu-mir.png 
 infos/u11/image/mickymaus.png 
@@ -28,7 +28,7 @@ infos/u12/index.html
 infos/u12/ohne2.png 
 infos/u12/ohne3.png 
 infos/u12/ohne4.png 
-# infos/u12/tabelle.html 
+infos/u12/tabelle.html 
 infos/u12/termine.html 
 infos/u13/angriff2.png 
 infos/u13/angriff3.png 
@@ -46,7 +46,7 @@ infos/u13/ohne.png
 infos/u13/ohne2.png 
 infos/u13/ohne3.png 
 infos/u13/ohne4.png 
-# infos/u13/tabelle.html 
+infos/u13/tabelle.html 
 infos/u13/termine.html 
 infos/u15/annahme.png 
 infos/u15/basis.png 
@@ -61,8 +61,8 @@ infos/u15/l3.png
 infos/u15/l4.png 
 infos/u15/l5.png 
 infos/u15/l6.png 
-# infos/u15/tabelle15m.html 
-# infos/u15/tabelle15w.html 
+infos/u15/tabelle15m.html 
+infos/u15/tabelle15w.html 
 infos/u15/termine15m.html 
 infos/u15/termine15w.html 
 infos/u15/angriffe/d1m2.png 
@@ -82,7 +82,7 @@ infos/u15/block/grundstellung.gif
 infos/u15/block/grundstellung2.gif 
 infos/u15/block/passiv.gif 
 infos/u15/block/zur_mitte.gif 
-# infos/uld/tabelle.html 
+infos/uld/tabelle.html 
 infos/uld/aufspiel/index.html 
 infos/uld/aufspiel/images/set_0.png 
 infos/uld/aufspiel/images/set_0_hi.png 
@@ -110,5 +110,4 @@ infos/uld/grundlagen/spielfeld.png
 infos/uld/termine/GD.html 
 
 NETWORK:
-infos/u10/tabelle.html 
 xml2.php
