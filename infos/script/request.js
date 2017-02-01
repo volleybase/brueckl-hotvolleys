@@ -4,7 +4,7 @@ function log(txt) {
   }
 }
 
-function getResults(id, handler) {
+function queryResults(id, handler) {
   if (id && Number.isFinite(id)) {
     var url = 'http://kvv.volleynet.at/volleynet/service/xml2.php?action=tabelle&bew_id=' + id;
     _doRequest(url, handler);
