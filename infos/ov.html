@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html manifest="/brueckl-hotvolleys/cache.manifest">
 <head>
-<style>
+  <meta charset="UTF-8">
+  <title>Brückl hotvolleys</title>
+  <style>
 *, html, body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
@@ -38,10 +40,11 @@ a {
   color: black;
   text-decoration: none;
 }
-</style>
-<script>
+  </style>
+  <script src="/brueckl-hotvolleys/infos/script/caching.js"></script>
+  <script>
 function init() {
-  var toHide = ['u10', 'u11', 'u12', 'u13', 'u15', 'll', 'ul', 'nw', 'ak'];
+  var toHide = ['u10', 'u11', 'u12', 'u13', 'u15', 'll', 'ul', 'nw', 'ak', 'info'];
   for (var i = 0; i < toHide.length; ++i) {
     var div = document.getElementById(toHide[i]);
     if (div) {
@@ -56,16 +59,12 @@ function toggle(id) {
     div.style.display = div.style.display == 'none' ? 'block' : 'none';
   }
 }
-</script>
+  </script>
 </head>
 <body onload="init();">
 
-  <!-- TODO logo -->
-
   <h1 onclick="toggle('nw'); return false;" style="cursor: pointer;">Nachwuchs<br><br>(U10 U11 U12 U13 U15)</h1>
   <div id="nw">
-
-    <a href="info"><h2>Infos</h2></a>
 
     <h2 onclick="toggle('u10'); return false;" style="cursor: pointer;">U10</h1>
     <div id="u10">
@@ -123,6 +122,14 @@ function toggle(id) {
       <a href="lld/termine/GD.html"><h3>Spieltermine</h3></a>
       <a href="tabelle.html?key=lld"><h3>Tabelle</h3></a>
     </div>
+  </div>
+
+  <br>
+  <h1 onclick="toggle('info'); return false;" style="cursor: pointer;">Infos</h1>
+  <div id="info">
+    <a href="info/info.html"><h3>Infos</h3></a>
+    <a href="info/alletermine.pdf"><h3>Alle NW-Termine</h3></a>
+    <a href="info/wunschzettel.html"><h3>Ein Wunschzettel</h3></a>
   </div>
 
 </body>

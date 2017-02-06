@@ -1,5 +1,5 @@
 CACHE MANIFEST 
-# 01.02.2017 20:03:01,58 
+# 04.02.2017 23:45:41,51 
  
 CACHE: 
 /brueckl-hotvolleys/infos/index.html 
@@ -7,10 +7,13 @@ CACHE:
 /brueckl-hotvolleys/infos/ov.html 
 /brueckl-hotvolleys/infos/tabelle.html 
 /brueckl-hotvolleys/infos/tabelleoffline.html 
+/brueckl-hotvolleys/infos/image/ball32.png 
 /brueckl-hotvolleys/infos/image/logo.png 
-/brueckl-hotvolleys/infos/info/index.html 
-/brueckl-hotvolleys/infos/info/ 
+/brueckl-hotvolleys/infos/info/alletermine.pdf 
+/brueckl-hotvolleys/infos/info/info.html 
+/brueckl-hotvolleys/infos/info/wunschzettel.html 
 /brueckl-hotvolleys/infos/lld/termine/GD.html 
+/brueckl-hotvolleys/infos/script/caching.js 
 /brueckl-hotvolleys/infos/script/db.js 
 /brueckl-hotvolleys/infos/script/request.js 
 /brueckl-hotvolleys/infos/script/results.js 
@@ -117,6 +120,7 @@ CACHE:
  
 NETWORK: 
 * 
+ 
 FALLBACK:
 /brueckl-hotvolleys/infos/tabelle.html /brueckl-hotvolleys/infos/tabelleoffline.html
  

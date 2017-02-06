@@ -61,10 +61,10 @@ function _find(list, name) {
 }
 
 /**
-* Creates the results for a junior chamionship.
-* @param {string} reponse The response from the web service.
-* @return {void}
-*/
+ * Creates the results for a junior chamionship.
+ * @param {string} reponse The response from the web service.
+ * @return {void}
+ */
 function kidsResult(response) {
 
   // create xml data
@@ -84,21 +84,19 @@ function kidsResult(response) {
             + _fill(_find(list[i].childNodes, 'gespielt'), -3) + "\n";
       }
 
-
       // save data for offline mode
       _save(_getTitle(new Date()) + msg);
       // add created text to page
       _inject(_getTitle() + msg);
-
     }
   }
 }
 
 /**
-* Creates the results for a league.
-* @param {string} reponse The response from the web service.
-* @return {void}
-*/
+ * Creates the results for a league.
+ * @param {string} reponse The response from the web service.
+ * @return {void}
+ */
 function leagueResult(response) {
 
   // create xml data
@@ -134,10 +132,10 @@ function leagueResult(response) {
 }
 
 /**
-* Creates a xml document from the response text.
-* @param {string} reponse The response from the web service.
-* @return {DOMDocument} The xml document.
-*/
+ * Creates a xml document from the response text.
+ * @param {string} reponse The response from the web service.
+ * @return {DOMDocument} The xml document.
+ */
 function _getXml(response) {
 
   try {
@@ -180,7 +178,7 @@ function getResults() {
   var key = _getKey();
 
   if (map && map[key]) {
-    queryResults(map[key][0], map[key][1]);
+    bhv.request.queryResults(map[key][0], map[key][1], getResultsOffline);
   } else {
     _inject('Ungültige Tabelle!');
   }
