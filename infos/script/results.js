@@ -5,8 +5,8 @@ var map = {
   'u13': [18861, kidsResult, 'Tabelle U13'],
   'u15w': [18859, kidsResult, 'Tabelle U15 weiblich'],
   'u15m': [18860, kidsResult, 'Tabelle U15 männlich'],
-  'uld': [18839, leagueResult, 'Tabelle ULD'],
-  'lld': [18830, leagueResult, 'Tabelle LLD'],
+  'br3': [18839, leagueResult, 'Tabelle ULD'],
+  'br2': [18830, leagueResult, 'Tabelle LLD'],
 };
 
 function _getTitle(date) {

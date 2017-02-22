@@ -3,44 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Brückl hotvolleys</title>
-  <style>
-*, html, body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  text-align: center;
-  border: 0;
-  padding: 0;
-  background: aliceblue;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-html, body, h1, h3 {
-  margin: 0;
-}
-h1, h2, h3 {
-  padding: 50px;
-  text-align: center;
-  background: lightblue;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-h1 {
-  padding: 100px;
-  font-size: 40px;
-}
-h2 {
-  font-size: 32px;
-}
-h3 {
-  font-size: 24px;
-}
-a {
-  color: black;
-  text-decoration: none;
-}
-  </style>
+  <link rel="stylesheet" href="/brueckl-hotvolleys/infos/styles.css">
   <script src="/brueckl-hotvolleys/infos/script/caching.js"></script>
   <script>
 function init() {
@@ -63,6 +26,9 @@ function toggle(id) {
 </head>
 <body onload="init();">
 
+  <a href="gesucht"><h1>Gesucht!<br>Bitte an Freunde und Bekannte weiterleiten.</h1></a>
+
+  <br>
   <h1 onclick="toggle('nw'); return false;" style="cursor: pointer;">Nachwuchs<br><br>(U10 U11 U12 U13 U15)</h1>
   <div id="nw">
 
@@ -109,23 +75,23 @@ function toggle(id) {
   <h1 onclick="toggle('ak'); return false;" style="cursor: pointer;"><br>Allgemeine Klasse<br>&nbsp;</h1>
   <div id="ak">
 
-    <h2 onclick="toggle('ul'); return false;" style="cursor: pointer;">UL &gt; LL Aufstiegsrunde</h2>
+    <h2 onclick="toggle('ul'); return false;" style="cursor: pointer;">Brückl 3 - LL Aufstiegsrunde</h2>
     <div id="ul">
       <a href="uld/grundlagen"><h3>Grundlagen</h3></a>
       <a href="uld/aufspiel"><h3>Aufspiel</h3></a>
-      <a href="uld/termine/GD.html"><h3>Spieltermine</h3></a>
-      <a href="tabelle.html?key=uld"><h3>Tabelle</h3></a>
+      <a href="uld/termine/APO.html"><h3>Spieltermine</h3></a>
+      <a href="tabelle.html?key=br3"><h3>Tabelle</h3></a>
     </div>
 
-    <h2 onclick="toggle('ll'); return false;" style="cursor: pointer;">LL &gt; Play-Off</h2>
+    <h2 onclick="toggle('ll'); return false;" style="cursor: pointer;">Brückl 2 - Meister Play-Off</h2>
     <div id="ll">
-      <a href="lld/termine/GD.html"><h3>Spieltermine</h3></a>
-      <a href="tabelle.html?key=lld"><h3>Tabelle</h3></a>
+      <a href="lld/termine/PO.html"><h3>Spieltermine</h3></a>
+      <a href="tabelle.html?key=br2"><h3>Tabelle</h3></a>
     </div>
   </div>
 
   <br>
-  <h1 onclick="toggle('info'); return false;" style="cursor: pointer;">Infos</h1>
+  <h1 onclick="toggle('info'); return false;" style="cursor: pointer;"><br>Infos<br>&nbsp;</h1>
   <div id="info">
     <a href="info/info.html"><h3>Infos</h3></a>
     <a href="info/alletermine.pdf"><h3>Alle NW-Termine</h3></a>
