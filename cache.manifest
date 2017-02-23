@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 22.02.2017 19:02:23,91
+# 23.02.2017 13:26:20,44
 
 CACHE:
 /brueckl-hotvolleys/infos/favicon.ico
@@ -87,6 +87,29 @@ CACHE:
 /brueckl-hotvolleys/infos/u15/angriffe/index.html
 /brueckl-hotvolleys/infos/u15/angriffe/
 /brueckl-hotvolleys/infos/u15/angriffe/plan.png
+/brueckl-hotvolleys/infos/u15/aufspiel/index.html
+/brueckl-hotvolleys/infos/u15/aufspiel/
+/brueckl-hotvolleys/infos/u15/aufspiel/plan.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_0.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_0_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_1.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_1_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_2.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_2_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_3.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_3_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_4.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_4_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_5a.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_5a_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_5b.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_5b_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_6.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_6_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_7.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_7_hi.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_8.png
+/brueckl-hotvolleys/infos/u15/aufspiel/images/set_8_hi.png
 /brueckl-hotvolleys/infos/u15/block/aktiv.gif
 /brueckl-hotvolleys/infos/u15/block/bewegung.gif
 /brueckl-hotvolleys/infos/u15/block/bewegung3.png
@@ -98,33 +121,12 @@ CACHE:
 /brueckl-hotvolleys/infos/u15/block/grundstellung2.gif
 /brueckl-hotvolleys/infos/u15/block/passiv.gif
 /brueckl-hotvolleys/infos/u15/block/zur_mitte.gif
-/brueckl-hotvolleys/infos/uld/aufspiel/index.html
-/brueckl-hotvolleys/infos/uld/aufspiel/
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_0.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_0_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_1.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_1_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_2.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_2_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_3.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_3_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_4.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_4_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_5a.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_5a_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_5b.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_5b_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_6.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_6_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_7.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_7_hi.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_8.png
-/brueckl-hotvolleys/infos/uld/aufspiel/images/set_8_hi.png
 /brueckl-hotvolleys/infos/uld/grundlagen/index.html
 /brueckl-hotvolleys/infos/uld/grundlagen/
 /brueckl-hotvolleys/infos/uld/grundlagen/positionen.png
 /brueckl-hotvolleys/infos/uld/grundlagen/spielfeld.png
 /brueckl-hotvolleys/infos/uld/termine/APO.html
+/brueckl-hotvolleys/infos/uld/termine/FD.html
 /brueckl-hotvolleys/infos/uld/termine/GD.html
 
 NETWORK:

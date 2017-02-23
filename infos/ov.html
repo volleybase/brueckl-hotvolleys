@@ -7,7 +7,7 @@
   <script src="/brueckl-hotvolleys/infos/script/caching.js"></script>
   <script>
 function init() {
-  var toHide = ['u10', 'u11', 'u12', 'u13', 'u15', 'll', 'ul', 'nw', 'ak', 'info'];
+  var toHide = ['u10', 'u11', 'u12', 'u13', 'u15', 'br4', 'br3', 'br2', 'nw', 'ak', 'info'];
   for (var i = 0; i < toHide.length; ++i) {
     var div = document.getElementById(toHide[i]);
     if (div) {
@@ -63,6 +63,7 @@ function toggle(id) {
     <h2 onclick="toggle('u15'); return false;" style="cursor: pointer;">U15</h1>
     <div id="u15">
       <a href="u15"><h3>Grundlagen</h3></a>
+      <a href="u15/aufspiel"><h3>Aufspiel - Codes und Varianten</h3></a>
       <a href="u15/termine15w.html"><h3>Spieltermine U15w</h3></a>
       <a href="u15/termine15m.html"><h3>Spieltermine U15m</h3></a>
       <a href="tabelle.html?key=u15w"><h3>Tabelle U15w</h3></a>
@@ -75,16 +76,21 @@ function toggle(id) {
   <h1 onclick="toggle('ak'); return false;" style="cursor: pointer;"><br>Allgemeine Klasse<br>&nbsp;</h1>
   <div id="ak">
 
-    <h2 onclick="toggle('ul'); return false;" style="cursor: pointer;">Brückl 3 - LL Aufstiegsrunde</h2>
-    <div id="ul">
+    <h2 onclick="toggle('br4'); return false;" style="cursor: pointer;">Brückl 4 - UL Frühjahrsrunde</h2>
+    <div id="br4">
       <a href="uld/grundlagen"><h3>Grundlagen</h3></a>
-      <a href="uld/aufspiel"><h3>Aufspiel</h3></a>
+      <a href="uld/termine/FD.html"><h3>Spieltermine</h3></a>
+      <a href="tabelle.html?key=br4"><h3>Tabelle</h3></a>
+    </div>
+
+    <h2 onclick="toggle('br3'); return false;" style="cursor: pointer;">Brückl 3 - LL Aufstiegsrunde</h2>
+    <div id="br3">
       <a href="uld/termine/APO.html"><h3>Spieltermine</h3></a>
       <a href="tabelle.html?key=br3"><h3>Tabelle</h3></a>
     </div>
 
-    <h2 onclick="toggle('ll'); return false;" style="cursor: pointer;">Brückl 2 - Meister Play-Off</h2>
-    <div id="ll">
+    <h2 onclick="toggle('br2'); return false;" style="cursor: pointer;">Brückl 2 - Meister Play-Off</h2>
+    <div id="br2">
       <a href="lld/termine/PO.html"><h3>Spieltermine</h3></a>
       <a href="tabelle.html?key=br2"><h3>Tabelle</h3></a>
     </div>
