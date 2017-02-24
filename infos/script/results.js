@@ -5,8 +5,11 @@ var map = {
   'u13': [18861, kidsResult, 'Tabelle U13'],
   'u15w': [18859, kidsResult, 'Tabelle U15 weiblich'],
   'u15m': [18860, kidsResult, 'Tabelle U15 männlich'],
-  'br3': [18839, leagueResult, 'Tabelle ULD'],
-  'br2': [18830, leagueResult, 'Tabelle LLD'],
+
+  'br4': [19501, leagueResult, 'Tabelle Unterliga Frühjahrsrunde'],
+  'br3a': [18839, leagueResult, 'Tabelle Unterliga Grunddurchgang'],
+  'br3': [19500, leagueResult, 'Tabelle Landesliga Aufstiegsrunde'],
+  'br2a': [18830, leagueResult, 'Tabelle Landesliga Grunddurchgang']
 };
 
 function _getTitle(date) {
