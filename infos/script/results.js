@@ -154,7 +154,7 @@ function _getXml(response) {
   } catch (err) {}
 
   // simple error handling
-  log("Cannot parse results!");
+  bhv.log("Cannot parse results!");
   return null;
 }
 
@@ -178,11 +178,23 @@ function _save(txt) {
  * @return {void}
  */
 function getResults() {
+  var ok = false;
+
   var key = _getKey();
 
   if (map && map[key]) {
-    bhv.request.queryResults(map[key][0], map[key][1], getResultsOffline);
-  } else {
+    var id = map[key][0];
+    if (!id || !Number.isFinite(id)) {
+      bhv.log('Invalid id ' + id + '!');
+    } else {
+
+      var url = 'http://kvv.volleynet.at/volleynet/service/xml2.php?action=tabelle&bew_id=' + id;
+      bhv.request.query(url, map[key][1], getResultsOffline);
+      ok = true;
+    }
+  }
+
+  if (!ok) {
     _inject('Ungültige Tabelle!');
   }
 }

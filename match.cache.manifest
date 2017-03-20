@@ -1,0 +1,49 @@
+CACHE MANIFEST
+# 20.03.2017 14:03:06,57
+
+CACHE:
+/brueckl-hotvolleys/match/imageview.html
+/brueckl-hotvolleys/match/index.html
+/brueckl-hotvolleys/match/
+/brueckl-hotvolleys/match/ov.html
+/brueckl-hotvolleys/match/pass.html
+/brueckl-hotvolleys/match/b2/liste.html
+/brueckl-hotvolleys/match/b2/liste.pdf
+/brueckl-hotvolleys/match/b2/pass.txt
+/brueckl-hotvolleys/match/b3/liste.html
+/brueckl-hotvolleys/match/b3/liste.pdf
+/brueckl-hotvolleys/match/b3/pass.txt
+/brueckl-hotvolleys/match/b4/liste.html
+/brueckl-hotvolleys/match/b4/liste.pdf
+/brueckl-hotvolleys/match/b4/pass.txt
+/brueckl-hotvolleys/match/pass/Brcin%20Dragana.png
+/brueckl-hotvolleys/match/pass/Brcin%20Milana.png
+/brueckl-hotvolleys/match/pass/Despotovic%20Bojana.png
+/brueckl-hotvolleys/match/pass/Dreier%20Nicole.png
+/brueckl-hotvolleys/match/pass/Jordan%20Alexandra.png
+/brueckl-hotvolleys/match/pass/Murnig%20Celine.png
+/brueckl-hotvolleys/match/pass/Murnig%20Lea.png
+/brueckl-hotvolleys/match/pass/Orgl%20Deborah.png
+/brueckl-hotvolleys/match/pass/Probst%20Valentina.png
+/brueckl-hotvolleys/match/pass/Rabitsch%20Magdalena.png
+/brueckl-hotvolleys/match/pass/Rabitsch%20Manuela.png
+/brueckl-hotvolleys/match/pass/Rampetsreiter%20Magdalena.png
+/brueckl-hotvolleys/match/pass/Reichmann%20Katrina.png
+/brueckl-hotvolleys/match/pass/Scheitz%20Theresa.png
+/brueckl-hotvolleys/match/pass/Sima%20Vivienne.png
+/brueckl-hotvolleys/match/pass/Unterberger%20Leonie.png
+/brueckl-hotvolleys/match/pass/Wildhaber%20Mairin.png
+/brueckl-hotvolleys/style/styles.css
+/brueckl-hotvolleys/image/logo.png
+/brueckl-hotvolleys/script/polyfills.js
+/brueckl-hotvolleys/script/caching.js
+/brueckl-hotvolleys/script/db.js
+/brueckl-hotvolleys/script/request.js
+
+NETWORK:
+*
+
+FALLBACK:
+/brueckl-hotvolleys/infos/imageview.html /brueckl-hotvolleys/infos/imageview.html
+/brueckl-hotvolleys/match/pass.html /brueckl-hotvolleys/match/pass.html
+

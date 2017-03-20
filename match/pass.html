@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html manifest="/brueckl-hotvolleys/match.cache.manifest">
+<head>
+  <meta charset="UTF-8">
+  <title>Brückl hotvolleys</title>
+  <link rel="stylesheet" href="/brueckl-hotvolleys/style/styles.css">
+
+  <script src="/brueckl-hotvolleys/script/polyfills.js"></script>
+  <script src="/brueckl-hotvolleys/script/request.js"></script>
+  <script src="/brueckl-hotvolleys/script/caching.js"></script>
+
+  <!--script src="/brueckl-hotvolleys/script/jquery.min.js"></script-->
+  <!--script src="/brueckl-hotvolleys/script/jquery.binarytransport.js"></script-->
+  <script src="/brueckl-hotvolleys/script/forge.min.js"></script>
+  <!--script src="/brueckl-hotvolleys/node_modules/node-forge/dist/forge.min.js"></script-->
+
+  <script>
+forge.options.usePureJavaScript = true;
+
+var keys = ['b2', 'b3', 'b4'];
+var images = null;
+var nrLoaded = 0;
+var imgNotFound = '/brueckl-hotvolleys/image/logo.png';
+
+function init() {
+
+  images = null;
+  curImage = -1;
+  nrLoaded = 0;
+
+  var key = -1;
+
+  if (location.search) {
+    var parts = location.search.substr(1).split('&');
+    if (parts) {
+      for (var i = 0; i < parts.length; ++i) {
+        var parts2 = parts[i].split('=');
+        if (parts2 && parts2.length === 2) {
+          if (parts2[0] === 'key') {
+            key = parts2[1];
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  if (key >= 0 && keys[key]) {
+    var url = '/brueckl-hotvolleys/match/' + keys[key] + '/pass.txt';
+    bhv.request.query(url, success, error);
+  }
+
+  // gesture detection on image
+  var elem = document.getElementById('img');
+  if (elem) {
+    elem.addEventListener('touchstart', handleStart, false);
+    elem.addEventListener('touchend', handleEnd, false);
+    elem.addEventListener('touchcancel', handleCancel, false);
+    elem.addEventListener('touchmove', handleMove, false);
+  }
+}
+
+var detection = {
+  active: false,
+  startX: 0,
+  dX: 200
+};
+
+function handleStart(evt) {
+  evt.preventDefault();
+
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  detection.dX = w / 5;
+
+  if (event.touches && event.touches.length === 1) {
+    detection.active = true;
+    var touch = event.touches.item(0);
+    detection.startX = touch.screenX;
+  } else {
+    detection.active = false;
+  }
+
+  console.log('touchstart ' + detection.dX + '.');
+}
+
+function handleMove(evt) {
+  evt.preventDefault();
+  console.log('touchmove.');
+
+  if (detection.active) {
+    if (event.touches && event.touches.length === 1) {
+      detection.active = true;
+      var touch = event.touches.item(0);
+
+      if (touch.screenX > detection.startX + detection.dX) {
+        detection.active = false;
+        prevImage();
+      } else if (touch.screenX < detection.startX - detection.dX) {
+        detection.active = false;
+        nextImage();
+      }
+
+    } else {
+      detection.active = false;
+    }
+  }
+}
+
+function handleCancel(evt) {
+  evt.preventDefault();
+  console.log('touchcancel.');
+  detection.active = false;
+}
+
+function handleEnd(evt) {
+  evt.preventDefault();
+  console.log('touchend.');
+  detection.active = false;
+}
+
+
+
+function success(response) {
+
+  if (response) {
+    var str = response.trim();
+    var parts = str.split(/\n|\r/);
+
+    if (parts) {
+      for (var i = 0; i < parts.length; ++i) {
+        var p = parts[i].trim();
+        if (p) {
+
+          if (!images) {
+            images = [];
+          }
+
+          images.push('/brueckl-hotvolleys/match/pass/' + p);
+        }
+      }
+
+      if (images && images.length) {
+        curImage = 0;
+        setImage(images[0]);
+        setLinks();
+      }
+    }
+  }
+}
+
+function setImage(img) {
+  if (img) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', img);
+    // Using 'arraybuffer' as the responseType ensures that the raw data is returned,
+    // rather than letting XMLHttpRequest decode the data first.
+    //xhr.responseType = 'arraybuffer';
+    xhr.responseType = 'text';
+
+    xhr.onload = function() {
+      var url = null;
+
+      if (this.status == 200) {
+        var data = JSON.parse(this.response);
+
+        // load initialization vector
+        var iv = forge.util.createBuffer();
+        iv.putBytes(forge.util.hexToBytes(data.iv));
+
+        // // load salt
+        // var salt = forge.util.createBuffer();
+        // salt.putBytes(forge.util.hexToBytes(data.salt));
+
+        // create key
+        //var key = forge.pkcs5.pbkdf2('bhvsecretbhv', salt.toString(), 123, 16); // 123 iterations, 16 => AES-128, 24 => AES-192, 32 => AES-256 - keylength
+        var key = make_password_bytes('__bhv__secret__bhv__');
+
+        // the data to decrypt
+        var dat = forge.util.createBuffer();
+        dat.putBytes(forge.util.hexToBytes(data.encrypted));
+
+        // decryption
+        var decipher = forge.cipher.createDecipher('AES-CBC', key);
+        decipher.start({iv: iv});
+        decipher.update(dat);
+        decipher.finish();
+        var res = decipher.output.getBytes();
+
+        // // debug output: decrypted hex
+        // var deb = res.slice(0, 200);
+        // console.log(btoa(deb));
+
+        // create (data) url and set image
+        if (res) {
+          url = 'data:image/png;base64,' + btoa(res);
+        }
+      }
+
+      // set 'error image' url if any problem
+      if (!url) {
+        url = imgNotFound;
+      }
+
+      // show image
+      if (url) {
+        var elem = document.getElementById('img');
+        if (elem) {
+          elem.style.backgroundImage = 'url("' + url + '")';
+        }
+      }
+    };
+      // error: function(jqXHR, exception) {
+      //   var msg = '';
+      //   if (jqXHR.status === 0) {
+      //       msg = 'Not connect.\n Verify Network.';
+      //   } else if (jqXHR.status == 404) {
+      //       msg = 'Requested page not found. [404]';
+      //   } else if (jqXHR.status == 500) {
+      //       msg = 'Internal Server Error [500].';
+      //   } else if (exception === 'parsererror') {
+      //       msg = 'Requested JSON parse failed.';
+      //   } else if (exception === 'timeout') {
+      //       msg = 'Time out error.';
+      //   } else if (exception === 'abort') {
+      //       msg = 'Ajax request aborted.';
+      //   } else {
+      //       msg = 'Uncaught Error.\n' + jqXHR.responseText;
+      //   }
+      //   console.log(msg);
+      // }
+
+    // error handler
+    xhr.onerror = function(e1, e2, e3, e4) {
+      console.log("** An error occurred during the transaction");
+
+      // set image
+      var elem = document.getElementById('img');
+      if (elem) {
+        elem.style.backgroundImage = 'url("' + imgNotFound + '")';
+      }
+    };
+
+    // do the request
+    xhr.send();
+  }
+}
+
+
+// ================================================================
+// Convert a string to bytes.
+// http://stackoverflow.com/questions/6226189/how-to-convert-a-string-to-bytearray
+// ================================================================
+//String.prototype.getBytes = function() {
+function getBytes(str) {
+  var bytes = [];
+  for (var i = 0; i < str.length; i++) {
+    var charCode = str.charCodeAt(i);
+    var cLen = Math.ceil(Math.log(charCode) / Math.log(256));
+    for (var j = 0; j < cLen; j++) {
+      bytes.push((charCode << (j*8)) & 0xFF);
+    }
+  }
+  return bytes;
+}
+
+// ================================================================
+// Utility function to generate the passwords in a canonical way.
+// ================================================================
+function make_password_bytes(password) {
+  // Assert(typeof password != 'undefined', 'Password not specified!');
+  // Assert(password.length >= 8, 'Password length must be greater than 7 characters!');
+
+  //var bytes = password.getBytes();
+  var bytes = getBytes(password);
+
+  // Round to the nearest power of 2 larger than the password size and
+  // append bytes from the password. This allows us to regenerate it at
+  // will from the original.
+  var nearest_power_of_2 = Math.pow(2, Math.ceil(Math.log(bytes.length) / Math.log(2)));
+  if (bytes.length != nearest_power_of_2) {
+    var remainder = nearest_power_of_2 - bytes.length;
+    for(var i = 0; i < remainder; ++i) {
+      var j = i % bytes.length;
+      bytes.push(bytes[j]);
+    }
+  }
+
+  return bytes;
+}
+
+
+/**
+ * TODO error handling.
+ */
+function error() {
+}
+
+/**
+ * Handles the click on prev image button or swipe right.
+ */
+function prevImage() {
+  changeImage(-1);
+}
+
+/**
+ * Handles the click on next image button or swipe left.
+ */
+function nextImage() {
+  changeImage(1);
+}
+
+/**
+ * Changes the image to next or previous one if possible.
+ */
+function changeImage(dir) {
+
+  // check if valid change
+  switch (dir) {
+    case 1:
+      if (curImage < images.length - 1) {
+        ++curImage;
+      } else {
+        return;
+      }
+      break;
+    case -1:
+      if (curImage > 0) {
+        --curImage;
+      } else {
+        return;
+      }
+      break;
+
+    default:
+      return;
+  }
+
+  // set image and links
+  setImage(images[curImage]);
+  setLinks();
+}
+
+/**
+ * Hides or shows the links to prev/next image.
+ */
+function setLinks() {
+  // update links
+  elem = document.getElementById('prev');
+  if (elem) {
+    elem.style.display = curImage > 0 ? 'block' : 'none';
+  }
+
+  elem = document.getElementById('next');
+  if (elem) {
+    elem.style.display = curImage < images.length - 1 ? 'block' : 'none';
+  }
+}
+  </script>
+
+  <style>
+div#img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/brueckl-hotvolleys/image/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: contain;
+}
+a#prev, a#next {
+  display: block;
+
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  overflow: hidden;
+
+  background-color: #eee;
+  /*opacity: 0.5;*/
+  opacity: 0;
+
+  text-align: center;
+  vertical-align: middle;
+}
+a#prev {
+  left: 0;
+}
+a#next {
+  right: 0;
+}
+
+div#img:hover a#prev, div#img:hover a#next {
+  /*display: block;*/
+  opacity: 0.5;
+}
+
+div#img a span.bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25%;
+  margin-top: -25%;
+  width: 50%;
+  height: 0;
+  padding-bottom: 50%;
+
+  background-color: lightgray;
+  color: #eee;
+
+  border-radius: 100px;
+
+  line-height: 100%;
+  font-size: 126px;
+  font-weight: 900;
+  overflow: hidden;
+}
+  </style>
+
+</head>
+<body onload="init();">
+  <div id="img">
+    <a href="javascript:prevImage();" id="prev"><span class="bg"></span></a>
+    <a href="javascript:nextImage();" id="next"><span class="bg"></span></a>
+  </div>
+</body>
+</html>
