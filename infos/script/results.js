@@ -1,7 +1,7 @@
 var map = {
   'u10': [18858, kidsResult, 'Tabelle U10'],
   'u11': [18865, kidsResult, 'Tabelle U11'],
-  'u12': [18863, kidsResult, 'Tabelle U12'],
+  'u12': [19790, kidsResult, 'Tabelle U12'],
   'u13': [18861, kidsResult, 'Tabelle U13'],
   'u15w': [18859, kidsResult, 'Tabelle U15 weiblich'],
   'u15m': [18860, kidsResult, 'Tabelle U15 männlich'],
