@@ -1,10 +1,10 @@
 var map = {
   'u10': [18858, kidsResult, 'Tabelle U10'],
   'u11': [18865, kidsResult, 'Tabelle U11'],
-  'u12': [19790, kidsResult, 'Tabelle U12'],
-  'u13': [18861, kidsResult, 'Tabelle U13'],
-  'u15w': [18859, kidsResult, 'Tabelle U15 weiblich'],
-  'u15m': [18860, kidsResult, 'Tabelle U15 männlich'],
+  'u12': [19790, kidsResultFinal, 'Tabelle U12'],
+  'u13': [19907, kidsResultFinal, 'Tabelle U13'],
+  'u15w': [19899, kidsResultFinal, 'Tabelle U15 weiblich'],
+  'u15m': [19902, kidsResultFinal, 'Tabelle U15 männlich'],
 
   'br4': [19501, leagueResult, 'Tabelle Unterliga Frühjahrsrunde'],
   'br3a': [18839, leagueResult, 'Tabelle Unterliga Grunddurchgang'],
@@ -69,6 +69,25 @@ function _find(list, name) {
  * @return {void}
  */
 function kidsResult(response) {
+  _kidsResult(response, true);
+}
+/**
+ * Creates the final results for a junior chamionship.
+ * @param {string} reponse The response from the web service.
+ * @return {void}
+ */
+function kidsResultFinal(response) {
+  _kidsResult(response, false);
+}
+
+/**
+ * Creates the results for a junior chamionship.
+ * @param {string} reponse The response from the web service.
+ * @param {boolean} withPoints True to show the current points for results of
+ * qualification, false to show the final results.
+ * @return {void}
+ */
+function _kidsResult(response, withPoints) {
 
   // create xml data
   var xml = _getXml(response);
@@ -79,16 +98,20 @@ function kidsResult(response) {
     if (list && list.length) {
 
       // create text
-      var msg = _fill('', 47) + 'P  T\n';
+      var msg = _fill('', 47) + (withPoints ? 'P  T\n' : '\n');
       for (var i = 0; i < list.length; ++i) {
         msg += _fill('' + (i + 1), -2) + '. '
             + _fill(_find(list[i].childNodes, 'tea_name'), 40)
-            + _fill(_find(list[i].childNodes, 'punkte'), -4)
-            + _fill(_find(list[i].childNodes, 'gespielt'), -3) + "\n";
+            + (withPoints
+              ? _fill(_find(list[i].childNodes, 'punkte'), -4)
+                + _fill(_find(list[i].childNodes, 'gespielt'), -3)
+              : '')
+            + "\n";
       }
 
       // save data for offline mode
       _save(_getTitle(new Date()) + msg);
+
       // add created text to page
       _inject(_getTitle() + msg);
     }
