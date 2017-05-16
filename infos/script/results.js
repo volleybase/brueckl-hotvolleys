@@ -1,15 +1,28 @@
 var map = {
   'u10': [18858, kidsResult, 'Tabelle U10'],
-  'u11': [18865, kidsResult, 'Tabelle U11'],
-  'u12': [19790, kidsResultFinal, 'Tabelle U12'],
-  'u13': [19907, kidsResultFinal, 'Tabelle U13'],
-  'u15w': [19899, kidsResultFinal, 'Tabelle U15 weiblich'],
-  'u15m': [19902, kidsResultFinal, 'Tabelle U15 männlich'],
 
-  'br4': [19501, leagueResult, 'Tabelle Unterliga Frühjahrsrunde'],
-  'br3a': [18839, leagueResult, 'Tabelle Unterliga Grunddurchgang'],
-  'br3': [19500, leagueResult, 'Tabelle Landesliga Aufstiegsrunde'],
-  'br2a': [18830, leagueResult, 'Tabelle Landesliga Grunddurchgang']
+  'u11w': [20148, kidsResultFinal, 'Endergebnis U11 weiblich'],
+  'u11m': [20151, kidsResultFinal, 'Endergebnis U11 männlich'],
+
+  'u12w': [19790, kidsResultFinal, 'Endergebnis U12 weiblich'],
+  'u12m': [19792, kidsResultFinal, 'Endergebnis U12 männlich'],
+
+  'u13w': [19907, kidsResultFinal, 'Endergebnis U13 weiblich'],
+  'u13m': [19910, kidsResultFinal, 'Endergebnis U13 männlich'],
+
+  'u15w': [19899, kidsResultFinal, 'Endergebnis U15 weiblich'],
+  'u15m': [19902, kidsResultFinal, 'Endergebnis U15 männlich'],
+
+
+  'br4_1': [19501, leagueResult, 'Endstand Unterliga Frühjahrsrunde'],
+  'br4_2': [20173, leagueResult, 'Endergebnis Unterliga'],
+
+  'br3_1': [18839, leagueResult, 'Endstand Unterliga Grunddurchgang'],
+  'br3_2': [19500, leagueResult, 'Endstand Landesliga Aufstiegsrunde'],
+  'br3_3': [20172, leagueResult, 'Endergebnis Landesliga'],
+
+  'br2_1': [18830, leagueResult, 'Endstand Landesliga Grunddurchgang'],
+  'br2_2': [20172, leagueResult, 'Endergebnis Landesliga']
 };
 
 function _getTitle(date) {
