@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html manifest="/brueckl-hotvolleys/cache.manifest">
+<head>
+  <meta charset="UTF-8">
+  <title>Brückl hotvolleys</title>
+  <link rel="stylesheet" href="/brueckl-hotvolleys/style/styles.css">
+  <script src="/brueckl-hotvolleys/script/caching.js"></script>
+  <script>
+function init() {
+  var toHide = ['u10', 'u11', 'u12', 'u13', 'u15', 'br4', 'br3', 'br2', 'nw', 'ak', 'info'];
+  for (var i = 0; i < toHide.length; ++i) {
+    var div = document.getElementById(toHide[i]);
+    if (div) {
+      div.style.display = 'none';
+    }
+  }
+
+  // header 1
+  var h1s = document.getElementsByTagName("H1");
+  for (var i = 0; i < h1s.length; ++i) {
+    var h1 = h1s[i];
+    if (h1.className === 'expandable') {
+      h1.insertAdjacentHTML('beforeend', '<div class="expander">&nbsp;</div>');
+    }
+  }
+  // header 2
+  var h2s = document.getElementsByTagName("H2");
+  for (var i = 0; i < h2s.length; ++i) {
+    h2s[i].insertAdjacentHTML('beforeend', '<div class="expander">&nbsp;</div>');
+  }
+}
+
+function toggle(id, header) {
+  var div = document.getElementById(id);
+  if (div) {
+    var show = div.style.display == 'none';
+    if (header) {
+      header.className = show ? 'expandable up' : 'expandable'
+    }
+    div.style.display = show ? 'block' : 'none';
+  }
+}
+  </script>
+
+  <script id="tpl_expander" type="text/template">
+<div class="expander">&nbsp;</div>
+  </script>
+
+  <style>
+
+  </style>
+</head>
+<body onload="init();">
+
+  <a href="gesucht"><h1>Gesucht!<br>Bitte an Freunde und Bekannte weiterleiten.</h1></a>
+
+  <br>
+  <h1 class="expandable" onclick="toggle('nw', this); return false;" style="">Nachwuchs<br><br>(U10 U11 U12 U13 U15)</h1>
+  <div id="nw">
+
+    <h2 class="expandable" onclick="toggle('u10', this); return false;">U10</h1>
+    <div id="u10">
+      <a href="u11"><h3>Grundlagen</h3></a>
+      <a href="tabelle.html?key=u10"><h3>Endergebnis U10</h3></a>
+    </div>
+
+    <h2 class="expandable" onclick="toggle('u11', this); return false;">U11</h1>
+    <div id="u11">
+      <a href="u11"><h3>Grundlagen</h3></a>
+      <a href="tabelle.html?key=u11w"><h3>Endergebnis U11 weiblich</h3></a>
+      <a href="tabelle.html?key=u11m"><h3>Endergebnis U11 männlich</h3></a>
+    </div>
+
+    <h2 class="expandable" onclick="toggle('u12', this); return false;">U12</h1>
+    <div id="u12">
+      <a href="u12"><h3>Grundlagen</h3></a>
+      <a href="tabelle.html?key=u12w"><h3>Endergebnis U12 weiblich</h3></a>
+      <a href="tabelle.html?key=u12m"><h3>Endergebnis U12 männlich</h3></a>
+    </div>
+
+    <h2 class="expandable" onclick="toggle('u13', this); return false;">U13</h1>
+    <div id="u13">
+      <a href="u13"><h3>Grundlagen</h3></a>
+      <a href="tabelle.html?key=u13w"><h3>Endergebnis U13 weiblich</h3></a>
+      <a href="tabelle.html?key=u13m"><h3>Endergebnis U13 männlich</h3></a>
+    </div>
+
+    <h2 class="expandable" onclick="toggle('u15', this); return false;">U15</h1>
+    <div id="u15">
+      <a href="u15"><h3>Grundlagen</h3></a>
+      <a href="u15/aufspiel"><h3>Aufspiel - Codes und Varianten</h3></a>
+      <a href="tabelle.html?key=u15w"><h3>Endergebnis U15 weiblich</h3></a>
+      <a href="tabelle.html?key=u15m"><h3>Endergebnis U15 männlich</h3></a>
+    </div>
+  </div>
+
+  <br>
+  <h1 class="expandable" onclick="toggle('ak', this); return false;"><br>Allgemeine Klasse<br>&nbsp;</h1>
+  <div id="ak">
+
+    <h2 class="expandable" onclick="toggle('br4', this); return false;">Brückl 4 - UL Frühjahrsrunde</h2>
+    <div id="br4">
+      <a href="uld/grundlagen"><h3>Grundlagen</h3></a>
+      <a href="tabelle.html?key=br4_1"><h3>Endstand Frühjahrsrunde</h3></a>
+      <a href="tabelle.html?key=br4_2"><h3>Endergebnis Unterliga</h3></a>
+    </div>
+
+    <h2 class="expandable" onclick="toggle('br3', this); return false;">Brückl 3 - LL Aufstiegsrunde</h2>
+    <div id="br3">
+      <a href="tabelle.html?key=br3_1"><h3>Endstand Unterliga Grunddurchgang</h3></a>
+      <a href="tabelle.html?key=br3_2"><h3>Endstand Landesliga Aufstiegsrunde</h3></a>
+      <a href="tabelle.html?key=br3_3"><h3>Endergebnis Landesliga</h3></a>
+    </div>
+
+    <h2 class="expandable" onclick="toggle('br2', this); return false;">Brückl 2 - Meister Play-Off</h2>
+    <div id="br2">
+      <a href="tabelle.html?key=br2_1"><h3>Endstand Landesliga Grunddurchgang</h3></a>
+      <a href="tabelle.html?key=br2_2"><h3>Endergebnis Landesliga</h3></a>
+    </div>
+  </div>
+
+  <br>
+  <h1 class="expandable" onclick="toggle('info', this); return false;"><br>Infos<br>&nbsp;</h1>
+  <div id="info">
+    <a href="info/info.html"><h3>Infos</h3></a>
+    <a href="info/alletermine.pdf"><h3>Alle NW-Termine (Pdf)</h3></a>
+    <a href="info/alletermine.html"><h3>Alle NW-Termine (Text)</h3></a>
+    <a href="info/wunschzettel.html"><h3>Ein Wunschzettel</h3></a>
+  </div>
+
+</body>
+</html>

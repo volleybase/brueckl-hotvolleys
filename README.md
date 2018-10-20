@@ -1,3 +1,3 @@
 # Brückl hotvolleys
 
-BHV info pages - once upon a time...
+BHV info pages.

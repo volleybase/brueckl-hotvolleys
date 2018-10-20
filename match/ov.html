@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html manifest="/brueckl-hotvolleys/match.cache.manifest">
+<head>
+  <meta charset="UTF-8">
+  <title>Brückl hotvolleys</title>
+  <link rel="stylesheet" href="/brueckl-hotvolleys/style/styles.css">
+  <script src="/brueckl-hotvolleys/script/caching.js"></script>
+  <script>
+function init() {
+  var toHide = ['b2', 'b3', 'b4'];
+  for (var i = 0; i < toHide.length; ++i) {
+    var div = document.getElementById(toHide[i]);
+    if (div) {
+      div.style.display = 'none';
+    }
+  }
+
+  // header 1
+  var h1s = document.getElementsByTagName("H1");
+  for (var i = 0; i < h1s.length; ++i) {
+    var h1 = h1s[i];
+    if (h1.className === 'expandable') {
+      h1.insertAdjacentHTML('beforeend', '<div class="expander">&nbsp;</div>');
+    }
+  }
+}
+
+function toggle(id, header) {
+  var div = document.getElementById(id);
+  if (div) {
+    var show = div.style.display == 'none';
+    if (header) {
+      header.className = show ? 'expandable up' : 'expandable'
+    }
+    div.style.display = show ? 'block' : 'none';
+  }
+}
+  </script>
+
+  <script id="tpl_expander" type="text/template">
+<div class="expander">&nbsp;</div>
+  </script>
+</head>
+
+<body onload="init();">
+
+  <h1 class="expandable" onclick="toggle('b2', this); return false;" style="">Brückl 2 (MPO)</h1>
+  <div id="b2">
+    <a href="/brueckl-hotvolleys/match/b2/liste.html"><h2>Spielerliste</h2></a>
+    <a href="/brueckl-hotvolleys/match/pass.html?key=0"><h2>Spielerpässe</h2></a>
+  </div>
+
+  <h1 class="expandable" onclick="toggle('b3', this); return false;" style="">Brückl 3 (APO)</h1>
+  <div id="b3">
+    <a href="/brueckl-hotvolleys/match/b3/liste.html"><h2>Spielerliste</h2></a>
+    <a href="/brueckl-hotvolleys/match/pass.html?key=1"><h2>Spielerpässe</h2></a>
+  </div>
+
+  <h1 class="expandable" onclick="toggle('b4', this); return false;" style="">Brückl 4 (UL GD)</h1>
+  <div id="b4">
+    <a href="/brueckl-hotvolleys/match/b4/liste.html"><h2>Spielerliste</h2></a>
+    <a href="/brueckl-hotvolleys/match/pass.html?key=2"><h2>Spielerpässe</h2></a>
+  </div>
+
+</body>
+</html>

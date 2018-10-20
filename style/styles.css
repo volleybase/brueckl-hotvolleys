@@ -15,3 +15,125 @@
   font-size: 24px;
   text-align: center;
 }
+
+h1, h2, h3 {
+  position: relative;
+  margin: 0;
+  padding: 50px;
+  text-align: center;
+  background: lightblue;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+h1 {
+  padding: 100px;
+  font-size: 40px;
+}
+h2 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 24px;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* -- tactics overview ----------------------------------------------------- */
+h1.tactics {
+  padding: 10px;
+  font-size: 36px;
+  text-align: center;
+}
+
+table.tactics {
+  margin: auto auto 40px auto;
+}
+table.tactics img {
+  width: 250px;
+}
+table.tactics td {
+  padding: 15px 15px 0 15px;
+}
+table.tactics div {
+  position: relative;
+  width: 250px;
+}
+
+/* -- expandable ----------------------------------------------------------- */
+div.expander {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+
+  width: 0;
+  height: 0;
+
+  overflow: hidden;
+  background-color: transparent;
+  opacity: 0.2;
+}
+
+.expandable {
+  cursor: pointer;
+}
+
+h1.expandable div.expander {
+  margin-top: -15px;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 30px solid blue;
+}
+h1.expandable.up div.expander {
+  border-top: 0 none;
+  border-bottom: 30px solid blue;
+}
+
+h2.expandable div.expander {
+  margin-top: -9px;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 18px solid blue;
+}
+h2.expandable.up div.expander {
+  border-top: 0 none;
+  border-bottom: 18px solid blue;
+}
+
+a h1::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -25px;
+
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 30px solid blue;
+  border-bottom: 25px solid transparent;
+
+  overflow: hidden;
+  background-color: transparent;
+  opacity: 0.2;
+}
+a h3::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -9px;
+
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-left: 18px solid blue;
+  border-bottom: 15px solid transparent;
+
+  overflow: hidden;
+  background-color: transparent;
+  opacity: 0.2;
+}
+
+/* --  ----------------------------------------------------------- */
