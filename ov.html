@@ -5,20 +5,24 @@
   <title>Brückl hotvolleys</title>
   <link rel="stylesheet" href="/brueckl-hotvolleys/styles.css">
   <link rel="stylesheet" href="/brueckl-hotvolleys/elements/expander/styles.css">
+  <link rel="shortcut icon" href="/brueckl-hotvolleys/favicons/favicon.ico">
   <script src="/brueckl-hotvolleys/script/caching.js"></script>
   <script src="/brueckl-hotvolleys/elements/expander/script.js"></script>
   <script>
 function init() {
-  var expanders = ['u10', 'u11', 'u12', 'u13', 'u15', 'br4', 'br3', 'br2', 'br1', 'nw', 'ak', 'info'];
+  var expanders = [
+    'nw',
+    'u10', 'u11', 'u12', 'u13', 'u15',
+    'ak',
+    'br4', 'br3', 'br2', 'br1',
+    'info'
+  ];
   bhv.elements.expander.init(expanders);
 }
   </script>
 </head>
 <body onload="init();">
 
-  <a href="gesucht"><h1>Gesucht!<br>Bitte an Freunde und Bekannte weiterleiten.</h1></a>
-
-  <br>
   <h1 id="nw" class="expandable" style="">Nachwuchs<br><br>(U10 U11 U12 U13 U15)</h1>
   <div id="nw_2">
 
@@ -53,7 +57,7 @@ function init() {
     <h2 id="u15" class="expandable">U15</h1>
     <div id="u15_2">
       <!--a href="u15"><h3>Grundlagen</h3></a-->
-      <a href="u15/termine15.html"><h3>Spieltermine</h3></a>
+      <a href="u15/termine.html"><h3>Spieltermine</h3></a>
       <!--a href="schedule.html?key=u15"><h3>Spieltermine</h3></a-->
       <!--a href="tabelle.html?key=u15w"><h3>Tabelle U15w</h3></a-->
     </div>
@@ -95,9 +99,9 @@ function init() {
   <br>
   <h1 id="info" class="expandable"><br>Infos<br>&nbsp;</h1>
   <div id="info_2">
-    <a href="info/info.html"><h3>Infos</h3></a>
-    <a href="info/alletermine.html"><h3>Alle Termine</h3></a>
     <a href="info/wunschzettel.html"><h3>Ein Wunschzettel</h3></a>
+    <a href="info/gesucht.html"><h3>Gesucht!<br>Bitte an Freunde und Bekannte weiterleiten.</h3></a>
+    <a href="info/info.html"><h3>Allgemeine Infos</h3></a>
   </div>
 
 </body>
