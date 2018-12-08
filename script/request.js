@@ -15,12 +15,13 @@ window.bhv.request = {
 
   /**
    * Creates the request object.
-   * @param {string} url Th eurl to query.
+   * @param {string} url The url to query.
+   * @param {number} wait The timeout.
    * @param {function} onsuccess The on success callback.
    * @param {function} onerror The on error callback.
    * @return {boolean} True if request has been stated, otherwise false.
    */
-  _startRequest: function(url, onsuccess, onerror, addDummy) {
+  _startRequest: function(url, wait, onsuccess, onerror, addDummy) {
 
     // create request object
     var request = null;
@@ -30,7 +31,6 @@ window.bhv.request = {
 
     // Ajax-CORS for IE8/9
     var ie89 = false;
-    //if (request === null && (ie() === 8 || ie() === 9)) {
     if (ie === 8 || ie === 9) {
       request = new XDomainRequest();
       ie89 = true;
@@ -76,8 +76,8 @@ window.bhv.request = {
     request.open('GET', url + (addDummy ? '&dummy=' + (new Date()).getTime() : ''), true);
 
     // try to set a timeout handler
-    if (request.timeout !== undefined) {
-      request.timeout = 5000;
+    if (request.timeout !== undefined && wait > 0) {
+      request.timeout = wait;
       request.ontimeout = function(e) {
         log('Timeout -> call error handler!');
         onerror();
@@ -117,7 +117,7 @@ window.bhv.request = {
     var url = location.protocol
       + '//kvv.volleynet.at/volleynet/service/xml2.php?action=tabelle&bew_id='
       + id;
-    if (!this._startRequest(url, onsuccess, onerror, true)) {
+    if (!this._startRequest(url, 5000, onsuccess, onerror, true)) {
       onerror();
       return false;
     }
@@ -145,7 +145,7 @@ window.bhv.request = {
       + '&orderBy=spi_datum';
 
     // request data
-    if (!this._startRequest(url, onsuccess, onerror, false)) {
+    if (!this._startRequest(url, 5000, onsuccess, onerror, false)) {
       onerror();
       return false;
     }
@@ -166,17 +166,20 @@ window.bhv.request = {
     // http://localhost:5001/testdata/Turniere/20752/
     // var url = 'http://localhost:5001/testdata/Turniere/' + idBew;
     // var url = location.protocol + '//kvv.volleynet.at/Turniere/' + idBew;
-    var url = 'https://allorigins.me/get?url='
-      + encodeURIComponent('https://kvv.volleynet.at/Turniere/' + idBew);
+    // var url = 'https://allorigins.me/get?url='
+    //   + encodeURIComponent('https://kvv.volleynet.at/Turniere/' + idBew);
+    var url = location.protocol
+      + '//kvv2.volleynet.at/volleynet/service/xml2.php'
+      + '?action=turniere&bewerb_id=' + idBew;
 
-    var onsuccess2 = function(response) {
-      var data = JSON.parse(response);
-      onsuccess(data.contents);
-    }
+    // var onsuccess2 = function(response) {
+    //   var data = JSON.parse(response);
+    //   onsuccess(data.contents);
+    // }
 
     // request data
-    // if (!this._startRequest(url, onsuccess, onerror, false)) {
-    if (!this._startRequest(url, onsuccess2, onerror, false)) {
+    if (!this._startRequest(url, 15000, onsuccess, onerror, false)) {
+    // if (!this._startRequest(url, 15000, onsuccess2, onerror, false)) {
       onerror();
       return false;
     }
@@ -203,7 +206,7 @@ window.bhv.request = {
       + '&orderBy=spi_datum';
 
     // request data
-    if (!this._startRequest(url, onsuccess, onerror, false)) {
+    if (!this._startRequest(url, 5000, onsuccess, onerror, false)) {
       onerror();
       return false;
     }
