@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>Nachwuchkonzept</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='styles.css' rel='stylesheet'>
+  <script>
+var regions = ['main', 'u12', 'u13', 'u14', 'u15', 'u16', 'u18', 'u20'];
+
+function init() {
+  var lnks = document.getElementsByTagName('a');
+  
+  var target = regions[0];
+  if (location && location.hash && location.hash.length > 1) {
+    target = location.hash.substring(1);
+    if (regions.indexOf(target) < 0) {
+      target = regions[0];
+    }
+    //history.replaceState(history.state, '', 'overview.html');
+    var parts = location.href.split('#');
+    history.replaceState(history.state, '', parts[0]);
+  }
+    
+  for (var i = 0; i < lnks.length; ++i) {
+    var lnk = lnks[i];
+    if (lnk.dataset && lnk.dataset.key) {
+      lnk.addEventListener("click", function(event) {
+        event.preventDefault();
+        
+        var tgt = event.currentTarget;
+        if (tgt && tgt.dataset && tgt.dataset.key) {
+          var key = tgt.dataset.key;
+          if (regions.indexOf(key) >= 0) {
+            for (var j = 0; j < regions.length; ++j) {
+              var region = document.getElementById(regions[j]);
+              if (region) {
+                region.style.display = regions[j] == key ? 'block' : 'none';
+              }
+            }
+          }
+        }
+      }, false);
+      
+      var region = document.getElementById(regions[i]);
+      if (region) {
+        region.style.display = regions[i] == target ? 'block' : 'none';
+      }
+    }
+  }
+}
+  </script>
+ </head>
+ <body onload="init();">
+  <div class="container">
+   <a class="h1" data-key="main">Nachwuchs</a>
+   <div class="ux">
+    <div><a data-key="u12">U12</a></div>
+    <div><a data-key="u13">U13</a></div>
+    <div><a data-key="u14">U14</a></div>
+    <div><a data-key="u15">U15</a></div>
+    <div><a data-key="u16">U16</a></div>
+    <div><a data-key="u18">U18</a></div>
+    <div><a data-key="u20">U20</a></div>
+   </div>
+
+   <div id="main"><h1 id="unsernachwuchskonzept">Unser Nachwuchskonzept</h1>
+<p>Zur durchgängigen Ausbildung und Entwicklung unserer Spielerinnen.</p>
+<h2 id="ziele">Ziele</h2>
+<ul>
+<li><p>Fördern und Fordern.</p></li>
+<li><p>Mit Spaß und Eifer den Weg an die Spitze schaffen.</p></li>
+<li><p>Wer weniger tun will, darf auch dabeibleiben.<br />
+Bei den jüngeren gibt es Mannschaften für alle.<br />
+Bei den älteren könnte es sein, dass sie dann aber nur in der zweiten Mannschaft spielen wird.</p></li>
+</ul>
+<h2 id="infosinfoinfohtml"><a href="info/info.html">Infos</a></h2></div>
+   <div id="u12"><h1 id="u12superminii">U12 - Supermini I</h1>
+<p>Am Beginn einer hoffentlich langen und erfolgreichen Volleyballkarriere steht ein einfaches Spielsystem, dass viele Ballkontakte für die Spielerinnen ermöglicht.</p>
+<p>Die erste Spielform:</p>
+<ul>
+<li>2 gegen 2</li>
+<li>mixed</li>
+<li>kleines Spielfeld</li>
+<li>viele Ballkontakte</li>
+</ul>
+<h2 id="dasspielsystem">Das Spielsystem</h2>
+  <ul>
+    <li>
+<p><a href="u12/grundlagen.html">Grundlagen</a></p>
+ <input id="id1" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id1">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u12/grundlagen-2xspielen.html">2x Spielen<span>Min. 2x spielen, bevor der Ball zum Gegner fliegt als Vorbereitung des Angriffsaufbaus.</span></a></li>
+<li><a href="u12/grundlagen-ichzumir.html">Ich! Zu mir!<span>Entscheidungen durch Rufen unterstützen</span></a></li>
+<li><a href="u12/grundlagen-aussenfuss.html">Außenfuß<span>Richtige Belastung beim Ballkontakt</span></a></li>
+<li><a href="u12/grundlagen-3xspielen.html">3x Spielen<span>Vereinfachter Anlauf</span></a></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u12/angriff.html">Angriff</a></p>
+ <input id="id2" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u12/angriff-tomundjerry.html">Tom und Jerry</a></li>
+<li><a href="u12/angriff-mickymaus.html">Micky Maus</a></li></ul>
+ </div>
+
+    </li>
+
+  </ul>
+<h2 id="infosinfou12html"><a href="info/u12.html">Infos</a></h2>
+</div>
+   <div id="u13"><h1 id="u13superminiii">U13 - Supermini II</h1>
+<p>Am Beginn einer hoffentlich langen und erfolgreichen Volleyballkarriere steht ein einfaches Spielsystem, dass viele Ballkontakte für die Spielerinnen ermöglicht.</p>
+<p>Wie bei U12 überwiegen die Spielformen, aber es kommt zu ersten "taktischen Zwängen":</p>
+<ul>
+<li>2 gegen 2</li>
+<li>kleines Spielfeld</li>
+<li>viele Ballkontakte</li>
+<li>Annahme (des Services) - min. 2 Ballberührungen!</li>
+</ul>
+<h2 id="dasspielsystem">Das Spielsystem</h2>
+  <ul>
+    <li>
+<p><a href="u13/grundlagen.html">Grundlagen</a></p>
+ <input id="id3" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id3">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u13/grundlagen-2xspielen.html">2x Spielen<span>Min. 2x spielen, bevor der Ball zum Gegner fliegt als Vorbereitung des Angriffsaufbaus.</span></a></li>
+<li><a href="u13/grundlagen-ichzumir.html">Ich! Zu mir!<span>Entscheidungen durch Rufen unterstützen</span></a></li>
+<li><a href="u13/grundlagen-aussenfuss.html">Außenfuß<span>Richtige Belastung beim Ballkontakt</span></a></li>
+<li><a href="u13/grundlagen-3xspielen.html">3x Spielen<span>Vereinfachter Anlauf</span></a></li>
+<li><a href="u13/grundlagen-3xspielen.html">3x Spielen +<span>3x Spielen mit Angriff über Außen</span></a></li>
+<li><a href="u13/grundlagen-3xspielen.html">3x Spielen ++<span>Zusätzlich mit Sicherung</span></a></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u13/angriff.html">Angriff</a></p>
+ <input id="id4" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id4">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u13/angriff-tomundjerry.html">Tom und Jerry</a></li>
+<li><a href="u13/angriff-mickymaus.html">Micky Maus</a></li></ul>
+ </div>
+
+    </li>
+
+  </ul>
+<h2 id="infosinfou13html"><a href="info/u13.html">Infos</a></h2>
+</div>
+   <div id="u14"><h1 id="u14mini">U14 - Mini</h1>
+<h2 id="dasspielsystem">Das Spielsystem</h2>
+  <ul>
+    <li>
+<p><a href="u14/mini1.html">Mini 1<span>3:3 für Anfänger ohne Block</span></a></p>
+ <input id="id5" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id5">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u14/mini1-annahmeverteidigung.html">Annahme + Verteidigung<span>Annahme und Verteidigung erfolgt immer zu dritt</span></a><ul>
+<li><a href="u14/mini1-annahmeverteidigung-annahmeverteidigungbasis.html">Annahme/Verteidigung/Basis</a></li></ul></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u14/mini.html">Mini +</a></p>
+ <input id="id6" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id6">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u14/mini-annahme.html">Annahme</a><ul>
+<li><a href="u14/mini-annahme-annahme.html">Annahme</a></li></ul></li>
+<li><a href="u14/mini-verteidigung.html">Verteidigung</a><ul>
+<li><a href="u14/mini-verteidigung-basis.html">Basis</a></li>
+<li><a href="u14/mini-verteidigung-block2.html">Block 2</a></li>
+<li><a href="u14/mini-verteidigung-block3.html">Block 3</a></li>
+<li><a href="u14/mini-verteidigung-block4.html">Block 4</a></li>
+<li><a href="u14/mini-verteidigung-ohne2.html">Ohne 2</a></li>
+<li><a href="u14/mini-verteidigung-ohne3.html">Ohne 3</a></li>
+<li><a href="u14/mini-verteidigung-ohne4.html">Ohne 4</a></li></ul></li>
+<li><a href="u14/mini-aufspielangriff.html">Aufspiel + Angriff</a><ul>
+<li><a href="u14/mini-aufspielangriff-aufspiel.html">Aufspiel</a></li>
+<li><a href="u14/mini-aufspielangriff-angriff40.html">Angriff 4 - 0</a></li>
+<li><a href="u14/mini-aufspielangriff-angriff22.html">Angriff 2 - 2</a></li></ul></li>
+<li><a href="u14/mini-grossfeld.html">Großfeld<span>1. Versuche am Großfeld</span></a><ul>
+<li><a href="u14/mini-grossfeld-basis.html">Basis<span>Basis = Verteidigung = Annahme = …</span></a></li></ul></li></ul>
+ </div>
+
+    </li>
+
+  </ul>
+<h2 id="infosinfou14html"><a href="info/u14.html">Infos</a></h2>
+</div>
+   <div id="u15"><h1 id="u15midi">U15 - Midi</h1>
+<p>Erstmals mit Hinterspieler.</p>
+<p>Es gilt Anfänger und Fortgeschrittene möglichst gut zu integrieren.</p>
+<ul>
+<li><p>weniger Spielerinnen =&gt; je nach Können unterschidliche Mannschaften mit unterschiedlichen Systemen möglich.</p></li>
+<li><p>Abstimmung unter den Manschaften schwierig.</p></li>
+</ul>
+<h2 id="dasspielsystem">Das Spielsystem</h2>
+  <ul>
+    <li>
+<p><a href="u15/midi1.html">Midi 1<span>Midi-Karo - Das Basissystem</span></a></p>
+ <input id="id7" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id7">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u15/midi1-situationen.html">Situationen<span>suba</span></a><ul>
+<li><a href="u15/midi1-situationen-annahme.html">Annahme<span>an</span></a></li>
+<li><a href="u15/midi1-situationen-aufspiel.html">Aufspiel</a></li>
+<li><a href="u15/midi1-situationen-angriff40.html">Angriff 4 - 0</a></li>
+<li><a href="u15/midi1-situationen-angriff22.html">Angriff 2 - 2</a></li>
+<li><a href="u15/midi1-situationen-basis.html">Basis</a></li></ul></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u15/midi.html">Midi +</a></p>
+ <input id="id8" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id8">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u15/midi-annahmel1l2.html">Annahme (L1, L2)</a><ul>
+<li><a href="u15/midi-annahmel1l2-annahmel1.html">Annahme L1</a></li>
+<li><a href="u15/midi-annahmel1l2-annahmel2.html">Annahme L2</a></li></ul></li>
+<li><a href="u15/midi-verteidigung.html">Verteidigung</a><ul>
+<li><a href="u15/midi-verteidigung-basis.html">Basis</a></li>
+<li><a href="u15/midi-verteidigung-block2.html">Block 2</a></li>
+<li><a href="u15/midi-verteidigung-block35.html">Block 3(5)</a></li>
+<li><a href="u15/midi-verteidigung-block31.html">Block 3(1)</a></li>
+<li><a href="u15/midi-verteidigung-block4.html">Block 4</a></li>
+<li><a href="u15/midi-verteidigung-ohne2.html">Ohne 2</a></li>
+<li><a href="u15/midi-verteidigung-ohne3.html">Ohne 3</a></li>
+<li><a href="u15/midi-verteidigung-ohne4.html">Ohne 4</a></li>
+<li><a href="u15/midi-verteidigung-basisdoppelblock.html">Basis (Doppelblock)<span>Basis, wenn ein Doppelblock geg. Außenangriff vorbereitet wird</span></a></li>
+<li><a href="u15/midi-verteidigung-doppelblock2.html">Doppelblock 2</a></li>
+<li><a href="u15/midi-verteidigung-ohneweg.html">Ohne - Weg!<span>Geschenkter Ball nach früher Entscheidung.</span></a></li></ul></li>
+<li><a href="u15/midi-aufspielangriff.html">Aufspiel + Angriff</a><ul>
+<li><a href="u15/midi-aufspielangriff-aufspiel.html">Aufspiel</a></li>
+<li><a href="u15/midi-aufspielangriff-aufspielv.html">Aufspiel V<span>Aufspiel nach Verteidigung</span></a></li>
+<li><a href="u15/midi-aufspielangriff-angriff40mit1.html">Angriff 4 - 0 (mit 1)</a></li>
+<li><a href="u15/midi-aufspielangriff-angriff40mit5v.html">Angriff 4 - 0 (mit 5v)</a></li>
+<li><a href="u15/midi-aufspielangriff-angriff31.html">Angriff 3 - 1</a></li>
+<li><a href="u15/midi-aufspielangriff-angriff35v.html">Angriff 3 - 5v</a></li>
+<li><a href="u15/midi-aufspielangriff-angriff22.html">Angriff 2 - 2</a></li>
+<li><a href="u15/midi-aufspielangriff-aufspiel2.html">Aufspiel 2</a></li></ul></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u15/midi1819.html">Midi 18/19<span>Aufspiel 2</span></a></p>
+ <input id="id9" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id9">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u15/midi1819-annahme.html">Annahme<span>3er-Riegel</span></a><ul>
+<li><a href="u15/midi1819-annahme-annahme.html">Annahme<span>3er Riegel, Aufspieler 2</span></a></li></ul></li>
+<li><a href="u15/midi1819-verteidigung.html">Verteidigung</a></li>
+<li><a href="u15/midi1819-aufspielundangriff.html">Aufspiel und Angriff</a></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u15/midi2122.html">Midi 21/22<span>2 Aufspielerrinnen, Pos. 2</span></a></p>
+ <input id="id10" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id10">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u15/midi2122-annahme.html">Annahme</a><ul>
+<li><a href="u15/midi2122-annahme-annahmel2.html">Annahme L2</a></li></ul></li>
+<li><a href="u15/midi2122-verteidigung.html">Verteidigung</a><ul>
+<li><a href="u15/midi2122-verteidigung-basis.html">Basis</a></li></ul></li>
+<li><a href="u15/midi2122-aufspielangriff.html">Aufspiel + Angriff</a></li></ul>
+ </div>
+
+    </li>
+
+  </ul>
+<h2 id="infosinfou15html"><a href="info/u15.html">Infos</a></h2>
+</div>
+   <div id="u16"><h1 id="u16schlerinnen">U16 - Schülerinnen</h1>
+<ul>
+<li><p>Zum ersten Mal am 'richtigen' Feld.</p></li>
+<li><p>Je nach Fortschritt schon mit mehr oder weniger taktischem Geschick…</p></li>
+</ul>
+<h2 id="dasspielsystem">Das Spielsystem</h2>
+  <ul>
+    <li>
+<p><a href="u16/201617japanisch.html">2016/17 "Japanisch"</a></p>
+ <input id="id11" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id11">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u16/201617japanisch-annahme.html">Annahme</a><ul>
+<li><a href="u16/201617japanisch-annahme-annahme.html">Annahme</a></li>
+<li><a href="u16/201617japanisch-annahme-l1.html">L1</a></li>
+<li><a href="u16/201617japanisch-annahme-l6.html">L6</a></li>
+<li><a href="u16/201617japanisch-annahme-l5.html">L5</a></li>
+<li><a href="u16/201617japanisch-annahme-l4.html">L4</a></li>
+<li><a href="u16/201617japanisch-annahme-l3.html">L3</a></li>
+<li><a href="u16/201617japanisch-annahme-l2.html">L2</a></li></ul></li>
+<li><a href="u16/201617japanisch-verteidigung.html">Verteidigung</a><ul>
+<li><a href="u16/201617japanisch-verteidigung-basis.html">Basis</a></li>
+<li><a href="u16/201617japanisch-verteidigung-basis2.html">Basis 2</a></li>
+<li><a href="u16/201617japanisch-verteidigung-block2.html">Block 2</a></li>
+<li><a href="u16/201617japanisch-verteidigung-block3schnellangriff.html">Block 3 - Schnellangriff</a></li>
+<li><a href="u16/201617japanisch-verteidigung-block3.html">Block 3</a></li>
+<li><a href="u16/201617japanisch-verteidigung-block4.html">Block 4</a></li>
+<li><a href="u16/201617japanisch-verteidigung-ohne.html">Ohne</a></li>
+<li><a href="u16/201617japanisch-verteidigung-ohne2.html">Ohne 2</a></li></ul></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u16/201819.html">2018/19</a></p>
+ <input id="id12" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id12">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u16/201819-annahme3.html">Annahme (3)<span>3er-Riegel - 3 Annahmespielerinnen</span></a><ul>
+<li><a href="u16/201819-annahme3-annahme.html">Annahme<span>3er Riegel - 3 Annahmespielerinnen</span></a></li>
+<li><a href="u16/201819-annahme3-l1.html">L1</a></li>
+<li><a href="u16/201819-annahme3-l1b.html">L1b<span>Mittelblockerin statt Diagnalspielerin</span></a></li>
+<li><a href="u16/201819-annahme3-l6.html">L6</a></li>
+<li><a href="u16/201819-annahme3-l6b.html">L6b<span>vordere MB(!) nimmt an</span></a></li>
+<li><a href="u16/201819-annahme3-l5.html">L5</a></li>
+<li><a href="u16/201819-annahme3-l5b.html">L5b<span>Mittelblockerin(1) nimmt statt Diagonalspielerin(2) an</span></a></li>
+<li><a href="u16/201819-annahme3-l4.html">L4</a></li>
+<li><a href="u16/201819-annahme3-l4b.html">L4b<span>Mittelblockerin statt DiagonalSpielerin</span></a></li>
+<li><a href="u16/201819-annahme3-l3.html">L3</a></li>
+<li><a href="u16/201819-annahme3-l2.html">L2</a></li></ul></li>
+<li><a href="u16/201819-annahme4.html">Annahme (4)<span>4er-Riegel - 4 Annahmespielerinnen</span></a><ul>
+<li><a href="u16/201819-annahme4-annahme4.html">Annahme (4)<span>Annahme zu viert</span></a></li>
+<li><a href="u16/201819-annahme4-l14.html">L1 (4)<span>4er-Annahme</span></a></li></ul></li>
+<li><a href="u16/201819-annahme5.html">Annahme (5)<span>5er-Riegel - 5 Annahmespielerinnen</span></a><ul>
+<li><a href="u16/201819-annahme5-annahme5.html">Annahme (5)<span>Annahme zu fünft</span></a></li></ul></li>
+<li><a href="u16/201819-verteidigung.html">Verteidigung</a><ul>
+<li><a href="u16/201819-verteidigung-basis1.html">Basis 1<span>Aufspielerin hinten (1)</span></a></li>
+<li><a href="u16/201819-verteidigung-basis2.html">Basis 2<span>Aufspielerin vorne (2)</span></a></li>
+<li><a href="u16/201819-verteidigung-basis1b.html">Basis 1b<span>gegn. Aufspielerin ist vorne, Angriff links nicht zu erwarten</span></a></li>
+<li><a href="u16/201819-verteidigung-block2.html">Block 2</a></li>
+<li><a href="u16/201819-verteidigung-block3schnellangriff.html">Block 3 - Schnellangriff</a></li>
+<li><a href="u16/201819-verteidigung-block31schnellangriff.html">Block 3(1) - Schnellangriff<span>Mit Handzeichen die Verteidigung organisieren</span></a></li>
+<li><a href="u16/201819-verteidigung-block35schnellangriff.html">Block 3(5) - Schnellangriff<span>Mit Handzeichen die Verteidigung organisieren</span></a></li>
+<li><a href="u16/201819-verteidigung-block3.html">Block 3</a></li>
+<li><a href="u16/201819-verteidigung-block4.html">Block 4</a></li>
+<li><a href="u16/201819-verteidigung-ohne1.html">Ohne 1<span>Aufspielerin hinten (1)</span></a></li>
+<li><a href="u16/201819-verteidigung-ohne2.html">Ohne 2<span>Aufspielerin vorne (2)</span></a></li></ul></li>
+<li><a href="u16/201819-angriffsicherung.html">Angriff + Sicherung<span>Wir helfen uns gegenseitig!</span></a><ul>
+<li><a href="u16/201819-angriffsicherung-vorbereitung2.html">Vorbereitung 2<span>Aufspielerin ist Vorderspielerin</span></a></li>
+<li><a href="u16/201819-angriffsicherung-vorbereitung1.html">Vorbereitung 1<span>Aufspielerin ist Hinterspielerin</span></a></li>
+<li><a href="u16/201819-angriffsicherung-angriff06.html">Angriff 0/6<span>Pos. 4 - Außenangriff, 3-2-Sicherung</span></a></li>
+<li><a href="u16/201819-angriffsicherung-angriff2.html">Angriff 2<span>Pos. 2, Außenangriff, 2-3-Sicherung</span></a></li>
+<li><a href="u16/201819-angriffsicherung-angriff5v.html">Angriff 5v<span>Pos 3, 4-1-Sicherung</span></a></li>
+<li><a href="u16/201819-angriffsicherung-wann1.html">Wann 1<span>Zeitpunkt des Absprungs (1, 5v, 0)</span></a></li>
+<li><a href="u16/201819-angriffsicherung-wann2.html">Wann 2<span>Wo bin ich, wenn die Aufspielerin den Ball berührt.</span></a></li>
+<li><a href="u16/201819-angriffsicherung-wo.html">Wo<span>Ort des Absprungs</span></a></li></ul></li></ul>
+ </div>
+
+    </li>
+
+  </ul>
+<h2 id="infosinfou16html"><a href="info/u16.html">Infos</a></h2>
+</div>
+   <div id="u18"><h1 id="u18jugendweiblich">U18 - Jugend weiblich</h1>
+<h2 id="infosinfou18html"><a href="info/u18.html">Infos</a></h2></div>
+   <div id="u20"><h2 id="dasspielsystem">Das Spielsystem</h2>
+  <ul>
+    <li>
+<p><a href="u20/2020212223tempo.html">2020/21/22/23 "Tempo"<span>Schnelligkeit ist Trumpf</span></a></p>
+ <input id="id13" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id13">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u20/2020212223tempo-annahme.html">Annahme</a><ul>
+<li><a href="u20/2020212223tempo-annahme-3erriegel.html">3er Riegel<span>3 Spielerinnen nehmen an</span></a></li></ul></li>
+<li><a href="u20/2020212223tempo-3erriegelnormal.html">3er Riegel "normal"<span>Außenangreiferinnen + Libera</span></a><ul>
+<li><a href="u20/2020212223tempo-3erriegelnormal-l1.html">L1<span>Aufspielerin Pos 1</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegelnormal-l6.html">L6<span>Aufspielerin Pos 6</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegelnormal-l5.html">L5<span>Aufspielerin Pos 5</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegelnormal-l4.html">L4<span>Aufspielerin Pos 4</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegelnormal-l3.html">L3<span>Aufspielerin Pos 3</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegelnormal-l2.html">L2<span>Aufspielerin Pos 2</span></a></li></ul></li>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner.html">3-er Riegel - Einbeiner<span>Optionen für den Einbeiner</span></a><ul>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner-l1angetaeuschtesdoppelquickmitdiagonalspielerin.html">L1, angetäuschtes "Doppelquick" mit Diagonalspielerin<span>Aufspielerin Pos. 1, Diagonalspielerin ist Linkshänderin, und "fliegt" nach außen</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner-l4mb.html">L4, MB<span>Der Einbeiner der Mittelblockerin</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner-l4aussenangreiferinkreuzt.html">L4, Außenangreiferin kreuzt<span>Aufspielerin Pos. 4, Außenangreiferin kreuzt von links nach rechts</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner-l3mb.html">L3, MB<span>Der Einbeiner der Mittelblockerin</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner-l3aussenangreiferinkreuzt.html">L3, Außenangreiferin kreuzt<span>Aufspielerin Pos 3, Außenangreiferin kreuzt von links nach rechts</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner-l2mb.html">L2, MB<span>Der Einbeiner der Mittelblockerin</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegeleinbeiner-l2aussenangreiferinkreuzt.html">L2, Außenangreiferin kreuzt<span>Aufspielerin Pos 2, Außenangreiferin kreuzt von links nach rechts</span></a></li></ul></li>
+<li><a href="u20/2020212223tempo-3erriegelaufspielerinnentricks.html">3er Riegel - Aufspielerinnentricks<span>"Trick"-Anläufe für die Aufspielerin</span></a><ul>
+<li><a href="u20/2020212223tempo-3erriegelaufspielerinnentricks-l2angetaeuschtel1.html">L2, angetäuschte L1<span>Die Aufspielerin täuscht an, dass sie von Position 1 einläuft.</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegelaufspielerinnentricks-l4angetaeuschtel5.html">L4, angetäuschte L5<span>Die Aufspielerin täuscht an, dass sie von Position 5 einläuft.</span></a></li>
+<li><a href="u20/2020212223tempo-3erriegelaufspielerinnentricks-l3angetaeuschtel6.html">L3, angetäuschte L6<span>Die Aufspielerin täuscht an, dass sie von Position 6 einläuft.</span></a></li></ul></li>
+<li><a href="u20/2020212223tempo-3erriegelohneaa2.html">3er Riegel (ohne AA2)<span>Außenangreiferin 2 nimmt nicht an</span></a><ul>
+<li><a href="u20/2020212223tempo-3erriegelohneaa2-l3.html">L3</a></li>
+<li><a href="u20/2020212223tempo-3erriegelohneaa2-l2.html">L2</a></li>
+<li><a href="u20/2020212223tempo-3erriegelohneaa2-l1.html">L1</a></li></ul></li>
+<li><a href="u20/2020212223tempo-angriffsicherung.html">Angriff + Sicherung<span>Wir helfen uns gegenseitig!</span></a><ul>
+<li><a href="u20/2020212223tempo-angriffsicherung-wann1.html">Wann 1<span>Wann soll ich loslaufen?</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-wann2.html">Wann 2<span>Wann soll ich loslaufen?</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-wo.html">Wo<span>Wo soll ich laufen?</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-vorbereitung2.html">Vorbereitung 2<span>Aufspielerin vorne, wo bereite ich mich auf den Angriff vor?</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-vorbereitung1.html">Vorbereitung 1<span>Aufspielerin hinten, wo bereite ich mich auf den Angriff vor?</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-angriff06.html">Angriff 0/6<span>Angriff Pos 4, 3-2-Sicherung</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-angriff2.html">Angriff 2<span>Angriff Pos 2, 2-3-Sicherung</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-angriff5v.html">Angriff 5v<span>Angriff Pos 3, 4-1-Sicherung</span></a></li>
+<li><a href="u20/2020212223tempo-angriffsicherung-schnellangriff.html">Schnellangriff<span>Angriff und Sicherung bei Schnellangriff</span></a></li></ul></li>
+<li><a href="u20/2020212223tempo-verteidigung.html">Verteidigung</a><ul>
+<li><a href="u20/2020212223tempo-verteidigung-basis1.html">Basis 1<span>Aufspielerin hinten</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-basis2.html">Basis 2<span>Aufspielerin vorne</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-block4.html">Block 4<span>Doppelblock Pos 4</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-block3.html">Block 3<span>Doppelblock Pos 3</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-block2.html">Block 2<span>Doppelblock Pos 2</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-block3schnellangriff.html">Block 3, Schnellangriff<span>Block auf Pos 3, Schnellangriff</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-block31schnellangriff.html">Block 3(1), Schnellangriff<span>Mit Handzeichen die Verteidigung organisieren</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-block35schnellangriff.html">Block 3(5), Schnellangriff<span>Mit Handzeichen die Verteidigung organisieren</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-ohne1.html">Ohne 1<span>"Ohne" Block, Aufspielerin hinten</span></a></li>
+<li><a href="u20/2020212223tempo-verteidigung-ohne2.html">Ohne 2<span>"Ohne" Block, Aufspielerin vorne</span></a></li></ul></li>
+<li><a href="u20/2020212223tempo-aufspiel.html">Aufspiel<span>Tempo! Schnelligkeit ist Trumpf</span></a><ul>
+<li><a href="u20/2020212223tempo-aufspiel-aufspiel.html">Aufspiel</a></li></ul></li></ul>
+ </div>
+
+    </li>
+    <li>
+<p><a href="u20/2122v2b.html">21/22 (V2b) <span>2x MB = 2x Auf</span></a></p>
+ <input id="id14" type="checkbox" class="expander">
+ <div class="expander">
+  <label for="id14">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <polyline points="15,15 40,25 15,35" class="expander"></polyline>
+</svg>
+  </label>
+<ul>
+<li><a href="u20/2122v2b-l1.html">L1<span>Läufer 1</span></a><ul>
+<li><a href="u20/2122v2b-l1-pos.html">Pos<span>Die Positionen</span></a></li>
+<li><a href="u20/2122v2b-l1-v1.html">V1<span>Einfach</span></a></li>
+<li><a href="u20/2122v2b-l1-v2.html">V2<span>Mit Trick</span></a></li></ul></li>
+<li><a href="u20/2122v2b-l6.html">L6<span>Läufer 6</span></a><ul>
+<li><a href="u20/2122v2b-l6-pos.html">Pos<span>Die Positionen</span></a></li>
+<li><a href="u20/2122v2b-l6-ann.html">Ann<span>Annahme</span></a></li></ul></li>
+<li><a href="u20/2122v2b-l5.html">L5<span>Läufer 5</span></a><ul>
+<li><a href="u20/2122v2b-l5-pos.html">Pos<span>Die Positionen</span></a></li>
+<li><a href="u20/2122v2b-l5-ann.html">Ann<span>Annahme</span></a></li></ul></li>
+<li><a href="u20/2122v2b-b.html">B<span>Basis</span></a><ul>
+<li><a href="u20/2122v2b-b-b.html">B<span>Basis</span></a></li></ul></li></ul>
+ </div>
+
+    </li>
+
+  </ul>
+<h2 id="infosinfou20html"><a href="info/u20.html">Infos</a></h2>
+</div>
+<footer><div>Nachwuchskonzept</div><div>Nachwuchskonzept</div></footer>   
+  </div>
+ </body>
+</html>
+  
