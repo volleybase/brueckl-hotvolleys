@@ -1,0 +1,20 @@
+/* tabulator of list */
+li span {
+  display: inline-block;
+  width: 8em;
+}
+
+/* footer
+footer {
+  clear: both;
+  padding-top: 2em;
+  text-align: right;
+}
+footer > div {
+  font-family: Arial, sans-serif;
+  font-size: 0.7em;
+}
+footer > div:first-child {
+  float: left;
+}
+*/
