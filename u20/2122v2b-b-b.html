@@ -574,7 +574,18 @@ function onContextMenu(event) {
 
     cm.style.display = 'block';
     bg.style.display = 'block';
-    cm.style.transform = 'translate(' + event.pageX + 'px,' + event.pageY + 'px)';
+    //cm.style.transform = 'translate(' + event.pageX + 'px,' + event.pageY + 'px)';
+    var svg = document.getElementsByTagName('svg')[0],
+        pt = svg.createSVGPoint();
+    
+    // pass event coordinates
+    pt.x = event.clientX;
+    pt.y = event.clientY;    
+    
+    // transform to SVG coordinates
+    var svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ')');
   }
 }
 
