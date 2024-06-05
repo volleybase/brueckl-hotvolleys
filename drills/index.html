@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <title>Die Übungen</title>
+  <style>
+html, body, * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  
+  padding: 0;
+  border: 0 none;
+  margin: 0;
+  
+  font-size: 14pt;
+}
+html, body {
+  overflow: hidden;
+}
+div.header {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  left: 0;
+  padding-left: 50px;
+  width: 100%;
+  top: 0;
+  height: 50px;
+    
+  background-color: #CCCCCC;  
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/*
+div.item > .item-header {
+  display: block;
+  position: relative;
+  height: 50px;
+  margin: 0 0 0 26px;
+
+  white-space: nowrap;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+*/
+
+div.header > div.title {
+  font-family: Arial;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 8px 0 0 0;
+}
+div.header > div.subtitle {
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 0.8em;
+}
+
+div.header > span.icon {
+  position: absolute;
+  left: 50px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+  
+  border-radius: 50%;
+  background-color: darkred;
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 1.75em;
+}
+div.header > img {
+  position: absolute;
+  left: 50px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+}
+div.header > span.header {
+  position: absolute;
+  top: 1px;
+  left: 100px;
+  font-size: 0.5em;
+}
+div.header > span.text {
+  position: absolute;
+  padding: 12px 10px 12px 50px;
+}
+div.header > span.footer {
+  position: absolute;
+  bottom: 1px;
+  left: 100px;
+  font-size: 0.5em;
+}
+div.content {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+
+  background-color: #EEEEEE;
+  overflow: hidden;
+}
+div.container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+h1, h2, h3 {
+  margin: 0.5em 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.3em;
+}
+ol, ul {
+  padding-left: 1.5em;
+}
+p {
+  margin: 0.5em 0;
+}
+
+div.img {
+  box-sizing: border-box;
+  overflow: hidden; 
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+
+  padding: 1.5% 0;
+  text-align: center;
+}
+div.img > svg {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+div.text {
+  box-sizing: border-box;
+  padding: 1%;
+}
+
+@media (orientation: landscape) {
+  div.container.full {
+    overflow: hidden;
+  }
+  div.container.full > div.img, 
+  div.container.full > div.text {
+    float: left;
+    width: 50%;
+  }
+  div.container.full > div.text {
+    height: 100%;
+    overflow: auto;
+  }
+}
+label.tree-menu {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  z-index: 99;
+  border-radius: 7px;
+  background-color: dimgray;
+  
+  cursor: pointer;
+}
+label.tree-menu > div {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  
+  color: gray;
+  text-align: center;
+  font-size: 30px;
+  line-height: 100%;
+
+  cursor: pointer;
+}
+
+input {
+  background-color: blue;
+  position: absolute;
+  left: -1000px;
+}
+
+div.tree {
+  display: none;
+
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+  z-index: 99;
+  
+  overflow: hidden;
+}
+div.tree > div.tree-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  overflow: hidden;
+  
+  background-color: #DDDDDD;
+  opacity: 0.1;
+}
+div.tree > div.tree-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33%;
+  min-width: 400px;
+  max-width: 600px;
+  height: 100%;
+  
+  overflow: auto;
+  
+  background-color: #DDDDDD;
+}
+input#tree-toggle:checked + div.tree {
+  display: block;
+}
+
+@media (width < 400px) {
+  div.tree > div.tree-content {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+div.item {
+  position: relative;
+}
+
+div.item > input.item-toggle + label > span:first-child {
+  display: none;
+}
+div.item > input.item-toggle + label > span:nth-child(2) {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > span:first-child {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > span:nth-child(2) {
+  display: none;
+}
+
+div.item > input.item-toggle + label > img:first-child {
+  display: none;
+}
+div.item > input.item-toggle + label > img:nth-child(2) {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > img:first-child {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > img:nth-child(2) {
+  display: none;
+}
+
+div.item > input.item-toggle:checked ~ .item-container {
+  display: block;
+}
+
+
+
+div.item > label {
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  top: 15px;
+  height: 20px;
+  background-color: dimgray;
+  color: lightgray;
+  border-radius: 50%;
+  text-align: center;
+}
+
+div.item > .item-header {
+  display: block;
+  position: relative;
+  height: 50px;
+  margin: 0 0 0 26px;
+
+  white-space: nowrap;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+div.item.root > .item-header {
+  margin: 0;
+}
+
+div.item > span.item-header > span.icon {
+  position: absolute;
+  left: 2px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+  
+  border-radius: 50%;
+  background-color: darkred;
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 1.75em;
+}
+div.item > span.item-header > img {
+    position: absolute;
+    left: 2px;
+    width: 46px;
+    top: 2px;
+    height: 46px;
+}
+div.item > .item-header > span.header {
+  position: absolute;
+  top: 1px;
+  left: 50px;
+  font-size: 0.5em;
+}
+div.item > .item-header > span.text {
+  position: absolute;
+  padding: 12px 10px 12px 50px;
+}
+div.item > .item-header:hover, div.item > .item-header:hover > span.text {
+  background-color: #CCCCCC;
+}
+div.item > .item-header > span.footer {
+  position: absolute;
+  bottom: 1px;
+  left: 50px;
+  font-size: 0.5em;
+}
+
+div.item > div.item-container {
+  position: relative;
+  padding-left: 26px;
+
+  display: none;
+}
+div.footer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 5px 5px;
+  
+  overflow: hidden;
+  background-color: #CCCCCC;
+
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+}
+
+  </style>
+  <script>
+function init() {
+  var items = document.querySelectorAll("div.tree span.item-header");
+  items.forEach((item) => item.addEventListener("click", onTreeItemClick));
+}
+
+function onTreeItemClick(event) {
+  // if any animator: ensure end of running animation
+  if (window.animator) {
+    animator.stop();
+  }
+  
+  var item = searchTreeItem(event.target ? event.target : event.srcElement);
+  var id = item && item.dataset && item.dataset.id ? item.dataset.id : "??";
+  
+  //alert("click: " + id);
+  loadData("/brueckl-hotvolleys/drills/header_" + id + ".html", (header) => {
+    var h = document.querySelector("div.header");
+    if (h) {
+      h.innerHTML = header;
+    }
+  });
+  loadData("/brueckl-hotvolleys/drills/content_" + id + ".html", (header) => {
+    var c = document.querySelector("div.content");
+    if (c) {
+      c.innerHTML = header;
+    }
+  });
+  loadScript("/brueckl-hotvolleys/drills/script_" + id + ".js", "script_" + id + "\\.js", () => {
+    console.log("Script for " + id + " has been loaded.");
+  });
+  closeTree();
+}
+
+function searchTreeItem(elem) {
+  while (elem != null) {
+    if (elem.className.indexOf("item-header") >= 0) {
+      return elem;
+    }
+    elem = elem.parentNode;
+  }
+  
+  return null;
+}
+
+function loadData(data, handler) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        handler(this.responseText);
+      } else {
+        handler(this.status);
+      }
+    }
+  };
+  xhttp.open("GET", data, true);
+  xhttp.send();
+}
+
+var registeredScript = undefined;
+
+function unregisterPreviousScript() {
+  if (registeredScript) {
+    console.log("Unregister " + registeredScript);
+    if (typeof unregister === 'function') {
+      unregister();
+    }
+
+    var elem = document.querySelector("script[src$=" + registeredScript + "]");
+    if (elem) {
+      elem.remove();
+    }
+    registeredScript = undefined;
+    console.log("Unregister done.");
+  }
+}
+
+function loadScript(url, key, callback) {
+  unregisterPreviousScript();
+
+  console.log("Register " + url);
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  
+  if (script.readyState) { // only required for IE<9
+    script.onreadystatechange = function() {
+      if (script.readyState === "loaded" || script.readyState === "complete") {
+        script.onreadystatechange = null;
+        if (callback) {
+          callback();
+        }
+      }
+    };
+  } else {  // Others
+    script.onload = function() {
+      if (callback) {
+        callback();
+      }
+    };
+  }
+
+  script.src = url;
+  document.getElementsByTagName("head")[0].appendChild(script);
+  registeredScript = key;
+  console.log("Register " + key + "/" + url + " done.");
+}
+
+function closeTree() {
+  var cb = document.getElementById('tree-toggle');
+  if (cb && cb.checked) {
+    cb.checked = false;
+  }
+}
+  </script>
+ </head>
+ <body onload="init();">
+<div class="header"><span class="text">Die Übungen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></div>
+
+<label class="tree-menu" for="tree-toggle"><div>=</div></label>
+<input type="checkbox" checked id="tree-toggle" />
+<div class="tree"><div class="tree-bg">&nbsp;</div><div class="tree-content"><div class="item root">
+ <span class="item-header" data-id="id_1"><span class="text">Die Übungen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <input type="checkbox" id="id_2" class="item-toggle" #checked# />
+ <label for="id_2" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_2"><span class="text">Die Grundtechniken</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Technik zuerst</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_3" class="item-toggle" #checked# />
+ <label for="id_3" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_3"><span class="text">Die Grundlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_4"><span class="text">Fangen und Werfen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Fangen und Werfen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_5"><span class="text">Fangen und Werfen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Paarweise fangen und werfen, auch als Wettkampf.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_6"><span class="text">Das Spiegellaufen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Schnelle Bewegungen nach optischen Signalen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_7"><span class="text">Die Beinarbeit</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Beinarbeit verbessern.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_8"><span class="text">Laufen und Springen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das bewusste Laufen und Springen erlernen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_9"><span class="text">Laufen und Springen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das bewusste Laufen und Springen erlernen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_10"><span class="text">Ein Steinchen im Schuh</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Ein Steinchen unter der Ferse zur Erinnerung.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_11"><span class="text">Spionball</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Mitspielerin finden.</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_12" class="item-toggle" #checked# />
+ <label for="id_12" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_12"><span class="text">Das Obere Zuspiel - &quot;Pritschen&quot;</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_13"><span class="text">Die Knotenpunkte</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Knotenpunkte des Oberen Zuspiels</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_14"><span class="text">Die Armposition fixieren</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_15"><span class="text">Grundtechniken mit 2 Bällen üben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_16"><span class="text">OZ und UZ mit (seitlicher) Bewegung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_17" class="item-toggle" #checked# />
+ <label for="id_17" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_17"><span class="text">Das Untere Zuspiel - &quot;Baggern&quot;</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_18" class="item-toggle" #checked# />
+ <label for="id_18" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_18"><span class="text">Vorbereitung</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Das untere Zuspiel durch verschiedene Übungen vorbereiten</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_19"><span class="text">Beinarbeit</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Beinarbeit mit schnellen Füßen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_20"><span class="text">Knie abbiegen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_21"><span class="text">&quot;Schweinchen-Volleyball&quot;</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_22"><span class="text">Breite Beinstellung 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_23"><span class="text">Die Knotenpunkte</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das Untere Zuspiel</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_24"><span class="text">Test draw</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">###</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_25" class="item-toggle" #checked# />
+ <label for="id_25" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_25"><span class="text">Erlernen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Das untere Zuspiel erlernen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_26"><span class="text">Erlernen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_27" class="item-toggle" #checked# />
+ <label for="id_27" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_27"><span class="text">Üben</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Üben, Korrigieren und Verbessern</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_28" class="item-toggle" #checked# />
+ <label for="id_28" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_28"><span class="text">Arme</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Armposition und -haltung</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_29"><span class="text">Die Armposition fixieren (sanft)</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_30"><span class="text">Die Armposition fixieren (hart)</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_31" class="item-toggle" #checked# />
+ <label for="id_31" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_31"><span class="text">Beine und Körper</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Beinarbeit und Körperhaltung</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_32"><span class="text">Breite Beinstellung 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_33"><span class="text">Beinarbeit</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Beinarbeit für das Untere Zuspiel verbessern</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_34"><span class="text">Frosch</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_35"><span class="text">Breit stehen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_36"><span class="text">Körperhaltung 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_37"><span class="text">Körperhaltung 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_38"><span class="text">Körperhaltung 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_39"><span class="text">Seitlich spielen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_40"><span class="text">Grundtechniken mit 2 Bällen üben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_41" class="item-toggle" #checked# />
+ <label for="id_41" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_41"><span class="text">Spielformen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Mit- und Gegeneinander</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_42"><span class="text">OZ und UZ mit (seitlicher) Bewegung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_43"><span class="text">Baggerspiel 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Baggerlafale</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_44"><span class="text">Baggerspiel 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_45" class="item-toggle" #checked# />
+ <label for="id_45" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_45"><span class="text">Das Service</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_46"><span class="text">Das Service von oben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_47"><span class="text">Triff Sie!</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das Service unter leichtem Druck üben.</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_48" class="item-toggle" #checked# />
+ <label for="id_48" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_48"><span class="text">Sprungservice</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Varianten und Einführung</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_49"><span class="text">Jump-Float</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Sprung-Flatter-Service, Mini-Jump</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_50"><span class="text">Sprungservice</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das Spiel druckvoll eröffnen</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_51" class="item-toggle" #checked# />
+ <label for="id_51" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_51"><span class="text">Erlernen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Das Sprungservice erlernen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_52"><span class="text">Aufwurf</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Ballwurf erlernen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_53"><span class="text">Anlauf</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_54"><span class="text">Sprung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_55"><span class="text">Schlag</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Ball treffen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_56"><span class="text">Landung</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Weich landen und die Verteidigung vorbereiten</span></span>
+</div></div>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_57" class="item-toggle" #checked# />
+ <label for="id_57" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_57"><span class="text">Der Angriffsschlag</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_58" class="item-toggle" #checked# />
+ <label for="id_58" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_58"><span class="text">Der Anlauf</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_59"><span class="text">Laufen und Springen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das bewusste Laufen und Springen erlernen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_60"><span class="text">Den Anlauf lernen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Schrittfolge beim Anlauf erlernen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_61"><span class="text">Hintern runter!</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das Absenken des Körperschwerpunkts beim Stemmschritt üben.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_62"><span class="text">Abstand halten 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Abstand vom Netz bei der Landung erzwingen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_63"><span class="text">Abstand halten 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Beim Schnellangriff das Nach-Vorne-Springen verhindern.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_64"><span class="text">Der Anlauf über eine Matte</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den langen Stemmschritt erzwingen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_65"><span class="text">Die Anlaufwege lernen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Teilbewegungen ohne Timingprobleme kombinieren lernen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_66"><span class="text">Die Ausgangsposition für den Anlauf</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das Einnehmen der Ausgangsposition für den Anlauf üben.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_67"><span class="text">Laufen und Bewegen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Übergang vom Laufen zum Anlauf für den Schlag lernen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_68"><span class="text">Die Schrittfolge der Außenangreiferin</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Standard-Schrittfolgen der Außenangreiferin.</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_69" class="item-toggle" #checked# />
+ <label for="id_69" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_69"><span class="text">Der Absprung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_70"><span class="text">Laufen und Springen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Das bewusste Laufen und Springen erlernen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_71"><span class="text">Der Armschwung 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den beidarmigen Armschwung erlernen.</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_72" class="item-toggle" #checked# />
+ <label for="id_72" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_72"><span class="text">Der Armschwung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_73"><span class="text">Der Armschwung 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den beidarmigen Armschwung erlernen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_74"><span class="text">Der Armschwung 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Armschwung üben.</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_75" class="item-toggle" #checked# />
+ <label for="id_75" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_75"><span class="text">Die Schlagbewegung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_76"><span class="text">Die Schlagbewegung vorbereiten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_77"><span class="text">Das Teppichklopfen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_78"><span class="text">Der Armschwung 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Armschwung üben.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_79"><span class="text">Die Schlagbewegung im Stand 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_80"><span class="text">Die Schlagbewegung im Stand 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Schlag am Netz</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_81"><span class="text">Die Schlagbewegung im Stand 3</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Hoch abschlagen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_82"><span class="text">Tennisbälle werfen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Armschwung für Wurf/Schlag</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_83"><span class="text">Tennisbälle werfen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_84"><span class="text">Tennisbälle werfen 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_85"><span class="text">Schlag - Verteidigung 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_86"><span class="text">Schlag - Verteidigung 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_87"><span class="text">Schlagfangen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_88"><span class="text">Squash</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_89" class="item-toggle" #checked# />
+ <label for="id_89" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_89"><span class="text">Der Handgelenkseinsatz</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_90"><span class="text">Das Schnelle Handgelenk</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Locker und schnell im Handgelenk</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_91"><span class="text">Der seitliche Handgelenkseinsatz 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den seitlichen Handgelenkseinsatz erlernen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_92"><span class="text">Der seitliche Handgelenkseinsatz 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den seitlichen Handgelenkseinsatz üben</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_93" class="item-toggle" #checked# />
+ <label for="id_93" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_93"><span class="text">Die Landung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_94"><span class="text">Die Landung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_95" class="item-toggle" #checked# />
+ <label for="id_95" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_95"><span class="text">Das Timing</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_96"><span class="text">Das Timing für den Angriff</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_97"><span class="text">Den Schnellangriff Erlernen 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_98"><span class="text">Den Schnellangriff Erlernen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_99"><span class="text">Den Schnellangriff Erlernen 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_100"><span class="text">Schlag den 2. Ball! 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_101"><span class="text">Schlag den 2. Ball! 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_102" class="item-toggle" #checked# />
+ <label for="id_102" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_102"><span class="text">Der Einbeiner</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_103"><span class="text">Eine Einführung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_104"><span class="text">Den Einbeiner lernen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_105"><span class="text">Den Einbeiner üben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_106"><span class="text">Der Einbeiner um einen Besen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_107"><span class="text">Eine koordinative Aufwärmübung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_108"><span class="text">Erwisch den Ball!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_109"><span class="text">Gehaltene Bälle im Stand schlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_110"><span class="text">Gehaltene Bälle schlagen - Vorbereitung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_111"><span class="text">Gehaltene Bälle schlagen 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_112"><span class="text">Gehaltene Bälle schlagen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_113"><span class="text">Selbstaufgeworfene Bälle schlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_114"><span class="text">1er aufwerfen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_115"><span class="text">5er aufwerfen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_116" class="item-toggle" #checked# />
+ <label for="id_116" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_116"><span class="text">Der Block</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_117"><span class="text">Den Ballkontakt erfahren</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_118"><span class="text">Die Körperposition</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_119"><span class="text">Die Armführung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_120"><span class="text">Blocken Lernen 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_121"><span class="text">Blocken Lernen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_122"><span class="text">Die Armposition fixieren</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_123"><span class="text">Schnapp Dir den Ball!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_124"><span class="text">Die Schrittfolge 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Außenblockspieler holt nur wenig(!) aus</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_125"><span class="text">Die Schrittfolge 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Swingblock</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_126"><span class="text">Bewusst Übergreifen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_127" class="item-toggle" #checked# />
+ <label for="id_127" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_127"><span class="text">Die Grundaktionen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Taktik und Technik vereinen</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_128" class="item-toggle" #checked# />
+ <label for="id_128" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_128"><span class="text">Das Service</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_129"><span class="text">Ein gezieltes Service</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Ziele treffen lernen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_130"><span class="text">Service mit Gummiband</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Flaches Service üben</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_131"><span class="text">Gezieltes Service</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Triff die Lücke!</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_132"><span class="text">Aufschlag hinterher</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_133"><span class="text">2 Annahmespielerinnen blockieren</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_134"><span class="text">Chaos</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_135"><span class="text">Genauigkeit!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_136"><span class="text">Service - Annahme - Fangen mit Nachlaufen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_137"><span class="text">Service-Annahme-Spiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_138"><span class="text">Servicestaffel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_139"><span class="text">Toter Fisch</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_140" class="item-toggle" #checked# />
+ <label for="id_140" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_140"><span class="text">Die Annahme</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_141"><span class="text">Orientierung am Spielfeld 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_142"><span class="text">Orientierung am Spielfeld 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_143"><span class="text">In oder Out</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_144"><span class="text">Breite Beinstellung 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_145"><span class="text">Vorwärts-Rückwärts Bewegen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_146"><span class="text">Annehmen und Bewegen 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_147"><span class="text">Annehmen und Bewegen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_148"><span class="text">Annehmen im Oberen Zuspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_149"><span class="text">Annehmen und Angreifen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_150"><span class="text">Chaos</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_151"><span class="text">Körperposition</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_152"><span class="text">Genauigkeit!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_153"><span class="text">Seitlich Bewegen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_154"><span class="text">Einspielen als Annahme und Verteidigungsübung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_155"><span class="text">Service - Annahme - Fangen mit Nachlaufen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_156"><span class="text">Service-Annahme-Spiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_157" class="item-toggle" #checked# />
+ <label for="id_157" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_157"><span class="text">Das Aufspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_158"><span class="text">Dreieck der Aufspielerinnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_159"><span class="text">Genauigkeit 0er</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_160"><span class="text">Genauigkeit 2er</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_161"><span class="text">Spielcodes</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_162"><span class="text">Gute und Schlechte Erste Bälle</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_163"><span class="text">Lies den Block 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_164"><span class="text">Lies den Block 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_165"><span class="text">Müde Aufspielerin</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_166"><span class="text">Schnelle Aufspielerin</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_167"><span class="text">Spielelemente unter Laufstreß üben</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Schlagbewegung, Feldverteidigung, Aufspiel, Einlaufen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_168"><span class="text">Aufspiel - Schlag - Verteidigung im Spielfluss</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_169"><span class="text">Aufspielerviereck</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_170" class="item-toggle" #checked# />
+ <label for="id_170" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_170"><span class="text">Der Angriff</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_171"><span class="text">Schlag - Verteidigung 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_172"><span class="text">Schlag - Verteidigung im Dreieck</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_173"><span class="text">1 gegen 1 - Block und Angriff</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_174"><span class="text">Schlag - Verteidigung 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_175"><span class="text">Die Bewegung der Außenangreiferin</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_176"><span class="text">5 Sterne</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_177"><span class="text">Angriff und Blockbildung üben 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_178"><span class="text">Einschlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_179"><span class="text">Angriffsvariationen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_180"><span class="text">Triff die Ecke!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_181"><span class="text">Annehmen und Angreifen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_182"><span class="text">Angriff und Blockbildung üben 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_183"><span class="text">Ballkontrolle unter Streß</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_184"><span class="text">Die Bewegung der Mittelblockerin</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_185"><span class="text">Den Block überwinden</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_186"><span class="text">Den Block überwinden 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_187"><span class="text">Den Block überwinden 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_188"><span class="text">Den Block überwinden 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_189"><span class="text">Aufzug 1/b</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_190"><span class="text">Block überwinden für Mittelblockerinnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_191"><span class="text">Diagonal Schlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_192"><span class="text">Finde den leeren Raum!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_193"><span class="text">Hilf dir selbst!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_194"><span class="text">Miteinander sprechen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_195"><span class="text">Mit sich selbst spielen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_196"><span class="text">Spielelemente unter Laufstreß üben</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Schlagbewegung, Feldverteidigung, Aufspiel, Einlaufen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_197"><span class="text">2:2 Schupferspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_198"><span class="text">Aufspiel - Schlag - Verteidigung im Spielfluss</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_199"><span class="text">Rechte Seite gegen Linke Seite</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_200"><span class="text">Schlag und Tschüss</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_201"><span class="text">Y(X) &gt; Grenze = Ok</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_202" class="item-toggle" #checked# />
+ <label for="id_202" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_202"><span class="text">Der Block</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_203"><span class="text">Blockbildung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_204"><span class="text">Schau auf die Angreiferin! 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_205"><span class="text">1 gegen 1 - Block und Angriff</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_206"><span class="text">Schlag - Verteidigung 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_207"><span class="text">2:2 Schupferspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_208"><span class="text">Angriff und Blockbildung üben 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_209"><span class="text">Angriff und Blockbildung üben 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_210"><span class="text">Aufzug 1/b</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_211"><span class="text">Ballkontrolle unter Streß</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_212"><span class="text">Die Bewegung der Mittelblockerin</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_213"><span class="text">Block überwinden für Mittelblockerinnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_214"><span class="text">Blockort finden 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_215"><span class="text">Blockort finden 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_216"><span class="text">Blockort finden 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_217"><span class="text">Den Block schließen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_218"><span class="text">Doppelblock am Kleinfeld</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_219"><span class="text">Einschlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_220"><span class="text">Hol' Sie Dir!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_221"><span class="text">Netzentscheidungen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_222"><span class="text">Schau auf die Angreiferin! 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_223"><span class="text">Schlagarm beobachten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_224" class="item-toggle" #checked# />
+ <label for="id_224" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_224"><span class="text">Die Feldverteidigung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_225"><span class="text">10 Berührungen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_226"><span class="text">10 Berührungen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_227"><span class="text">Mit sich selbst spielen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_228"><span class="text">Schlag - Verteidigung 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_229"><span class="text">Schlag - Verteidigung 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_230"><span class="text">15x Verteidigen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Sich überwinden</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_231"><span class="text">2:2 Schupferspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_232"><span class="text">20 Bälle</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_233"><span class="text">Abrollen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Japanrolle</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_234"><span class="text">Abrollen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Japanrolle</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_235"><span class="text">Abrollen 3</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Japanrolle</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_236"><span class="text">Absicherung durch die Hinterspielerin</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_237"><span class="text">Aufspiel - Schlag - Verteidigung im Spielfluss</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_238"><span class="text">Ballkontrolle unter Streß</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_239"><span class="text">Bewegungsmuster 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Einspielen 1:1</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_240"><span class="text">Bewegungsmuster 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">3m-6m-Laufen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_241"><span class="text">Bewegungsmuster 3</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Eine Spielform für die Außenangreifer</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_242"><span class="text">Bewegungsmuster 4</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Bleib hinten!</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_243"><span class="text">Bewegungsmuster 5</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Ein Spielform für die Feldverteidigung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_244"><span class="text">Block überwinden für Mittelblockerinnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_245"><span class="text">Bück Dich!</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Körperhaltung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_246"><span class="text">Diagonal Schlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_247"><span class="text">Diagonale Bälle</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_248"><span class="text">Die Verteidigung gegen Diagonalangriffe</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_249"><span class="text">Die Verteidigung vorbereiten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_250"><span class="text">Grundtechniken mit 2 Bällen üben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_251"><span class="text">Hilf dir selbst!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_252"><span class="text">Japanische Verteidigung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_253"><span class="text">Keine Angst!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_254"><span class="text">Lesen 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_255"><span class="text">Lesen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_256"><span class="text">Lesen am Kleinfeld 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_257"><span class="text">Lesen am Kleinfeld 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_258"><span class="text">Matten über Kasten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_259"><span class="text">Netzannäherung 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_260"><span class="text">Netzannäherung 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_261"><span class="text">Rechte Seite gegen Linke Seite</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_262"><span class="text">Rechts verteidigen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_263"><span class="text">Rette den Ball!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_264"><span class="text">Schlag - Verteidigung im Dreieck</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_265"><span class="text">Schlag und Tschüss</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_266"><span class="text">Schütz die Lücke!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_267"><span class="text">Sicherung nach Verteidigung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_268"><span class="text">Sicherung nach Verteidigung im Dreieck</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_269"><span class="text">Spielelemente unter Laufstreß üben</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Schlagbewegung, Feldverteidigung, Aufspiel, Einlaufen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_270"><span class="text">Tausch den Platz!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_271"><span class="text">Verteidigung gegen Außenangriffe</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_272"><span class="text">Y(X) &gt; Grenze = Ok</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_273"><span class="text">Abrollen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_274" class="item-toggle" #checked# />
+ <label for="id_274" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_274"><span class="text">Die Sicherung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_275"><span class="text">2:2 Schupferspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_276"><span class="text">Absicherung durch die Hinterspielerin</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_277"><span class="text">Angriff und Blockbildung üben 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_278"><span class="text">Angriff und Blockbildung üben 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_279"><span class="text">Ballkontrolle unter Streß</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_280"><span class="text">Einschlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_281"><span class="text">Hilf dir selbst!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_282"><span class="text">In den Block schlagen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_283"><span class="text">Rette den Ball!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_284"><span class="text">Sichern lernen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_285"><span class="text">Sichern üben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_286"><span class="text">Sicherung nach Verteidigung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_287"><span class="text">Sicherung nach Verteidigung im Dreieck</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_288"><span class="text">Sicherung Vorbereiten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_289"><span class="text">Station 1 - Gegen die Mauer</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_290"><span class="text">Station 2 - Gegen die weiche Mauer</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_291"><span class="text">Station 3 - Ins Netz</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_292"><span class="text">Station 4 - Am Basketballkorb</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_293"><span class="text">Station 5 - Ergänzungsübungen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_294" class="item-toggle" #checked# />
+ <label for="id_294" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_294"><span class="text">Die Kondition</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_295" class="item-toggle" #checked# />
+ <label for="id_295" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_295"><span class="text">Die Koordination</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_296" class="item-toggle" #checked# />
+ <label for="id_296" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_296"><span class="text">Mehrballübungen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_297"><span class="text">2 Bälle kontrollieren</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_298"><span class="text">2 Bälle zu dritt</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_299"><span class="text">2 Bälle zu viert</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_300"><span class="text">Einspielen mit (viel) Stress</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_301"><span class="text">Im Kreis herum 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_302"><span class="text">Im Kreis herum 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_303"><span class="text">Jonglieren zu zweit</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_304"><span class="text">Spielen mit Nachlaufen mit Zusatzbällen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_305"><span class="text">Grundtechniken mit 2 Bällen üben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_306" class="item-toggle" #checked# />
+ <label for="id_306" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_306"><span class="text">Der Luftballon</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_307"><span class="text">Die Ballone vertreiben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_308"><span class="text">Die Knallstaffel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_309"><span class="text">Einlaufen mit Luftballon 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_310"><span class="text">Einlaufen mit Luftballon 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_311"><span class="text">Hundefußball</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Luftballontreiben</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_312" class="item-toggle" #checked# />
+ <label for="id_312" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_312"><span class="text">Jonglieren</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Jonglieren lernen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_313"><span class="text">Ballwurf</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Armhaltung und Ballwurf</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_314"><span class="text">2 Bälle</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Grundbewegung mit 2 Bällen lernen und üben</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_315"><span class="text">3 Bälle</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Grundbewegung mit 3 Bällen lernen und üben</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_316" class="item-toggle" #checked# />
+ <label for="id_316" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_316"><span class="text">Experimente (Jonglieren)</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Nur Test!</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_317"><span class="text">Ballwurf-1000</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Test</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_318"><span class="text">Ballwurf-100</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Wie werfe und fange ich den Ball </span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_319"><span class="text">Test</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_320"><span class="text">Parable on court</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">###</span></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_321"><span class="text">Runter schlagen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Gegenseitig aus dem Gleichgewicht bringen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_322"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_323"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_324"><span class="text">6 Ballkontakte</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Individuelle Ballkontrolle</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_325"><span class="text">Diagonal Einspielen über das Netz</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_326"><span class="text">Die Spirale</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_327"><span class="text">Durcheinander ordnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_328"><span class="text">Einspielen als Spielaufbauübung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_329"><span class="text">Einspielen als Spielaufbauübung 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_330"><span class="text">Einspielen über das Netz</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_331"><span class="text">Kaninchenjagd</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_332"><span class="text">Mit der Nase im Netz</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_333"><span class="text">Renn mal!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_334"><span class="text">Schleuderball</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_335"><span class="text">Spielfeld, was bist Du?</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_336"><span class="text">Steh auf!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_337"><span class="text">Tausendfüßlerrennen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_338"><span class="text">Überkopfspiel 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_339"><span class="text">Überkopfspiel 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_340"><span class="text">Volley Spielen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_341"><span class="text">Wo ist der Ball?</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_342"><span class="text">Die Beinarbeit</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Beinarbeit verbessern.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_343"><span class="text">Mit sich selbst spielen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_344" class="item-toggle" #checked# />
+ <label for="id_344" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_344"><span class="text">Die Beweglichkeit</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_345"><span class="text">Bewegen mit Ball (1)</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Einzeln gegen die Mauer</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_346"><span class="text">Bewegen mit Ball (2)</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Paarweise</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_347" class="item-toggle" #checked# />
+ <label for="id_347" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_347"><span class="text">Beweglichkeit mit Ball 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Einzeln gegen die Mauer</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_348"><span class="text">Körperrotation</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Beweglichkeit in der Hüfte</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_349"><span class="text">Bücken und Strecken</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Kräftigen und das Gleichgewicht halten</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_350"><span class="text">Aufsetzen und Hinlegen mit Ball</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_351"><span class="text">Sitzen und Rollen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Im Sitzen den rollenden Ball kontrollieren</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_352"><span class="text">Fast eine Rolle rückwärts</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Beweglichkeit und Geschicklichkeit und Ballkontrolle</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_353" class="item-toggle" #checked# />
+ <label for="id_353" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_353"><span class="text">Beweglichkeit mit Ball 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Paarweise</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_354"><span class="text">Körperrotation 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Beweglichkeit in der Hüfte</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_355"><span class="text">Körperrotation 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Beweglichkeit in der Hüfte</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_356"><span class="text">Bücken und Strecken</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Kräftigen und das Geleichgewicht halten</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_357"><span class="text">Aufsetzen und Hinlegen mit Ball</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_358"><span class="text">Sitzen und Rollen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Im Sitzen den rollenden Ball miteinander kontrollieren</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_359"><span class="text">Fast eine Rolle rückwärts</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Beweglichkeit und Geschicklichkeit und Ballkontrolle</span></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_360" class="item-toggle" #checked# />
+ <label for="id_360" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_360"><span class="text">Die Schnelligkeit</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_361"><span class="text">20 Bälle</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_362"><span class="text">3m Spiel mit Laufen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_363"><span class="text">Abschießen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_364"><span class="text">Annehmen und Bewegen 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_365"><span class="text">Annehmen und Bewegen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_366"><span class="text">Auf und nieder!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_367"><span class="text">Aufschlag hinterher</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_368"><span class="text">Baggerspiel 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_369"><span class="text">Ballholen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_370"><span class="text">Die Atome</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_371"><span class="text">Die Beinarbeit</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Beinarbeit verbessern.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_372"><span class="text">Die Reise nach Jerusalem</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_373"><span class="text">Drachen schießen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_374"><span class="text">Drachenschwanzjagd</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_375"><span class="text">Kettenfangen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_376"><span class="text">Matten über Kasten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_377"><span class="text">Renn mal!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_378"><span class="text">Schwarz und Weiss</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_379"><span class="text">Servicestaffel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_380"><span class="text">Spring über den Ball!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_381" class="item-toggle" #checked# />
+ <label for="id_381" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_381"><span class="text">Die Kraft</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_382" class="item-toggle" #checked# />
+ <label for="id_382" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_382"><span class="text">Der Bauch</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_383"><span class="text">Die geraden Bauchmuskeln 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_384"><span class="text">Die geraden Bauchmuskeln 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_385"><span class="text">Die Oberen Bauchmuskeln 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_386"><span class="text">Die Oberen Bauchmuskeln 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_387"><span class="text">Die schrägen Bauchmuskeln</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_388"><span class="text">Die unteren Bauchmuskeln 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_389"><span class="text">Die unteren Bauchmuskeln 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_390" class="item-toggle" #checked# />
+ <label for="id_390" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_390"><span class="text">Der Rücken</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_391"><span class="text">Beinheben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_392"><span class="text">Den Rücken stabilisieren 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_393"><span class="text">Den Rücken stabilisieren 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_394"><span class="text">Den Rücken stabilisieren 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_395"><span class="text">Der Lendenbereich</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_396"><span class="text">Die Rückenstrecker 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_397"><span class="text">Die Rückenstrecker 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_398"><span class="text">Die Rückenstrecker 3</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_399"><span class="text">Die Rückenstrecker 4</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_400"><span class="text">Oberkörper heben</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_401" class="item-toggle" #checked# />
+ <label for="id_401" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_401"><span class="text">Der Rumpf</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_402"><span class="text">Die Rumpfmuskulatur kräftigen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">&quot;Bauchlage&quot; 1</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_403"><span class="text">Die Rumpfmuskulatur kräftigen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">&quot;Bauchlage&quot; 2 + 3</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_404"><span class="text">Die Rumpfmuskulatur kräftigen 2b - dynamisch</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Mit Bewegung...</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_405"><span class="text">Die Rumpfmuskulatur kräftigen 3</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">&quot;Bauchlage&quot; 4 - rückwärts</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_406"><span class="text">Den Schulterbereich kräftigen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Liegestütz</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_407"><span class="text">Den Schulterbereich kräftigen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Liegestütz 2</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_408"><span class="text">Den Schulterbereich kräftigen 3</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Liegestütz rückwärts</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_409"><span class="text">Den Schulterbereich kräftigen 4</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Froschliegestütz</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_410" class="item-toggle" #checked# />
+ <label for="id_410" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_410"><span class="text">Die Beine</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_411"><span class="text">Die Beinpresse mit Partner</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_412"><span class="text">Die Kniebeuge</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_413"><span class="text">Die Kniebeuge mit Ball</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_414"><span class="text">Die Oberschenkelrückseite</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Beckenlift</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_415"><span class="text">Knöchel stärken</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_416"><span class="text">Knöchel stärken + Ball</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_417" class="item-toggle" #checked# />
+ <label for="id_417" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_417"><span class="text">Die Ausdauer</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_418"><span class="text">3m Spiel mit Laufen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_419"><span class="text">Annehmen und Bewegen 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_420"><span class="text">Annehmen und Bewegen 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_421"><span class="text">Japanische Verteidigung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_422"><span class="text">OZ und UZ mit (seitlicher) Bewegung</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_423"><span class="text">Steh auf!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_424" class="item-toggle" #checked# />
+ <label for="id_424" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_424"><span class="text">Das Dehnen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Ein einfaches, aber ziemlich komplettes Programm</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_425" class="item-toggle" #checked# />
+ <label for="id_425" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_425"><span class="text">Füße und Unterschenkel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_426"><span class="text">Fußgelenke aktivieren</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_427"><span class="text">Unterschenkel vorne</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_428"><span class="text">Unterschenkel hinten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_429"><span class="text">Unterschenkel hinten (einzeln)</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">(Eine Alternative...)</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_430" class="item-toggle" #checked# />
+ <label for="id_430" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_430"><span class="text">Oberschenkel, Hintern</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_431"><span class="text">Innenseite</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_432"><span class="text">Außenseite</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_433"><span class="text">Rückseite</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_434"><span class="text">Vorderseite</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_435"><span class="text">Schulterbereich</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+</div><div class="item">
+ <input type="checkbox" id="id_436" class="item-toggle" #checked# />
+ <label for="id_436" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_436"><span class="text">Hals und Nacken</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_437"><span class="text">Hals und Nacken dehnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_438" class="item-toggle" #checked# />
+ <label for="id_438" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_438"><span class="text">Handgelenke</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_439"><span class="text">Handgelenke dehnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_440" class="item-toggle" #checked# />
+ <label for="id_440" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_440"><span class="text">Das Dehnen II</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Weitere Übungen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_441"><span class="text">Oberschenkel dehnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_442"><span class="text">Schultern dehnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_443"><span class="text">Unterschenkel und Fuß dehnen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_444"><span class="text">Gesäß dehnen (Verknotung)</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_445" class="item-toggle" #checked# />
+ <label for="id_445" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_445"><span class="text">(Mit-)Denken</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Verschiedenen Übungen, die Mitdenken erfordern</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_446"><span class="text">Spielen oder Laufen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Einspielen, Mitdenken, Entscheiden</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_447"><span class="text">Y(X) &gt; Grenze = Ok</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_448"><span class="text">Spielelemente unter Laufstreß üben</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Schlagbewegung, Feldverteidigung, Aufspiel, Einlaufen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_449"><span class="text">Schau auf die Angreiferin! 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_450" class="item-toggle" #checked# />
+ <label for="id_450" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_450"><span class="text">Verschiedene Spielformen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">(Volley-)Ballgeschicklichkeit</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_451" class="item-toggle" #checked# />
+ <label for="id_451" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_451"><span class="text">Großfeld</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_452"><span class="text">Mit sich selbst spielen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_453"><span class="text">Spionball</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Mitspielerin finden.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_454"><span class="text">4 Felder Spiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_455"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_456"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_457"><span class="text">Bälle sammeln</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_458"><span class="text">Extrapunktspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_459"><span class="text">Queens of the Court</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_460"><span class="text">Schaff den Lauf</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_461"><span class="text">Schlag und Tschüss</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_462"><span class="text">Service-Annahme-Spiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_463"><span class="text">Toter Fisch</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_464"><span class="text">Überkopfspiel 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_465"><span class="text">Baggerspiel 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_466"><span class="text">Y(X) &gt; Grenze = Ok</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_467" class="item-toggle" #checked# />
+ <label for="id_467" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_467"><span class="text">Kleinfeld</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_468"><span class="text">2 Ballberührungen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_469"><span class="text">2:2 Schupferspiel</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_470"><span class="text">3m Spiel mit Laufen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_471"><span class="text">Baggerspiel 1</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Baggerlafale</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_472"><span class="text">Doppelblock am Kleinfeld</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_473"><span class="text">Midisystem als Denkaufgabe und Bewegungsspiel.</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_474"><span class="text">Mit sich selbst spielen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_475"><span class="text">Stressed Queens Of The Court</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_476"><span class="text">Überkopfspiel 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_477" class="item-toggle" #checked# />
+ <label for="id_477" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_477"><span class="text">Weitere Spiele</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Der Umgang mit den Mitspielerinnen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_478"><span class="text">Alles</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_479"><span class="text">Ball über die Schnur</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_480"><span class="text">Frisbee 1</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_481"><span class="text">Frisbee 2</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_482"><span class="text">Schnappball (=Parteiball, 8er-Ball, 10er-Ball)</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_483"><span class="text">Auf und nieder!</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_484"><span class="text">3 Schritte</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Siche gegenseitig Abschießen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_485"><span class="text">Schleuderball</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_486" class="item-toggle" #checked# />
+ <label for="id_486" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_486"><span class="text">Sonstiges</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_487" class="item-toggle" #checked# />
+ <label for="id_487" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_487"><span class="text">Kennenlernen am Trainingslager</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_488"><span class="text">8 Wörter finden</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_489"><span class="text">ABC-Assoziationen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_490"><span class="text">Das ist mein ...</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_491"><span class="text">Kofferpacken</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_492" class="item-toggle" #checked# />
+ <label for="id_492" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_492"><span class="text">Vertrauen schaffen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_493"><span class="text">Umkippen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Teambuilding - Vertrauen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_494"><span class="text">Weiterreichen</span><br><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Teambuilding - Gemeinsam sind wir stark!</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_495" class="item-toggle" #checked# />
+ <label for="id_495" class="item"><img src="/brueckl-hotvolleys/drills/img-minus.svg" /><img src="/brueckl-hotvolleys/drills/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_495"><span class="text">Gemeinsam eine Aufgabe lösen</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000102.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_496"><span class="text">Der Knoten</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_497"><span class="text">Schleuderball</span><img src="/brueckl-hotvolleys/drills/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div></div>
+</div></div></div>
+
+<div class="content"><div class="container"></div>
+
+<script>
+(function(){
+/**
+ * Handles the context menu trigger to block it.
+ * @param {Event} event The event data.
+ * @returns {Boolean} true
+ */
+function onContextMenu(event) {
+  event.preventDefault();
+  return true;
+}
+
+// set a context menu handler
+document.addEventListener('contextmenu', onContextMenu);
+
+function unregister() {
+  document.removeEventListener('contextmenu', onContextMenu);
+}
+window.unregister = unregister;
+}());
+
+</script></div>
+<div class="footer">Die Übungen</div>
+
+ </body>
+</html>

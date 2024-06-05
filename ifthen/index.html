@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <title>Entscheidungssituationen</title>
+  <style>
+html, body, * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  
+  padding: 0;
+  border: 0 none;
+  margin: 0;
+  
+  font-size: 14pt;
+}
+html, body {
+  overflow: hidden;
+}
+div.header {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  left: 0;
+  padding-left: 50px;
+  width: 100%;
+  top: 0;
+  height: 50px;
+    
+  background-color: #CCCCCC;  
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/*
+div.item > .item-header {
+  display: block;
+  position: relative;
+  height: 50px;
+  margin: 0 0 0 26px;
+
+  white-space: nowrap;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+*/
+
+div.header > div.title {
+  font-family: Arial;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 8px 0 0 0;
+}
+div.header > div.subtitle {
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 0.8em;
+}
+
+div.header > span.icon {
+  position: absolute;
+  left: 50px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+  
+  border-radius: 50%;
+  background-color: darkred;
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 1.75em;
+}
+div.header > img {
+  position: absolute;
+  left: 50px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+}
+div.header > span.header {
+  position: absolute;
+  top: 1px;
+  left: 100px;
+  font-size: 0.5em;
+}
+div.header > span.text {
+  position: absolute;
+  padding: 12px 10px 12px 50px;
+}
+div.header > span.footer {
+  position: absolute;
+  bottom: 1px;
+  left: 100px;
+  font-size: 0.5em;
+}
+div.content {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+
+  background-color: #EEEEEE;
+  overflow: hidden;
+}
+div.container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+h1, h2, h3 {
+  margin: 0.5em 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.3em;
+}
+ol, ul {
+  padding-left: 1.5em;
+}
+p {
+  margin: 0.5em 0;
+}
+
+div.img {
+  box-sizing: border-box;
+  overflow: hidden; 
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+
+  padding: 1.5% 0;
+  text-align: center;
+}
+div.img > svg {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+div.text {
+  box-sizing: border-box;
+  padding: 1%;
+}
+
+@media (orientation: landscape) {
+  div.container.full {
+    overflow: hidden;
+  }
+  div.container.full > div.img, 
+  div.container.full > div.text {
+    float: left;
+    width: 50%;
+  }
+  div.container.full > div.text {
+    height: 100%;
+    overflow: auto;
+  }
+}
+label.tree-menu {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  z-index: 99;
+  border-radius: 7px;
+  background-color: dimgray;
+  
+  cursor: pointer;
+}
+label.tree-menu > div {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  
+  color: gray;
+  text-align: center;
+  font-size: 30px;
+  line-height: 100%;
+
+  cursor: pointer;
+}
+
+input {
+  background-color: blue;
+  position: absolute;
+  left: -1000px;
+}
+
+div.tree {
+  display: none;
+
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+  z-index: 99;
+  
+  overflow: hidden;
+}
+div.tree > div.tree-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  overflow: hidden;
+  
+  background-color: #DDDDDD;
+  opacity: 0.1;
+}
+div.tree > div.tree-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33%;
+  min-width: 400px;
+  max-width: 600px;
+  height: 100%;
+  
+  overflow: auto;
+  
+  background-color: #DDDDDD;
+}
+input#tree-toggle:checked + div.tree {
+  display: block;
+}
+
+@media (width < 400px) {
+  div.tree > div.tree-content {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+div.item {
+  position: relative;
+}
+
+div.item > input.item-toggle + label > span:first-child {
+  display: none;
+}
+div.item > input.item-toggle + label > span:nth-child(2) {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > span:first-child {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > span:nth-child(2) {
+  display: none;
+}
+
+div.item > input.item-toggle + label > img:first-child {
+  display: none;
+}
+div.item > input.item-toggle + label > img:nth-child(2) {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > img:first-child {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > img:nth-child(2) {
+  display: none;
+}
+
+div.item > input.item-toggle:checked ~ .item-container {
+  display: block;
+}
+
+
+
+div.item > label {
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  top: 15px;
+  height: 20px;
+  background-color: dimgray;
+  color: lightgray;
+  border-radius: 50%;
+  text-align: center;
+}
+
+div.item > .item-header {
+  display: block;
+  position: relative;
+  height: 50px;
+  margin: 0 0 0 26px;
+
+  white-space: nowrap;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+div.item.root > .item-header {
+  margin: 0;
+}
+
+div.item > span.item-header > span.icon {
+  position: absolute;
+  left: 2px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+  
+  border-radius: 50%;
+  background-color: darkred;
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 1.75em;
+}
+div.item > span.item-header > img {
+    position: absolute;
+    left: 2px;
+    width: 46px;
+    top: 2px;
+    height: 46px;
+}
+div.item > .item-header > span.header {
+  position: absolute;
+  top: 1px;
+  left: 50px;
+  font-size: 0.5em;
+}
+div.item > .item-header > span.text {
+  position: absolute;
+  padding: 12px 10px 12px 50px;
+}
+div.item > .item-header:hover, div.item > .item-header:hover > span.text {
+  background-color: #CCCCCC;
+}
+div.item > .item-header > span.footer {
+  position: absolute;
+  bottom: 1px;
+  left: 50px;
+  font-size: 0.5em;
+}
+
+div.item > div.item-container {
+  position: relative;
+  padding-left: 26px;
+
+  display: none;
+}
+div.footer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 5px 5px;
+  
+  overflow: hidden;
+  background-color: #CCCCCC;
+
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+}
+
+  </style>
+  <script>
+function init() {
+  var items = document.querySelectorAll("div.tree span.item-header");
+  items.forEach((item) => item.addEventListener("click", onTreeItemClick));
+}
+
+function onTreeItemClick(event) {
+  // if any animator: ensure end of running animation
+  if (window.animator) {
+    animator.stop();
+  }
+  
+  var item = searchTreeItem(event.target ? event.target : event.srcElement);
+  var id = item && item.dataset && item.dataset.id ? item.dataset.id : "??";
+  
+  //alert("click: " + id);
+  loadData("/brueckl-hotvolleys/ifthen/header_" + id + ".html", (header) => {
+    var h = document.querySelector("div.header");
+    if (h) {
+      h.innerHTML = header;
+    }
+  });
+  loadData("/brueckl-hotvolleys/ifthen/content_" + id + ".html", (header) => {
+    var c = document.querySelector("div.content");
+    if (c) {
+      c.innerHTML = header;
+    }
+  });
+  loadScript("/brueckl-hotvolleys/ifthen/script_" + id + ".js", "script_" + id + "\\.js", () => {
+    console.log("Script for " + id + " has been loaded.");
+  });
+  closeTree();
+}
+
+function searchTreeItem(elem) {
+  while (elem != null) {
+    if (elem.className.indexOf("item-header") >= 0) {
+      return elem;
+    }
+    elem = elem.parentNode;
+  }
+  
+  return null;
+}
+
+function loadData(data, handler) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        handler(this.responseText);
+      } else {
+        handler(this.status);
+      }
+    }
+  };
+  xhttp.open("GET", data, true);
+  xhttp.send();
+}
+
+var registeredScript = undefined;
+
+function unregisterPreviousScript() {
+  if (registeredScript) {
+    console.log("Unregister " + registeredScript);
+    if (typeof unregister === 'function') {
+      unregister();
+    }
+
+    var elem = document.querySelector("script[src$=" + registeredScript + "]");
+    if (elem) {
+      elem.remove();
+    }
+    registeredScript = undefined;
+    console.log("Unregister done.");
+  }
+}
+
+function loadScript(url, key, callback) {
+  unregisterPreviousScript();
+
+  console.log("Register " + url);
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  
+  if (script.readyState) { // only required for IE<9
+    script.onreadystatechange = function() {
+      if (script.readyState === "loaded" || script.readyState === "complete") {
+        script.onreadystatechange = null;
+        if (callback) {
+          callback();
+        }
+      }
+    };
+  } else {  // Others
+    script.onload = function() {
+      if (callback) {
+        callback();
+      }
+    };
+  }
+
+  script.src = url;
+  document.getElementsByTagName("head")[0].appendChild(script);
+  registeredScript = key;
+  console.log("Register " + key + "/" + url + " done.");
+}
+
+function closeTree() {
+  var cb = document.getElementById('tree-toggle');
+  if (cb && cb.checked) {
+    cb.checked = false;
+  }
+}
+  </script>
+ </head>
+ <body onload="init();">
+<div class="header"><span class="text">Entscheidungssituationen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /></div>
+
+<label class="tree-menu" for="tree-toggle"><div>=</div></label>
+<input type="checkbox" checked id="tree-toggle" />
+<div class="tree"><div class="tree-bg">&nbsp;</div><div class="tree-content"><div class="item root">
+ <span class="item-header" data-id="id_1"><span class="text">Entscheidungssituationen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /></span>
+</div><div class="item">
+ <input type="checkbox" id="id_2" class="item-toggle" #checked# />
+ <label for="id_2" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_2"><span class="text">Die Situationen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_3" class="item-toggle" #checked# />
+ <label for="id_3" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_3"><span class="text">Den Ball beobachten</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_4"><span class="text">Wo ist der Angriff zu erwarten?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist die Annahme vom Netz weg?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_5"><span class="text">Hektik vermeiden</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Aufspielerin einen zu hektischen Spielaufbau vermeiden?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_6"><span class="text">Weite Wege</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_7"><span class="text">Erfolgreich angreifen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Angreiferin erfolgreich sein, wenn nicht alles passt?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_8" class="item-toggle" #checked# />
+ <label for="id_8" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_8"><span class="text">Warten oder hingehen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Kommt der Ball oder nicht?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_9"><span class="text">Orientierung am Spielfeld 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_10"><span class="text">Orientierung am Spielfeld 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_11"><span class="text">Den Ball im Oberen oder Unteren Zuspiel spielen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Soll die Spielerin den Ball im Oberen oder Unteren Zuspiel weiterspielen?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_12"><span class="text">Den Punkt suchen?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist das Aufspiel vom Netz weg?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_13"><span class="text">Blocken oder Lösen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie erfolgt das Aufspiel?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_14"><span class="text">Den Verteidigungsort (gegen Linienangriffe) wählen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo soll im Feld verteidigt werden?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_15"><span class="text">Den Verteidigungsort (gegen Diagonalangriffe) wählen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo soll im Feld verteidigt werden?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_16"><span class="text">Die Feldverteidigung auf der Position 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie lang ist das Aufspiel?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_17"><span class="text">Den Blockort wählen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie lang ist das Aufspiel?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_18" class="item-toggle" #checked# />
+ <label for="id_18" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_18"><span class="text">Blocken oder Lösen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo erfolgt der Angriff?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_19"><span class="text">Den Block schließen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_20"><span class="text">Doppelblock am Kleinfeld</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_21"><span class="text">Hol' Sie Dir!</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_22"><span class="text">Blockort finden 3</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_23"><span class="text">Angriff und Blockbildung üben 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_24"><span class="text">Angriff und Blockbildung üben 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_25"><span class="text">Seitlich oder vor dem Körper?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie gelingt die Annahme am Besten?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_26"><span class="text">Wo verteidigen?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist das Aufspiel vom Netz?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_27" class="item-toggle" #checked# />
+ <label for="id_27" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_27"><span class="text">Ball In oder Out</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Den Ball annehmen oder ihn ins Out lassen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_28"><span class="text">In oder Out</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_29"><span class="text">Die Aufspielrichtung 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie zeigt die Aufspielerin die Richtung des Aufspiels an?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_30" class="item-toggle" #checked# />
+ <label for="id_30" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_30"><span class="text">Der Ball fliegt zwischen zwei Spielerinnen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt den Ball?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_31"><span class="text">2 Annahmespielerinnen blockieren</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_32"><span class="text">Die Grundübung 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_33"><span class="text">Die Grundübung 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_34"><span class="text">Aufspielen oder Lösen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Was tun, wenn der Ball nicht zur Aufspielerin kommt?</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_35" class="item-toggle" #checked# />
+ <label for="id_35" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_35"><span class="text">Die Gegnerin beobachten</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_36" class="item-toggle" #checked# />
+ <label for="id_36" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_36"><span class="text">Den Ball spielen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_37"><span class="text">Ein Sicherheitsangriff</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin mit dem Ball, wenn es ein Problem gibt?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_38" class="item-toggle" #checked# />
+ <label for="id_38" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_38"><span class="text">Den Block anschlagen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Angreiferin einen gut gestellten Doppelblock überwinden?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_39"><span class="text">5 Sterne</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_40" class="item-toggle" #checked# />
+ <label for="id_40" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_40"><span class="text">Lücken ausnützen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin angreifen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_41"><span class="text">Finde den leeren Raum!</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_42" class="item-toggle" #checked# />
+ <label for="id_42" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_42"><span class="text">Was macht die gegnerische Mittelblockerin? 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_43"><span class="text">Lies den Block 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_44" class="item-toggle" #checked# />
+ <label for="id_44" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_44"><span class="text">Was macht die gegnerische Mittelblockerin? 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_45"><span class="text">Lies den Block 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_46"><span class="text">Lies den Block 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_47"><span class="text">Aufspielen oder Angreifen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wird die Aufspielerin geblockt?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_48"><span class="text">Wer blockt die Aufspielerin?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_49" class="item-toggle" #checked# />
+ <label for="id_49" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_49"><span class="text">Ist der Doppelblock geschlossen? 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie gut steht der gegnerische Block?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_50"><span class="text">Miteinander sprechen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_51" class="item-toggle" #checked# />
+ <label for="id_51" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_51"><span class="text">Außenangriff gegen Einzelblock</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Angreiferin einen Einzelblock überwinden?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_52"><span class="text">Den Block überwinden</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_53"><span class="text">2:2 Schupferspiel</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_54"><span class="text">1 gegen 1 - Block und Angriff</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_55" class="item-toggle" #checked# />
+ <label for="id_55" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_55"><span class="text">Mittelangreiferin gegen Block</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin angreifen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_56"><span class="text">Block überwinden für Mittelblockerinnen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_57"><span class="text">Mittelangreiferin gegen Feldverteidigung Position 6</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin angreifen?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_58"><span class="text">Die Staffel</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer bekommt den Ball?</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_59" class="item-toggle" #checked# />
+ <label for="id_59" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_59"><span class="text">Die Handlung der Gegnerin antizipieren</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_60" class="item-toggle" #checked# />
+ <label for="id_60" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_60"><span class="text">Lesen lernen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann ich die Absichten einer Angreiferin frühzeitig erkennen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_61"><span class="text">Bewegungsmuster 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">3m-6m-Laufen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_62"><span class="text">Bewegungsmuster 5</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Ein Spielform für die Feldverteidigung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_63"><span class="text">Die Grundübung 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_64"><span class="text">Die Grundübung 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_65"><span class="text">Bewegungsmuster 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Einspielen 1:1</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_66"><span class="text">Bewegungsmuster 3</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Eine Spielform für die Außenangreifer</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_67"><span class="text">Lesen am Kleinfeld 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_68"><span class="text">Lesen 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_69"><span class="text">Lesen 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_70"><span class="text">Lesen am Kleinfeld 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_71" class="item-toggle" #checked# />
+ <label for="id_71" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_71"><span class="text">Die Verteidigung gegen Drehschlag</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin spielt die Angreiferin?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_72"><span class="text">Abrollen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_73" class="item-toggle" #checked# />
+ <label for="id_73" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_73"><span class="text">Verteidigen oder Einlaufen? 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Aufspielerin verteidigen, oder soll sie sich auf das Aufspiel vorbereiten?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_74"><span class="text">2 Ballberührungen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_75"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_76"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_77"><span class="text">2 Ballberührungen einführen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_78" class="item-toggle" #checked# />
+ <label for="id_78" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_78"><span class="text">Verteidigen oder Einlaufen? 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Aufspielerin verteidigen, oder soll sie sich auf das Aufspiel vorbereiten?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_79"><span class="text">2 Ballberührungen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_80"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_81"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_82"><span class="text">2 Ballberührungen einführen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_83" class="item-toggle" #checked# />
+ <label for="id_83" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_83"><span class="text">Den Blockort wählen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo soll geblockt werden?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_84"><span class="text">Den Block schließen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_85"><span class="text">Schlagarm beobachten</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_86"><span class="text">Blockort finden 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_87"><span class="text">Blockort finden 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_88"><span class="text">Blockort finden 3</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_89"><span class="text">Schau auf die Angreiferin! 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_90"><span class="text">Schau auf die Angreiferin! 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_91"><span class="text">Blockbildung</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_92"><span class="text">Sprungservice?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_93"><span class="text">Libera und Flatterservice</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_94"><span class="text">Die Anlaufrichtung</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin spielt die Angreiferin?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_95"><span class="text">Der Schlagarm der Angreiferin</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin spielt die Angreiferin?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_96"><span class="text">Die Feldverteidigung hinten gegen die Aufspielerin</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Spielerin gleich verteidigen, oder muss sie sich auf einen Angriffsschlag vorbereiten?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_97"><span class="text">Verteidigung - Jetzt oder weiter vorbereiten?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wird der Ball aufgespielt?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_98"><span class="text">Die Aufspielrichtung 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie zeigt die Aufspielerin die Richtung des Aufspiels an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_99"><span class="text">Ausdrehen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Was macht die Angreiferin, wenn sie in Schlagarmrichtung schlagen will?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_100"><span class="text">Wo ist der Angriff zu erwarten?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist die Annahme vom Netz weg?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_101"><span class="text">Blocken oder Lösen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie erfolgt das Aufspiel?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_102" class="item-toggle" #checked# />
+ <label for="id_102" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_102"><span class="text">Blocken oder Lösen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo erfolgt der Angriff?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_103"><span class="text">Den Block schließen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_104"><span class="text">Doppelblock am Kleinfeld</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_105"><span class="text">Hol' Sie Dir!</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_106"><span class="text">Blockort finden 3</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_107"><span class="text">Angriff und Blockbildung üben 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_108"><span class="text">Angriff und Blockbildung üben 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_109"><span class="text">Die Aufspielrichtung 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie zeigt die Aufspielerin die Richtung des Aufspiels an?</span></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_110" class="item-toggle" #checked# />
+ <label for="id_110" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_110"><span class="text">Die Mitspielerin beobachten</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_111"><span class="text">Ist die Schnellangreiferin bereit?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Ist die Schnellangreiferin bereit zum Angriff oder nicht?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_112" class="item-toggle" #checked# />
+ <label for="id_112" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_112"><span class="text">Ist der Doppelblock geschlossen? 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie gut steht der eigene Block?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_113"><span class="text">Schütz die Lücke!</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_114"><span class="text">Eine routinierte Spielerin neben einer 'Anfängerin'</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt den Ball?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_115"><span class="text">Aufspielen oder Lösen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Was tun, wenn der Ball nicht zur Aufspielerin kommt?</span></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_116" class="item-toggle" #checked# />
+ <label for="id_116" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_116"><span class="text">Die Grundaktionen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_117" class="item-toggle" #checked# />
+ <label for="id_117" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_117"><span class="text">Das Service</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_118"><span class="text">Lang oder Kurz</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Die Länge des Service auf die Annahmesituation abstimmen.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_119"><span class="text">Anservieren oder (Zwischen-)räume suchen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Eine Spielerin anservieren oder eine freien Raum</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_120" class="item-toggle" #checked# />
+ <label for="id_120" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_120"><span class="text">Die Annahme</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_121"><span class="text">Libera?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie werden die Annahmebereiche verteilt?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_122" class="item-toggle" #checked# />
+ <label for="id_122" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_122"><span class="text">Warten oder hingehen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Kommt der Ball oder nicht?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_123"><span class="text">Orientierung am Spielfeld 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_124"><span class="text">Orientierung am Spielfeld 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_125"><span class="text">Den Ball im Oberen oder Unteren Zuspiel spielen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Soll die Spielerin den Ball im Oberen oder Unteren Zuspiel weiterspielen?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_126"><span class="text">Sprungservice?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_127"><span class="text">Libera und Flatterservice</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_128"><span class="text">Seitlich oder vor dem Körper?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie gelingt die Annahme am Besten?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_129" class="item-toggle" #checked# />
+ <label for="id_129" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_129"><span class="text">Ball In oder Out</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Den Ball annehmen oder ihn ins Out lassen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_130"><span class="text">In oder Out</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_131" class="item-toggle" #checked# />
+ <label for="id_131" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_131"><span class="text">Der Ball fliegt zwischen zwei Spielerinnen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt den Ball?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_132"><span class="text">2 Annahmespielerinnen blockieren</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_133"><span class="text">Die Grundübung 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_134"><span class="text">Die Grundübung 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_135"><span class="text">Eine routinierte Spielerin neben einer 'Anfängerin'</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt den Ball?</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_136" class="item-toggle" #checked# />
+ <label for="id_136" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_136"><span class="text">Das Aufspiel</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_137"><span class="text">Hektik vermeiden</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Aufspielerin einen zu hektischen Spielaufbau vermeiden?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_138"><span class="text">Weite Wege</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_139" class="item-toggle" #checked# />
+ <label for="id_139" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_139"><span class="text">Verteidigen oder Einlaufen? 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Aufspielerin verteidigen, oder soll sie sich auf das Aufspiel vorbereiten?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_140"><span class="text">2 Ballberührungen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_141"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_142"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_143"><span class="text">2 Ballberührungen einführen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_144" class="item-toggle" #checked# />
+ <label for="id_144" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_144"><span class="text">Verteidigen oder Einlaufen? 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Aufspielerin verteidigen, oder soll sie sich auf das Aufspiel vorbereiten?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_145"><span class="text">2 Ballberührungen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_146"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_147"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_148"><span class="text">2 Ballberührungen einführen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_149"><span class="text">Ist die Schnellangreiferin bereit?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Ist die Schnellangreiferin bereit zum Angriff oder nicht?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_150" class="item-toggle" #checked# />
+ <label for="id_150" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_150"><span class="text">Was macht die gegnerische Mittelblockerin? 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_151"><span class="text">Lies den Block 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_152" class="item-toggle" #checked# />
+ <label for="id_152" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_152"><span class="text">Was macht die gegnerische Mittelblockerin? 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_153"><span class="text">Lies den Block 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_154"><span class="text">Lies den Block 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_155"><span class="text">Aufspielen oder Angreifen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wird die Aufspielerin geblockt?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_156"><span class="text">Wer blockt die Aufspielerin?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin soll die Aufspielerin spielen?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_157"><span class="text">Die Staffel</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer bekommt den Ball?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_158"><span class="text">Aufspielen oder Lösen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Was tun, wenn der Ball nicht zur Aufspielerin kommt?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_159"><span class="text">Aufspielerin verteidigt oder sichert 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer spielt auf?  =&gt;  Mittelblockerin</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_160"><span class="text">Aufspielerin verteidigt oder sichert 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer spielt auf?  =&gt;  Libera</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_161" class="item-toggle" #checked# />
+ <label for="id_161" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_161"><span class="text">Der Angriff</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_162"><span class="text">Angriff oder Sicherung</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Angreifen oder Sichern?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_163"><span class="text">Erfolgreich angreifen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Angreiferin erfolgreich sein, wenn nicht alles passt?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_164"><span class="text">Ein Sicherheitsangriff</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin mit dem Ball, wenn es ein Problem gibt?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_165" class="item-toggle" #checked# />
+ <label for="id_165" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_165"><span class="text">Den Block anschlagen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Angreiferin einen gut gestellten Doppelblock überwinden?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_166"><span class="text">5 Sterne</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_167" class="item-toggle" #checked# />
+ <label for="id_167" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_167"><span class="text">Lücken ausnützen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin angreifen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_168"><span class="text">Finde den leeren Raum!</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_169" class="item-toggle" #checked# />
+ <label for="id_169" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_169"><span class="text">Ist der Doppelblock geschlossen? 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie gut steht der gegnerische Block?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_170"><span class="text">Miteinander sprechen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_171" class="item-toggle" #checked# />
+ <label for="id_171" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_171"><span class="text">Außenangriff gegen Einzelblock</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann die Angreiferin einen Einzelblock überwinden?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_172"><span class="text">Den Block überwinden</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_173"><span class="text">2:2 Schupferspiel</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_174"><span class="text">1 gegen 1 - Block und Angriff</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_175" class="item-toggle" #checked# />
+ <label for="id_175" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_175"><span class="text">Mittelangreiferin gegen Block</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin angreifen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_176"><span class="text">Block überwinden für Mittelblockerinnen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_177"><span class="text">Mittelangreiferin gegen Feldverteidigung Position 6</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin angreifen?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_178"><span class="text">Aufspielen oder Lösen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Was tun, wenn der Ball nicht zur Aufspielerin kommt?</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_179" class="item-toggle" #checked# />
+ <label for="id_179" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_179"><span class="text">Die Sicherung</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_180"><span class="text">Sicherung</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Die Aufspielerin entscheidet</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_181"><span class="text">Sicherung 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wieviel Zeit habe ich?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_182"><span class="text">Angriff oder Sicherung</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Angreifen oder Sichern?</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_183" class="item-toggle" #checked# />
+ <label for="id_183" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_183"><span class="text">Der Block</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_184"><span class="text">Wo ist der Angriff zu erwarten?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist die Annahme vom Netz weg?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_185"><span class="text">Den Punkt suchen?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist das Aufspiel vom Netz weg?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_186" class="item-toggle" #checked# />
+ <label for="id_186" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_186"><span class="text">Den Blockort wählen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo soll geblockt werden?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_187"><span class="text">Den Block schließen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_188"><span class="text">Schlagarm beobachten</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_189"><span class="text">Blockort finden 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_190"><span class="text">Blockort finden 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_191"><span class="text">Blockort finden 3</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_192"><span class="text">Schau auf die Angreiferin! 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_193"><span class="text">Schau auf die Angreiferin! 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_194"><span class="text">Blockbildung</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_195"><span class="text">Den Blockort wählen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie lang ist das Aufspiel?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_196"><span class="text">Verteidigung - Jetzt oder weiter vorbereiten?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wird der Ball aufgespielt?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_197"><span class="text">Die Aufspielrichtung 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie zeigt die Aufspielerin die Richtung des Aufspiels an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_198"><span class="text">Die Aufspielrichtung 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie zeigt die Aufspielerin die Richtung des Aufspiels an?</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_199" class="item-toggle" #checked# />
+ <label for="id_199" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_199"><span class="text">Die Feldverteidigung</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_200"><span class="text">Wo ist der Angriff zu erwarten?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist die Annahme vom Netz weg?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_201" class="item-toggle" #checked# />
+ <label for="id_201" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_201"><span class="text">Lesen lernen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie kann ich die Absichten einer Angreiferin frühzeitig erkennen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_202"><span class="text">Bewegungsmuster 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">3m-6m-Laufen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_203"><span class="text">Bewegungsmuster 5</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Ein Spielform für die Feldverteidigung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_204"><span class="text">Die Grundübung 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_205"><span class="text">Die Grundübung 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_206"><span class="text">Bewegungsmuster 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Einspielen 1:1</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_207"><span class="text">Bewegungsmuster 3</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Eine Spielform für die Außenangreifer</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_208"><span class="text">Lesen am Kleinfeld 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_209"><span class="text">Lesen 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_210"><span class="text">Lesen 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_211"><span class="text">Lesen am Kleinfeld 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_212" class="item-toggle" #checked# />
+ <label for="id_212" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_212"><span class="text">Die Verteidigung gegen Drehschlag</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin spielt die Angreiferin?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_213"><span class="text">Abrollen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_214" class="item-toggle" #checked# />
+ <label for="id_214" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_214"><span class="text">Warten oder hingehen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Kommt der Ball oder nicht?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_215"><span class="text">Orientierung am Spielfeld 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_216"><span class="text">Orientierung am Spielfeld 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_217" class="item-toggle" #checked# />
+ <label for="id_217" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_217"><span class="text">Verteidigen oder Einlaufen? 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Aufspielerin verteidigen, oder soll sie sich auf das Aufspiel vorbereiten?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_218"><span class="text">2 Ballberührungen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_219"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_220"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_221"><span class="text">2 Ballberührungen einführen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_222" class="item-toggle" #checked# />
+ <label for="id_222" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_222"><span class="text">Verteidigen oder Einlaufen? 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Aufspielerin verteidigen, oder soll sie sich auf das Aufspiel vorbereiten?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_223"><span class="text">2 Ballberührungen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_224"><span class="text">5:5 mit offenem Laufen 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_225"><span class="text">5:5 mit offenem Laufen 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Denken und Spielen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_226"><span class="text">2 Ballberührungen einführen</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_227"><span class="text">Den Ball im Oberen oder Unteren Zuspiel spielen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Soll die Spielerin den Ball im Oberen oder Unteren Zuspiel weiterspielen?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_228"><span class="text">Den Verteidigungsort (gegen Linienangriffe) wählen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo soll im Feld verteidigt werden?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_229"><span class="text">Den Verteidigungsort (gegen Diagonalangriffe) wählen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wo soll im Feld verteidigt werden?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_230"><span class="text">Die Feldverteidigung auf der Position 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie lang ist das Aufspiel?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_231"><span class="text">Seitlich oder vor dem Körper?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie gelingt die Annahme am Besten?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_232"><span class="text">Die Anlaufrichtung</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin spielt die Angreiferin?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_233"><span class="text">Der Schlagarm der Angreiferin</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wohin spielt die Angreiferin?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_234"><span class="text">Wo verteidigen?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie weit ist das Aufspiel vom Netz?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_235" class="item-toggle" #checked# />
+ <label for="id_235" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_235"><span class="text">Ball In oder Out</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Den Ball annehmen oder ihn ins Out lassen?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_236"><span class="text">In oder Out</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_237" class="item-toggle" #checked# />
+ <label for="id_237" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_237"><span class="text">Ist der Doppelblock geschlossen? 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie gut steht der eigene Block?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_238"><span class="text">Schütz die Lücke!</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_239"><span class="text">Die Feldverteidigung hinten gegen die Aufspielerin</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Muss die Spielerin gleich verteidigen, oder muss sie sich auf einen Angriffsschlag vorbereiten?</span></span>
+</div><div class="item">
+ <input type="checkbox" id="id_240" class="item-toggle" #checked# />
+ <label for="id_240" class="item"><img src="/brueckl-hotvolleys/ifthen/img-minus.svg" /><img src="/brueckl-hotvolleys/ifthen/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_240"><span class="text">Der Ball fliegt zwischen zwei Spielerinnen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt den Ball?</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_241"><span class="text">2 Annahmespielerinnen blockieren</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_242"><span class="text">Die Grundübung 1</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_243"><span class="text">Die Grundübung 2</span><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_244"><span class="text">Eine routinierte Spielerin neben einer 'Anfängerin'</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wer nimmt den Ball?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_245"><span class="text">Verteidigung - Jetzt oder weiter vorbereiten?</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wird der Ball aufgespielt?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_246"><span class="text">Die Aufspielrichtung 1</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie zeigt die Aufspielerin die Richtung des Aufspiels an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_247"><span class="text">Die Aufspielrichtung 2</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Wie zeigt die Aufspielerin die Richtung des Aufspiels an?</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_248"><span class="text">Ausdrehen</span><br><img src="/brueckl-hotvolleys/ifthen/img-00000000-0000-0000-0000-000000000105.svg" /><span class="footer">Was macht die Angreiferin, wenn sie in Schlagarmrichtung schlagen will?</span></span>
+</div></div>
+</div></div>
+</div></div></div>
+
+<div class="content"><div class="container"><div class="text"><p>Entscheidungen können im Volleyball spielentscheidend sein -
+hier finden sie eine ganze Reihe von mehr oder weniger isolierten Situationen
+zum Training der Entscheidungsfähigkeit ihrer Spielerinnen.</p>
+</div></div>
+
+<script>
+(function(){
+/**
+ * Handles the context menu trigger to block it.
+ * @param {Event} event The event data.
+ * @returns {Boolean} true
+ */
+function onContextMenu(event) {
+  event.preventDefault();
+  return true;
+}
+
+// set a context menu handler
+document.addEventListener('contextmenu', onContextMenu);
+
+function unregister() {
+  document.removeEventListener('contextmenu', onContextMenu);
+}
+window.unregister = unregister;
+}());
+
+</script></div>
+<div class="footer">Entscheidungssituationen</div>
+
+ </body>
+</html>

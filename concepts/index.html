@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <title>NW-Konzept</title>
+  <style>
+html, body, * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  
+  padding: 0;
+  border: 0 none;
+  margin: 0;
+  
+  font-size: 14pt;
+}
+html, body {
+  overflow: hidden;
+}
+div.header {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  left: 0;
+  padding-left: 50px;
+  width: 100%;
+  top: 0;
+  height: 50px;
+    
+  background-color: #CCCCCC;  
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/*
+div.item > .item-header {
+  display: block;
+  position: relative;
+  height: 50px;
+  margin: 0 0 0 26px;
+
+  white-space: nowrap;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+*/
+
+div.header > div.title {
+  font-family: Arial;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 8px 0 0 0;
+}
+div.header > div.subtitle {
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 0.8em;
+}
+
+div.header > span.icon {
+  position: absolute;
+  left: 50px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+  
+  border-radius: 50%;
+  background-color: darkred;
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 1.75em;
+}
+div.header > img {
+  position: absolute;
+  left: 50px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+}
+div.header > span.header {
+  position: absolute;
+  top: 1px;
+  left: 100px;
+  font-size: 0.5em;
+}
+div.header > span.text {
+  position: absolute;
+  padding: 12px 10px 12px 50px;
+}
+div.header > span.footer {
+  position: absolute;
+  bottom: 1px;
+  left: 100px;
+  font-size: 0.5em;
+}
+div.content {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+
+  background-color: #EEEEEE;
+  overflow: hidden;
+}
+div.container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+h1, h2, h3 {
+  margin: 0.5em 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.3em;
+}
+ol, ul {
+  padding-left: 1.5em;
+}
+p {
+  margin: 0.5em 0;
+}
+
+div.img {
+  box-sizing: border-box;
+  overflow: hidden; 
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+
+  padding: 1.5% 0;
+  text-align: center;
+}
+div.img > svg {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+div.text {
+  box-sizing: border-box;
+  padding: 1%;
+}
+
+@media (orientation: landscape) {
+  div.container.full {
+    overflow: hidden;
+  }
+  div.container.full > div.img, 
+  div.container.full > div.text {
+    float: left;
+    width: 50%;
+  }
+  div.container.full > div.text {
+    height: 100%;
+    overflow: auto;
+  }
+}
+label.tree-menu {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  z-index: 99;
+  border-radius: 7px;
+  background-color: dimgray;
+  
+  cursor: pointer;
+}
+label.tree-menu > div {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  
+  color: gray;
+  text-align: center;
+  font-size: 30px;
+  line-height: 100%;
+
+  cursor: pointer;
+}
+
+input {
+  background-color: blue;
+  position: absolute;
+  left: -1000px;
+}
+
+div.tree {
+  display: none;
+
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+  z-index: 99;
+  
+  overflow: hidden;
+}
+div.tree > div.tree-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  overflow: hidden;
+  
+  background-color: #DDDDDD;
+  opacity: 0.1;
+}
+div.tree > div.tree-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33%;
+  min-width: 400px;
+  max-width: 600px;
+  height: 100%;
+  
+  overflow: auto;
+  
+  background-color: #DDDDDD;
+}
+input#tree-toggle:checked + div.tree {
+  display: block;
+}
+
+@media (width < 400px) {
+  div.tree > div.tree-content {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+div.item {
+  position: relative;
+}
+
+div.item > input.item-toggle + label > span:first-child {
+  display: none;
+}
+div.item > input.item-toggle + label > span:nth-child(2) {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > span:first-child {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > span:nth-child(2) {
+  display: none;
+}
+
+div.item > input.item-toggle + label > img:first-child {
+  display: none;
+}
+div.item > input.item-toggle + label > img:nth-child(2) {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > img:first-child {
+  display: block;
+}
+div.item > input.item-toggle:checked + label > img:nth-child(2) {
+  display: none;
+}
+
+div.item > input.item-toggle:checked ~ .item-container {
+  display: block;
+}
+
+
+
+div.item > label {
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  top: 15px;
+  height: 20px;
+  background-color: dimgray;
+  color: lightgray;
+  border-radius: 50%;
+  text-align: center;
+}
+
+div.item > .item-header {
+  display: block;
+  position: relative;
+  height: 50px;
+  margin: 0 0 0 26px;
+
+  white-space: nowrap;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+div.item.root > .item-header {
+  margin: 0;
+}
+
+div.item > span.item-header > span.icon {
+  position: absolute;
+  left: 2px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
+  
+  border-radius: 50%;
+  background-color: darkred;
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 1.75em;
+}
+div.item > span.item-header > img {
+    position: absolute;
+    left: 2px;
+    width: 46px;
+    top: 2px;
+    height: 46px;
+}
+div.item > .item-header > span.header {
+  position: absolute;
+  top: 1px;
+  left: 50px;
+  font-size: 0.5em;
+}
+div.item > .item-header > span.text {
+  position: absolute;
+  padding: 12px 10px 12px 50px;
+}
+div.item > .item-header:hover, div.item > .item-header:hover > span.text {
+  background-color: #CCCCCC;
+}
+div.item > .item-header > span.footer {
+  position: absolute;
+  bottom: 1px;
+  left: 50px;
+  font-size: 0.5em;
+}
+
+div.item > div.item-container {
+  position: relative;
+  padding-left: 26px;
+
+  display: none;
+}
+div.footer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 5px 5px;
+  
+  overflow: hidden;
+  background-color: #CCCCCC;
+
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+}
+
+  </style>
+  <script>
+function init() {
+  var items = document.querySelectorAll("div.tree span.item-header");
+  items.forEach((item) => item.addEventListener("click", onTreeItemClick));
+}
+
+function onTreeItemClick(event) {
+  // if any animator: ensure end of running animation
+  if (window.animator) {
+    animator.stop();
+  }
+  
+  var item = searchTreeItem(event.target ? event.target : event.srcElement);
+  var id = item && item.dataset && item.dataset.id ? item.dataset.id : "??";
+  
+  //alert("click: " + id);
+  loadData("/brueckl-hotvolleys/concepts/header_" + id + ".html", (header) => {
+    var h = document.querySelector("div.header");
+    if (h) {
+      h.innerHTML = header;
+    }
+  });
+  loadData("/brueckl-hotvolleys/concepts/content_" + id + ".html", (header) => {
+    var c = document.querySelector("div.content");
+    if (c) {
+      c.innerHTML = header;
+    }
+  });
+  loadScript("/brueckl-hotvolleys/concepts/script_" + id + ".js", "script_" + id + "\\.js", () => {
+    console.log("Script for " + id + " has been loaded.");
+  });
+  closeTree();
+}
+
+function searchTreeItem(elem) {
+  while (elem != null) {
+    if (elem.className.indexOf("item-header") >= 0) {
+      return elem;
+    }
+    elem = elem.parentNode;
+  }
+  
+  return null;
+}
+
+function loadData(data, handler) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        handler(this.responseText);
+      } else {
+        handler(this.status);
+      }
+    }
+  };
+  xhttp.open("GET", data, true);
+  xhttp.send();
+}
+
+var registeredScript = undefined;
+
+function unregisterPreviousScript() {
+  if (registeredScript) {
+    console.log("Unregister " + registeredScript);
+    if (typeof unregister === 'function') {
+      unregister();
+    }
+
+    var elem = document.querySelector("script[src$=" + registeredScript + "]");
+    if (elem) {
+      elem.remove();
+    }
+    registeredScript = undefined;
+    console.log("Unregister done.");
+  }
+}
+
+function loadScript(url, key, callback) {
+  unregisterPreviousScript();
+
+  console.log("Register " + url);
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  
+  if (script.readyState) { // only required for IE<9
+    script.onreadystatechange = function() {
+      if (script.readyState === "loaded" || script.readyState === "complete") {
+        script.onreadystatechange = null;
+        if (callback) {
+          callback();
+        }
+      }
+    };
+  } else {  // Others
+    script.onload = function() {
+      if (callback) {
+        callback();
+      }
+    };
+  }
+
+  script.src = url;
+  document.getElementsByTagName("head")[0].appendChild(script);
+  registeredScript = key;
+  console.log("Register " + key + "/" + url + " done.");
+}
+
+function closeTree() {
+  var cb = document.getElementById('tree-toggle');
+  if (cb && cb.checked) {
+    cb.checked = false;
+  }
+}
+  </script>
+ </head>
+ <body onload="init();">
+<div class="header"><span class="text">NW-Konzept</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></div>
+
+<label class="tree-menu" for="tree-toggle"><div>=</div></label>
+<input type="checkbox" checked id="tree-toggle" />
+<div class="tree"><div class="tree-bg">&nbsp;</div><div class="tree-content"><div class="item root">
+ <span class="item-header" data-id="id_1"><span class="text">NW-Konzept</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+</div><div class="item">
+ <input type="checkbox" id="id_2" class="item-toggle" #checked# />
+ <label for="id_2" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_2"><span class="text">1:1 - Die ersten Spiele</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Die erste Spielfom für Anfänger</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_3"><span class="text">Das 1:1 Turnier</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die erste Wettkampfform.</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_4" class="item-toggle" #checked# />
+ <label for="id_4" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_4"><span class="text">U12: Supermini I</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">2 gegen 2, 9m x 4,5m</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_5" class="item-toggle" #checked# />
+ <label for="id_5" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_5"><span class="text">Grundlagen</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_6"><span class="text">2x Spielen</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Min. 2x spielen, bevor der Ball zum Gegner fliegt als Vorbereitung des Angriffsaufbaus.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_7"><span class="text">Ich! Zu mir!</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Entscheidungen durch Rufen unterstützen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_8"><span class="text">3x Spielen</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Vereinfachter Anlauf</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_9"><span class="text">Außenfuß</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Richtige Belastung beim Ballkontakt</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_10" class="item-toggle" #checked# />
+ <label for="id_10" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_10"><span class="text">Angriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_11"><span class="text">Tom und Jerry</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Eine ausgewählte Spielerin beschäftigen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_12"><span class="text">Micky Maus</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Gegnerinnen sollen sich gegenseitig stören</span></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_13" class="item-toggle" #checked# />
+ <label for="id_13" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_13"><span class="text">U13: Supermini II</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">2 gegen 2, 9m x 4,5m</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_14" class="item-toggle" #checked# />
+ <label for="id_14" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_14"><span class="text">Grundlagen</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_15"><span class="text">2x Spielen</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Min. 2x spielen, bevor der Ball zum Gegner fliegt als Vorbereitung des Angriffsaufbaus.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_16"><span class="text">Ich! Zu mir!</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Entscheidungen durch Rufen unterstützen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_17"><span class="text">3x Spielen</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Vereinfachter Anlauf</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_18"><span class="text">Außenfuß</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Richtige Belastung beim Ballkontakt</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_19"><span class="text">3x Spielen +</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">3x Spielen mit Angriff über Außen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_20"><span class="text">3x Spielen ++</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Zusätzlich mit Sicherung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_21"><span class="text">Test SvgViewer</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_22" class="item-toggle" #checked# />
+ <label for="id_22" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_22"><span class="text">Angriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_23"><span class="text">Tom und Jerry</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Eine ausgewählte Spielerin beschäftigen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_24"><span class="text">Micky Maus</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Gegnerinnen sollen sich gegenseitig stören</span></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_25" class="item-toggle" #checked# />
+ <label for="id_25" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_25"><span class="text">U14: Mini</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">3 gegen 3, 12m x 6m</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_26"><span class="text">Grundlagen</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+</div><div class="item">
+ <input type="checkbox" id="id_27" class="item-toggle" #checked# />
+ <label for="id_27" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_27"><span class="text">Mini 1</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">3:3 für Anfängerinnen ohne Block</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_28" class="item-toggle" #checked# />
+ <label for="id_28" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_28"><span class="text">Annahme + Verteidigung</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Annahme und Verteidigung erfolgt immer zu dritt</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_29"><span class="text">Annahme/Verteidigung/Basis</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Annahme und Verteidigung zu dritt</span></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_30" class="item-toggle" #checked# />
+ <label for="id_30" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_30"><span class="text">Mini</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Das &quot;Standard&quot; Minisystem </span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_31" class="item-toggle" #checked# />
+ <label for="id_31" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_31"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_32"><span class="text">Annahme</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Annahme zu zweit</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_33" class="item-toggle" #checked# />
+ <label for="id_33" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_33"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_34"><span class="text">Basis</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Vorbereitung auf die Verteidigung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_35"><span class="text">Block 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_36"><span class="text">Block 3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_37"><span class="text">Block 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_38" class="item-toggle" #checked# />
+ <label for="id_38" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_38"><span class="text">Aufspiel + Angriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_39"><span class="text">Angriff links (0)</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_40"><span class="text">Angriff rechts (2)</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_41" class="item-toggle" #checked# />
+ <label for="id_41" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_41"><span class="text">Mini +</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_42" class="item-toggle" #checked# />
+ <label for="id_42" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_42"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_43"><span class="text">Annahme</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Annahme zu zweit</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_44" class="item-toggle" #checked# />
+ <label for="id_44" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_44"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_45"><span class="text">Basis</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Vorbereitung auf die Verteidigung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_46"><span class="text">Block 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_47"><span class="text">Block 3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_48"><span class="text">Block 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_49"><span class="text">Ohne 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_50"><span class="text">Ohne 3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_51"><span class="text">Ohne 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_52"><span class="text">Ohne 2 - Laufwege</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_53"><span class="text">Ohne 3 - Laufwege</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_54"><span class="text">Ohne 4 - Laufwege</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_55" class="item-toggle" #checked# />
+ <label for="id_55" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_55"><span class="text">Aufspiel + Angriff</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Die Offensive</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_56"><span class="text">Aufspiel</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_57"><span class="text">Angriff 4 - 0</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Hohes Aufspiel auf die Außenposition links</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_58"><span class="text">Angriff 2 - 2</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Hohes Aufspiel auf die Außenposition rechts</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_59" class="item-toggle" #checked# />
+ <label for="id_59" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_59"><span class="text">Großfeld</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">1. Versuche am Großfeld</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_60" class="item-toggle" #checked# />
+ <label for="id_60" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_60"><span class="text">Das Spielfeld</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Infos zum Spielfeld, und zu Positionen + Aufgaben</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_61"><span class="text">Die Zonen und die Linien</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_62"><span class="text">Die Positionen</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">1-6 und die Aufgaben</span></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_63"><span class="text">Basis</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Basis = Verteidigung = Annahme = ...</span></span>
+</div></div>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_64" class="item-toggle" #checked# />
+ <label for="id_64" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_64"><span class="text">U15: Midi</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">4 gegen 4, 14m x 7m</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_65" class="item-toggle" #checked# />
+ <label for="id_65" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_65"><span class="text">Midi 1</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Midi-Karo - Das Basissystem</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_66"><span class="text">Service</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Sichtblock vs. Verteidigungsvorbereitung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_67"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_68"><span class="text">Aufspiel</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_69"><span class="text">Angriff</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Ich will den Punkt machen!</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_70"><span class="text">Angriff 4 - 0</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Angriffssicherung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_71"><span class="text">Angriff 2 - 2</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Angriffssicherung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_72"><span class="text">Basis</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Grundstellung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_73"><span class="text">Verteidigung</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Vom Retten zur Vorbereitung des eigenen Angriffs</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_74" class="item-toggle" #checked# />
+ <label for="id_74" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_74"><span class="text">Midi +</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_75" class="item-toggle" #checked# />
+ <label for="id_75" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_75"><span class="text">Annahme (L1, L2)</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_76"><span class="text">Annahme L1</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_77"><span class="text">Annahme L2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_78" class="item-toggle" #checked# />
+ <label for="id_78" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_78"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_79"><span class="text">Basis</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_80"><span class="text">Block 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_81"><span class="text">Block 3(5)</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_82"><span class="text">Block 3(1)</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_83"><span class="text">Block 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_84"><span class="text">Ohne 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_85"><span class="text">Ohne 3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_86"><span class="text">Ohne 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_87"><span class="text">Basis (Doppelblock)</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Basis, wenn ein Doppelblock geg. Außenangriff vorbereitet wird</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_88"><span class="text">Doppelblock 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_89"><span class="text">Ohne - Weg!</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Geschenkter Ball nach früher Entscheidung.</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_90" class="item-toggle" #checked# />
+ <label for="id_90" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_90"><span class="text">Aufspiel + Angriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_91"><span class="text">Aufspiel</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_92"><span class="text">Aufspiel V</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspiel nach Verteidigung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_93"><span class="text">Angriff 4 - 0 (mit 1)</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_94"><span class="text">Angriff 4 - 0 (mit 5v)</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_95"><span class="text">Angriff 3 - 1</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_96"><span class="text">Angriff 3 - 5v</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_97"><span class="text">Angriff 2 - 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_98"><span class="text">Aufspiel 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_99" class="item-toggle" #checked# />
+ <label for="id_99" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_99"><span class="text">Midi 18/19</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Aufspiel 2</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_100" class="item-toggle" #checked# />
+ <label for="id_100" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_100"><span class="text">Annahme</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">3er-Riegel</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_101"><span class="text">Annahme</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">3er Riegel, Aufspieler 2</span></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_102"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_103"><span class="text">Aufspiel und Angriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_104" class="item-toggle" #checked# />
+ <label for="id_104" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_104"><span class="text">Midi 21/22</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">2 Aufspielerrinnen, Pos. 2</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_105" class="item-toggle" #checked# />
+ <label for="id_105" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_105"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_106"><span class="text">Annahme L2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_107" class="item-toggle" #checked# />
+ <label for="id_107" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_107"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_108"><span class="text">Basis</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_109"><span class="text">Aufspiel + Angriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_110" class="item-toggle" #checked# />
+ <label for="id_110" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_110"><span class="text">Das Quadrat</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Anpassung an das Spielfeld</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_111" class="item-toggle" #checked# />
+ <label for="id_111" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_111"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_112"><span class="text">Block 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_113"><span class="text">Block 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_114" class="item-toggle" #checked# />
+ <label for="id_114" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_114"><span class="text">U16: Schülerinnen</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">6 gegen 6, 18m x 9m</span></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_115" class="item-toggle" #checked# />
+ <label for="id_115" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_115"><span class="text">Infos</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_116" class="item-toggle" #checked# />
+ <label for="id_116" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_116"><span class="text">Das Spielfeld</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Infos zum Spielfeld, und zu Positionen + Aufgaben</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_117"><span class="text">Die Zonen und die Linien</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_118"><span class="text">Die Positionen</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">1-6 und die Aufgaben</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_119" class="item-toggle" #checked# />
+ <label for="id_119" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_119"><span class="text">Der Block</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_120"><span class="text">Aktiver Block</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aktiv versuchen zu punkten.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_121"><span class="text">Passiver Block</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Der Ball soll nicht über das Netz.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_122"><span class="text">Einzelblock</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wenn nicht mehr möglich ist...</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_123"><span class="text">Doppelblock</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Der Standard - wenn möglich.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_124"><span class="text">Dreifachblock</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Den Gegner überladen</span></span>
+</div></div>
+</div><div class="item">
+ <span class="item-header" data-id="id_125"><span class="text">Das Aufspiel</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_126" class="item-toggle" #checked# />
+ <label for="id_126" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_126"><span class="text">2016/17 &quot;Japanisch&quot;</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_127" class="item-toggle" #checked# />
+ <label for="id_127" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_127"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_128"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_129"><span class="text">L1</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_130"><span class="text">L6</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_131"><span class="text">L5</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_132"><span class="text">L4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_133"><span class="text">L3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_134"><span class="text">L2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_135" class="item-toggle" #checked# />
+ <label for="id_135" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_135"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_136"><span class="text">Basis</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_137"><span class="text">Basis 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_138"><span class="text">Block 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_139"><span class="text">Block 3 - Schnellangriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_140"><span class="text">Block 3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_141"><span class="text">Block 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_142"><span class="text">Ohne</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_143"><span class="text">Ohne 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_144" class="item-toggle" #checked# />
+ <label for="id_144" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_144"><span class="text">2018/19</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <input type="checkbox" id="id_145" class="item-toggle" #checked# />
+ <label for="id_145" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_145"><span class="text">Annahme (3)</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">3er-Riegel - 3 Annahmespielerinnen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_146"><span class="text">Annahme</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">3er Riegel - 3 Annahmespielerinnen</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_147"><span class="text">L1</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_148"><span class="text">L1b</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mittelblockerin statt Diagnalspielerin</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_149"><span class="text">L6</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_150"><span class="text">L6b</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">vordere MB(!) nimmt an</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_151"><span class="text">L5</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_152"><span class="text">L5b</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mittelblockerin(1) nimmt statt Diagonalspielerin(2) an</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_153"><span class="text">L4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_154"><span class="text">L4b</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mittelblockerin statt DiagonalSpielerin</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_155"><span class="text">L3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_156"><span class="text">L2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_157" class="item-toggle" #checked# />
+ <label for="id_157" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_157"><span class="text">Annahme (4)</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">4er-Riegel - 4 Annahmespielerinnen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_158"><span class="text">Annahme (4)</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Annahme zu viert</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_159"><span class="text">L1 (4)</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">4er-Annahme</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_160" class="item-toggle" #checked# />
+ <label for="id_160" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_160"><span class="text">Annahme (5)</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">5er-Riegel - 5 Annahmespielerinnen</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_161"><span class="text">Annahme (5)</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Annahme zu fünft</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_162" class="item-toggle" #checked# />
+ <label for="id_162" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_162"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_163"><span class="text">Basis 1</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin hinten (1)</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_164"><span class="text">Basis 2</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin vorne (2)</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_165"><span class="text">Basis 1b</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">gegn. Aufspielerin ist vorne, Angriff links nicht zu erwarten</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_166"><span class="text">Block 2</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_167"><span class="text">Block 3 - Schnellangriff</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_168"><span class="text">Block 3(1) - Schnellangriff</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mit Handzeichen die Verteidigung organisieren</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_169"><span class="text">Block 3(5) - Schnellangriff</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mit Handzeichen die Verteidigung organisieren</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_170"><span class="text">Block 3</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_171"><span class="text">Block 4</span><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_172"><span class="text">Ohne 1</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin hinten (1)</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_173"><span class="text">Ohne 2</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin vorne (2)</span></span>
+</div></div>
+</div><div class="item">
+ <input type="checkbox" id="id_174" class="item-toggle" #checked# />
+ <label for="id_174" class="item"><img src="/brueckl-hotvolleys/concepts/img-minus.svg" /><img src="/brueckl-hotvolleys/concepts/img-plus.svg" /></label>
+ <span class="item-header"m data-id="id_174"><span class="text">Angriff + Sicherung</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Wir helfen uns gegenseitig!</span></span>
+ <div class="item-container"><div class="item">
+ <span class="item-header" data-id="id_175"><span class="text">Vorbereitung 2</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin ist Vorderspielerin</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_176"><span class="text">Vorbereitung 1</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin ist Hinterspielerin</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_177"><span class="text">Angriff 0/6</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Pos. 4 - Außenangriff, 3-2-Sicherung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_178"><span class="text">Angriff 2</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Pos. 2, Außenangriff, 2-3-Sicherung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_179"><span class="text">Angriff 5v</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Pos 3, 4-1-Sicherung</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_180"><span class="text">Wann 1</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Zeitpunkt des Absprungs (1, 5v, 0)</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_181"><span class="text">Wann 2</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wo bin ich, wenn die Aufspielerin den Ball berührt.</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="id_182"><span class="text">Wo</span><br><img src="/brueckl-hotvolleys/concepts/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Ort des Absprungs</span></span>
+</div></div>
+</div></div>
+</div></div>
+</div></div></div>
+
+<div class="content"><div class="container"><div class="text"><h1>Unser Nachwuchskonzept</h1>
+<p>Zur durchgängigen Ausbildung und Entwicklung unserer Spielerinnen.</p>
+<h2>Ziele</h2>
+<ul>
+<li>
+<p>Fördern und Fordern.</p>
+</li>
+<li>
+<p>Mit Spaß und Eifer den Weg an die Spitze schaffen.</p>
+</li>
+<li>
+<p>Wer weniger tun will, darf auch dabeibleiben. <br />
+Bei den Jüngeren gibt es Mannschaften für alle. <br />
+Bei den Älteren könnte es sein, dass sie dann aber nur in der zweiten Mannschaft spielen wird.</p>
+</li>
+</ul>
+</div></div>
+
+<script>
+(function(){
+/**
+ * Handles the context menu trigger to block it.
+ * @param {Event} event The event data.
+ * @returns {Boolean} true
+ */
+function onContextMenu(event) {
+  event.preventDefault();
+  return true;
+}
+
+// set a context menu handler
+document.addEventListener('contextmenu', onContextMenu);
+
+function unregister() {
+  document.removeEventListener('contextmenu', onContextMenu);
+}
+window.unregister = unregister;
+}());
+
+</script></div>
+<div class="footer">NW-Konzept</div>
+
+ </body>
+</html>
