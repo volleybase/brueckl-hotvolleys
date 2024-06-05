@@ -64,9 +64,11 @@ function onlongtouch(x,y){
   showContextMenu(x, y);
 }
 
-$event(document, 'touchstart', touchstart);
-$event(document, 'touchend', touchend);
-$event(document, 'touchmove', touchmove);
+setTimeout(function() {
+  $event(document, 'touchstart', touchstart);
+  $event(document, 'touchend', touchend);
+  $event(document, 'touchmove', touchmove);
+}, 123);
 // --- ios helper --------------------------------- ^^ ---/* global $$ */
 var cm = $('#contextmenu'),
     bg = $('#contextmenu_bg'),
