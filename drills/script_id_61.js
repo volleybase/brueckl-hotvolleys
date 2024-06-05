@@ -68,10 +68,9 @@ setTimeout(function() {
   $event(document, 'touchstart', touchstart);
   $event(document, 'touchend', touchend);
   $event(document, 'touchmove', touchmove);
-}, 123);
+}, 55);
 // --- ios helper --------------------------------- ^^ ---/* global $$ */
-var cm = $('#contextmenu'),
-    bg = $('#contextmenu_bg'),
+var cm, bg,
     contextmenu = false;
 
 function onContextMenu(event) {
@@ -216,34 +215,40 @@ var option = {
     }
   }
 };
-option.init();
 
-$event(document, 'contextmenu', onContextMenu);
-$event(bg, 'click', onClick);
-$event(cm, 'click', onClick);
+setTimeout(function() {
+  option.init();
 
-// init size of context submenu items (because of text size)
-$$('g.submenuitem').forEach((sub) => {
-  $event(sub, 'mouseenter', (event) => {
-    var g = event.target;
-    var txts = $$('g.submenu > g.menuitem > text');
-    // 200 size of menu item + 2px width border, 30 is left of text field
-    var len = 170;
-    txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
-    if (len > 170) {
-      var first = true;
-      txts.forEach((txt) => {
-        if (first) {
-          var rc = $('rect', txt.parentNode.parentNode);
-          rc.style.width = (len + 34) + 'px';
-          first = false;
-        }
-        var rc = $('rect', txt.parentNode);
-        rc.style.width = (len + 30) + 'px';
-      });
-    }
+  cm = $('#contextmenu');
+  bg = $('#contextmenu_bg');
+  $event(document, 'contextmenu', onContextMenu);
+  $event(bg, 'click', onClick);
+  $event(cm, 'click', onClick);
+
+  // init size of context submenu items (because of text size)
+  $$('g.submenuitem').forEach((sub) => {
+    $event(sub, 'mouseenter', (event) => {
+      //var g = event.target;
+      var txts = $$('g.submenu > g.menuitem > text');
+      // 200 size of menu item + 2px width border, 30 is left of text field
+      var len = 170;
+      txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
+      if (len > 170) {
+        var first = true;
+        txts.forEach((txt) => {
+          if (first) {
+            var rc = $('rect', txt.parentNode.parentNode);
+            rc.style.width = (len + 34) + 'px';
+            first = false;
+          }
+          var rc = $('rect', txt.parentNode);
+          rc.style.width = (len + 30) + 'px';
+        });
+      }
+    });
   });
-});
+}, 55);
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -777,5 +782,7 @@ function onAnimClick(event) {
   }
 }
 
-$event($('#ID_animation'), 'click', onAnimClick);
+setTimeout(function() {
+  $event($('#ID_animation'), 'click', onAnimClick);
+}, 11);
 animator.initAnimation(2.5, 0.0);
