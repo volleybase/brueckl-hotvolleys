@@ -40,9 +40,11 @@ var effects = {
     // the ids of all controls with effects
     this.ids = Object.keys(this.infos);
     // connect event handling
-    $event($('svg'), 'click', this.onClick.bind(this));
-    $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
-    $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+    setTimeout(function() {
+      $event($('svg'), 'click', this.onClick.bind(this));
+      $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
+      $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+    }, 55);
     return this;
   },
   

@@ -39,21 +39,6 @@ div.header {
   font-weight: bold;
 }
 
-/*
-div.item > .item-header {
-  display: block;
-  position: relative;
-  height: 50px;
-  margin: 0 0 0 26px;
-
-  white-space: nowrap;
-  
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.4em;
-  font-weight: bold;
-}
-*/
-
 div.header > div.title {
   font-family: Arial;
   font-size: 1.3em;
@@ -101,6 +86,15 @@ div.header > span.footer {
   bottom: 1px;
   left: 100px;
   font-size: 0.5em;
+}
+
+svg#button-fullscreen {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  z-index: 1; 
 }
 div.content {
   position: absolute;
@@ -389,6 +383,8 @@ div.footer {
 function init() {
   var items = document.querySelectorAll("div.tree span.item-header");
   items.forEach((item) => item.addEventListener("click", onTreeItemClick));
+  
+  initFullscreen();
 }
 
 function onTreeItemClick(event) {
@@ -405,6 +401,9 @@ function onTreeItemClick(event) {
     var h = document.querySelector("div.header");
     if (h) {
       h.innerHTML = header;
+      setTimeout(function() {
+        initFullscreen();
+      }, 111);
     }
   });
   loadData("/brueckl-hotvolleys/yassi/content_" + id + ".html", (header) => {
@@ -499,29 +498,79 @@ function closeTree() {
     cb.checked = false;
   }
 }
+
+var requestFullscreen, exitFullscreen;
+
+function initFullscreen() {
+  requestFullscreen = document.getElementById("request-fullscreen");
+  exitFullscreen = document.getElementById("exit-fullscreen");
+  
+  var btn = document.getElementById("button-fullscreen");
+  if (btn) {
+    btn.addEventListener("click", toggleFullscreen);
+  }
+  
+  document.addEventListener("fullscreenchange", function() {
+    updateFullscreenInfo();
+  });
+  
+  updateFullscreenInfo();
+}
+
+function updateFullscreenInfo() {
+  if (document.fullscreenElement) {
+    requestFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "black");
+  } else {
+    requestFullscreen.setAttribute("stroke", "black");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
   </script>
  </head>
  <body onload="init();">
-<div class="header"><span class="text">Yassi</span><br><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Übungen für Yassi</span></div>
+<div class="header"><span class="text">Yassi</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Übungen für Yassi</span><svg xmlns="http://www.w3.org/2000/svg" id="button-fullscreen" width="30" height="30">
+  <path id="request-fullscreen"
+    stroke="black" stroke-width="3" fill="none"
+    d="M 10, 2  L  2, 2  L  2,10
+       M 20, 2  L 28, 2  L 28,10
+       M 28,20  L 28,28  L 20,28
+       M 10,28  L  2,28  L  2,20" />
+  <path id="exit-fullscreen"
+    stroke="transparent" stroke-width="3" fill="none"
+    d="M 10, 2  L 10,10  L  2, 10
+       M 20, 2  L 20,10  L 28, 10
+       M 28,20  L 20,20  L 20, 28
+       M 10,28  L 10,20  L  2, 20" />
+</svg>
+</div>
 
 <label class="tree-menu" for="tree-toggle"><div>=</div></label>
 <input type="checkbox" checked id="tree-toggle" />
 <div class="tree"><div class="tree-bg">&nbsp;</div><div class="tree-content"><div class="item root">
- <span class="item-header" data-id="id_1"><span class="text">Yassi</span><br><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Übungen für Yassi</span></span>
+ <span class="item-header" data-id="id_1"><span class="text">Yassi</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Übungen für Yassi</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_2"><span class="text">Der Anlauf über eine Matte</span><br><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den langen Stemmschritt erzwingen.</span></span>
+ <span class="item-header" data-id="id_2"><span class="text">Der Anlauf über eine Matte</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den langen Stemmschritt erzwingen.</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_3"><span class="text">Der Armschwung 1</span><br><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den beidarmigen Armschwung erlernen.</span></span>
+ <span class="item-header" data-id="id_3"><span class="text">Der Armschwung 1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den beidarmigen Armschwung erlernen.</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_4"><span class="text">Der Armschwung 2</span><br><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Armschwung üben.</span></span>
+ <span class="item-header" data-id="id_4"><span class="text">Der Armschwung 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Den Armschwung üben.</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_5"><span class="text">Die Schlagbewegung vorbereiten</span><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+ <span class="item-header" data-id="id_5"><span class="text">Die Schlagbewegung vorbereiten</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /></span>
 </div><div class="item">
- <span class="item-header" data-id="id_6"><span class="text">Die Schlagbewegung im Stand 1</span><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+ <span class="item-header" data-id="id_6"><span class="text">Die Schlagbewegung im Stand 1</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /></span>
 </div><div class="item">
- <span class="item-header" data-id="id_7"><span class="text">Tennisbälle werfen 1</span><br><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Armschwung für Wurf/Schlag</span></span>
+ <span class="item-header" data-id="id_7"><span class="text">Tennisbälle werfen 1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Armschwung für Wurf/Schlag</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_8"><span class="text">Selbstaufgeworfene Bälle schlagen</span><img src="/brueckl-hotvolleys/yassi/img-00000000-0000-0000-0000-000000000103.svg" /></span>
+ <span class="item-header" data-id="id_8"><span class="text">Selbstaufgeworfene Bälle schlagen</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /></span>
 </div></div></div>
 
 <div class="content"><div class="container"></div>

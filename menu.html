@@ -28,13 +28,28 @@ div.bg {
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: gold;
-  text-align: center;
+  background-color: #AAAAAA;
+  background-image: url("/brueckl-hotvolleys/images/bhv2.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  opacity: 0.5;
+  overflow: hidden;
+}
+div.content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
   overflow: auto;
 }
-div.bg > div {
-  padding: 30px 0;
+div.links {
+  text-align: center;
+  padding: 45px 0;
 }
+
 a {
   position: relative;
   display: inline-block;
@@ -48,11 +63,14 @@ a {
   color: orange;
   font-weight: bold;
   text-decoration: none;
+  
+  filter: drop-shadow(20px 20px 10px darkred);
 }
   </style>
  </head>
  <body>
-  <div class="bg"><div>
+  <div class="bg">&nbsp;</div>
+  <div class="content"><div class="links">
   <a href="/brueckl-hotvolleys/drills">Übungen</a>
   <a href="/brueckl-hotvolleys/ifthen">Entscheiden</a>
   <br><br><br>

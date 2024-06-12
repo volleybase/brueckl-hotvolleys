@@ -15,9 +15,6 @@ html, body, * {
   padding: 0;
   border: 0 none;
   margin: 0;
-  
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 28pt;
 }
 html, body {
   overflow: hidden;
@@ -28,10 +25,12 @@ a.bg {
   top: 0;
   height: 100%;
   width: 100%;
-  
-  background-color: gold;
-  text-decoration: none;
-  color: #111;
+
+  background-color: #DDD;
+  background-image: url("/brueckl-hotvolleys/images/bhv2.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 h1 {
   position: relative;
@@ -41,9 +40,12 @@ h1 {
   text-decoration: none;
   white-space: nowrap;
 }
+a {
+  text-decoration: none;
+}
   </style>
  </head>
- <body>
-  <a href="/brueckl-hotvolleys/menu.html" class="bg"><h1>Brückl hotvolleys</h1></a>
+ <body onload="init();">
+  <a href="/brueckl-hotvolleys/menu.html" class="bg">&nbsp;</a>
  </body>
 </html>
