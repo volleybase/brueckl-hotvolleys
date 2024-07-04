@@ -1,3 +1,4 @@
+(function(){
 /**
  * Selects the first matching dom element.
  * @param {string} selector The selector of the element.
@@ -64,11 +65,9 @@ function onlongtouch(x,y){
   showContextMenu(x, y);
 }
 
-setTimeout(function() {
-  $event(document, 'touchstart', touchstart);
-  $event(document, 'touchend', touchend);
-  $event(document, 'touchmove', touchmove);
-}, 55);
+$event(document, 'touchstart', touchstart);
+$event(document, 'touchend', touchend);
+$event(document, 'touchmove', touchmove);
 // --- ios helper --------------------------------- ^^ ---/* global $$ */
 var cm, bg,
     contextmenu = false;
@@ -77,16 +76,24 @@ function onContextMenu(event) {
   event.preventDefault();
 
   // ignore clicks outside of svg area
-  var svg = $('svg');
+  var svg = _getSvgImg();
   if (!svg || !svg.contains(event.target)) {
     return;
   }
   
   // InternalError is unique for firefox
-  var isFirefox = !!window.InternalError,
-      x = isFirefox ? event.clientX : event.pageX, 
-      y = isFirefox ? event.clientY : event.pageY;  
+  //var isFirefox = !!window.InternalError,
+  //    x = isFirefox ? event.clientX : event.pageX, 
+  //    y = isFirefox ? event.clientY : event.pageY;  
   showContextMenu(event.clientX, event.clientY);
+}
+
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
 }
 
 function showContextMenu(x, y) {
@@ -125,7 +132,8 @@ function showContextMenu(x, y) {
     cm.style.display = 'block';
     bg.style.display = 'block';
     
-    var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    //var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    var svg = _getSvgImg(), pt, svgP;
     try {
       // transform point to SVG coordinates
       pt = new DOMPoint(x,y);
@@ -216,321 +224,247 @@ var option = {
   }
 };
 
-setTimeout(function() {
-  option.init();
+option.init();
 
-  cm = $('#contextmenu');
-  bg = $('#contextmenu_bg');
-  $event(document, 'contextmenu', onContextMenu);
-  $event(bg, 'click', onClick);
-  $event(cm, 'click', onClick);
+cm = $('#contextmenu');
+bg = $('#contextmenu_bg');
+$event(document, 'contextmenu', onContextMenu);
+$event(bg, 'click', onClick);
+$event(cm, 'click', onClick);
 
-  // init size of context submenu items (because of text size)
-  $$('g.submenuitem').forEach((sub) => {
-    $event(sub, 'mouseenter', (event) => {
-      //var g = event.target;
-      var txts = $$('g.submenu > g.menuitem > text');
-      // 200 size of menu item + 2px width border, 30 is left of text field
-      var len = 170;
-      txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
-      if (len > 170) {
-        var first = true;
-        txts.forEach((txt) => {
-          if (first) {
-            var rc = $('rect', txt.parentNode.parentNode);
-            rc.style.width = (len + 34) + 'px';
-            first = false;
-          }
-          var rc = $('rect', txt.parentNode);
-          rc.style.width = (len + 30) + 'px';
-        });
-      }
-    });
+// init size of context submenu items (because of text size)
+$$('g.submenuitem').forEach((sub) => {
+  $event(sub, 'mouseenter', (event) => {
+    //var g = event.target;
+    var txts = $$('g.submenu > g.menuitem > text');
+    // 200 size of menu item + 2px width border, 30 is left of text field
+    var len = 170;
+    txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
+    if (len > 170) {
+      var first = true;
+      txts.forEach((txt) => {
+        if (first) {
+          var rc = $('rect', txt.parentNode.parentNode);
+          rc.style.width = (len + 34) + 'px';
+          first = false;
+        }
+        var rc = $('rect', txt.parentNode);
+        rc.style.width = (len + 30) + 'px';
+      });
+    }
   });
-}, 55);
-
+});
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "player_1": {
-    "x": 425.0,
-    "y": 150.0,
-    "angle": 180.0,
-    "scale": 1.0
+  "ellipse_1": {
+    "visible": true
   },
-  "player_2": {
-    "x": 550.0,
-    "y": 350.0,
-    "angle": 190.0,
-    "scale": 1.0
+  "ellipse_2": {
+    "visible": true
   },
   "player_3": {
     "x": 300.0,
     "y": 950.0,
-    "angle": 10.0,
+    "angle": 25.0,
     "scale": 1.0
   },
-  "player_4": {
+  "ellipse_4": {
+    "visible": true
+  },
+  "ellipse_5": {
+    "visible": true
+  },
+  "player_6": {
     "x": 550.0,
     "y": 950.0,
-    "angle": -10.0,
+    "angle": -25.0,
     "scale": 1.0
   },
-  "ball_5": {
-    "x": 425.0,
-    "y": 175.0,
+  "ball_7": {
+    "x": 350.0,
+    "y": 575.0,
     "angle": 0.0,
-    "scale": 1.0
+    "scale": 1.0,
+    "visible": true
+  },
+  "ball_10": {
+    "x": 500.0,
+    "y": 575.0,
+    "angle": 0.0,
+    "scale": 1.0,
+    "visible": true
   }
 };
 var animation = {
-  "player_1": [
+  "ellipse_1": [
     {
-      "type": "mov",
-      "x": -125.0,
-      "y": 200.0,
-      "mode": "linear",
-      "start": 2.5,
-      "end": 3.2
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
     },
     {
-      "type": "mov",
-      "x": 50.0,
-      "y": 240.0,
-      "mode": "linear",
-      "start": 4.9,
-      "end": 5.4
+      "type": "vis",
+      "visible": true,
+      "at": 1.6
     },
     {
-      "type": "mov",
-      "x": -50.0,
-      "y": -240.0,
-      "mode": "linear",
-      "start": 6.9,
-      "end": 7.800000000000001
-    },
-    {
-      "type": "rot",
-      "angle": -10.0,
-      "start": 3.0,
-      "end": 3.2
-    },
-    {
-      "type": "rot",
-      "angle": -80.0,
-      "start": 5.2,
-      "end": 5.4
-    },
-    {
-      "type": "rot",
-      "angle": 80.0,
-      "start": 6.9,
-      "end": 7.1000000000000005
+      "type": "vis",
+      "visible": false,
+      "at": 2.8000000000000003
     }
   ],
-  "player_2": [
+  "ellipse_2": [
     {
-      "type": "mov",
-      "x": 170.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 5.5,
-      "end": 6.0
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
     },
     {
-      "type": "mov",
-      "x": -130.0,
-      "y": 210.0,
-      "mode": "linear",
-      "start": 6.2,
-      "end": 6.8
+      "type": "vis",
+      "visible": true,
+      "at": 1.2000000000000002
     },
     {
-      "type": "mov",
-      "x": -40.0,
-      "y": -210.0,
-      "mode": "linear",
-      "start": 7.4,
-      "end": 8.0
-    },
-    {
-      "type": "rot",
-      "angle": 20.0,
-      "start": 4.1,
-      "end": 4.199999999999999
-    },
-    {
-      "type": "rot",
-      "angle": -20.0,
-      "start": 7.5,
-      "end": 7.9
+      "type": "vis",
+      "visible": false,
+      "at": 2.4
     }
   ],
   "player_3": [
     {
       "type": "mov",
-      "x": -170.0,
-      "y": 0.0,
+      "x": 50.0,
+      "y": -250.0,
       "mode": "linear",
-      "start": 3.3,
-      "end": 3.8
-    },
-    {
-      "type": "mov",
-      "x": 130.0,
-      "y": -210.0,
-      "mode": "linear",
-      "start": 4.0,
-      "end": 4.6
-    },
-    {
-      "type": "mov",
-      "x": 40.0,
-      "y": 210.0,
-      "mode": "linear",
-      "start": 5.2,
-      "end": 5.8
-    },
-    {
-      "type": "mov",
-      "x": -170.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 7.7,
-      "end": 8.2
-    },
-    {
-      "type": "rot",
-      "angle": 20.0,
-      "start": 2.3,
-      "end": 2.4
-    },
-    {
-      "type": "rot",
-      "angle": -20.0,
       "start": 5.3,
-      "end": 5.7
+      "end": 6.3
     },
     {
       "type": "rot",
-      "angle": 20.0,
-      "start": 6.3,
-      "end": 6.3999999999999995
+      "angle": 65.0,
+      "start": 5.9,
+      "end": 6.300000000000001
     }
   ],
-  "player_4": [
+  "ellipse_4": [
+    {
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
+    },
+    {
+      "type": "vis",
+      "visible": true,
+      "at": 5.6000000000000005
+    },
+    {
+      "type": "vis",
+      "visible": false,
+      "at": 6.8
+    }
+  ],
+  "ellipse_5": [
+    {
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
+    },
+    {
+      "type": "vis",
+      "visible": true,
+      "at": 5.2
+    },
+    {
+      "type": "vis",
+      "visible": false,
+      "at": 6.3999999999999995
+    }
+  ],
+  "player_6": [
     {
       "type": "mov",
       "x": -50.0,
-      "y": -240.0,
+      "y": -250.0,
       "mode": "linear",
-      "start": 2.5,
-      "end": 3.0
+      "start": 1.3,
+      "end": 2.3
     },
     {
       "type": "mov",
       "x": 50.0,
-      "y": 240.0,
+      "y": 250.0,
       "mode": "linear",
-      "start": 4.5,
-      "end": 5.5
-    },
-    {
-      "type": "mov",
-      "x": -50.0,
-      "y": -240.0,
-      "mode": "linear",
-      "start": 7.3,
-      "end": 7.8
+      "start": 4.0,
+      "end": 4.0
     },
     {
       "type": "rot",
-      "angle": -80.0,
-      "start": 2.8,
-      "end": 3.0
+      "angle": -65.0,
+      "start": 1.9,
+      "end": 2.3
     },
     {
       "type": "rot",
-      "angle": 80.0,
-      "start": 4.5,
-      "end": 4.7
-    },
-    {
-      "type": "rot",
-      "angle": -80.0,
-      "start": 7.6,
-      "end": 7.8
+      "angle": 65.0,
+      "start": 4.0,
+      "end": 4.0
     }
   ],
-  "ball_5": [
+  "ball_7": [
     {
       "type": "mov",
-      "x": -120.0,
-      "y": 750.0,
+      "x": -30.0,
+      "y": 325.0,
+      "mode": "linear",
+      "start": 1.0,
+      "end": 2.0
+    },
+    {
+      "type": "mov",
+      "x": 150.0,
+      "y": -200.0,
       "mode": "linear",
       "start": 2.0,
       "end": 3.0
     },
     {
+      "type": "vis",
+      "visible": false,
+      "at": 4.0
+    }
+  ],
+  "ball_10": [
+    {
       "type": "mov",
-      "x": 170.0,
-      "y": -210.0,
+      "x": 30.0,
+      "y": 325.0,
       "mode": "linear",
-      "start": 3.0,
-      "end": 4.0
+      "start": 5.0,
+      "end": 6.0
     },
     {
       "type": "mov",
-      "x": -200.0,
-      "y": 0.0,
+      "x": -150.0,
+      "y": -200.0,
       "mode": "linear",
-      "start": 4.0,
-      "end": 4.7
+      "start": 6.0,
+      "end": 7.0
     },
     {
-      "type": "mov",
-      "x": 260.0,
-      "y": -340.0,
-      "mode": "linear",
-      "start": 4.7,
-      "end": 5.2
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
     },
     {
-      "type": "mov",
-      "x": -170.0,
-      "y": 210.0,
-      "mode": "linear",
-      "start": 5.2,
-      "end": 6.2
-    },
-    {
-      "type": "mov",
-      "x": 200.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 6.2,
-      "end": 6.9
-    },
-    {
-      "type": "mov",
-      "x": -260.0,
-      "y": 340.0,
-      "mode": "linear",
-      "start": 6.9,
-      "end": 7.4
-    },
-    {
-      "type": "mov",
-      "x": 170.0,
-      "y": -210.0,
-      "mode": "linear",
-      "start": 7.4,
-      "end": 8.4
+      "type": "vis",
+      "visible": true,
+      "at": 4.0
     }
   ]
 };
 /* global $$, animation, animation0 */
 
-var animator = {
+window.animator = {
   // to reset all animations
   animation0: null,
   // the steps of the animations
@@ -960,7 +894,6 @@ function onAnimClick(event) {
   }
 }
 
-setTimeout(function() {
-  $event($('#ID_animation'), 'click', onAnimClick);
-}, 11);
-animator.initAnimation(8.0, 3.6);
+$event($('#ID_animation'), 'click', onAnimClick);
+animator.initAnimation(8.0, 0.0);
+}());

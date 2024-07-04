@@ -1,3 +1,4 @@
+(function(){
 /**
  * Selects the first matching dom element.
  * @param {string} selector The selector of the element.
@@ -64,11 +65,9 @@ function onlongtouch(x,y){
   showContextMenu(x, y);
 }
 
-setTimeout(function() {
-  $event(document, 'touchstart', touchstart);
-  $event(document, 'touchend', touchend);
-  $event(document, 'touchmove', touchmove);
-}, 55);
+$event(document, 'touchstart', touchstart);
+$event(document, 'touchend', touchend);
+$event(document, 'touchmove', touchmove);
 // --- ios helper --------------------------------- ^^ ---/* global $$ */
 var cm, bg,
     contextmenu = false;
@@ -77,16 +76,24 @@ function onContextMenu(event) {
   event.preventDefault();
 
   // ignore clicks outside of svg area
-  var svg = $('svg');
+  var svg = _getSvgImg();
   if (!svg || !svg.contains(event.target)) {
     return;
   }
   
   // InternalError is unique for firefox
-  var isFirefox = !!window.InternalError,
-      x = isFirefox ? event.clientX : event.pageX, 
-      y = isFirefox ? event.clientY : event.pageY;  
+  //var isFirefox = !!window.InternalError,
+  //    x = isFirefox ? event.clientX : event.pageX, 
+  //    y = isFirefox ? event.clientY : event.pageY;  
   showContextMenu(event.clientX, event.clientY);
+}
+
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
 }
 
 function showContextMenu(x, y) {
@@ -125,7 +132,8 @@ function showContextMenu(x, y) {
     cm.style.display = 'block';
     bg.style.display = 'block';
     
-    var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    //var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    var svg = _getSvgImg(), pt, svgP;
     try {
       // transform point to SVG coordinates
       pt = new DOMPoint(x,y);
@@ -138,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.45)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.275)');
   }
 }
 
@@ -169,8 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_frame_FrameImpl_grid1': false,
-    'ID_window_editor_graphics_frame_FrameImpl_grid5': false
+
   },
 
   reset: function(keys) {
@@ -217,85 +224,392 @@ var option = {
   }
 };
 
-setTimeout(function() {
-  option.init();
+option.init();
 
-  cm = $('#contextmenu');
-  bg = $('#contextmenu_bg');
-  $event(document, 'contextmenu', onContextMenu);
-  $event(bg, 'click', onClick);
-  $event(cm, 'click', onClick);
+cm = $('#contextmenu');
+bg = $('#contextmenu_bg');
+$event(document, 'contextmenu', onContextMenu);
+$event(bg, 'click', onClick);
+$event(cm, 'click', onClick);
 
-  // init size of context submenu items (because of text size)
-  $$('g.submenuitem').forEach((sub) => {
-    $event(sub, 'mouseenter', (event) => {
-      //var g = event.target;
-      var txts = $$('g.submenu > g.menuitem > text');
-      // 200 size of menu item + 2px width border, 30 is left of text field
-      var len = 170;
-      txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
-      if (len > 170) {
-        var first = true;
-        txts.forEach((txt) => {
-          if (first) {
-            var rc = $('rect', txt.parentNode.parentNode);
-            rc.style.width = (len + 34) + 'px';
-            first = false;
-          }
-          var rc = $('rect', txt.parentNode);
-          rc.style.width = (len + 30) + 'px';
-        });
-      }
-    });
+// init size of context submenu items (because of text size)
+$$('g.submenuitem').forEach((sub) => {
+  $event(sub, 'mouseenter', (event) => {
+    //var g = event.target;
+    var txts = $$('g.submenu > g.menuitem > text');
+    // 200 size of menu item + 2px width border, 30 is left of text field
+    var len = 170;
+    txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
+    if (len > 170) {
+      var first = true;
+      txts.forEach((txt) => {
+        if (first) {
+          var rc = $('rect', txt.parentNode.parentNode);
+          rc.style.width = (len + 34) + 'px';
+          first = false;
+        }
+        var rc = $('rect', txt.parentNode);
+        rc.style.width = (len + 30) + 'px';
+      });
+    }
   });
-}, 55);
-
+});
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "ball_1": {
-    "x": 25.0,
-    "y": 25.0,
+  "player_1": {
+    "x": 425.0,
+    "y": 150.0,
+    "angle": -180.0,
+    "scale": 1.0
+  },
+  "player_2": {
+    "x": 550.0,
+    "y": 350.0,
+    "angle": -170.0,
+    "scale": 1.0
+  },
+  "player_3": {
+    "x": 300.0,
+    "y": 950.0,
+    "angle": 10.0,
+    "scale": 1.0
+  },
+  "player_4": {
+    "x": 550.0,
+    "y": 950.0,
+    "angle": -10.0,
+    "scale": 1.0
+  },
+  "ball_5": {
+    "x": 425.0,
+    "y": 175.0,
     "angle": 0.0,
     "scale": 1.0
   }
 };
 var animation = {
-  "ball_1": [
+  "player_1": [
     {
       "type": "mov",
-      "x": 250.0,
-      "y": 250.0,
+      "x": -125.0,
+      "y": 200.0,
       "mode": "linear",
-      "start": 0.0,
-      "end": 1.0
+      "start": 2.5,
+      "end": 3.2
     },
     {
       "type": "mov",
-      "x": -250.0,
+      "x": 50.0,
+      "y": 240.0,
+      "mode": "linear",
+      "start": 4.9,
+      "end": 5.4
+    },
+    {
+      "type": "mov",
+      "x": 80.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 6.4,
+      "end": 6.800000000000001
+    },
+    {
+      "type": "mov",
+      "x": -130.0,
+      "y": -40.0,
+      "mode": "linear",
+      "start": 7.0,
+      "end": 7.5
+    },
+    {
+      "type": "rot",
+      "angle": -10.0,
+      "start": 2.9,
+      "end": 3.1
+    },
+    {
+      "type": "rot",
+      "angle": -20.0,
+      "start": 3.5,
+      "end": 3.7
+    },
+    {
+      "type": "rot",
+      "angle": 20.0,
+      "start": 4.4,
+      "end": 4.6000000000000005
+    },
+    {
+      "type": "rot",
+      "angle": -80.0,
+      "start": 5.2,
+      "end": 5.4
+    },
+    {
+      "type": "rot",
+      "angle": 45.0,
+      "start": 6.5,
+      "end": 6.8
+    },
+    {
+      "type": "rot",
+      "angle": 35.0,
+      "start": 7.0,
+      "end": 7.2
+    },
+    {
+      "type": "rot",
+      "angle": -20.0,
+      "start": 8.1,
+      "end": 8.4
+    }
+  ],
+  "player_2": [
+    {
+      "type": "mov",
+      "x": 170.0,
       "y": 0.0,
       "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
+      "start": 5.5,
+      "end": 6.0
     },
     {
       "type": "mov",
-      "x": 0.0,
-      "y": -250.0,
+      "x": -130.0,
+      "y": 210.0,
+      "mode": "linear",
+      "start": 6.2,
+      "end": 6.8
+    },
+    {
+      "type": "mov",
+      "x": -40.0,
+      "y": -210.0,
+      "mode": "linear",
+      "start": 7.4,
+      "end": 8.0
+    },
+    {
+      "type": "rot",
+      "angle": 20.0,
+      "start": 4.5,
+      "end": 4.6
+    },
+    {
+      "type": "rot",
+      "angle": -20.0,
+      "start": 7.5,
+      "end": 7.9
+    }
+  ],
+  "player_3": [
+    {
+      "type": "mov",
+      "x": -170.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 3.3,
+      "end": 3.8
+    },
+    {
+      "type": "mov",
+      "x": 130.0,
+      "y": -210.0,
+      "mode": "linear",
+      "start": 4.0,
+      "end": 4.6
+    },
+    {
+      "type": "mov",
+      "x": 40.0,
+      "y": 210.0,
+      "mode": "linear",
+      "start": 5.2,
+      "end": 5.8
+    },
+    {
+      "type": "mov",
+      "x": -170.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 7.7,
+      "end": 8.2
+    },
+    {
+      "type": "mov",
+      "x": 130.0,
+      "y": -210.0,
+      "mode": "linear",
+      "start": 8.4,
+      "end": 9.0
+    },
+    {
+      "type": "rot",
+      "angle": 20.0,
+      "start": 2.3,
+      "end": 2.4
+    },
+    {
+      "type": "rot",
+      "angle": -20.0,
+      "start": 5.3,
+      "end": 5.7
+    },
+    {
+      "type": "rot",
+      "angle": 20.0,
+      "start": 6.3,
+      "end": 6.3999999999999995
+    }
+  ],
+  "player_4": [
+    {
+      "type": "mov",
+      "x": -50.0,
+      "y": -240.0,
+      "mode": "linear",
+      "start": 2.5,
+      "end": 3.0
+    },
+    {
+      "type": "mov",
+      "x": -80.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 4.2,
+      "end": 4.6000000000000005
+    },
+    {
+      "type": "mov",
+      "x": 130.0,
+      "y": 40.0,
+      "mode": "linear",
+      "start": 4.8,
+      "end": 5.3
+    },
+    {
+      "type": "mov",
+      "x": -50.0,
+      "y": -240.0,
+      "mode": "linear",
+      "start": 7.3,
+      "end": 7.8
+    },
+    {
+      "type": "rot",
+      "angle": -80.0,
+      "start": 2.8,
+      "end": 3.0
+    },
+    {
+      "type": "rot",
+      "angle": 45.0,
+      "start": 4.3,
+      "end": 4.6
+    },
+    {
+      "type": "rot",
+      "angle": 35.0,
+      "start": 4.8,
+      "end": 5.0
+    },
+    {
+      "type": "rot",
+      "angle": -20.0,
+      "start": 5.4,
+      "end": 5.7
+    },
+    {
+      "type": "rot",
+      "angle": 20.0,
+      "start": 6.4,
+      "end": 6.7
+    },
+    {
+      "type": "rot",
+      "angle": -80.0,
+      "start": 7.6,
+      "end": 7.8
+    }
+  ],
+  "ball_5": [
+    {
+      "type": "mov",
+      "x": -120.0,
+      "y": 750.0,
       "mode": "linear",
       "start": 2.0,
       "end": 3.0
     },
     {
-      "type": "rot",
-      "angle": -720.0,
-      "start": 0.0,
-      "end": 3.0
+      "type": "mov",
+      "x": 170.0,
+      "y": -210.0,
+      "mode": "linear",
+      "start": 3.0,
+      "end": 4.0
+    },
+    {
+      "type": "mov",
+      "x": -200.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 4.0,
+      "end": 4.7
+    },
+    {
+      "type": "mov",
+      "x": 260.0,
+      "y": -340.0,
+      "mode": "linear",
+      "start": 4.7,
+      "end": 5.2
+    },
+    {
+      "type": "mov",
+      "x": -170.0,
+      "y": 210.0,
+      "mode": "linear",
+      "start": 5.2,
+      "end": 6.2
+    },
+    {
+      "type": "mov",
+      "x": 200.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 6.2,
+      "end": 6.9
+    },
+    {
+      "type": "mov",
+      "x": -260.0,
+      "y": 340.0,
+      "mode": "linear",
+      "start": 6.9,
+      "end": 7.4
+    },
+    {
+      "type": "mov",
+      "x": 170.0,
+      "y": -210.0,
+      "mode": "linear",
+      "start": 7.4,
+      "end": 8.4
+    },
+    {
+      "type": "mov",
+      "x": -200.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 8.4,
+      "end": 9.1
     }
   ]
 };
 /* global $$, animation, animation0 */
 
-var animator = {
+window.animator = {
   // to reset all animations
   animation0: null,
   // the steps of the animations
@@ -725,7 +1039,6 @@ function onAnimClick(event) {
   }
 }
 
-setTimeout(function() {
-  $event($('#ID_animation'), 'click', onAnimClick);
-}, 11);
-animator.initAnimation(3.0, 0.0);
+$event($('#ID_animation'), 'click', onAnimClick);
+animator.initAnimation(8.5, 4.1);
+}());

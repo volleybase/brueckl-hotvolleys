@@ -1,3 +1,4 @@
+(function(){
 /**
  * Selects the first matching dom element.
  * @param {string} selector The selector of the element.
@@ -64,11 +65,9 @@ function onlongtouch(x,y){
   showContextMenu(x, y);
 }
 
-setTimeout(function() {
-  $event(document, 'touchstart', touchstart);
-  $event(document, 'touchend', touchend);
-  $event(document, 'touchmove', touchmove);
-}, 55);
+$event(document, 'touchstart', touchstart);
+$event(document, 'touchend', touchend);
+$event(document, 'touchmove', touchmove);
 // --- ios helper --------------------------------- ^^ ---/* global $$ */
 var cm, bg,
     contextmenu = false;
@@ -77,16 +76,24 @@ function onContextMenu(event) {
   event.preventDefault();
 
   // ignore clicks outside of svg area
-  var svg = $('svg');
+  var svg = _getSvgImg();
   if (!svg || !svg.contains(event.target)) {
     return;
   }
   
   // InternalError is unique for firefox
-  var isFirefox = !!window.InternalError,
-      x = isFirefox ? event.clientX : event.pageX, 
-      y = isFirefox ? event.clientY : event.pageY;  
+  //var isFirefox = !!window.InternalError,
+  //    x = isFirefox ? event.clientX : event.pageX, 
+  //    y = isFirefox ? event.clientY : event.pageY;  
   showContextMenu(event.clientX, event.clientY);
+}
+
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
 }
 
 function showContextMenu(x, y) {
@@ -125,7 +132,8 @@ function showContextMenu(x, y) {
     cm.style.display = 'block';
     bg.style.display = 'block';
     
-    var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    //var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    var svg = _getSvgImg(), pt, svgP;
     try {
       // transform point to SVG coordinates
       pt = new DOMPoint(x,y);
@@ -216,94 +224,53 @@ var option = {
   }
 };
 
-setTimeout(function() {
-  option.init();
+option.init();
 
-  cm = $('#contextmenu');
-  bg = $('#contextmenu_bg');
-  $event(document, 'contextmenu', onContextMenu);
-  $event(bg, 'click', onClick);
-  $event(cm, 'click', onClick);
+cm = $('#contextmenu');
+bg = $('#contextmenu_bg');
+$event(document, 'contextmenu', onContextMenu);
+$event(bg, 'click', onClick);
+$event(cm, 'click', onClick);
 
-  // init size of context submenu items (because of text size)
-  $$('g.submenuitem').forEach((sub) => {
-    $event(sub, 'mouseenter', (event) => {
-      //var g = event.target;
-      var txts = $$('g.submenu > g.menuitem > text');
-      // 200 size of menu item + 2px width border, 30 is left of text field
-      var len = 170;
-      txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
-      if (len > 170) {
-        var first = true;
-        txts.forEach((txt) => {
-          if (first) {
-            var rc = $('rect', txt.parentNode.parentNode);
-            rc.style.width = (len + 34) + 'px';
-            first = false;
-          }
-          var rc = $('rect', txt.parentNode);
-          rc.style.width = (len + 30) + 'px';
-        });
-      }
-    });
+// init size of context submenu items (because of text size)
+$$('g.submenuitem').forEach((sub) => {
+  $event(sub, 'mouseenter', (event) => {
+    //var g = event.target;
+    var txts = $$('g.submenu > g.menuitem > text');
+    // 200 size of menu item + 2px width border, 30 is left of text field
+    var len = 170;
+    txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
+    if (len > 170) {
+      var first = true;
+      txts.forEach((txt) => {
+        if (first) {
+          var rc = $('rect', txt.parentNode.parentNode);
+          rc.style.width = (len + 34) + 'px';
+          first = false;
+        }
+        var rc = $('rect', txt.parentNode);
+        rc.style.width = (len + 30) + 'px';
+      });
+    }
   });
-}, 55);
-
+});
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
-    "x": 400.0,
-    "y": 100.0,
-    "angle": 180.0,
-    "scale": 1.0,
-    "playertype": "player attack"
+    "x": 300.0,
+    "y": 350.0,
+    "angle": 170.0,
+    "scale": 1.0
   },
   "player_2": {
-    "visible": true
-  },
-  "ellipse_3": {
-    "visible": true
-  },
-  "path_4": {
-    "visible": true
-  },
-  "text_5": {
-    "visible": true
-  },
-  "ellipse_6": {
-    "x": 680.0,
-    "y": 850.0,
-    "angle": 0.0,
-    "scale": 1.0,
-    "visible": true
-  },
-  "path_7": {
-    "x": 200.0,
-    "y": 650.0,
-    "angle": 0.0,
-    "scale": 1.0,
-    "visible": true
-  },
-  "text_8": {
-    "x": 680.0,
-    "y": 850.0,
-    "angle": 0.0,
-    "scale": 1.0,
-    "visible": true
-  },
-  "player_9": {
-    "playertype": "player defense"
-  },
-  "player_10": {
     "x": 550.0,
     "y": 950.0,
     "angle": -10.0,
-    "scale": 1.0,
-    "playertype": "player"
+    "scale": 1.0
   },
-  "ball_11": {
-    "x": 365.0,
-    "y": 150.0,
+  "ball_3": {
+    "x": 305.0,
+    "y": 375.0,
     "angle": 0.0,
     "scale": 1.0
   }
@@ -312,242 +279,125 @@ var animation = {
   "player_1": [
     {
       "type": "mov",
-      "x": -100.0,
-      "y": 250.0,
+      "x": 20.0,
+      "y": 150.0,
       "mode": "linear",
-      "start": 1.3,
-      "end": 2.3
+      "start": 5.5,
+      "end": 6.0
     },
     {
-      "type": "rot",
-      "angle": -25.0,
-      "start": 1.9,
-      "end": 2.1999999999999997
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player",
-      "at": -1.0
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player attack",
-      "at": 0.8
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player",
-      "at": 1.2
+      "type": "mov",
+      "x": -20.0,
+      "y": -150.0,
+      "mode": "linear",
+      "start": 6.5,
+      "end": 7.5
     }
   ],
   "player_2": [
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "ellipse_3": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 1.2
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 2.3
-    }
-  ],
-  "path_4": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 1.2
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 2.3
-    }
-  ],
-  "text_5": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 1.2
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 2.3
-    }
-  ],
-  "ellipse_6": [
-    {
       "type": "mov",
-      "x": -50.0,
-      "y": -250.0,
+      "x": -20.0,
+      "y": -150.0,
       "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
+      "start": 3.5,
+      "end": 4.0
     },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 1.2
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 2.3
-    }
-  ],
-  "path_7": [
     {
       "type": "mov",
-      "x": -50.0,
-      "y": -250.0,
+      "x": 20.0,
+      "y": 150.0,
       "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
+      "start": 4.5,
+      "end": 5.5
     },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 1.2
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 2.3
-    }
-  ],
-  "text_8": [
     {
       "type": "mov",
-      "x": -50.0,
-      "y": -250.0,
+      "x": -20.0,
+      "y": -150.0,
       "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 1.2
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 2.3
+      "start": 7.5,
+      "end": 8.0
     }
   ],
-  "player_9": [
-    {
-      "type": "pla-typ",
-      "playertype": "player",
-      "at": -1.0
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player prepare-defense",
-      "at": 0.5
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player defense",
-      "at": 1.8
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player",
-      "at": 2.2
-    }
-  ],
-  "player_10": [
+  "ball_3": [
     {
       "type": "mov",
-      "x": -50.0,
-      "y": -250.0,
-      "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
-    },
-    {
-      "type": "rot",
-      "angle": -80.0,
-      "start": 1.8,
-      "end": 2.2
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player prepare-defense",
-      "at": 0.5
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player",
-      "at": 1.3
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player set",
-      "at": 2.2
-    }
-  ],
-  "ball_11": [
-    {
-      "type": "mov",
-      "x": -53.0,
-      "y": 745.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "mov",
-      "x": 163.0,
-      "y": -195.0,
+      "x": 0.0,
+      "y": 550.0,
       "mode": "linear",
       "start": 2.0,
       "end": 3.0
+    },
+    {
+      "type": "mov",
+      "x": 220.0,
+      "y": -150.0,
+      "mode": "linear",
+      "start": 3.0,
+      "end": 4.0
+    },
+    {
+      "type": "mov",
+      "x": 20.0,
+      "y": -400.0,
+      "mode": "linear",
+      "start": 4.0,
+      "end": 5.0
+    },
+    {
+      "type": "mov",
+      "x": -220.0,
+      "y": 150.0,
+      "mode": "linear",
+      "start": 5.0,
+      "end": 6.0
+    },
+    {
+      "type": "mov",
+      "x": -20.0,
+      "y": 400.0,
+      "mode": "linear",
+      "start": 6.0,
+      "end": 7.0
+    },
+    {
+      "type": "mov",
+      "x": 220.0,
+      "y": -150.0,
+      "mode": "linear",
+      "start": 7.0,
+      "end": 8.0
+    },
+    {
+      "type": "rot",
+      "angle": 360.0,
+      "start": 2.0,
+      "end": 4.0
+    },
+    {
+      "type": "rot",
+      "angle": 720.0,
+      "start": 4.0,
+      "end": 8.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 0.8,
+      "end": 1.4
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 1.4,
+      "end": 2.0
     }
   ]
 };
 /* global $$, animation, animation0 */
 
-var animator = {
+window.animator = {
   // to reset all animations
   animation0: null,
   // the steps of the animations
@@ -977,7 +827,6 @@ function onAnimClick(event) {
   }
 }
 
-setTimeout(function() {
-  $event($('#ID_animation'), 'click', onAnimClick);
-}, 11);
-animator.initAnimation(5.0, 0.0);
+$event($('#ID_animation'), 'click', onAnimClick);
+animator.initAnimation(8.0, 4.0);
+}());

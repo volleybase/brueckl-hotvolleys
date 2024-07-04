@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/brueckl-hotvolleys/A/favicon.ico">
   <title>A-Kader</title>
   <style>
 html, body, * {
@@ -412,14 +413,16 @@ function onTreeItemClick(event) {
       c.innerHTML = header;
     }
   });
-  loadScript("/brueckl-hotvolleys/A/script_" + id + ".js", "script_" + id + "\\.js", () => {
-    console.log("Script for " + id + " has been loaded.");
-  });
+  setTimeout(function() {
+    loadScript("/brueckl-hotvolleys/A/script_" + id + ".js", "script_" + id + "\\.js", () => {
+      console.log("Script for " + id + " has been loaded.");
+    });
+  }, 55);
   closeTree();
 }
 
 function searchTreeItem(elem) {
-  while (elem != null) {
+  while (elem) {
     if (elem.className.indexOf("item-header") >= 0) {
       return elem;
     }

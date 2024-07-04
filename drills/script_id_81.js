@@ -1,3 +1,4 @@
+(function(){
 /**
  * Selects the first matching dom element.
  * @param {string} selector The selector of the element.
@@ -64,11 +65,9 @@ function onlongtouch(x,y){
   showContextMenu(x, y);
 }
 
-setTimeout(function() {
-  $event(document, 'touchstart', touchstart);
-  $event(document, 'touchend', touchend);
-  $event(document, 'touchmove', touchmove);
-}, 55);
+$event(document, 'touchstart', touchstart);
+$event(document, 'touchend', touchend);
+$event(document, 'touchmove', touchmove);
 // --- ios helper --------------------------------- ^^ ---/* global $$ */
 var cm, bg,
     contextmenu = false;
@@ -77,16 +76,24 @@ function onContextMenu(event) {
   event.preventDefault();
 
   // ignore clicks outside of svg area
-  var svg = $('svg');
+  var svg = _getSvgImg();
   if (!svg || !svg.contains(event.target)) {
     return;
   }
   
   // InternalError is unique for firefox
-  var isFirefox = !!window.InternalError,
-      x = isFirefox ? event.clientX : event.pageX, 
-      y = isFirefox ? event.clientY : event.pageY;  
+  //var isFirefox = !!window.InternalError,
+  //    x = isFirefox ? event.clientX : event.pageX, 
+  //    y = isFirefox ? event.clientY : event.pageY;  
   showContextMenu(event.clientX, event.clientY);
+}
+
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
 }
 
 function showContextMenu(x, y) {
@@ -125,7 +132,8 @@ function showContextMenu(x, y) {
     cm.style.display = 'block';
     bg.style.display = 'block';
     
-    var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    //var svg = document.getElementsByTagName('svg')[0], pt, svgP;
+    var svg = _getSvgImg(), pt, svgP;
     try {
       // transform point to SVG coordinates
       pt = new DOMPoint(x,y);
@@ -216,39 +224,36 @@ var option = {
   }
 };
 
-setTimeout(function() {
-  option.init();
+option.init();
 
-  cm = $('#contextmenu');
-  bg = $('#contextmenu_bg');
-  $event(document, 'contextmenu', onContextMenu);
-  $event(bg, 'click', onClick);
-  $event(cm, 'click', onClick);
+cm = $('#contextmenu');
+bg = $('#contextmenu_bg');
+$event(document, 'contextmenu', onContextMenu);
+$event(bg, 'click', onClick);
+$event(cm, 'click', onClick);
 
-  // init size of context submenu items (because of text size)
-  $$('g.submenuitem').forEach((sub) => {
-    $event(sub, 'mouseenter', (event) => {
-      //var g = event.target;
-      var txts = $$('g.submenu > g.menuitem > text');
-      // 200 size of menu item + 2px width border, 30 is left of text field
-      var len = 170;
-      txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
-      if (len > 170) {
-        var first = true;
-        txts.forEach((txt) => {
-          if (first) {
-            var rc = $('rect', txt.parentNode.parentNode);
-            rc.style.width = (len + 34) + 'px';
-            first = false;
-          }
-          var rc = $('rect', txt.parentNode);
-          rc.style.width = (len + 30) + 'px';
-        });
-      }
-    });
+// init size of context submenu items (because of text size)
+$$('g.submenuitem').forEach((sub) => {
+  $event(sub, 'mouseenter', (event) => {
+    //var g = event.target;
+    var txts = $$('g.submenu > g.menuitem > text');
+    // 200 size of menu item + 2px width border, 30 is left of text field
+    var len = 170;
+    txts.forEach((txt) => len = Math.max(len, Math.ceil(txt.getBBox().width + 5)));
+    if (len > 170) {
+      var first = true;
+      txts.forEach((txt) => {
+        if (first) {
+          var rc = $('rect', txt.parentNode.parentNode);
+          rc.style.width = (len + 34) + 'px';
+          first = false;
+        }
+        var rc = $('rect', txt.parentNode);
+        rc.style.width = (len + 30) + 'px';
+      });
+    }
   });
-}, 55);
-
+});
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "ball_1": {
@@ -288,7 +293,7 @@ var animation = {
 };
 /* global $$, animation, animation0 */
 
-var animator = {
+window.animator = {
   // to reset all animations
   animation0: null,
   // the steps of the animations
@@ -718,7 +723,6 @@ function onAnimClick(event) {
   }
 }
 
-setTimeout(function() {
-  $event($('#ID_animation'), 'click', onAnimClick);
-}, 11);
+$event($('#ID_animation'), 'click', onAnimClick);
 animator.initAnimation(2.0, 0.0);
+}());

@@ -1,3 +1,4 @@
+(function(){
 /**
  * Selects the first matching dom element.
  * @param {string} selector The selector of the element.
@@ -40,11 +41,10 @@ var effects = {
     // the ids of all controls with effects
     this.ids = Object.keys(this.infos);
     // connect event handling
-    setTimeout(function() {
-      $event($('svg'), 'click', this.onClick.bind(this));
-      $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
-      $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
-    }, 55);
+    $event($('svg'), 'click', this.onClick.bind(this));
+    $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
+    $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+
     return this;
   },
   
@@ -891,3 +891,4 @@ function onContextMenu(event) {
 
 // set a context menu handler
 document.addEventListener('contextmenu', onContextMenu);
+}());
