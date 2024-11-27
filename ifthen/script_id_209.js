@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -346,27 +347,27 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 0.9
+      "at": "0.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 1.2
+      "at": "1.2"
     },
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 3.4
+      "at": "3.4"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.7
+      "at": "3.7"
     }
   ],
   "player_2": [
@@ -407,27 +408,27 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player defense",
-      "at": 0.8
+      "at": "0.8"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 2.0
+      "at": "2.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.0
+      "at": "3.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 4.2
+      "at": "4.2"
     }
   ],
   "player_3": [
@@ -468,27 +469,27 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 0.5
+      "at": "0.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 1.7
+      "at": "1.7"
     },
     {
       "type": "pla-typ",
       "playertype": "player defense",
-      "at": 3.3
+      "at": "3.3"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 4.5
+      "at": "4.5"
     }
   ],
   "ball_4": [
@@ -607,27 +608,27 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 0.9
+      "at": "0.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 1.2
+      "at": "1.2"
     },
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 3.4
+      "at": "3.4"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.7
+      "at": "3.7"
     }
   ],
   "player_8": [
@@ -668,27 +669,27 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player defense",
-      "at": 0.8
+      "at": "0.8"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 2.0
+      "at": "2.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.0
+      "at": "3.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 4.2
+      "at": "4.2"
     }
   ],
   "player_9": [
@@ -729,27 +730,27 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 0.5
+      "at": "0.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 1.7
+      "at": "1.7"
     },
     {
       "type": "pla-typ",
       "playertype": "player defense",
-      "at": 3.3
+      "at": "3.3"
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 4.5
+      "at": "4.5"
     }
   ],
   "ball_10": [

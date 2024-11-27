@@ -22,8 +22,36 @@
     <line x1="1100" y1="185" x2="1100" y2="170" style="fill: none; stroke: #0000b2; stroke-width: 5;"/>
   </g>
   <g class="actors">
-    <ellipse cx="0" cy="0" rx="15" ry="15" transform="translate(500 1100)" style="stroke: none; fill: #696969;"/>
-    <ellipse cx="0" cy="0" rx="15" ry="15" transform="translate(800 1100)" style="stroke: none; fill: #696969;"/>
+    <g class="player set" transform="translate(500 1025) rotate(90)">
+      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
+      <g class="prepare-block">
+        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="block">
+        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="prepare-defense">
+        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="defense">
+        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="attack">
+        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="attack-left">
+        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="set">
+        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+    </g>
     <g class="move">
       <line x1="0" y1="0" x2="40" y2="-80" transform="translate(610 830)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
       <line x1="0" y1="0" x2="64" y2="-64" transform="translate(546 894)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
@@ -64,45 +92,10 @@
         <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
     </g>
-    <g class="move">
-      <line x1="0" y1="0" x2="-40" y2="80" transform="translate(690 1370)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-      <line x1="0" y1="0" x2="-64" y2="64" transform="translate(754 1306)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-      <line x1="0" y1="0" x2="-90" y2="20" transform="translate(844 1286)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-      <line x1="0" y1="0" x2="-94" y2="0" transform="translate(938 1286)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-      <g transform="translate(938 1286)">
-        <line x1="0" y1="0" x2="0" y2="-50" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-25 0,-50 13.889,-25" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-    </g>
-    <g id="player_2" class="player" transform="translate(650 1450) rotate(10)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
-      <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
+    <g id="ball_2" transform="translate(650 750) rotate(190)">
+      <ellipse cx="0" cy="0" rx="25" ry="25" style="stroke: none; fill: #ffff00;"/>
+      <path id="path_3" d="M 445 -325.5 C 428.333 -342.167 420 -361.75 441.667 -373 C 433.333 -364.667 436.667 -345.5 460 -327 L 445 -325.512 L 460 -327 Q 452.5 -323.833 445 -325.512" transform="translate(-450 350) rotate(190 450 -350)" style="stroke: none; fill: #0000ff;"/>
+      <path id="path_4" d="M 470.661 -335.833 C 458.161 -348.333 453.994 -360.833 451.661 -368.333 Q 468.328 -356.429 474.994 -349.167 Q 474.828 -342 470.647 -335.833 Z" transform="translate(-450 350) rotate(190 450 -350)" style="stroke: none; fill: #0000ff;"/>
     </g>
   </g>
   <!-- context menu - - - - - - - - - - -->
@@ -226,7 +219,6 @@ g.player.set > g.set {
   display: block;
 }
 
-
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_stop"],
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"] {
   opacity: 0.5;
@@ -247,17 +239,21 @@ g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"]:hover > rect {
 }
   </style>
 </svg></div><div class="text"><h1>Thema</h1>
-<p><strong>Einbeiner als Wurfübung.</strong></p>
+<p><strong>Den Einbeiner durch viele Wiederholungen erlernen.</strong></p>
 <h1>Beschreibung</h1>
-<p>An der Aufspielposition wird eine Antenne oder ein Besen o. ä. montiert. Die Spielerinnen
-laufen an und werfen einen Ball über das Netz.</p>
-<p>Auf einer Seite üben sie den Anlauf mit 5 Schritten, auf der anderen mit 3 Schritten.</p>
+<ol>
+<li>Start in der Ausgangsposition der Schnellangreiferin.</li>
+<li>Anlauf in Richtung der Aufspielerin.</li>
+<li>Weiterlaufen in Richtung Außenposition.</li>
+<li>Ball selbst aufwerfen und schlagen.</li>
+</ol>
 <h1>Variationen</h1>
 <ul>
-<li>Abwechseln mit Ballwerfen nach Anlauf zum Schnellangriff(1er).</li>
+<li>Den Angriff sowohl als 3er, als auch als 7er üben.</li>
+<li>Beim 7er beide Anlaufvarianten versuchen (3 Schritte, 5 Schritte).</li>
+<li>Block ergänzen.</li>
+<li>Schlagrichtung vorgeben - entlang der Linie oder diagonal.</li>
 </ul>
 <h1>Bälle/Geräte</h1>
-<ul>
-<li>1 Ball zum Werfen pro Spielerin.</li>
-</ul>
+<p>Bälle wie zum Einschlagen.</p>
 </div></div>

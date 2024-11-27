@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -318,22 +319,22 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 0.9
+      "at": "0.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 1.2
+      "at": "1.2"
     },
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 2.9
+      "at": "2.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.2
+      "at": "3.2"
     }
   ],
   "ball_2": [

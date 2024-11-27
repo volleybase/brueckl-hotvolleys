@@ -177,8 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_vb_CourtImpl_grid1': false,
-    'ID_vb_CourtImpl_grid5': false
+    'window.editor.graphics.actor.ActorImpl.option.block_shadow': true
   },
 
   reset: function(keys) {
@@ -255,5 +254,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

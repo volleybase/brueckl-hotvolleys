@@ -177,14 +177,9 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_vb_CourtImpl_grid1': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_diagonal_3_middle_2': false,
-    'ID_vb_CourtImpl_grid5': false,
-    'ID_vb_PlayerImpl_marker_backrow': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_reception_4_5': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_setter_6_diagonal_3': false,
-    'ID_vb_PlayerImpl_textoption_Name': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_setter_6_reception_5_1': false
+    'vb.PlayerImpl.textoption.player_name': false,
+    'window.editor.graphics.frame.FrameImpl.grid1': false,
+    'window.editor.graphics.frame.FrameImpl.grid5': false
   },
 
   reset: function(keys) {
@@ -261,5 +256,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

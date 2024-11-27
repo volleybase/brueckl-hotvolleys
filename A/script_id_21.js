@@ -177,8 +177,8 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_usual': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_anlauf': false
+    'window.editor.graphics.actor.ActorImpl.option.usual': false,
+    'window.editor.graphics.actor.ActorImpl.option.anlauf': false
   },
 
   reset: function(keys) {
@@ -255,5 +255,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

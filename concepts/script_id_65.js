@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.95)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.5)');
   }
 }
 
@@ -177,13 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_playerAll6': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_rot0': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_player0': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_player14': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_rot6': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_region': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_rot14': false
+    'window.editor.graphics.actor.ActorImpl.option.blockShadow': true
   },
 
   reset: function(keys) {
@@ -260,5 +254,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

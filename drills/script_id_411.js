@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.54)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.442)');
   }
 }
 
@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "arrow_1": {
@@ -262,76 +263,88 @@ var animation0 = {
   "draw_2": {
     "draw": [
       {
-        "dx": 300.0,
-        "dy": 159.0,
+        "dx": 50.0,
+        "dy": 90.0,
         "angle": 0.0,
         "length": 0.0,
         "visible": true,
         "predecessor": -1
       },
       {
-        "dx": 13.0,
-        "dy": 0.0,
-        "angle": 0.0,
-        "length": 13.0,
+        "dx": 0.0,
+        "dy": -10.0,
+        "angle": -90.0,
+        "length": 10.0,
         "visible": true,
         "predecessor": 0
       },
       {
-        "dx": -87.0,
-        "dy": -48.0,
-        "angle": -151.0,
-        "length": 100.0,
+        "dx": 108.0,
+        "dy": -23.0,
+        "angle": -12.0,
+        "length": 110.0,
         "visible": true,
         "predecessor": 1
       },
       {
-        "dx": -70.0,
-        "dy": -28.0,
-        "angle": -158.0,
-        "length": 75.0,
+        "dx": 68.0,
+        "dy": -15.0,
+        "angle": -12.0,
+        "length": 70.0,
         "visible": true,
         "predecessor": 2
       },
       {
-        "dx": -11.0,
-        "dy": -4.0,
-        "angle": -158.0,
+        "dx": 12.0,
+        "dy": -2.0,
+        "angle": -12.0,
         "length": 12.0,
         "visible": true,
         "predecessor": 3
       },
       {
-        "dx": -6.0,
-        "dy": -3.0,
-        "angle": -158.0,
+        "dx": 7.0,
+        "dy": -1.0,
+        "angle": -12.0,
         "length": 7.0,
         "visible": true,
         "predecessor": 4
       },
       {
-        "dx": -6.0,
-        "dy": -3.0,
-        "angle": -158.0,
+        "dx": 7.0,
+        "dy": -1.0,
+        "angle": -12.0,
         "length": 7.0,
         "visible": true,
         "predecessor": 4
+      }
+    ]
+  },
+  "draw_3": {
+    "draw": [
+      {
+        "dx": 235.0,
+        "dy": 91.0,
+        "angle": 0.0,
+        "length": 0.0,
+        "visible": true,
+        "predecessor": -1
       },
       {
-        "dx": -38.0,
-        "dy": 32.0,
-        "angle": -220.0,
-        "length": 50.0,
+        "dx": -5.0,
+        "dy": 0.0,
+        "angle": 180.0,
+        "length": 5.0,
         "visible": true,
-        "predecessor": 3
+        "predecessor": 0
       },
       {
-        "dx": 33.0,
-        "dy": 37.0,
-        "angle": -312.0,
-        "length": 50.0,
+        "dx": -4.0,
+        "dy": -49.0,
+        "angle": -95.0,
+        "length": 49.0,
         "visible": true,
-        "predecessor": 7
+        "predecessor": 1
       }
     ]
   }
@@ -355,7 +368,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 11.0,
+            "angle": 8.0,
             "length": 0.0,
             "visible": false,
             "start": 1.0,
@@ -365,7 +378,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -11.0,
+            "angle": -8.0,
             "length": 0.0,
             "visible": false,
             "start": 4.0,
@@ -377,7 +390,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 11.0,
+            "angle": 8.0,
             "length": 0.0,
             "visible": false,
             "start": 1.0,
@@ -387,7 +400,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -11.0,
+            "angle": -8.0,
             "length": 0.0,
             "visible": false,
             "start": 4.0,
@@ -399,7 +412,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 11.0,
+            "angle": 8.0,
             "length": 0.0,
             "visible": false,
             "start": 1.0,
@@ -409,7 +422,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -11.0,
+            "angle": -8.0,
             "length": 0.0,
             "visible": false,
             "start": 4.0,
@@ -421,7 +434,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 11.0,
+            "angle": 8.0,
             "length": 0.0,
             "visible": false,
             "start": 1.0,
@@ -431,7 +444,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -11.0,
+            "angle": -8.0,
             "length": 0.0,
             "visible": false,
             "start": 4.0,
@@ -443,7 +456,7 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 11.0,
+            "angle": 8.0,
             "length": 0.0,
             "visible": false,
             "start": 1.0,
@@ -453,20 +466,29 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -11.0,
+            "angle": -8.0,
             "length": 0.0,
             "visible": false,
             "start": 4.0,
             "end": 6.0
           }
-        ],
+        ]
+      ]
+    }
+  ],
+  "draw_3": [
+    {
+      "type": "draw",
+      "items": [
+        [],
+        [],
         [
           {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -31.0,
-            "length": 0.0,
+            "angle": 5.0,
+            "length": -25.0,
             "visible": false,
             "start": 1.0,
             "end": 3.0
@@ -475,30 +497,8 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 31.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 6.0
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 45.0,
-            "length": 2.0,
-            "visible": false,
-            "start": 1.0,
-            "end": 3.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -45.0,
-            "length": -2.0,
+            "angle": -5.0,
+            "length": 25.0,
             "visible": false,
             "start": 4.0,
             "end": 6.0

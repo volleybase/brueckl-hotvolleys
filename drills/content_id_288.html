@@ -17,7 +17,37 @@
     <line x1="1100" y1="185" x2="1100" y2="170" style="fill: none; stroke: #0000b2; stroke-width: 5;"/>
   </g>
   <g class="actors">
-    <g id="player_1" class="player set" transform="translate(350 1050)">
+    <g id="player_1" class="player set" transform="translate(550 1025) rotate(90)">
+      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
+      <g class="prepare-block">
+        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="block">
+        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="prepare-defense">
+        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="defense">
+        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="attack">
+        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="attack-left">
+        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="set">
+        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+    </g>
+    <g id="player_2" class="player attack" transform="translate(1000 1050)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -48,16 +78,16 @@
       </g>
     </g>
     <g class="move">
-      <g transform="translate(320 550)">
-        <line x1="0" y1="0" x2="0" y2="225" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="13.889,200 0,225 -13.889,200" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(950 650)">
+        <line x1="0" y1="0" x2="0" y2="-120" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="-13.889,-95 0,-120 13.889,-95" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
-      <g transform="translate(380 775)">
-        <line x1="0" y1="0" x2="0" y2="-225" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-200 0,-225 13.889,-200" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(914 523)">
+        <line x1="0" y1="0" x2="-83" y2="217" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="-61.096,198.612 -83,217 -87.041,188.688" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
-    <g id="player_2" class="player defense" transform="translate(350 500) rotate(180)">
+    <g id="player_3" class="player prepare-defense" transform="translate(950 700) rotate(215)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -87,280 +117,88 @@
         <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
     </g>
-    <g id="player_3" class="player set" transform="translate(350 800) rotate(180)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b2222246;"/>
+    <g id="player_4" class="player defense" transform="translate(950 430) rotate(180)">
+      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b222227f;"/>
       <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
       <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
       <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
       <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
       <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
       <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
       <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+    </g>
+    <g id="player_5" class="player defense" transform="translate(813 787) rotate(225)">
+      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b222227f;"/>
+      <g class="prepare-block">
+        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="block">
+        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="prepare-defense">
+        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="defense">
+        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="attack">
+        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="attack-left">
+        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+      </g>
+      <g class="set">
+        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
+        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b222227f; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
     </g>
     <g class="move">
-      <g transform="translate(350 975)">
-        <line x1="0" y1="0" x2="0" y2="-374" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-349 0,-374 13.889,-349" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(625 1020)">
+        <line x1="0" y1="0" x2="387" y2="-38" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="360.762,-49.379 387,-38 363.477,-21.735" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
-      <g transform="translate(350 975)">
-        <line x1="0" y1="0" x2="0" y2="-140" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-115 0,-140 13.889,-115" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(1033 955)">
+        <line x1="0" y1="0" x2="-74" y2="-426" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="-83.405,-398.992 -74,-426 -56.037,-403.746" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      </g>
+      <g transform="translate(922 521)">
+        <line x1="0" y1="0" x2="-319" y2="463" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="-293.379,450.293 -319,463 -316.253,434.533" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      </g>
+      <g transform="translate(610 990)">
+        <line x1="0" y1="0" x2="130" y2="-130" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="102.501,-122.143 130,-130 122.143,-102.501" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
-    <g id="ball_4" transform="translate(350 1025)">
+    <g id="ball_6" transform="translate(575 1025)">
       <ellipse cx="0" cy="0" rx="25" ry="25" style="stroke: none; fill: #ffff00;"/>
-      <path id="path_5" d="M 145 -50.5 C 128.333 -67.167 120 -86.75 141.667 -98 C 133.333 -89.667 136.667 -70.5 160 -52 L 145 -50.512 L 160 -52 Q 152.5 -48.833 145 -50.512" transform="translate(-150 75)" style="stroke: none; fill: #0000ff;"/>
-      <path id="path_6" d="M 170.661 -60.833 C 158.161 -73.333 153.994 -85.833 151.661 -93.333 Q 168.328 -81.429 174.994 -74.167 Q 174.828 -67 170.647 -60.833 Z" transform="translate(-150 75)" style="stroke: none; fill: #0000ff;"/>
-    </g>
-    <g id="player_7" class="player set" transform="translate(650 1050)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
-      <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-    </g>
-    <g class="move">
-      <g transform="translate(620 550)">
-        <line x1="0" y1="0" x2="0" y2="225" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="13.889,200 0,225 -13.889,200" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-      <g transform="translate(680 775)">
-        <line x1="0" y1="0" x2="0" y2="-225" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-200 0,-225 13.889,-200" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-    </g>
-    <g id="player_8" class="player defense" transform="translate(650 500) rotate(180)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
-      <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-    </g>
-    <g id="player_9" class="player set" transform="translate(650 800) rotate(180)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b2222246;"/>
-      <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-    </g>
-    <g class="move">
-      <g transform="translate(650 975)">
-        <line x1="0" y1="0" x2="0" y2="-374" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-349 0,-374 13.889,-349" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-      <g transform="translate(650 975)">
-        <line x1="0" y1="0" x2="0" y2="-140" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-115 0,-140 13.889,-115" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-    </g>
-    <g id="ball_10" transform="translate(650 1025)">
-      <ellipse cx="0" cy="0" rx="25" ry="25" style="stroke: none; fill: #ffff00;"/>
-      <path id="path_11" d="M 445 -50.5 C 428.333 -67.167 420 -86.75 441.667 -98 C 433.333 -89.667 436.667 -70.5 460 -52 L 445 -50.512 L 460 -52 Q 452.5 -48.833 445 -50.512" transform="translate(-450 75)" style="stroke: none; fill: #0000ff;"/>
-      <path id="path_12" d="M 470.661 -60.833 C 458.161 -73.333 453.994 -85.833 451.661 -93.333 Q 468.328 -81.429 474.994 -74.167 Q 474.828 -67 470.647 -60.833 Z" transform="translate(-450 75)" style="stroke: none; fill: #0000ff;"/>
-    </g>
-    <g id="player_13" class="player set" transform="translate(950 1050)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
-      <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-    </g>
-    <g class="move">
-      <g transform="translate(920 550)">
-        <line x1="0" y1="0" x2="0" y2="225" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="13.889,200 0,225 -13.889,200" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-      <g transform="translate(980 775)">
-        <line x1="0" y1="0" x2="0" y2="-225" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-200 0,-225 13.889,-200" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-    </g>
-    <g id="player_14" class="player defense" transform="translate(950 500) rotate(180)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
-      <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-    </g>
-    <g id="player_15" class="player set" transform="translate(950 800) rotate(180)">
-      <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b2222246;"/>
-      <g class="prepare-block">
-        <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="22.5" y1="-25" x2="37.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="block">
-        <line x1="-41" y1="-25" x2="41" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="prepare-defense">
-        <line x1="-37.5" y1="0" x2="-62.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="-62.5" y1="-25" x2="-62.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="62.5" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="62.5" y1="-25" x2="62.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="defense">
-        <line x1="-41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="41" y1="0" x2="0" y2="-75" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack">
-        <line x1="37.5" y1="0" x2="37.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="attack-left">
-        <line x1="-37.5" y1="0" x2="-37.5" y2="-50" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-      <g class="set">
-        <line x1="-37.5" y1="0" x2="-20" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-        <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b2222246; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
-      </g>
-    </g>
-    <g class="move">
-      <g transform="translate(950 975)">
-        <line x1="0" y1="0" x2="0" y2="-374" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-349 0,-374 13.889,-349" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-      <g transform="translate(950 975)">
-        <line x1="0" y1="0" x2="0" y2="-140" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-13.889,-115 0,-140 13.889,-115" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
-    </g>
-    <g id="ball_16" transform="translate(950 1025)">
-      <ellipse cx="0" cy="0" rx="25" ry="25" style="stroke: none; fill: #ffff00;"/>
-      <path id="path_17" d="M 745 -50.5 C 728.333 -67.167 720 -86.75 741.667 -98 C 733.333 -89.667 736.667 -70.5 760 -52 L 745 -50.512 L 760 -52 Q 752.5 -48.833 745 -50.512" transform="translate(-750 75)" style="stroke: none; fill: #0000ff;"/>
-      <path id="path_18" d="M 770.661 -60.833 C 758.161 -73.333 753.994 -85.833 751.661 -93.333 Q 768.328 -81.429 774.994 -74.167 Q 774.828 -67 770.647 -60.833 Z" transform="translate(-750 75)" style="stroke: none; fill: #0000ff;"/>
+      <path id="path_7" d="M 370 -50.5 C 353.333 -67.167 345 -86.75 366.667 -98 C 358.333 -89.667 361.667 -70.5 385 -52 L 370 -50.512 L 385 -52 Q 377.5 -48.833 370 -50.512" transform="translate(-375 75)" style="stroke: none; fill: #0000ff;"/>
+      <path id="path_8" d="M 395.661 -60.833 C 383.161 -73.333 378.994 -85.833 376.661 -93.333 Q 393.328 -81.429 399.994 -74.167 Q 399.828 -67 395.647 -60.833 Z" transform="translate(-375 75)" style="stroke: none; fill: #0000ff;"/>
     </g>
   </g>
   <!-- context menu - - - - - - - - - - -->
@@ -484,7 +322,6 @@ g.player.set > g.set {
   display: block;
 }
 
-
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_stop"],
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"] {
   opacity: 0.5;
@@ -505,28 +342,33 @@ g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"]:hover > rect {
 }
   </style>
 </svg></div><div class="text"><h1>Thema</h1>
-<p><strong>Die Sicherung im Einspielen vorbereiten.</strong></p>
+<p><strong>Die Sicherung nach der Verteidigung üben.</strong></p>
 <h1>Beschreibung</h1>
-<ul>
-<li>Hinten Unteres Zuspiel,</li>
-<li>am Netz Oberes Zuspiel,</li>
-<li>damit die Spielerin schnell laufen muss, obwohl die Bällen noch &quot;einfach&quot; zu erreichen sind.</li>
-</ul>
 <ol>
-<li>Es beginnt mit einem langen Ball,</li>
-<li>die Hinterspielerin spielt zurück(&quot;verteidigt&quot;) und</li>
-<li>läuft dem Ball nach.</li>
-<li>Kurzer Ball - Sicherung und</li>
-<li>wieder zurück.</li>
+<li>Die Aufspielerin beginnt mit einem Aufspiel,</li>
+<li>die Angreiferin schlägt plaziert.</li>
+<li>Die Hinterspielerin beginnt in ihrer Basis,</li>
+<li>erläuft ihre Verteidigungsposition und verteidigt,</li>
+<li>dann läuft sie ihrem Ball nach zur Sicherung.</li>
+<li>Die Aufspielerin kann abtropfen lassen - <br />
+Sicherung und Rückkehr in die Basis, Aufspiel und Verteidigung.</li>
+<li>Wenn die Aufspielerin gleich aufspielt, muss die Verteidigerin sofort zurück.</li>
 </ol>
 <p>Nach 10 Sicherungen wechseln.</p>
 <h1>Hinweise</h1>
-<p>Laufen - stoppen - spielen - vorne und hinten.</p>
+<ul>
+<li>Die Positionen entsprechen der Sicherung für die Schnellangreiferin,
+was aber beim ersten Lernen nicht so wichtig ist.</li>
+<li>Wichtig ist, dass das Sichern wichtig und ernst genommen wird!</li>
+<li>Anfangs brauche ich die Sicherung weniger für die Angreiferin, <br />
+sondern viel mehr für die &quot;verunglückten&quot; Annahmen und Verteidigungen... <br />
+Also bleibt es es doch(!) von Anfang an notwendig!</li>
+</ul>
 <h1>Variationen</h1>
 <ul>
-<li>Am Netz den kurzen Ball aus der Hand abtropfen lassen, um einen Blockabpraller zu simulieren.</li>
-<li>Am Netz aktiv blocken, die Sicherung muss noch früher bereit sein um eine Chance zu haben.</li>
+<li>Die Angreiferin schupft zwischendurch, die Verteidigerin muss das erkennen und entsprechend reagieren.</li>
+<li>Die Angreiferin schlägt (auch) hart.</li>
 </ul>
 <h1>Bälle/Geräte</h1>
-<p>1 Ball pro Paar</p>
+<p>1 Ball pro Gruppe</p>
 </div></div>

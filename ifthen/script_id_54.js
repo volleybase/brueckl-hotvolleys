@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -341,17 +342,17 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-block",
-      "at": 0.0
+      "at": "0.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player block",
-      "at": 0.9
+      "at": "0.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 1.4
+      "at": "1.4"
     }
   ],
   "ball_2": [
@@ -389,12 +390,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 0.9
+      "at": "0.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 1.2
+      "at": "1.2"
     }
   ],
   "player_6": [
@@ -417,17 +418,17 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-block",
-      "at": 0.0
+      "at": "0.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player block",
-      "at": 1.9
+      "at": "1.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 2.4
+      "at": "2.4"
     }
   ],
   "ball_7": [
@@ -473,12 +474,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 1.9
+      "at": "1.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 2.2
+      "at": "2.2"
     }
   ],
   "player_11": [
@@ -501,17 +502,17 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-block",
-      "at": 0.0
+      "at": "0.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player block",
-      "at": 2.9
+      "at": "2.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.4
+      "at": "3.4"
     }
   ],
   "ball_12": [
@@ -549,12 +550,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": 2.9
+      "at": "2.9"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.2
+      "at": "3.2"
     }
   ]
 };

@@ -88,6 +88,20 @@ div.header > span.footer {
   left: 100px;
   font-size: 0.5em;
 }
+div.header > a.to_menu {
+  position: absolute;
+  top: 9px;
+  right: 50px;
+  width: 69px;
+  height: 32px;
+  z-index: 1; 
+  text-decoration: none;
+  background-color: #DDD;
+  background-image: url("/brueckl-hotvolleys/images/bhv2.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
 svg#button-fullscreen {
   position: absolute;
@@ -540,7 +554,7 @@ function toggleFullscreen() {
   </script>
  </head>
  <body onload="init();">
-<div class="header"><span class="text">Entscheidungssituationen</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000105.svg" /><svg xmlns="http://www.w3.org/2000/svg" id="button-fullscreen" width="30" height="30">
+<div class="header"><span class="text">Entscheidungssituationen</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000105.svg" /><a href="/brueckl-hotvolleys/menu.html" class="to_menu">&nbsp;</a><svg xmlns="http://www.w3.org/2000/svg" id="button-fullscreen" width="30" height="30">
   <path id="request-fullscreen"
     stroke="black" stroke-width="3" fill="none"
     d="M 10, 2  L  2, 2  L  2,10

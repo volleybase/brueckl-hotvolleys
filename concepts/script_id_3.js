@@ -177,7 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_change': false
+    'window.editor.graphics.actor.ActorImpl.option.change': false
   },
 
   reset: function(keys) {
@@ -254,5 +254,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

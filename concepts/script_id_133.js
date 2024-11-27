@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.95)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.65)');
   }
 }
 
@@ -177,9 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_vb_CourtImpl_grid1': false,
-    'ID_vb_CourtImpl_grid5': false,
-    'ID_vb_PlayerImpl_textoption_player_name': false
+    'vb.PlayerImpl.textoption.ptype': false
   },
 
   reset: function(keys) {
@@ -256,5 +254,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

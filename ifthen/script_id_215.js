@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -592,7 +593,7 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 3.0
+      "at": "3.0"
     }
   ],
   "player_11": [
@@ -696,7 +697,7 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player set",
-      "at": 3.0
+      "at": "3.0"
     }
   ],
   "ellipse_12": [
@@ -884,17 +885,17 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player set",
-      "at": 1.5
+      "at": "1.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 4.5
+      "at": "4.5"
     }
   ],
   "player_16": [
@@ -1012,7 +1013,7 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player set",
-      "at": 4.5
+      "at": "4.5"
     }
   ],
   "ellipse_17": [

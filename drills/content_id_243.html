@@ -22,9 +22,6 @@
     <line x1="1100" y1="185" x2="1100" y2="170" style="fill: none; stroke: #0000b2; stroke-width: 5;"/>
   </g>
   <g class="actors">
-    <line x1="0" y1="0" x2="900" y2="0" transform="translate(200 1550)" style="fill: none; stroke: #0000b2; stroke-width: 2; stroke-dasharray: 5 5;"/>
-    <line x1="0" y1="0" x2="900" y2="0" transform="translate(200 650)" style="fill: none; stroke: #0000b2; stroke-width: 2; stroke-dasharray: 5 5;"/>
-    <line x1="0" y1="0" x2="0" y2="-900" transform="translate(650 1550)" style="fill: none; stroke: #0000b2; stroke-width: 2; stroke-dasharray: 5 5;"/>
     <g id="player_1" class="player set" transform="translate(450 1025) rotate(90)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
@@ -55,7 +52,7 @@
         <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
     </g>
-    <g id="player_2" class="player" transform="translate(650 450) rotate(180)">
+    <g id="player_2" class="player" transform="translate(650 700) rotate(180)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -152,12 +149,12 @@
       </g>
     </g>
     <g class="move">
-      <g transform="translate(700 1750)">
-        <line x1="0" y1="0" x2="50" y2="0" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="25,-13.889 50,0 25,13.889" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(650 1550)">
+        <line x1="0" y1="0" x2="0" y2="150" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="13.889,125 0,150 -13.889,125" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
-    <g id="player_5" class="player prepare-defense" transform="translate(650 1750)">
+    <g id="player_5" class="player prepare-defense" transform="translate(650 1500)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -228,13 +225,13 @@
         <line x1="0" y1="0" x2="-387" y2="431" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
         <polyline points="-359.963,421.678 -387,431 -380.632,403.119" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
-      <g transform="translate(497 1013)">
-        <line x1="0" y1="0" x2="403" y2="-213" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="374.407,-213.597 403,-213 387.387,-189.039" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(500 1024)">
+        <line x1="0" y1="0" x2="400" y2="-24" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="374.213,-36.367 400,-24 375.877,-8.639" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
-      <g transform="translate(896 825)">
-        <line x1="0" y1="0" x2="-126" y2="877" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-108.697,854.229 -126,877 -136.192,850.279" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(892 1024)">
+        <line x1="0" y1="0" x2="-222" y2="628" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="-200.573,609.058 -222,628 -226.762,599.8" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
     <g id="ball_7" transform="translate(912 538)">
@@ -364,7 +361,6 @@ g.player.set > g.set {
   display: block;
 }
 
-
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_stop"],
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"] {
   opacity: 0.5;
@@ -388,22 +384,23 @@ g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"]:hover > rect {
 <p><strong>Die Bewegung in einem Wettspiel üben.</strong></p>
 <h1>Beschreibung</h1>
 <ol>
-<li>Die 3 Verteidigerinnen beginnen in ihrer Basis.</li>
-<li>Mit dem Aufspiel der Gegnerinnen ziehen sie sich zurück und verteidigen.
-. Aufspiel und Gegenangriff.</li>
+<li>Die 3 Verteidigerinnen beginnen auf der 3m Linie.</li>
+<li>Mit dem Aufspiel der Gegnerinnen ziehen sie sich 3m zurück und verteidigen.</li>
+<li>Aufspiel und Gegenangriff.</li>
 </ol>
 <h1>Hinweise</h1>
 <ul>
-<li>Nur der Hinterfeldangriff ist erlaubt.</li>
-<li>Beim 2. Ball sind Schupfer ins gesamte Feld erlaubt.</li>
-<li>Beim 3. Ball sind nur Angriffe in das Hinterfeld erlaubt, mit Ausnahme der
-extremen Diagonale für die Außenangreiferin und die Diagonalspielerin. <br />
-Diesen Bereich muss die freie Netzspielerin schützen - und die ist nicht da.</li>
+<li>Beim 2. Ball sind nur Schupfer in die Vorderzone erlaubt.</li>
+<li>Beim 3. Ball sind nur Angriffe in das Hinterfeld erlaubt.</li>
+</ul>
+<ul>
+<li>Aufspielerin Pos 2.</li>
+<li>Hilfsaufspielerin Pos 4.</li>
 </ul>
 <h1>Variationen</h1>
 <ul>
-<li>Eine Aufspielerin als Vorderspielerin dazunehmen - und die verteidigt dann jeweils die Diagonale.</li>
+<li>Nur Hinterfeldangriff erlauben.</li>
 </ul>
 <h1>Bälle/Geräte</h1>
-<p>1 Ball, Klebeband</p>
+<p>1 Ball</p>
 </div></div>

@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -372,12 +373,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 0.5
+      "at": "0.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 1.0
+      "at": "1.0"
     }
   ],
   "path_2": [
@@ -470,12 +471,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 3.5
+      "at": "3.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 4.3
+      "at": "4.3"
     }
   ],
   "path_9": [
@@ -562,12 +563,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 1.5
+      "at": "1.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 2.0
+      "at": "2.0"
     }
   ],
   "path_16": [

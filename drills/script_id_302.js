@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.9)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.95)');
   }
 }
 
@@ -254,344 +254,79 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "player_1": {
-    "x": 300.0,
-    "y": 50.0,
-    "angle": 180.0,
-    "scale": 1.0
-  },
-  "player_2": {
-    "x": 477.0,
-    "y": 123.0,
-    "angle": 225.0,
-    "scale": 1.0
-  },
-  "player_3": {
-    "x": 550.0,
-    "y": 300.0,
-    "angle": 270.0,
-    "scale": 1.0
-  },
-  "player_4": {
-    "x": 477.0,
-    "y": 477.0,
-    "angle": 315.0,
-    "scale": 1.0
-  },
-  "player_5": {
-    "x": 300.0,
-    "y": 550.0,
+  "ball_1": {
+    "x": 325.0,
+    "y": 950.0,
     "angle": 0.0,
     "scale": 1.0
   },
-  "player_6": {
-    "x": 123.0,
-    "y": 477.0,
-    "angle": 45.0,
-    "scale": 1.0
-  },
-  "player_7": {
-    "x": 50.0,
-    "y": 300.0,
-    "angle": 90.0,
-    "scale": 1.0
-  },
-  "player_8": {
-    "x": 123.0,
-    "y": 123.0,
-    "angle": 135.0,
-    "scale": 1.0
-  },
-  "ball_9": {
-    "x": 300.0,
-    "y": 75.0,
+  "ball_4": {
+    "x": 325.0,
+    "y": 950.0,
     "angle": 0.0,
     "scale": 1.0
   },
-  "ball_12": {
-    "x": 459.0,
-    "y": 141.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_15": {
-    "x": 525.0,
-    "y": 300.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_18": {
-    "x": 459.0,
-    "y": 459.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_21": {
-    "x": 300.0,
-    "y": 525.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_24": {
-    "x": 141.0,
-    "y": 459.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_27": {
-    "x": 75.0,
-    "y": 300.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_30": {
-    "x": 141.0,
-    "y": 141.0,
+  "ball_7": {
+    "x": 975.0,
+    "y": 950.0,
     "angle": 0.0,
     "scale": 1.0
   }
 };
 var animation = {
-  "player_1": [
+  "ball_1": [
     {
       "type": "mov",
-      "x": 177.0,
-      "y": 73.0,
+      "x": 650.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 0.0,
+      "end": 1.0
+    },
+    {
+      "type": "mov",
+      "x": -650.0,
+      "y": 0.0,
       "mode": "linear",
       "start": 1.0,
       "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
     }
   ],
-  "player_2": [
-    {
-      "type": "mov",
-      "x": 73.0,
-      "y": 177.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "player_3": [
-    {
-      "type": "mov",
-      "x": -73.0,
-      "y": 177.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "player_4": [
-    {
-      "type": "mov",
-      "x": -177.0,
-      "y": 73.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "player_5": [
-    {
-      "type": "mov",
-      "x": -177.0,
-      "y": -73.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "player_6": [
-    {
-      "type": "mov",
-      "x": -73.0,
-      "y": -177.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "player_7": [
-    {
-      "type": "mov",
-      "x": 73.0,
-      "y": -177.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "player_8": [
-    {
-      "type": "mov",
-      "x": 177.0,
-      "y": -73.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    },
-    {
-      "type": "rot",
-      "angle": 45.0,
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "ball_9": [
+  "ball_4": [
     {
       "type": "scale",
-      "scale": 0.6,
-      "start": 1.0,
-      "end": 1.5
+      "scale": 0.5,
+      "start": -1.0,
+      "end": -1.0
     },
     {
       "type": "scale",
-      "scale": -0.6,
+      "scale": -0.7,
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "type": "scale",
+      "scale": 0.7,
       "start": 1.5,
-      "end": 2.0
+      "end": 2.1
     }
   ],
-  "ball_12": [
+  "ball_7": [
     {
       "type": "scale",
-      "scale": 0.6,
-      "start": 1.0,
-      "end": 1.5
+      "scale": 0.7,
+      "start": 0.5,
+      "end": 1.1
     },
     {
       "type": "scale",
-      "scale": -0.6,
-      "start": 1.5,
-      "end": 2.0
-    }
-  ],
-  "ball_15": [
-    {
-      "type": "scale",
-      "scale": 0.6,
+      "scale": -0.7,
       "start": 1.0,
-      "end": 1.5
-    },
-    {
-      "type": "scale",
-      "scale": -0.6,
-      "start": 1.5,
-      "end": 2.0
-    }
-  ],
-  "ball_18": [
-    {
-      "type": "scale",
-      "scale": 0.6,
-      "start": 1.0,
-      "end": 1.5
-    },
-    {
-      "type": "scale",
-      "scale": -0.6,
-      "start": 1.5,
-      "end": 2.0
-    }
-  ],
-  "ball_21": [
-    {
-      "type": "scale",
-      "scale": 0.6,
-      "start": 1.0,
-      "end": 1.5
-    },
-    {
-      "type": "scale",
-      "scale": -0.6,
-      "start": 1.5,
-      "end": 2.0
-    }
-  ],
-  "ball_24": [
-    {
-      "type": "scale",
-      "scale": 0.6,
-      "start": 1.0,
-      "end": 1.5
-    },
-    {
-      "type": "scale",
-      "scale": -0.6,
-      "start": 1.5,
-      "end": 2.0
-    }
-  ],
-  "ball_27": [
-    {
-      "type": "scale",
-      "scale": 0.6,
-      "start": 1.0,
-      "end": 1.5
-    },
-    {
-      "type": "scale",
-      "scale": -0.6,
-      "start": 1.5,
-      "end": 2.0
-    }
-  ],
-  "ball_30": [
-    {
-      "type": "scale",
-      "scale": 0.6,
-      "start": 1.0,
-      "end": 1.5
-    },
-    {
-      "type": "scale",
-      "scale": -0.6,
-      "start": 1.5,
-      "end": 2.0
+      "end": 1.6
     }
   ]
 };

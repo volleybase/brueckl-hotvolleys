@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.555)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.45)');
   }
 }
 
@@ -254,924 +254,129 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "path_1": {
-    "visible": true
-  },
-  "arrow_2": {
-    "visible": true
-  },
-  "arrow_3": {
-    "visible": true
-  },
-  "arrow_4": {
-    "visible": true
-  },
-  "arrow_5": {
-    "visible": true
-  },
-  "draw_6": {
-    "draw": [
-      {
-        "dx": 235.0,
-        "dy": 310.0,
-        "angle": 0.0,
-        "length": 0.0,
-        "visible": true,
-        "predecessor": -1
-      },
-      {
-        "dx": -15.0,
-        "dy": 0.0,
-        "angle": 180.0,
-        "length": 15.0,
-        "visible": true,
-        "predecessor": 0
-      },
-      {
-        "dx": 0.0,
-        "dy": -50.0,
-        "angle": -90.0,
-        "length": 50.0,
-        "visible": true,
-        "predecessor": 1
-      },
-      {
-        "dx": -10.0,
-        "dy": -54.0,
-        "angle": -100.0,
-        "length": 55.0,
-        "visible": true,
-        "predecessor": 2
-      },
-      {
-        "dx": -2.0,
-        "dy": 53.0,
-        "angle": 92.0,
-        "length": 53.0,
-        "visible": true,
-        "predecessor": 3
-      },
-      {
-        "dx": -4.0,
-        "dy": 46.0,
-        "angle": 95.0,
-        "length": 46.0,
-        "visible": true,
-        "predecessor": 4
-      },
-      {
-        "dx": 15.0,
-        "dy": 1.0,
-        "angle": 3.0,
-        "length": 15.0,
-        "visible": true,
-        "predecessor": 5
-      },
-      {
-        "dx": 0.0,
-        "dy": -5.0,
-        "angle": -90.0,
-        "length": 5.0,
-        "visible": true,
-        "predecessor": 3
-      },
-      {
-        "dx": 0.0,
-        "dy": -75.0,
-        "angle": -90.0,
-        "length": 75.0,
-        "visible": true,
-        "predecessor": 7
-      },
-      {
-        "dx": 12.0,
-        "dy": -33.0,
-        "angle": -70.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 8
-      },
-      {
-        "dx": 0.0,
-        "dy": -35.0,
-        "angle": -90.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 9
-      },
-      {
-        "dx": 3.0,
-        "dy": 0.0,
-        "angle": 0.0,
-        "length": 3.0,
-        "visible": true,
-        "predecessor": 10
-      },
-      {
-        "dx": 1.0,
-        "dy": -20.0,
-        "angle": -88.0,
-        "length": 20.0,
-        "visible": true,
-        "predecessor": 8
-      },
-      {
-        "dx": 0.0,
-        "dy": -6.0,
-        "angle": -88.0,
-        "length": 6.0,
-        "visible": true,
-        "predecessor": 12
-      },
-      {
-        "dx": 0.0,
-        "dy": -6.0,
-        "angle": -88.0,
-        "length": 6.0,
-        "visible": true,
-        "predecessor": 12
-      },
-      {
-        "dx": 16.0,
-        "dy": -31.0,
-        "angle": -63.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 8
-      },
-      {
-        "dx": 0.0,
-        "dy": -35.0,
-        "angle": -90.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 15
-      }
-    ]
-  },
-  "draw_7": {
-    "draw": [
-      {
-        "dx": 135.0,
-        "dy": 310.0,
-        "angle": 0.0,
-        "length": 0.0,
-        "visible": true,
-        "predecessor": -1
-      },
-      {
-        "dx": 15.0,
-        "dy": 0.0,
-        "angle": 0.0,
-        "length": 15.0,
-        "visible": true,
-        "predecessor": 0
-      },
-      {
-        "dx": 0.0,
-        "dy": -50.0,
-        "angle": -90.0,
-        "length": 50.0,
-        "visible": true,
-        "predecessor": 1
-      },
-      {
-        "dx": 10.0,
-        "dy": -54.0,
-        "angle": -80.0,
-        "length": 55.0,
-        "visible": true,
-        "predecessor": 2
-      },
-      {
-        "dx": 2.0,
-        "dy": 53.0,
-        "angle": 88.0,
-        "length": 53.0,
-        "visible": true,
-        "predecessor": 3
-      },
-      {
-        "dx": 4.0,
-        "dy": 46.0,
-        "angle": 85.0,
-        "length": 46.0,
-        "visible": true,
-        "predecessor": 4
-      },
-      {
-        "dx": -15.0,
-        "dy": 1.0,
-        "angle": 177.0,
-        "length": 15.0,
-        "visible": true,
-        "predecessor": 5
-      },
-      {
-        "dx": 0.0,
-        "dy": -5.0,
-        "angle": -90.0,
-        "length": 5.0,
-        "visible": true,
-        "predecessor": 3
-      },
-      {
-        "dx": 0.0,
-        "dy": -75.0,
-        "angle": -90.0,
-        "length": 75.0,
-        "visible": true,
-        "predecessor": 7
-      },
-      {
-        "dx": -12.0,
-        "dy": -33.0,
-        "angle": -110.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 8
-      },
-      {
-        "dx": 0.0,
-        "dy": -35.0,
-        "angle": -90.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 9
-      },
-      {
-        "dx": -3.0,
-        "dy": 0.0,
-        "angle": 180.0,
-        "length": 3.0,
-        "visible": false,
-        "predecessor": 10
-      },
-      {
-        "dx": -1.0,
-        "dy": -20.0,
-        "angle": -92.0,
-        "length": 20.0,
-        "visible": true,
-        "predecessor": 8
-      },
-      {
-        "dx": 0.0,
-        "dy": -6.0,
-        "angle": -92.0,
-        "length": 6.0,
-        "visible": true,
-        "predecessor": 12
-      },
-      {
-        "dx": 0.0,
-        "dy": -6.0,
-        "angle": -92.0,
-        "length": 6.0,
-        "visible": true,
-        "predecessor": 12
-      },
-      {
-        "dx": -16.0,
-        "dy": -31.0,
-        "angle": -117.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 8
-      },
-      {
-        "dx": 0.0,
-        "dy": -35.0,
-        "angle": -90.0,
-        "length": 35.0,
-        "visible": true,
-        "predecessor": 15
-      }
-    ]
+  "ball_1": {
+    "x": 125.0,
+    "y": 70.0,
+    "angle": 0.0,
+    "scale": 1.0
   }
 };
 var animation = {
-  "path_1": [
+  "ball_1": [
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "arrow_2": [
+      "type": "mov",
+      "x": -80.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 0.0,
+      "end": 0.7
+    },
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "arrow_3": [
+      "type": "mov",
+      "x": 80.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 0.7,
+      "end": 1.4
+    },
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "arrow_4": [
+      "type": "mov",
+      "x": 40.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 1.4,
+      "end": 1.5999999999999999
+    },
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "arrow_5": [
+      "type": "mov",
+      "x": 40.0,
+      "y": 50.0,
+      "mode": "linear",
+      "start": 1.7,
+      "end": 2.2
+    },
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "draw_6": [
+      "type": "mov",
+      "x": 0.0,
+      "y": 60.0,
+      "mode": "linear",
+      "start": 2.1,
+      "end": 2.6
+    },
     {
-      "type": "draw",
-      "items": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -10.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 153.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -153.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 6.0
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          },
-          {
-            "type": "show",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 0.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.0,
-            "end": 1.0
-          },
-          {
-            "type": "show",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 0.0,
-            "length": 0.0,
-            "visible": true,
-            "start": 3.5,
-            "end": 3.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.0,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.0,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.0,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ]
-      ]
-    }
-  ],
-  "draw_7": [
+      "type": "mov",
+      "x": -40.0,
+      "y": 50.0,
+      "mode": "linear",
+      "start": 2.6,
+      "end": 3.1
+    },
     {
-      "type": "draw",
-      "items": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 10.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -153.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 153.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 6.0
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ],
-        [
-          {
-            "type": "show",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 0.0,
-            "length": 0.0,
-            "visible": true,
-            "start": 1.0,
-            "end": 1.0
-          },
-          {
-            "type": "show",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 0.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 3.5,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          },
-          {
-            "type": "show",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 0.0,
-            "length": 0.0,
-            "visible": true,
-            "start": 1.0,
-            "end": 1.0
-          },
-          {
-            "type": "show",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 0.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 3.5,
-            "end": 3.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.0,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.0,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.0,
-            "end": 3.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 160.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 260.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.0,
-            "end": 1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.5,
-            "end": 3.3
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 270.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 4.0,
-            "end": 5.8
-          }
-        ]
-      ]
+      "type": "mov",
+      "x": -40.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 3.1,
+      "end": 3.3000000000000003
+    },
+    {
+      "type": "mov",
+      "x": -80.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 3.3,
+      "end": 4.0
+    },
+    {
+      "type": "mov",
+      "x": 80.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 4.0,
+      "end": 4.7
+    },
+    {
+      "type": "mov",
+      "x": 40.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 4.7,
+      "end": 4.9
+    },
+    {
+      "type": "mov",
+      "x": 40.0,
+      "y": -50.0,
+      "mode": "linear",
+      "start": 4.9,
+      "end": 5.4
+    },
+    {
+      "type": "mov",
+      "x": 0.0,
+      "y": -60.0,
+      "mode": "linear",
+      "start": 5.4,
+      "end": 5.9
+    },
+    {
+      "type": "mov",
+      "x": -40.0,
+      "y": -50.0,
+      "mode": "linear",
+      "start": 5.9,
+      "end": 6.300000000000001
+    },
+    {
+      "type": "mov",
+      "x": -40.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 6.3,
+      "end": 6.5
     }
   ]
 };
@@ -1608,5 +813,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(6.5, 1.0);
+animator.initAnimation(6.5, 0.0);
 }());

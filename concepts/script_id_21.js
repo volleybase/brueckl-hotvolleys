@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -265,7 +266,7 @@ var animation0 = {
   "player_2": {
     "x": 550.0,
     "y": 350.0,
-    "angle": -170.0,
+    "angle": 190.0,
     "scale": 1.0
   },
   "player_3": {
@@ -307,37 +308,17 @@ var animation = {
     },
     {
       "type": "mov",
-      "x": 80.0,
-      "y": -200.0,
+      "x": -50.0,
+      "y": -240.0,
       "mode": "linear",
-      "start": 6.4,
-      "end": 6.800000000000001
-    },
-    {
-      "type": "mov",
-      "x": -130.0,
-      "y": -40.0,
-      "mode": "linear",
-      "start": 7.0,
-      "end": 7.5
+      "start": 6.9,
+      "end": 7.800000000000001
     },
     {
       "type": "rot",
       "angle": -10.0,
-      "start": 2.9,
-      "end": 3.1
-    },
-    {
-      "type": "rot",
-      "angle": -20.0,
-      "start": 3.5,
-      "end": 3.7
-    },
-    {
-      "type": "rot",
-      "angle": 20.0,
-      "start": 4.4,
-      "end": 4.6000000000000005
+      "start": 3.0,
+      "end": 3.2
     },
     {
       "type": "rot",
@@ -347,73 +328,45 @@ var animation = {
     },
     {
       "type": "rot",
-      "angle": 45.0,
-      "start": 6.5,
-      "end": 6.8
-    },
-    {
-      "type": "rot",
-      "angle": 35.0,
-      "start": 7.0,
-      "end": 7.2
-    },
-    {
-      "type": "rot",
-      "angle": -20.0,
-      "start": 8.1,
-      "end": 8.4
+      "angle": 80.0,
+      "start": 6.9,
+      "end": 7.1000000000000005
     }
   ],
   "player_2": [
     {
       "type": "mov",
-      "x": 170.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 5.5,
-      "end": 6.0
-    },
-    {
-      "type": "mov",
-      "x": -130.0,
+      "x": -70.0,
       "y": 210.0,
       "mode": "linear",
-      "start": 6.2,
-      "end": 6.8
+      "start": 6.4,
+      "end": 7.0
     },
     {
       "type": "mov",
-      "x": -40.0,
+      "x": 70.0,
       "y": -210.0,
       "mode": "linear",
-      "start": 7.4,
-      "end": 8.0
+      "start": 7.6,
+      "end": 8.2
     },
     {
       "type": "rot",
       "angle": 20.0,
-      "start": 4.5,
-      "end": 4.6
+      "start": 4.4,
+      "end": 4.5
     },
     {
       "type": "rot",
       "angle": -20.0,
-      "start": 7.5,
-      "end": 7.9
+      "start": 5.7,
+      "end": 5.8
     }
   ],
   "player_3": [
     {
       "type": "mov",
-      "x": -170.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 3.3,
-      "end": 3.8
-    },
-    {
-      "type": "mov",
-      "x": 130.0,
+      "x": 70.0,
       "y": -210.0,
       "mode": "linear",
       "start": 4.0,
@@ -421,45 +374,29 @@ var animation = {
     },
     {
       "type": "mov",
-      "x": 40.0,
+      "x": -70.0,
       "y": 210.0,
       "mode": "linear",
       "start": 5.2,
       "end": 5.8
     },
     {
-      "type": "mov",
-      "x": -170.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 7.7,
-      "end": 8.2
-    },
-    {
-      "type": "mov",
-      "x": 130.0,
-      "y": -210.0,
-      "mode": "linear",
-      "start": 8.4,
-      "end": 9.0
-    },
-    {
       "type": "rot",
       "angle": 20.0,
-      "start": 2.3,
-      "end": 2.4
+      "start": 2.2,
+      "end": 2.3000000000000003
     },
     {
       "type": "rot",
       "angle": -20.0,
-      "start": 5.3,
-      "end": 5.7
+      "start": 3.3,
+      "end": 3.4
     },
     {
       "type": "rot",
       "angle": 20.0,
-      "start": 6.3,
-      "end": 6.3999999999999995
+      "start": 6.7,
+      "end": 6.8
     }
   ],
   "player_4": [
@@ -473,19 +410,11 @@ var animation = {
     },
     {
       "type": "mov",
-      "x": -80.0,
-      "y": 200.0,
+      "x": 50.0,
+      "y": 240.0,
       "mode": "linear",
-      "start": 4.2,
-      "end": 4.6000000000000005
-    },
-    {
-      "type": "mov",
-      "x": 130.0,
-      "y": 40.0,
-      "mode": "linear",
-      "start": 4.8,
-      "end": 5.3
+      "start": 4.5,
+      "end": 5.5
     },
     {
       "type": "mov",
@@ -503,27 +432,9 @@ var animation = {
     },
     {
       "type": "rot",
-      "angle": 45.0,
-      "start": 4.3,
-      "end": 4.6
-    },
-    {
-      "type": "rot",
-      "angle": 35.0,
-      "start": 4.8,
-      "end": 5.0
-    },
-    {
-      "type": "rot",
-      "angle": -20.0,
-      "start": 5.4,
-      "end": 5.7
-    },
-    {
-      "type": "rot",
-      "angle": 20.0,
-      "start": 6.4,
-      "end": 6.7
+      "angle": 80.0,
+      "start": 4.5,
+      "end": 4.7
     },
     {
       "type": "rot",
@@ -551,7 +462,7 @@ var animation = {
     },
     {
       "type": "mov",
-      "x": -200.0,
+      "x": -100.0,
       "y": 0.0,
       "mode": "linear",
       "start": 4.0,
@@ -559,51 +470,43 @@ var animation = {
     },
     {
       "type": "mov",
-      "x": 260.0,
+      "x": 160.0,
       "y": -340.0,
       "mode": "linear",
       "start": 4.7,
-      "end": 5.2
+      "end": 5.4
     },
     {
       "type": "mov",
       "x": -170.0,
       "y": 210.0,
       "mode": "linear",
-      "start": 5.2,
-      "end": 6.2
+      "start": 5.4,
+      "end": 6.4
     },
     {
       "type": "mov",
-      "x": 200.0,
+      "x": 100.0,
       "y": 0.0,
       "mode": "linear",
-      "start": 6.2,
-      "end": 6.9
+      "start": 6.4,
+      "end": 7.1000000000000005
     },
     {
       "type": "mov",
-      "x": -260.0,
+      "x": -160.0,
       "y": 340.0,
       "mode": "linear",
-      "start": 6.9,
-      "end": 7.4
+      "start": 7.1,
+      "end": 7.8
     },
     {
       "type": "mov",
       "x": 170.0,
       "y": -210.0,
       "mode": "linear",
-      "start": 7.4,
-      "end": 8.4
-    },
-    {
-      "type": "mov",
-      "x": -200.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 8.4,
-      "end": 9.1
+      "start": 7.8,
+      "end": 8.8
     }
   ]
 };
@@ -1040,5 +943,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(8.5, 4.1);
+animator.initAnimation(8.3, 3.5);
 }());

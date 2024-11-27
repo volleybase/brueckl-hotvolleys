@@ -177,8 +177,8 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_vb_PlayerImpl_textoption_position': true,
-    'ID_window_editor_graphics_actor_ActorImpl_option_approach': false
+    'vb.PlayerImpl.textoption.position': true,
+    'window.editor.graphics.actor.ActorImpl.option.approach': false
   },
 
   reset: function(keys) {
@@ -255,5 +255,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

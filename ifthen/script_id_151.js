@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "path_1": {
@@ -403,27 +404,27 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": -1.0
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
       "playertype": "player set",
-      "at": 0.5
+      "at": "0.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 1.5
+      "at": "1.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player set",
-      "at": 3.5
+      "at": "3.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 4.5
+      "at": "4.5"
     }
   ],
   "ball_11": [

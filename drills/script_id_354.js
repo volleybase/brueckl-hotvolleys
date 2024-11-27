@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.405)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.345)');
   }
 }
 
@@ -254,164 +254,442 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "player_1": {
-    "x": 180.0,
-    "y": 100.0,
-    "angle": 90.0,
-    "scale": 1.0
+  "path_1": {
+    "visible": true
   },
-  "player_2": {
-    "x": 90.0,
-    "y": 100.0,
-    "angle": -90.0,
-    "scale": 1.0
+  "arrow_2": {
+    "visible": true
   },
-  "ball_3": {
-    "x": 230.0,
-    "y": 100.0,
-    "angle": 0.0,
-    "scale": 1.0
+  "arrow_3": {
+    "visible": true
+  },
+  "draw_4": {
+    "draw": [
+      {
+        "dx": 80.0,
+        "dy": 310.0,
+        "angle": 0.0,
+        "length": 0.0,
+        "visible": true,
+        "predecessor": -1
+      },
+      {
+        "dx": -15.0,
+        "dy": 0.0,
+        "angle": 180.0,
+        "length": 15.0,
+        "visible": true,
+        "predecessor": 0
+      },
+      {
+        "dx": 0.0,
+        "dy": -50.0,
+        "angle": -90.0,
+        "length": 50.0,
+        "visible": true,
+        "predecessor": 1
+      },
+      {
+        "dx": -10.0,
+        "dy": -54.0,
+        "angle": -100.0,
+        "length": 55.0,
+        "visible": true,
+        "predecessor": 2
+      },
+      {
+        "dx": -2.0,
+        "dy": 53.0,
+        "angle": 92.0,
+        "length": 53.0,
+        "visible": true,
+        "predecessor": 3
+      },
+      {
+        "dx": -4.0,
+        "dy": 46.0,
+        "angle": 95.0,
+        "length": 46.0,
+        "visible": true,
+        "predecessor": 4
+      },
+      {
+        "dx": 15.0,
+        "dy": 1.0,
+        "angle": 3.0,
+        "length": 15.0,
+        "visible": true,
+        "predecessor": 5
+      },
+      {
+        "dx": 0.0,
+        "dy": -5.0,
+        "angle": -90.0,
+        "length": 5.0,
+        "visible": true,
+        "predecessor": 3
+      },
+      {
+        "dx": 0.0,
+        "dy": -75.0,
+        "angle": -90.0,
+        "length": 75.0,
+        "visible": true,
+        "predecessor": 7
+      },
+      {
+        "dx": 12.0,
+        "dy": -33.0,
+        "angle": -70.0,
+        "length": 35.0,
+        "visible": true,
+        "predecessor": 8
+      },
+      {
+        "dx": 0.0,
+        "dy": -35.0,
+        "angle": -90.0,
+        "length": 35.0,
+        "visible": true,
+        "predecessor": 9
+      },
+      {
+        "dx": 3.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 3.0,
+        "visible": true,
+        "predecessor": 10
+      },
+      {
+        "dx": 1.0,
+        "dy": -20.0,
+        "angle": -88.0,
+        "length": 20.0,
+        "visible": true,
+        "predecessor": 8
+      },
+      {
+        "dx": 0.0,
+        "dy": -6.0,
+        "angle": -88.0,
+        "length": 6.0,
+        "visible": true,
+        "predecessor": 12
+      },
+      {
+        "dx": 0.0,
+        "dy": -6.0,
+        "angle": -88.0,
+        "length": 6.0,
+        "visible": true,
+        "predecessor": 12
+      },
+      {
+        "dx": 16.0,
+        "dy": -31.0,
+        "angle": -63.0,
+        "length": 35.0,
+        "visible": true,
+        "predecessor": 8
+      },
+      {
+        "dx": 0.0,
+        "dy": -35.0,
+        "angle": -90.0,
+        "length": 35.0,
+        "visible": true,
+        "predecessor": 15
+      }
+    ]
   }
 };
 var animation = {
-  "player_1": [
+  "path_1": [
     {
-      "type": "rot",
-      "angle": -135.0,
-      "start": 0.0,
-      "end": 1.5
-    },
-    {
-      "type": "rot",
-      "angle": 270.0,
-      "start": 2.0,
-      "end": 5.0
-    },
-    {
-      "type": "rot",
-      "angle": -135.0,
-      "start": 5.5,
-      "end": 7.0
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
     }
   ],
-  "player_2": [
+  "arrow_2": [
     {
-      "type": "rot",
-      "angle": 135.0,
-      "start": 0.0,
-      "end": 1.5
-    },
-    {
-      "type": "rot",
-      "angle": -270.0,
-      "start": 2.0,
-      "end": 5.0
-    },
-    {
-      "type": "rot",
-      "angle": 135.0,
-      "start": 5.5,
-      "end": 7.0
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
     }
   ],
-  "ball_3": [
+  "arrow_3": [
     {
-      "type": "mov",
-      "x": -15.0,
-      "y": -35.0,
-      "mode": "linear",
-      "start": 0.0,
-      "end": 0.5
-    },
+      "type": "vis",
+      "visible": false,
+      "at": -1.0
+    }
+  ],
+  "draw_4": [
     {
-      "type": "mov",
-      "x": -35.0,
-      "y": -15.0,
-      "mode": "linear",
-      "start": 0.5,
-      "end": 1.0
-    },
-    {
-      "type": "mov",
-      "x": -45.0,
-      "y": 15.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 1.75
-    },
-    {
-      "type": "mov",
-      "x": -45.0,
-      "y": -15.0,
-      "mode": "linear",
-      "start": 1.75,
-      "end": 2.5
-    },
-    {
-      "type": "mov",
-      "x": -35.0,
-      "y": 15.0,
-      "mode": "linear",
-      "start": 2.5,
-      "end": 3.0
-    },
-    {
-      "type": "mov",
-      "x": -15.0,
-      "y": 35.0,
-      "mode": "linear",
-      "start": 3.0,
-      "end": 3.5
-    },
-    {
-      "type": "mov",
-      "x": 15.0,
-      "y": 35.0,
-      "mode": "linear",
-      "start": 3.5,
-      "end": 4.0
-    },
-    {
-      "type": "mov",
-      "x": 35.0,
-      "y": 15.0,
-      "mode": "linear",
-      "start": 4.0,
-      "end": 4.5
-    },
-    {
-      "type": "mov",
-      "x": 45.0,
-      "y": -15.0,
-      "mode": "linear",
-      "start": 4.5,
-      "end": 5.25
-    },
-    {
-      "type": "mov",
-      "x": 45.0,
-      "y": 15.0,
-      "mode": "linear",
-      "start": 5.25,
-      "end": 6.0
-    },
-    {
-      "type": "mov",
-      "x": 35.0,
-      "y": -15.0,
-      "mode": "linear",
-      "start": 6.0,
-      "end": 6.5
-    },
-    {
-      "type": "mov",
-      "x": 15.0,
-      "y": -35.0,
-      "mode": "linear",
-      "start": 6.5,
-      "end": 7.0
+      "type": "draw",
+      "items": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -10.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 0.0,
+            "end": 1.0
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 153.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 1.5,
+            "end": 3.5
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -153.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 6.0
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -20.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 0.0,
+            "end": 1.0
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 260.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 1.5,
+            "end": 3.3
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -260.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.8
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -20.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 0.0,
+            "end": 1.0
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 270.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 1.5,
+            "end": 3.3
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -270.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.8
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 270.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 1.5,
+            "end": 3.3
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -270.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.8
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 160.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 2.0,
+            "end": 3.5
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -160.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.5
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 160.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 2.0,
+            "end": 3.5
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -160.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.5
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 160.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 2.0,
+            "end": 3.5
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -160.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.5
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -20.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 0.0,
+            "end": 1.0
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 260.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 1.5,
+            "end": 3.3
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -260.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.8
+          }
+        ],
+        [
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -20.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 0.0,
+            "end": 1.0
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": 270.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 1.5,
+            "end": 3.3
+          },
+          {
+            "type": "rel",
+            "dx": 0.0,
+            "dy": 0.0,
+            "angle": -270.0,
+            "length": 0.0,
+            "visible": false,
+            "start": 4.0,
+            "end": 5.8
+          }
+        ]
+      ]
     }
   ]
 };
@@ -848,5 +1126,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(7.0, 0.0);
+animator.initAnimation(6.5, 1.0);
 }());

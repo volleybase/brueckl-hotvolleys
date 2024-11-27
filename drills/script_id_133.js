@@ -177,7 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_lines': false
+
   },
 
   reset: function(keys) {
@@ -254,25 +254,25 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
-    "x": 650.0,
-    "y": 450.0,
-    "angle": 190.0,
-    "scale": 1.0,
-    "playertype": "player"
+    "playertype": "player attack"
   },
-  "player_2": {
-    "x": 900.0,
-    "y": 500.0,
-    "angle": 190.0,
+  "ball_2": {
+    "x": 400.0,
+    "y": 2075.0,
+    "angle": 0.0,
     "scale": 1.0,
-    "playertype": "player"
+    "visible": true
   },
-  "ball_3": {
-    "x": 498.0,
-    "y": 2064.0,
+  "player_5": {
+    "playertype": "player attack"
+  },
+  "ball_6": {
+    "x": 850.0,
+    "y": 2075.0,
     "angle": 0.0,
     "scale": 1.0,
     "visible": true
@@ -281,64 +281,53 @@ var animation0 = {
 var animation = {
   "player_1": [
     {
-      "type": "rot",
-      "angle": -90.0,
-      "start": 2.3,
-      "end": 2.6999999999999997
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "0.0"
     },
     {
       "type": "pla-typ",
-      "playertype": "player prepare-defense",
-      "at": 0.5
+      "playertype": "player attack",
+      "at": "1.1"
     },
     {
       "type": "pla-typ",
-      "playertype": "player defense",
-      "at": 2.3
+      "playertype": "player",
+      "at": "1.5"
     }
   ],
-  "player_2": [
-    {
-      "type": "rot",
-      "angle": 90.0,
-      "start": 2.3,
-      "end": 2.6999999999999997
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player prepare-defense",
-      "at": 0.5
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player defense",
-      "at": 2.3
-    }
-  ],
-  "ball_3": [
+  "ball_2": [
     {
       "type": "mov",
-      "x": -45.0,
-      "y": 35.0,
+      "x": 130.0,
+      "y": -1500.0,
       "mode": "linear",
       "start": -1.0,
       "end": -1.0
     },
     {
       "type": "mov",
-      "x": 45.0,
-      "y": -35.0,
+      "x": -130.0,
+      "y": 1500.0,
+      "mode": "linear",
+      "start": -1.0,
+      "end": -1.0
+    },
+    {
+      "type": "mov",
+      "x": 40.0,
+      "y": -50.0,
       "mode": "linear",
       "start": 0.5,
       "end": 1.3
     },
     {
       "type": "mov",
-      "x": 360.0,
-      "y": -2040.0,
+      "x": 100.0,
+      "y": -2000.0,
       "mode": "linear",
       "start": 1.3,
-      "end": 3.3
+      "end": 3.0
     },
     {
       "type": "scale",
@@ -355,7 +344,75 @@ var animation = {
     {
       "type": "vis",
       "visible": false,
-      "at": 3.3
+      "at": 3.0
+    }
+  ],
+  "player_5": [
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "0.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "2.1"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "2.5"
+    }
+  ],
+  "ball_6": [
+    {
+      "type": "mov",
+      "x": -70.0,
+      "y": -1600.0,
+      "mode": "linear",
+      "start": -1.0,
+      "end": -1.0
+    },
+    {
+      "type": "mov",
+      "x": 70.0,
+      "y": 1600.0,
+      "mode": "linear",
+      "start": -1.0,
+      "end": -1.0
+    },
+    {
+      "type": "mov",
+      "x": 40.0,
+      "y": -50.0,
+      "mode": "linear",
+      "start": 1.5,
+      "end": 2.3
+    },
+    {
+      "type": "mov",
+      "x": -140.0,
+      "y": -2000.0,
+      "mode": "linear",
+      "start": 2.3,
+      "end": 4.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 1.5,
+      "end": 1.9
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 1.9,
+      "end": 2.3
+    },
+    {
+      "type": "vis",
+      "visible": false,
+      "at": 4.0
     }
   ]
 };
@@ -792,5 +849,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(3.5, 0.0);
+animator.initAnimation(4.0, 0.0);
 }());

@@ -177,10 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_reception_center': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_reception_left': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_regions': true,
-    'ID_window_editor_graphics_actor_ActorImpl_option_reception_right': true
+    'window.editor.graphics.actor.ActorImpl.option.regions': true
   },
 
   reset: function(keys) {
@@ -257,5 +254,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

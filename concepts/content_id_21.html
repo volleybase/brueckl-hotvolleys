@@ -42,7 +42,7 @@
         <line x1="37.5" y1="0" x2="20" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round;"/>
       </g>
     </g>
-    <g id="player_2" class="player" transform="translate(550 350) rotate(-170)">
+    <g id="player_2" class="player" transform="translate(550 350) rotate(190)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -73,10 +73,9 @@
       </g>
     </g>
     <g class="move">
-      <line x1="0" y1="0" x2="95" y2="0" transform="translate(130 950)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-      <g transform="translate(130 950)">
-        <line x1="0" y1="0" x2="117" y2="-189" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="92.032,-175.054 117,-189 115.65,-160.433" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <g transform="translate(324 879)">
+        <line x1="0" y1="0" x2="46" y2="-139" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="24.96,-119.629 46,-139 51.331,-110.902" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
     <g id="player_3" class="player" transform="translate(300 950) rotate(10)">
@@ -114,10 +113,6 @@
         <line x1="0" y1="0" x2="-40" y2="-192" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
         <polyline points="-48.498,-164.693 -40,-192 -21.304,-170.358" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
-      <g transform="translate(481 756)">
-        <line x1="0" y1="0" x2="-61" y2="154" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="-38.881,135.872 -61,154 -64.706,125.642" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
-      </g>
     </g>
     <g id="player_4" class="player" transform="translate(550 950) rotate(-10)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
@@ -154,11 +149,11 @@
         <line x1="0" y1="0" x2="-112" y2="700" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
         <polyline points="-94.336,677.508 -112,700 -121.765,673.12" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
-      <line x1="0" y1="0" x2="-154" y2="191" transform="translate(475 715)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-      <line x1="0" y1="0" x2="200" y2="0" transform="translate(275 715)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-      <g transform="translate(275 715)">
-        <line x1="0" y1="0" x2="214" y2="-280" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
-        <polyline points="187.784,-268.571 214,-280 209.854,-251.703" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
+      <line x1="0" y1="0" x2="-170" y2="210" transform="translate(475 715)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+      <line x1="0" y1="0" x2="100" y2="0" transform="translate(375 715)" style="fill: none; stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+      <g transform="translate(375 715)">
+        <line x1="0" y1="0" x2="128" y2="-272" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
+        <polyline points="104.788,-255.293 128,-272 129.922,-243.466" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
     <g id="ball_5" transform="translate(425 175)">
@@ -288,7 +283,6 @@ g.player.set > g.set {
   display: block;
 }
 
-
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_stop"],
 g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"] {
   opacity: 0.5;
@@ -308,14 +302,14 @@ g#ID_animation.ID_mi_stop > g[data-item="ID_mi_pause"]:hover > rect {
   cursor: default;
 }
   </style>
-</svg></div><div class="text"><ul>
-<li>Wenn die Gegner ziemliche Anfänger sind oder</li>
-<li>wenn sie weiter fortgeschritten sind und den
-Gegner beobachten und darauf reagieren können,</li>
-<li>dann ist es wichtig darauf zu achten, dass das
-Zurückklatschen oder der Konterbagger nicht zu gefährlich wird.</li>
-</ul>
-<p>Klassische Angriffssicherung gegen den Block wird auf diesem Niveau noch
-nicht so entscheidend sein, aber man weiß ja nie...</p>
-<p>Die Aufspielerin muss sich nach dem Aufspiel sofort zur Feldmitte lösen und sichern.</p>
+</svg></div><div class="text"><p>Um der Angreiferin den Anlauf zu erleichtern, soll das Aufspiel eher in der Mitte bleiben (vgl. Beach: Enges Spielkonzept).</p>
+<ol>
+<li>Die Annahmespielerin spielt den Ball nach vorne zum Netz und etwas über die Mitte.</li>
+<li>Die Aufspielerin läuft nach vorne und spielt auf -
+noch nicht sehr hoch und vor allem nicht zu weit.</li>
+<li>Die Angreiferin kann ohne viel Vorbereitung den Anlauf beginnen und im Sprung den Ball über das Netz spielen. <br />
+Dabei möglichst auf den 3-Schritt-Anlauf achten. <br />
+Der Angriff bleibt lange ein beidhändiges Pritschen, ev. ein Drücken/Schupfen/Lobben. <br />
+(Nicht schlagen solange die Spielerinnen nicht hoch genug sind - Unterlaufen vermeiden!)</li>
+</ol>
 </div></div>

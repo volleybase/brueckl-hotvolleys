@@ -177,7 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_player': false
+
   },
 
   reset: function(keys) {
@@ -254,115 +254,108 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
-    "x": 300.0,
-    "y": 1150.0,
-    "angle": 0.0,
-    "scale": 1.0,
-    "playertype": "player",
-    "playertext": "1"
+    "playertype": "player set"
   },
   "player_2": {
-    "visible": true
+    "x": 300.0,
+    "y": 1500.0,
+    "angle": 45.0,
+    "scale": 1.0,
+    "playertype": "player"
   },
-  "player_3": {
-    "visible": true
-  },
-  "player_4": {
-    "visible": true
+  "ball_3": {
+    "x": 320.0,
+    "y": 1480.0,
+    "angle": 0.0,
+    "scale": 1.0
   }
 };
 var animation = {
   "player_1": [
     {
-      "type": "mov",
-      "x": 100.0,
-      "y": 350.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 1.5
-    },
-    {
-      "type": "mov",
-      "x": -300.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 2.5,
-      "end": 3.0
-    },
-    {
-      "type": "mov",
-      "x": 170.0,
-      "y": -300.0,
-      "mode": "linear",
-      "start": 3.5,
-      "end": 4.0
-    },
-    {
-      "type": "rot",
-      "angle": 50.0,
-      "start": 1.0,
-      "end": 1.2
-    },
-    {
-      "type": "rot",
-      "angle": -100.0,
-      "start": 2.5,
-      "end": 2.7
-    },
-    {
-      "type": "rot",
-      "angle": 80.0,
-      "start": 2.8,
-      "end": 3.0
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "-1.0"
     },
     {
       "type": "pla-typ",
-      "playertype": "player attack",
-      "at": 4.0
+      "playertype": "player set",
+      "at": "1.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": 4.3
-    },
-    {
-      "type": "pla-txt",
-      "playertext": "2",
-      "at": 1.3
-    },
-    {
-      "type": "pla-txt",
-      "playertext": "3",
-      "at": 2.8
-    },
-    {
-      "type": "pla-txt",
-      "playertext": "4",
-      "at": 3.6
+      "at": "2.2"
     }
   ],
   "player_2": [
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
+      "type": "mov",
+      "x": -200.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 1.3,
+      "end": 1.8
+    },
+    {
+      "type": "mov",
+      "x": 150.0,
+      "y": -270.0,
+      "mode": "linear",
+      "start": 2.4,
+      "end": 2.9
+    },
+    {
+      "type": "rot",
+      "angle": -60.0,
+      "start": 1.2,
+      "end": 1.4
+    },
+    {
+      "type": "rot",
+      "angle": 40.0,
+      "start": 1.7,
+      "end": 1.9
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "3.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "3.3"
     }
   ],
-  "player_3": [
+  "ball_3": [
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "player_4": [
+      "type": "mov",
+      "x": 400.0,
+      "y": -305.0,
+      "mode": "linear",
+      "start": 1.0,
+      "end": 2.0
+    },
     {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
+      "type": "mov",
+      "x": -410.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 2.0,
+      "end": 3.0
+    },
+    {
+      "type": "mov",
+      "x": 400.0,
+      "y": -700.0,
+      "mode": "linear",
+      "start": 3.0,
+      "end": 3.5
     }
   ]
 };
@@ -799,5 +792,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(5.0, 0.0);
+animator.initAnimation(4.5, 0.0);
 }());

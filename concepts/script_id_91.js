@@ -177,7 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_blockShadow': false
+    'window.editor.graphics.actor.ActorImpl.option.base': false
   },
 
   reset: function(keys) {
@@ -254,5 +254,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

@@ -11,4 +11,9 @@ function onContextMenu(event) {
 
 // set a context menu handler
 document.addEventListener('contextmenu', onContextMenu);
+
+function unregister() {
+  document.removeEventListener('contextmenu', onContextMenu);
+}
+window.unregister = unregister;
 }());

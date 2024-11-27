@@ -177,9 +177,8 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_player': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_block': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_support': false
+    'window.editor.graphics.frame.FrameImpl.grid1': false,
+    'window.editor.graphics.frame.FrameImpl.grid5': false
   },
 
   reset: function(keys) {
@@ -256,5 +255,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

@@ -177,8 +177,8 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_frame_FrameImpl_grid1': false,
-    'ID_window_editor_graphics_frame_FrameImpl_grid5': false
+    'window.editor.graphics.frame.FrameImpl.grid1': false,
+    'window.editor.graphics.frame.FrameImpl.grid5': false
   },
 
   reset: function(keys) {
@@ -255,5 +255,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

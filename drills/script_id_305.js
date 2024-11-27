@@ -254,136 +254,417 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "ball_1": {
-    "x": 350.0,
-    "y": 1225.0,
+  "player_1": {
+    "x": 500.0,
+    "y": 650.0,
+    "angle": 180.0,
+    "scale": 1.0,
+    "playertype": "player defense"
+  },
+  "player_2": {
+    "x": 800.0,
+    "y": 650.0,
+    "angle": 180.0,
+    "scale": 1.0,
+    "playertype": "player defense"
+  },
+  "player_3": {
+    "x": 500.0,
+    "y": 1550.0,
+    "angle": 0.0,
+    "scale": 1.0,
+    "playertype": "player attack"
+  },
+  "player_4": {
+    "x": 800.0,
+    "y": 1550.0,
+    "angle": 0.0,
+    "scale": 1.0,
+    "playertype": "player attack"
+  },
+  "ball_5": {
+    "x": 540.0,
+    "y": 1480.0,
     "angle": 0.0,
     "scale": 1.0
   },
-  "ball_4": {
-    "x": 350.0,
-    "y": 1875.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_7": {
-    "x": 550.0,
-    "y": 1225.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_10": {
-    "x": 550.0,
-    "y": 1875.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_13": {
-    "x": 750.0,
-    "y": 1225.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_16": {
-    "x": 750.0,
-    "y": 1875.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_19": {
-    "x": 950.0,
-    "y": 1225.0,
-    "angle": 0.0,
-    "scale": 1.0
-  },
-  "ball_22": {
-    "x": 950.0,
-    "y": 1875.0,
+  "ball_8": {
+    "x": 840.0,
+    "y": 1480.0,
     "angle": 0.0,
     "scale": 1.0
   }
 };
 var animation = {
-  "ball_1": [
+  "player_1": [
     {
-      "type": "mov",
-      "x": 0.0,
-      "y": 650.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
+      "type": "rot",
+      "angle": -10.0,
+      "start": 2.0,
+      "end": 2.2
+    },
+    {
+      "type": "rot",
+      "angle": 10.0,
+      "start": 2.8,
+      "end": 3.0
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "-1.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player prepare-defense",
+      "at": "0.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player defense",
+      "at": "1.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "2.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "2.4"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "2.7"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player prepare-defense",
+      "at": "3.0"
     }
   ],
-  "ball_4": [
+  "player_2": [
     {
-      "type": "mov",
-      "x": 0.0,
-      "y": -650.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
+      "type": "rot",
+      "angle": 10.0,
+      "start": 2.0,
+      "end": 2.2
+    },
+    {
+      "type": "rot",
+      "angle": -10.0,
+      "start": 2.8,
+      "end": 3.0
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "-1.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player prepare-defense",
+      "at": "0.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player defense",
+      "at": "1.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "2.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "2.4"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "2.7"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player prepare-defense",
+      "at": "3.0"
     }
   ],
-  "ball_7": [
+  "player_3": [
     {
-      "type": "mov",
-      "x": 0.0,
-      "y": 650.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
+      "type": "rot",
+      "angle": 10.0,
+      "start": 1.3,
+      "end": 1.5
+    },
+    {
+      "type": "rot",
+      "angle": -10.0,
+      "start": 3.5,
+      "end": 3.7
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "-1.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "0.9"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "1.2"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player prepare-defense",
+      "at": "1.5"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player defense",
+      "at": "2.5"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "3.5"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "3.9"
     }
   ],
-  "ball_10": [
+  "player_4": [
     {
-      "type": "mov",
-      "x": 0.0,
-      "y": -650.0,
-      "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
+      "type": "rot",
+      "angle": -10.0,
+      "start": 1.3,
+      "end": 1.5
+    },
+    {
+      "type": "rot",
+      "angle": 10.0,
+      "start": 3.5,
+      "end": 3.7
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "-1.0"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "0.9"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "1.2"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player prepare-defense",
+      "at": "1.5"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player defense",
+      "at": "2.5"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player",
+      "at": "3.5"
+    },
+    {
+      "type": "pla-typ",
+      "playertype": "player attack",
+      "at": "3.9"
     }
   ],
-  "ball_13": [
+  "ball_5": [
     {
       "type": "mov",
-      "x": 0.0,
-      "y": 650.0,
+      "x": -40.0,
+      "y": 45.0,
+      "mode": "linear",
+      "start": -1.0,
+      "end": -1.0
+    },
+    {
+      "type": "mov",
+      "x": 40.0,
+      "y": -45.0,
+      "mode": "linear",
+      "start": 0.2,
+      "end": 1.0
+    },
+    {
+      "type": "mov",
+      "x": -40.0,
+      "y": -780.0,
       "mode": "linear",
       "start": 1.0,
-      "end": 2.0
+      "end": 1.7
+    },
+    {
+      "type": "mov",
+      "x": -30.0,
+      "y": 20.0,
+      "mode": "linear",
+      "start": 1.7,
+      "end": 2.5
+    },
+    {
+      "type": "mov",
+      "x": 321.0,
+      "y": 780.0,
+      "mode": "linear",
+      "start": 2.5,
+      "end": 3.2
+    },
+    {
+      "type": "mov",
+      "x": 49.0,
+      "y": -20.0,
+      "mode": "linear",
+      "start": 3.2,
+      "end": 4.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 0.2,
+      "end": 0.6000000000000001
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 0.6000000000000001,
+      "end": 1.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 1.7,
+      "end": 2.1
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 2.1,
+      "end": 2.5
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 3.2,
+      "end": 3.6
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 3.6,
+      "end": 4.0
     }
   ],
-  "ball_16": [
+  "ball_8": [
     {
       "type": "mov",
-      "x": 0.0,
-      "y": -650.0,
+      "x": -40.0,
+      "y": 45.0,
       "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "ball_19": [
+      "start": -1.0,
+      "end": -1.0
+    },
     {
       "type": "mov",
-      "x": 0.0,
-      "y": 650.0,
+      "x": 40.0,
+      "y": -45.0,
       "mode": "linear",
-      "start": 1.0,
-      "end": 2.0
-    }
-  ],
-  "ball_22": [
+      "start": 0.2,
+      "end": 1.0
+    },
     {
       "type": "mov",
-      "x": 0.0,
-      "y": -650.0,
+      "x": -40.0,
+      "y": -780.0,
       "mode": "linear",
       "start": 1.0,
-      "end": 2.0
+      "end": 1.7
+    },
+    {
+      "type": "mov",
+      "x": -52.0,
+      "y": 8.0,
+      "mode": "linear",
+      "start": 1.7,
+      "end": 2.5
+    },
+    {
+      "type": "mov",
+      "x": -239.0,
+      "y": 790.0,
+      "mode": "linear",
+      "start": 2.5,
+      "end": 3.2
+    },
+    {
+      "type": "mov",
+      "x": 31.0,
+      "y": -18.0,
+      "mode": "linear",
+      "start": 3.2,
+      "end": 4.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 0.2,
+      "end": 0.6000000000000001
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 0.6000000000000001,
+      "end": 1.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 1.7,
+      "end": 2.1
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 2.1,
+      "end": 2.5
+    },
+    {
+      "type": "scale",
+      "scale": 0.5,
+      "start": 3.2,
+      "end": 3.6
+    },
+    {
+      "type": "scale",
+      "scale": -0.5,
+      "start": 3.6,
+      "end": 4.0
     }
   ]
 };
@@ -820,5 +1101,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(2.0, 1.0);
+animator.initAnimation(4.0, 1.0);
 }());

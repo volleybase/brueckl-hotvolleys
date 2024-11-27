@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "arrow_1": {
@@ -262,12 +263,52 @@ var animation0 = {
   "draw_2": {
     "draw": [
       {
-        "dx": 50.0,
-        "dy": 75.0,
+        "dx": 114.0,
+        "dy": 112.0,
         "angle": 0.0,
         "length": 0.0,
         "visible": true,
         "predecessor": -1
+      },
+      {
+        "dx": -20.0,
+        "dy": 0.0,
+        "angle": 180.0,
+        "length": 20.0,
+        "visible": true,
+        "predecessor": 0
+      },
+      {
+        "dx": -3.0,
+        "dy": 0.0,
+        "angle": 180.0,
+        "length": 3.5,
+        "visible": true,
+        "predecessor": 1
+      },
+      {
+        "dx": 0.0,
+        "dy": -50.0,
+        "angle": -90.0,
+        "length": 50.0,
+        "visible": true,
+        "predecessor": 2
+      },
+      {
+        "dx": 0.0,
+        "dy": -1.0,
+        "angle": -90.0,
+        "length": 1.0,
+        "visible": true,
+        "predecessor": 3
+      },
+      {
+        "dx": -45.0,
+        "dy": 0.0,
+        "angle": 180.0,
+        "length": 45.0,
+        "visible": true,
+        "predecessor": 4
       },
       {
         "dx": 0.0,
@@ -275,91 +316,55 @@ var animation0 = {
         "angle": -90.0,
         "length": 11.0,
         "visible": true,
-        "predecessor": 0
-      },
-      {
-        "dx": 40.0,
-        "dy": -5.0,
-        "angle": -7.1,
-        "length": 40.0,
-        "visible": true,
-        "predecessor": 1
-      },
-      {
-        "dx": 45.0,
-        "dy": -6.0,
-        "angle": -7.1,
-        "length": 45.0,
-        "visible": true,
-        "predecessor": 2
-      },
-      {
-        "dx": 60.0,
-        "dy": -7.0,
-        "angle": -7.1,
-        "length": 60.0,
-        "visible": true,
-        "predecessor": 3
-      },
-      {
-        "dx": 13.0,
-        "dy": -2.0,
-        "angle": -7.1,
-        "length": 13.0,
-        "visible": true,
-        "predecessor": 4
-      },
-      {
-        "dx": 0.0,
-        "dy": 0.0,
-        "angle": -7.1,
-        "length": 0.5,
-        "visible": true,
         "predecessor": 5
       },
       {
-        "dx": 4.0,
+        "dx": 40.0,
         "dy": 0.0,
-        "angle": -7.1,
-        "length": 4.0,
-        "visible": true,
-        "predecessor": 6
-      },
-      {
-        "dx": 4.0,
-        "dy": 0.0,
-        "angle": -7.1,
-        "length": 4.0,
-        "visible": true,
-        "predecessor": 6
-      }
-    ]
-  },
-  "draw_3": {
-    "draw": [
-      {
-        "dx": 220.0,
-        "dy": 76.0,
         "angle": 0.0,
-        "length": 0.0,
-        "visible": true,
-        "predecessor": -1
-      },
-      {
-        "dx": -25.0,
-        "dy": 0.0,
-        "angle": 180.0,
-        "length": 25.0,
+        "length": 40.0,
         "visible": true,
         "predecessor": 0
       },
       {
-        "dx": 0.0,
-        "dy": -30.0,
-        "angle": -90.0,
-        "length": 30.0,
+        "dx": 13.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 13.0,
         "visible": true,
-        "predecessor": 1
+        "predecessor": 7
+      },
+      {
+        "dx": 0.5,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 0.5,
+        "visible": true,
+        "predecessor": 8
+      },
+      {
+        "dx": 4.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 4.0,
+        "visible": true,
+        "predecessor": 9
+      },
+      {
+        "dx": 4.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 4.0,
+        "visible": true,
+        "predecessor": 9
+      },
+      {
+        "dx": 70.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 70.0,
+        "visible": true,
+        "predecessor": 7
       }
     ]
   }
@@ -386,26 +391,16 @@ var animation = {
             "length": 0.0,
             "visible": false,
             "start": 0.5,
-            "end": 1.25
+            "end": 1.5
           },
           {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -20.0,
+            "angle": -10.0,
             "length": 0.0,
             "visible": false,
-            "start": 1.25,
-            "end": 2.75
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 10.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.75,
+            "start": 2.5,
             "end": 3.5
           }
         ],
@@ -415,48 +410,11 @@ var animation = {
         [],
         [],
         [],
+        [],
+        [],
+        [],
+        [],
         []
-      ]
-    }
-  ],
-  "draw_3": [
-    {
-      "type": "draw",
-      "items": [
-        [],
-        [],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 3.5,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.5,
-            "end": 1.25
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -7.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.25,
-            "end": 2.75
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 3.5,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.75,
-            "end": 3.5
-          }
-        ]
       ]
     }
   ]
@@ -894,5 +852,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(3.5, 0.5);
+animator.initAnimation(4.0, 0.0);
 }());

@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.225)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.95)');
   }
 }
 
@@ -254,147 +254,723 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "draw_1": {
-    "draw": [
-      {
-        "dx": 50.0,
-        "dy": 125.0,
-        "angle": 0.0,
-        "length": 0.0,
-        "visible": true,
-        "predecessor": -1
-      },
-      {
-        "dx": 50.0,
-        "dy": 0.0,
-        "angle": 0.0,
-        "length": 50.0,
-        "visible": true,
-        "predecessor": 0
-      },
-      {
-        "dx": 0.0,
-        "dy": -45.0,
-        "angle": -90.0,
-        "length": 45.0,
-        "visible": true,
-        "predecessor": 1
-      }
-    ]
-  },
-  "arrow_2": {
-    "visible": true
-  },
-  "arrow_3": {
-    "visible": true
-  },
-  "ball_4": {
-    "x": 100.0,
-    "y": 55.0,
+  "ball_1": {
+    "x": 1050.0,
+    "y": 1225.0,
     "angle": 0.0,
-    "scale": 0.3
+    "scale": 1.0,
+    "visible": true
+  },
+  "player_4": {
+    "x": 1050.0,
+    "y": 1250.0,
+    "angle": 0.0,
+    "scale": 1.0
+  },
+  "ball_5": {
+    "x": 1050.0,
+    "y": 1225.0,
+    "angle": 0.0,
+    "scale": 1.0,
+    "visible": true
   }
 };
 var animation = {
-  "draw_1": [
-    {
-      "type": "draw",
-      "items": [
-        [],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 5.0,
-            "length": 0.0,
-            "visible": false,
-            "start": -1.0,
-            "end": -1.0
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -15.0,
-            "length": 0.0,
-            "visible": false,
-            "start": -0.375,
-            "end": 0.375
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 15.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.375,
-            "end": 1.125
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -15.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 1.125,
-            "end": 1.875
-          }
-        ],
-        []
-      ]
-    }
-  ],
-  "arrow_2": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "arrow_3": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "ball_4": [
+  "ball_1": [
     {
       "type": "mov",
       "x": 0.0,
-      "y": -20.0,
+      "y": -900.0,
       "mode": "linear",
-      "start": -1.0,
-      "end": -1.0
+      "start": 0.0,
+      "end": 3.0
+    },
+    {
+      "type": "mov",
+      "x": -800.0,
+      "y": 50.0,
+      "mode": "linear",
+      "start": 4.0,
+      "end": 4.0
     },
     {
       "type": "mov",
       "x": 0.0,
-      "y": 30.0,
+      "y": 900.0,
       "mode": "linear",
-      "start": -0.5,
+      "start": 12.0,
+      "end": 15.0
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 0.0,
       "end": 0.25
     },
     {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 0.25,
+      "end": 0.5
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 0.5,
+      "end": 0.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 0.75,
+      "end": 1.0
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 1.0,
+      "end": 1.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 1.25,
+      "end": 1.5
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 1.5,
+      "end": 1.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 1.75,
+      "end": 2.0
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 2.0,
+      "end": 2.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 2.25,
+      "end": 2.5
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 2.5,
+      "end": 2.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 2.75,
+      "end": 3.0
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 12.0,
+      "end": 12.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 12.25,
+      "end": 12.5
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 12.5,
+      "end": 12.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 12.75,
+      "end": 13.0
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 13.0,
+      "end": 13.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 13.25,
+      "end": 13.5
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 13.5,
+      "end": 13.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 13.75,
+      "end": 14.0
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 14.0,
+      "end": 14.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 14.25,
+      "end": 14.5
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 14.5,
+      "end": 14.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 14.75,
+      "end": 15.0
+    },
+    {
+      "type": "vis",
+      "visible": true,
+      "at": 0.0
+    },
+    {
+      "type": "vis",
+      "visible": false,
+      "at": 3.0
+    },
+    {
+      "type": "vis",
+      "visible": true,
+      "at": 11.9
+    },
+    {
+      "type": "vis",
+      "visible": false,
+      "at": 15.0
+    }
+  ],
+  "player_4": [
+    {
       "type": "mov",
       "x": 0.0,
-      "y": -30.0,
+      "y": -900.0,
       "mode": "linear",
-      "start": 0.25,
-      "end": 1.0
+      "start": 0.0,
+      "end": 3.0
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 3.5,
+      "end": 4.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 4.5,
+      "end": 5.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 5.5,
+      "end": 6.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 6.5,
+      "end": 7.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 7.5,
+      "end": 8.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 8.5,
+      "end": 9.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 9.5,
+      "end": 10.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 10.5,
+      "end": 11.25
     },
     {
       "type": "mov",
       "x": 0.0,
-      "y": 30.0,
+      "y": 900.0,
       "mode": "linear",
-      "start": 1.0,
-      "end": 1.75
+      "start": 12.0,
+      "end": 15.0
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 15.65,
+      "end": 16.05
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 16.4,
+      "end": 16.799999999999997
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 17.15,
+      "end": 17.549999999999997
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 17.9,
+      "end": 18.299999999999997
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 18.65,
+      "end": 19.049999999999997
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 19.4,
+      "end": 19.799999999999997
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 20.15,
+      "end": 20.549999999999997
+    },
+    {
+      "type": "mov",
+      "x": 100.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 20.9,
+      "end": 21.299999999999997
+    },
+    {
+      "type": "rot",
+      "angle": -90.0,
+      "start": 3.1,
+      "end": 3.4
+    },
+    {
+      "type": "rot",
+      "angle": -90.0,
+      "start": 11.6,
+      "end": 11.9
+    },
+    {
+      "type": "rot",
+      "angle": -90.0,
+      "start": 15.1,
+      "end": 15.4
+    },
+    {
+      "type": "rot",
+      "angle": -90.0,
+      "start": 21.6,
+      "end": 21.900000000000002
+    }
+  ],
+  "ball_5": [
+    {
+      "type": "mov",
+      "x": 0.0,
+      "y": -900.0,
+      "mode": "linear",
+      "start": 0.0,
+      "end": 3.0
+    },
+    {
+      "type": "mov",
+      "x": -25.0,
+      "y": 25.0,
+      "mode": "linear",
+      "start": 3.1,
+      "end": 3.4
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 3.5,
+      "end": 4.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 4.5,
+      "end": 5.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 5.5,
+      "end": 6.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 6.5,
+      "end": 7.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 7.5,
+      "end": 8.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 8.5,
+      "end": 9.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": -200.0,
+      "mode": "linear",
+      "start": 9.5,
+      "end": 10.25
+    },
+    {
+      "type": "mov",
+      "x": -100.0,
+      "y": 200.0,
+      "mode": "linear",
+      "start": 10.5,
+      "end": 11.25
+    },
+    {
+      "type": "mov",
+      "x": 25.0,
+      "y": 25.0,
+      "mode": "linear",
+      "start": 11.6,
+      "end": 11.9
+    },
+    {
+      "type": "mov",
+      "x": 0.0,
+      "y": 900.0,
+      "mode": "linear",
+      "start": 12.0,
+      "end": 15.0
+    },
+    {
+      "type": "mov",
+      "x": 25.0,
+      "y": -25.0,
+      "mode": "linear",
+      "start": 15.1,
+      "end": 15.4
+    },
+    {
+      "type": "mov",
+      "x": 800.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 15.5,
+      "end": 21.5
+    },
+    {
+      "type": "mov",
+      "x": -25.0,
+      "y": -25.0,
+      "mode": "linear",
+      "start": 21.6,
+      "end": 21.900000000000002
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 3.5,
+      "end": 3.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 3.875,
+      "end": 4.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 4.5,
+      "end": 4.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 4.875,
+      "end": 5.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 5.5,
+      "end": 5.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 5.875,
+      "end": 6.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 6.5,
+      "end": 6.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 6.875,
+      "end": 7.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 7.5,
+      "end": 7.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 7.875,
+      "end": 8.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 8.5,
+      "end": 8.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 8.875,
+      "end": 9.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 9.5,
+      "end": 9.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 9.875,
+      "end": 10.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 10.5,
+      "end": 10.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 10.875,
+      "end": 11.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 15.5,
+      "end": 15.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 15.875,
+      "end": 16.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 16.25,
+      "end": 16.625
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 16.625,
+      "end": 17.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 17.0,
+      "end": 17.375
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 17.375,
+      "end": 17.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 17.75,
+      "end": 18.125
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 18.125,
+      "end": 18.5
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 18.5,
+      "end": 18.875
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 18.875,
+      "end": 19.25
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 19.25,
+      "end": 19.625
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 19.625,
+      "end": 20.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 20.0,
+      "end": 20.375
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 20.375,
+      "end": 20.75
+    },
+    {
+      "type": "scale",
+      "scale": 0.75,
+      "start": 20.75,
+      "end": 21.125
+    },
+    {
+      "type": "scale",
+      "scale": -0.75,
+      "start": 21.125,
+      "end": 21.5
+    },
+    {
+      "type": "vis",
+      "visible": false,
+      "at": 0.0
+    },
+    {
+      "type": "vis",
+      "visible": true,
+      "at": 3.0
+    },
+    {
+      "type": "vis",
+      "visible": false,
+      "at": 11.9
+    },
+    {
+      "type": "vis",
+      "visible": true,
+      "at": 15.0
     }
   ]
 };
@@ -831,5 +1407,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(1.5, 0.0);
+animator.initAnimation(23.0, 0.0);
 }());

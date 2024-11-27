@@ -177,7 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_graphics_actor_ActorImpl_option_lines': false
+    'window.editor.graphics.actor.ActorImpl.option.lines': false
   },
 
   reset: function(keys) {
@@ -254,6 +254,7 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "player_1": {
@@ -289,12 +290,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 0.5
+      "at": "0.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player defense",
-      "at": 2.3
+      "at": "2.3"
     }
   ],
   "player_2": [
@@ -307,12 +308,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": 0.5
+      "at": "0.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player defense",
-      "at": 2.3
+      "at": "2.3"
     }
   ],
   "ball_3": [

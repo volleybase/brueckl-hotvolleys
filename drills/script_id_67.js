@@ -254,187 +254,85 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
-  "ellipse_1": {
-    "visible": true
-  },
-  "path_2": {
-    "visible": true
-  },
-  "text_3": {
-    "visible": true
-  },
-  "ball_4": {
-    "x": 720.0,
-    "y": 1175.0,
+  "player_1": {
+    "x": 300.0,
+    "y": 1500.0,
     "angle": 0.0,
     "scale": 1.0
   },
-  "player_7": {
-    "x": 300.0,
-    "y": 1150.0,
+  "player_2": {
+    "x": 625.0,
+    "y": 1475.0,
+    "angle": 5.0,
+    "scale": 1.0
+  },
+  "player_3": {
+    "x": 1000.0,
+    "y": 1500.0,
     "angle": 0.0,
-    "scale": 1.0,
-    "playertype": "player"
-  },
-  "ellipse_8": {
-    "visible": true
-  },
-  "player_9": {
-    "visible": true
+    "scale": 1.0
   }
 };
 var animation = {
-  "ellipse_1": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 4.7
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 5.5
-    }
-  ],
-  "path_2": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0E-4
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 4.7
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 5.5
-    }
-  ],
-  "text_3": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    },
-    {
-      "type": "vis",
-      "visible": true,
-      "at": 4.7
-    },
-    {
-      "type": "vis",
-      "visible": false,
-      "at": 5.5
-    }
-  ],
-  "ball_4": [
-    {
-      "type": "mov",
-      "x": -400.0,
-      "y": 0.0,
-      "mode": "linear",
-      "start": 5.0,
-      "end": 6.0
-    },
-    {
-      "type": "mov",
-      "x": 300.0,
-      "y": -600.0,
-      "mode": "linear",
-      "start": 6.0,
-      "end": 6.5
-    }
-  ],
-  "player_7": [
-    {
-      "type": "mov",
-      "x": 0.0,
-      "y": 850.0,
-      "mode": "linear",
-      "start": 0.5,
-      "end": 2.7
-    },
-    {
-      "type": "mov",
-      "x": 0.0,
-      "y": -550.0,
-      "mode": "linear",
-      "start": 2.7,
-      "end": 4.7
-    },
+  "player_1": [
     {
       "type": "mov",
       "x": -200.0,
-      "y": 50.0,
+      "y": 0.0,
       "mode": "linear",
-      "start": 4.8,
-      "end": 5.3
+      "start": 0.5,
+      "end": 1.0
     },
     {
       "type": "mov",
       "x": 150.0,
-      "y": -280.0,
+      "y": -290.0,
       "mode": "linear",
-      "start": 5.3,
-      "end": 5.8
+      "start": 1.5,
+      "end": 2.0
     },
     {
       "type": "rot",
-      "angle": -180.0,
-      "start": 0.4,
-      "end": 0.6000000000000001
+      "angle": 25.0,
+      "start": 0.8,
+      "end": 1.0
+    }
+  ],
+  "player_2": [
+    {
+      "type": "mov",
+      "x": 25.0,
+      "y": -275.0,
+      "mode": "linear",
+      "start": 0.5,
+      "end": 1.0
+    }
+  ],
+  "player_3": [
+    {
+      "type": "mov",
+      "x": 150.0,
+      "y": 0.0,
+      "mode": "linear",
+      "start": 0.5,
+      "end": 1.0
     },
     {
-      "type": "rot",
-      "angle": -180.0,
-      "start": 2.6,
-      "end": 2.8000000000000003
+      "type": "mov",
+      "x": -80.0,
+      "y": -300.0,
+      "mode": "linear",
+      "start": 1.5,
+      "end": 2.0
     },
     {
       "type": "rot",
       "angle": -20.0,
-      "start": 4.7,
-      "end": 4.9
-    },
-    {
-      "type": "rot",
-      "angle": 50.0,
-      "start": 5.2,
-      "end": 5.4
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player attack",
-      "at": 5.9
-    },
-    {
-      "type": "pla-typ",
-      "playertype": "player",
-      "at": 6.2
-    }
-  ],
-  "ellipse_8": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "player_9": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
+      "start": 0.8,
+      "end": 1.0
     }
   ]
 };
@@ -871,5 +769,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(7.0, 0.0);
+animator.initAnimation(3.0, 0.0);
 }());

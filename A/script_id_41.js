@@ -177,12 +177,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_vb_CourtImpl_grid1': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_approach_none': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_anlauf_v': false,
-    'ID_vb_CourtImpl_grid5': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_anlauf_h': false,
-    'ID_window_editor_graphics_actor_ActorImpl_option_block_shadow': false
+    'window.editor.graphics.actor.ActorImpl.option.block_shadow': true
   },
 
   reset: function(keys) {
@@ -259,5 +254,6 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 }());

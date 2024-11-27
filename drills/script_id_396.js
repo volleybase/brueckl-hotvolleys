@@ -146,7 +146,7 @@ function showContextMenu(x, y) {
       svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
     }
 
-    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.3)');
+    cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(0.375)');
   }
 }
 
@@ -254,133 +254,101 @@ $$('g.submenuitem').forEach((sub) => {
     }
   });
 });
+
 //-- create menu script -----------------------------------------------
 var animation0 = {
   "arrow_1": {
     "visible": true
   },
-  "arrow_2": {
-    "visible": true
-  },
-  "arrow_3": {
-    "visible": true
-  },
-  "arrow_4": {
-    "visible": true
-  },
-  "draw_5": {
+  "draw_2": {
     "draw": [
       {
-        "dx": 100.0,
-        "dy": 150.0,
+        "dx": 130.0,
+        "dy": 65.0,
         "angle": 0.0,
         "length": 0.0,
         "visible": true,
         "predecessor": -1
       },
       {
-        "dx": 4.5,
+        "dx": -3.0,
         "dy": 0.0,
-        "angle": 0.0,
-        "length": 4.5,
+        "angle": 180.0,
+        "length": 3.5,
         "visible": true,
         "predecessor": 0
       },
       {
-        "dx": 17.0,
-        "dy": 47.0,
-        "angle": 70.0,
-        "length": 50.0,
+        "dx": -45.0,
+        "dy": -4.0,
+        "angle": 185.0,
+        "length": 45.0,
         "visible": true,
         "predecessor": 1
       },
       {
-        "dx": 15.0,
-        "dy": 42.0,
-        "angle": 70.0,
-        "length": 45.0,
+        "dx": -39.0,
+        "dy": -7.0,
+        "angle": 190.0,
+        "length": 40.0,
         "visible": true,
         "predecessor": 2
       },
       {
-        "dx": -4.0,
+        "dx": -5.0,
+        "dy": 10.0,
+        "angle": 115.0,
+        "length": 11.0,
+        "visible": true,
+        "predecessor": 3
+      },
+      {
+        "dx": 60.0,
         "dy": 0.0,
-        "angle": 180.0,
-        "length": 4.5,
+        "angle": 0.0,
+        "length": 60.0,
         "visible": true,
         "predecessor": 0
       },
       {
-        "dx": -17.0,
-        "dy": 47.0,
-        "angle": 110.0,
-        "length": 50.0,
-        "visible": true,
-        "predecessor": 4
-      },
-      {
-        "dx": -15.0,
-        "dy": 42.0,
-        "angle": 110.0,
-        "length": 45.0,
+        "dx": 13.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 13.0,
         "visible": true,
         "predecessor": 5
       },
       {
-        "dx": 0.0,
-        "dy": -60.0,
-        "angle": -90.0,
-        "length": 60.0,
+        "dx": 0.5,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 0.5,
         "visible": true,
-        "predecessor": 0
+        "predecessor": 6
       },
       {
-        "dx": 7.0,
-        "dy": -2.0,
-        "angle": -15.0,
-        "length": 7.0,
-        "visible": true,
-        "predecessor": 7
-      },
-      {
-        "dx": 40.0,
-        "dy": -45.0,
-        "angle": -48.0,
-        "length": 60.0,
-        "visible": true,
-        "predecessor": 8
-      },
-      {
-        "dx": -7.0,
-        "dy": -2.0,
-        "angle": 195.0,
-        "length": 7.0,
-        "visible": true,
-        "predecessor": 7
-      },
-      {
-        "dx": -40.0,
-        "dy": -45.0,
-        "angle": -132.0,
-        "length": 60.0,
-        "visible": true,
-        "predecessor": 10
-      },
-      {
-        "dx": 0.0,
-        "dy": -14.0,
-        "angle": -90.0,
-        "length": 14.0,
-        "visible": true,
-        "predecessor": 7
-      },
-      {
-        "dx": 0.0,
-        "dy": -4.0,
-        "angle": -90.0,
+        "dx": 4.0,
+        "dy": 0.0,
+        "angle": 0.0,
         "length": 4.0,
         "visible": true,
-        "predecessor": 12
+        "predecessor": 7
+      },
+      {
+        "dx": 4.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 4.0,
+        "visible": true,
+        "predecessor": 7
+      },
+      {
+        "dx": 16.0,
+        "dy": 0.0,
+        "angle": 0.0,
+        "length": 16.0,
+        "visible": true,
+        "predecessor": 5
       }
     ]
   }
@@ -393,28 +361,7 @@ var animation = {
       "at": -1.0
     }
   ],
-  "arrow_2": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "arrow_3": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "arrow_4": [
-    {
-      "type": "vis",
-      "visible": false,
-      "at": -1.0
-    }
-  ],
-  "draw_5": [
+  "draw_2": [
     {
       "type": "draw",
       "items": [
@@ -425,31 +372,21 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 20.0,
-            "length": 0.0,
+            "angle": 5.0,
+            "length": 1.0,
             "visible": false,
             "start": 0.5,
-            "end": 2.5
+            "end": 1.5
           },
           {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -40.0,
-            "length": 0.0,
+            "angle": -5.0,
+            "length": -1.0,
             "visible": false,
             "start": 2.5,
-            "end": 6.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 6.5,
-            "end": 8.5
+            "end": 3.5
           }
         ],
         [
@@ -457,165 +394,28 @@ var animation = {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": 20.0,
+            "angle": 5.0,
             "length": 0.0,
             "visible": false,
             "start": 0.5,
-            "end": 2.5
+            "end": 1.5
           },
           {
             "type": "rel",
             "dx": 0.0,
             "dy": 0.0,
-            "angle": -40.0,
+            "angle": -5.0,
             "length": 0.0,
             "visible": false,
             "start": 2.5,
-            "end": 6.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 6.5,
-            "end": 8.5
-          }
-        ],
-        [],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.5,
-            "end": 2.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 40.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.5,
-            "end": 6.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 6.5,
-            "end": 8.5
-          }
-        ],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.5,
-            "end": 2.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 40.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.5,
-            "end": 6.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -20.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 6.5,
-            "end": 8.5
+            "end": 3.5
           }
         ],
         [],
         [],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -45.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.5,
-            "end": 2.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 90.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.5,
-            "end": 6.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -45.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 6.5,
-            "end": 8.5
-          }
-        ],
         [],
-        [
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 45.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 0.5,
-            "end": 2.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": -90.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 2.5,
-            "end": 6.5
-          },
-          {
-            "type": "rel",
-            "dx": 0.0,
-            "dy": 0.0,
-            "angle": 45.0,
-            "length": 0.0,
-            "visible": false,
-            "start": 6.5,
-            "end": 8.5
-          }
-        ],
+        [],
+        [],
         [],
         []
       ]
@@ -1055,5 +855,5 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(8.5, 0.5);
+animator.initAnimation(4.0, 0.0);
 }());
