@@ -195,7 +195,7 @@ label.tree-menu {
   
   cursor: pointer;
 }
-label.tree-menu > div {
+label.tree-menu > span {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -313,6 +313,16 @@ div.item > label {
   border-radius: 50%;
   text-align: center;
 }
+.touch div.item > label {
+  top: 6px;
+  left: 6px;
+  height: 38px;
+  width: 38px;
+}
+.touch div.item > label > img {
+  height: 38px;
+  width: 38px;
+}
 
 div.item > .item-header {
   display: block;
@@ -326,7 +336,11 @@ div.item > .item-header {
   font-size: 1.4em;
   font-weight: bold;
 }
-div.item.root > .item-header {
+.touch div.item > .item-header {
+  margin-left: 46px;
+}
+div.item.root > .item-header, 
+.touch div.item.root > .item-header {
   margin: 0;
 }
 
@@ -344,11 +358,11 @@ div.item > span.item-header > span.icon {
   font-size: 1.75em;
 }
 div.item > span.item-header > img {
-    position: absolute;
-    left: 2px;
-    width: 46px;
-    top: 2px;
-    height: 46px;
+  position: absolute;
+  left: 2px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
 }
 div.item > .item-header > span.header {
   position: absolute;
@@ -358,7 +372,7 @@ div.item > .item-header > span.header {
 }
 div.item > .item-header > span.text {
   position: absolute;
-  padding: 12px 10px 12px 50px;
+  padding: 12px 10px 16px 50px;
 }
 div.item > .item-header:hover, div.item > .item-header:hover > span.text {
   background-color: #CCCCCC;
@@ -394,6 +408,9 @@ div.footer {
 }
 
   </style>
+<script>
+  document.documentElement.className += (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
+</script>
   <script>
 function init() {
   var items = document.querySelectorAll("div.tree span.item-header");
@@ -570,16 +587,16 @@ function toggleFullscreen() {
 </svg>
 </div>
 
-<label class="tree-menu" for="tree-toggle"><div>=</div></label>
+<label class="tree-menu" for="tree-toggle"><span>=</span></label>
 <input type="checkbox" checked id="tree-toggle" />
 <div class="tree"><div class="tree-bg">&nbsp;</div><div class="tree-content"><div class="item root">
- <span class="item-header" data-id="id_1"><span class="text">Jonglieren</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Jonglieren lernen</span></span>
+ <span class="item-header" data-id="a039019a-b5d4-4180-8786-1ad2c84c2549"><span class="text">Jonglieren</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000102.svg" /><span class="footer">Jonglieren lernen</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_2"><span class="text">Ballwurf</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Armhaltung und Ballwurf</span></span>
+ <span class="item-header" data-id="01ee83f4-bb7e-14ea-a660-a2ec8e3efd60"><span class="text">Ballwurf</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Armhaltung und Ballwurf</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_3"><span class="text">2 Bälle</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Grundbewegung mit 2 Bällen lernen und üben</span></span>
+ <span class="item-header" data-id="01ef1e7c-34c0-1c00-a357-b4c0e3543ff8"><span class="text">2 Bälle</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Grundbewegung mit 2 Bällen lernen und üben</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_4"><span class="text">3 Bälle</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Grundbewegung mit 3 Bällen lernen und üben</span></span>
+ <span class="item-header" data-id="01ef1e87-0bf9-1992-a41d-69af4b4420a5"><span class="text">3 Bälle</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000103.svg" /><span class="footer">Die Grundbewegung mit 3 Bällen lernen und üben</span></span>
 </div></div></div>
 
 <div class="content"><div class="container"></div>

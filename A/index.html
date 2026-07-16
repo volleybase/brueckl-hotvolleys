@@ -195,7 +195,7 @@ label.tree-menu {
   
   cursor: pointer;
 }
-label.tree-menu > div {
+label.tree-menu > span {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -313,6 +313,16 @@ div.item > label {
   border-radius: 50%;
   text-align: center;
 }
+.touch div.item > label {
+  top: 6px;
+  left: 6px;
+  height: 38px;
+  width: 38px;
+}
+.touch div.item > label > img {
+  height: 38px;
+  width: 38px;
+}
 
 div.item > .item-header {
   display: block;
@@ -326,7 +336,11 @@ div.item > .item-header {
   font-size: 1.4em;
   font-weight: bold;
 }
-div.item.root > .item-header {
+.touch div.item > .item-header {
+  margin-left: 46px;
+}
+div.item.root > .item-header, 
+.touch div.item.root > .item-header {
   margin: 0;
 }
 
@@ -344,11 +358,11 @@ div.item > span.item-header > span.icon {
   font-size: 1.75em;
 }
 div.item > span.item-header > img {
-    position: absolute;
-    left: 2px;
-    width: 46px;
-    top: 2px;
-    height: 46px;
+  position: absolute;
+  left: 2px;
+  width: 46px;
+  top: 2px;
+  height: 46px;
 }
 div.item > .item-header > span.header {
   position: absolute;
@@ -358,7 +372,7 @@ div.item > .item-header > span.header {
 }
 div.item > .item-header > span.text {
   position: absolute;
-  padding: 12px 10px 12px 50px;
+  padding: 12px 10px 16px 50px;
 }
 div.item > .item-header:hover, div.item > .item-header:hover > span.text {
   background-color: #CCCCCC;
@@ -394,6 +408,9 @@ div.footer {
 }
 
   </style>
+<script>
+  document.documentElement.className += (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
+</script>
   <script>
 function init() {
   var items = document.querySelectorAll("div.tree span.item-header");
@@ -570,212 +587,77 @@ function toggleFullscreen() {
 </svg>
 </div>
 
-<label class="tree-menu" for="tree-toggle"><div>=</div></label>
+<label class="tree-menu" for="tree-toggle"><span>=</span></label>
 <input type="checkbox" checked id="tree-toggle" />
 <div class="tree"><div class="tree-bg">&nbsp;</div><div class="tree-content"><div class="item root">
- <span class="item-header" data-id="id_1"><span class="text">A-Kader</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Die 'Großen'</span></span>
+ <span class="item-header" data-id="c904a0f0-8f84-4926-9906-e32290684f35"><span class="text">A-Kader</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Die 'Großen'</span></span>
 </div><div class="item">
- <input type="checkbox" id="id_2" class="item-toggle" #checked# />
- <label for="id_2" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_2"><span class="text">2020/21/23 &quot;Tempo&quot;</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Schnelligkeit ist Trumpf</span></span>
+ <input type="checkbox" id="01f162b6-9078-1298-95b1-bfb618b149c4" class="item-toggle" #checked# />
+ <label for="01f162b6-9078-1298-95b1-bfb618b149c4" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
+ <span class="item-header"m data-id="01f162b6-9078-1298-95b1-bfb618b149c4"><span class="text">26/27</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">&quot;Wirbelwind&quot;</span></span>
  <div class="item-container"><div class="item">
- <input type="checkbox" id="id_3" class="item-toggle" #checked# />
- <label for="id_3" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_3"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /></span>
+ <input type="checkbox" id="01f162ca-17c6-1179-8bb1-94c708dc7121" class="item-toggle" #checked# />
+ <label for="01f162ca-17c6-1179-8bb1-94c708dc7121" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
+ <span class="item-header"m data-id="01f162ca-17c6-1179-8bb1-94c708dc7121"><span class="text">Annahme</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /></span>
  <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_4"><span class="text">3er Riegel</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">3 Spielerinnen nehmen an</span></span>
+ <span class="item-header" data-id="183b340d-fa7f-4ebc-ad57-dbb1810d15d6"><span class="text">3er Riegel</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">3 Spielerinnen nehmen an</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="01f162c0-8ae0-13b7-92a7-0a8929a9df34"><span class="text">L1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 1</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="01f16329-c306-1124-b836-2234c38812e9"><span class="text">L1b</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 1, Diagonale nimmt an</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="01f16336-6e49-1a52-8383-2f6a3e4ea709"><span class="text">L6</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 6</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="01f16343-90f3-103c-8228-65e8744304e7"><span class="text">L5</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 5</span></span>
+</div><div class="item">
+ <span class="item-header" data-id="01f16371-fae1-1c3b-a91f-f5517524b3b1"><span class="text">Neue Situation</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">###</span></span>
 </div></div>
 </div><div class="item">
- <input type="checkbox" id="id_5" class="item-toggle" #checked# />
- <label for="id_5" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_5"><span class="text">3er Riegel &quot;normal&quot;</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Außenangreiferinnen + Libera</span></span>
+ <input type="checkbox" id="01f16369-6ba7-17ad-9281-6cc50e00936d" class="item-toggle" #checked# />
+ <label for="01f16369-6ba7-17ad-9281-6cc50e00936d" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
+ <span class="item-header"m data-id="01f16369-6ba7-17ad-9281-6cc50e00936d"><span class="text">Grundlagen des Angriffs</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /></span>
  <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_6"><span class="text">L1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 1</span></span>
+ <span class="item-header" data-id="01f1635f-eb7d-15ae-a5ca-b6ef0d61c28d"><span class="text">Wann 1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wann soll ich loslaufen?</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_7"><span class="text">L6</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 6</span></span>
+ <span class="item-header" data-id="01f16372-f1ff-12d9-a7e7-23c3e6bd22e2"><span class="text">Wann 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wann soll ich loslaufen?</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_8"><span class="text">L5</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 5</span></span>
+ <span class="item-header" data-id="01f1636b-f8de-1af7-b27c-904542347795"><span class="text">Wo</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wo soll ich anlaufen?</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_9"><span class="text">L4</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 4</span></span>
+ <span class="item-header" data-id="01f1637b-af9f-183b-954a-ce4728e8dc0c"><span class="text">Wo H</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wo soll ich im Hinterfeld anlaufen?</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_10"><span class="text">L3</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 3</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_11"><span class="text">L2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 2</span></span>
+ <span class="item-header" data-id="01f16362-83c5-1f71-b9d8-6c1a8dc14644"><span class="text">1. Tempo</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Schnellangriffe</span></span>
 </div></div>
 </div><div class="item">
- <input type="checkbox" id="id_12" class="item-toggle" #checked# />
- <label for="id_12" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_12"><span class="text">3-er Riegel - Einbeiner</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Optionen für den Einbeiner</span></span>
+ <span class="item-header" data-id="01f16345-126c-180b-9fc5-f45b5a147163"><span class="text">Angriff &amp; Sicherung</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Wir helfen uns gegenseitig!</span></span>
+</div><div class="item">
+ <input type="checkbox" id="01f164c7-2f83-1006-8757-2a2699207e42" class="item-toggle" #checked# />
+ <label for="01f164c7-2f83-1006-8757-2a2699207e42" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
+ <span class="item-header"m data-id="01f164c7-2f83-1006-8757-2a2699207e42"><span class="text">Verteidigung</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Die Voraussetzung zum Gewinnen</span></span>
  <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_13"><span class="text">L1, angetäuschtes &quot;Doppelquick&quot; mit Diagonalspielerin</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos. 1, Diagonalspielerin ist Linkshänderin, und &quot;fliegt&quot; nach außen</span></span>
+ <span class="item-header" data-id="01f164d5-0cb1-18c1-b0eb-43bfd577b3a3"><span class="text">Basis</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wir bereiten uns auf den gegnerischen Angriff vor</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_14"><span class="text">L4, MB</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Der Einbeiner der Mittelblockerin</span></span>
+ <span class="item-header" data-id="01f164d0-0aec-14eb-b977-72f8ea96ca91"><span class="text">Block 4</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Doppelblock Pos 4</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_15"><span class="text">L4, Außenangreiferin kreuzt</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos. 4, Außenangreiferin kreuzt von links nach rechts</span></span>
+ <span class="item-header" data-id="01f164c6-bef7-15b2-982f-e5894b69ad6b"><span class="text">Block 3</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Einzelblock Pos 3 gegen Schnellangriff</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_16"><span class="text">L3, MB</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Der Einbeiner der Mittelblockerin</span></span>
+ <span class="item-header" data-id="01f164c6-8c3a-1c50-b2c2-7564010be515"><span class="text">Block 3(1), Schnellangriff</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Einzelblock Pos 3 gegen Schnellangriff</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_17"><span class="text">L3, Außenangreiferin kreuzt</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 3, Außenangreiferin kreuzt von links nach rechts</span></span>
+ <span class="item-header" data-id="01f164cc-5aa4-177b-bf12-78055807f50f"><span class="text">Block 3(5), Schnellangriff</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Einzelblock Pos 3 gegen Schnellangriff</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_18"><span class="text">L2, MB</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Der Einbeiner der Mittelblockerin</span></span>
+ <span class="item-header" data-id="01f164da-5a1c-12c8-933f-7d4d5a02be90"><span class="text">Block 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Doppelblock Pos 2</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_19"><span class="text">L2, Außenangreiferin kreuzt</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin Pos 2, Außenangreiferin kreuzt von links nach rechts</span></span>
-</div></div>
+ <span class="item-header" data-id="01f164d5-9290-17b7-b453-1053aefcb0e1"><span class="text">Block 3</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Doppelblock Pos 3</span></span>
 </div><div class="item">
- <input type="checkbox" id="id_20" class="item-toggle" #checked# />
- <label for="id_20" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_20"><span class="text">3er Riegel - Aufspielerinnentricks</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">&quot;Trick&quot;-Anläufe für die Aufspielerin</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_21"><span class="text">L2, angetäuschte L1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Aufspielerin täuscht an, dass sie von Position 1 einläuft.</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_22"><span class="text">L4, angetäuschte L5</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Aufspielerin täuscht an, dass sie von Position 5 einläuft.</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_23"><span class="text">L3, angetäuschte L6</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Aufspielerin täuscht an, dass sie von Position 6 einläuft.</span></span>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_24" class="item-toggle" #checked# />
- <label for="id_24" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_24"><span class="text">3er Riegel (ohne AA2)</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Außenangreiferin 2 nimmt nicht an</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_25"><span class="text">L3</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /></span>
-</div><div class="item">
- <span class="item-header" data-id="id_26"><span class="text">L2</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /></span>
-</div><div class="item">
- <span class="item-header" data-id="id_27"><span class="text">L1</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /></span>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_28" class="item-toggle" #checked# />
- <label for="id_28" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_28"><span class="text">Angriff + Sicherung</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Wir helfen uns gegenseitig!</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_29"><span class="text">Wann 1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wann soll ich loslaufen?</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_30"><span class="text">Wann 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wann soll ich loslaufen?</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_31"><span class="text">Wo</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Wo soll ich laufen?</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_32"><span class="text">Vorbereitung 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin vorne, wo bereite ich mich auf den Angriff vor?</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_33"><span class="text">Vorbereitung 1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin hinten, wo bereite ich mich auf den Angriff vor?</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_34"><span class="text">Angriff 0/6</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Angriff Pos 4, 3-2-Sicherung</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_35"><span class="text">Angriff 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Angriff Pos 2, 2-3-Sicherung</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_36"><span class="text">Angriff 5v</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Angriff Pos 3, 4-1-Sicherung</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_37"><span class="text">Schnellangriff</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Angriff und Sicherung bei Schnellangriff</span></span>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_38" class="item-toggle" #checked# />
- <label for="id_38" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_38"><span class="text">Verteidigung</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_39"><span class="text">Basis 1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin hinten</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_40"><span class="text">Basis 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Aufspielerin vorne</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_41"><span class="text">Block 4</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Doppelblock Pos 4</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_42"><span class="text">Block 3</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Doppelblock Pos 3</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_43"><span class="text">Block 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Doppelblock Pos 2</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_44"><span class="text">Block 3, Schnellangriff</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Block auf Pos 3, Schnellangriff</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_45"><span class="text">Block 3(1), Schnellangriff</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mit Handzeichen die Verteidigung organisieren</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_46"><span class="text">Block 3(5), Schnellangriff</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mit Handzeichen die Verteidigung organisieren</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_47"><span class="text">Ohne 1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">&quot;Ohne&quot; Block, Aufspielerin hinten</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_48"><span class="text">Ohne 2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">&quot;Ohne&quot; Block, Aufspielerin vorne</span></span>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_49" class="item-toggle" #checked# />
- <label for="id_49" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_49"><span class="text">Aufspiel</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Tempo! Schnelligkeit ist Trumpf</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_50"><span class="text">Aufspiel</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /></span>
-</div><div class="item">
- <span class="item-header" data-id="id_51"><span class="text">50 4er</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Ballsicherheit</span></span>
+ <span class="item-header" data-id="01f164d2-6eaf-1c9c-b85b-87b8ea668b9a"><span class="text">Ohne</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">&quot;Ohne&quot; Block</span></span>
 </div></div>
 </div></div>
 </div><div class="item">
- <input type="checkbox" id="id_52" class="item-toggle" #checked# />
- <label for="id_52" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_52"><span class="text">21/22 (V2b) </span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">2x MB = 2x Auf</span></span>
- <div class="item-container"><div class="item">
- <input type="checkbox" id="id_53" class="item-toggle" #checked# />
- <label for="id_53" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_53"><span class="text">L1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Läufer 1</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_54"><span class="text">Pos</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Positionen</span></span>
+ <span class="item-header" data-id="01ef323b-888e-1215-adcf-f23c914f1012"><span class="text">Fragen</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Unter</span></span>
 </div><div class="item">
- <span class="item-header" data-id="id_55"><span class="text">V1</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Einfach</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_56"><span class="text">V2</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Mit Trick</span></span>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_57" class="item-toggle" #checked# />
- <label for="id_57" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_57"><span class="text">L6</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Läufer 6</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_58"><span class="text">Pos</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Positionen</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_59"><span class="text">Ann</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Annahme</span></span>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_60" class="item-toggle" #checked# />
- <label for="id_60" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_60"><span class="text">L5</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Läufer 5</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_61"><span class="text">Pos</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Die Positionen</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_62"><span class="text">Ann</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Annahme</span></span>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_63" class="item-toggle" #checked# />
- <label for="id_63" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_63"><span class="text">B</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Basis</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_64"><span class="text">B</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Basis</span></span>
-</div></div>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_65" class="item-toggle" #checked# />
- <label for="id_65" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_65"><span class="text">23/24</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Saison 23/24</span></span>
- <div class="item-container"><div class="item">
- <input type="checkbox" id="id_66" class="item-toggle" #checked# />
- <label for="id_66" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_66"><span class="text">Besonderheiten</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Anpassungen</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_67"><span class="text">Basis (geg. Nr. 3)</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Basis wegen der Außenangreiferin Nr. 3 (Isabella) </span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_68"><span class="text">Verteidigung gegen Linienangriff</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Verteidigung geg. Nr 3 (Isabella)</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_69"><span class="text">Verteidigung gegen Linienangriff - Ball außen</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Das Aufspiel ist zu weit außen. - Was tun? -&gt; Verschieben!</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_70"><span class="text">Annahme (Lea)</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Lea steht gerne weit vorne!</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_71"><span class="text">Service zw. 1 und 6</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000006.svg" /><span class="footer">Stress für die Aufspielerin erzeugen</span></span>
-</div></div>
-</div></div>
-</div><div class="item">
- <input type="checkbox" id="id_72" class="item-toggle" #checked# />
- <label for="id_72" class="item"><img src="/brueckl-hotvolleys/images/img-minus.svg" /><img src="/brueckl-hotvolleys/images/img-plus.svg" /></label>
- <span class="item-header"m data-id="id_72"><span class="text">24/25</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Wieder zurück!</span></span>
- <div class="item-container"><div class="item">
- <span class="item-header" data-id="id_73"><span class="text">Teambuilding</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Gemeinsam sind wir stärker!</span></span>
-</div><div class="item">
- <span class="item-header" data-id="id_74"><span class="text">Fragen</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /></span>
-</div><div class="item">
- <span class="item-header" data-id="id_75"><span class="text">Fragen Ritchi</span><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /></span>
-</div></div>
+ <span class="item-header" data-id="81c21b0a-f469-4407-b174-64bac074703a"><span class="text">A-Kader - Personen</span><br><img src="/brueckl-hotvolleys/images/img-00000000-0000-0000-0000-000000000003.svg" /><span class="footer">Personen über die Jahre (bis 22)</span></span>
 </div></div></div>
 
-<div class="content"><div class="container"><div class="text"><h1>Die 'Großen'</h1>
+<div class="content"><div class="container"><div class="text"><h1 id="h_1">Die 'Großen'</h1>
 </div></div>
 
 <script>
