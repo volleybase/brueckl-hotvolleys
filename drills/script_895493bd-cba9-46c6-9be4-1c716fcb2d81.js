@@ -84,8 +84,8 @@ function onContextMenu(event) {
 
   // InternalError is unique for firefox - old firefox needs different handling of position when scrolled
   var isFirefox = !!window.InternalError,
-      x = isFirefox ? event.clientX : event.pageX,
-      y = isFirefox ? event.clientY : event.pageY;
+      x = isFirefox ? event.pageX : event.clientX,
+      y = isFirefox ? event.pageY : event.clientY;
   showContextMenu(x, y);
 }
 

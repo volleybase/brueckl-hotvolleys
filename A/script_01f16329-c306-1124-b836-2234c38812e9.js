@@ -84,8 +84,8 @@ function onContextMenu(event) {
 
   // InternalError is unique for firefox - old firefox needs different handling of position when scrolled
   var isFirefox = !!window.InternalError,
-      x = isFirefox ? event.clientX : event.pageX,
-      y = isFirefox ? event.clientY : event.pageY;
+      x = isFirefox ? event.pageX : event.clientX,
+      y = isFirefox ? event.pageY : event.clientY;
   showContextMenu(x, y);
 }
 
@@ -204,7 +204,7 @@ function onClick(event) {
 
 var option = {
   data: {
-    'ID_window_editor_control_graphics_actor_actor_Actor_option_anlauf': false,
+    'ID_window_editor_control_graphics_actor_actor_Actor_option_anlauf': true,
     'ID_window_editor_control_graphics_actor_actor_Actor_option_info': true
   },
 
@@ -907,191 +907,6 @@ var effects = {
     "toFront": {
       "hover": true
     }
-  },
-  "path_169": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_170": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_171": {
-    "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_172": {
-    "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "rectangle_173": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "text_174": {
-    "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "rectangle_175": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "rectangle_178": {
-    "fill": {
-      "common": "#d3d3d3",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "text_179": {
-    "fill": {
-      "common": "#000000",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "text_180": {
-    "fill": {
-      "common": "#000000",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
   }
 },
   /**
@@ -1099,18 +914,6 @@ var effects = {
    */
   'groups': {
   "byId": {
-    "path_169": "grp_5h",
-    "arrow_170": "grp_5h",
-    "path_171": "grp_5h",
-    "arrow_172": "grp_5h",
-    "rectangle_173": "grp_5h",
-    "text_174": "grp_5h",
-    "rectangle_175": "grp_5h",
-    "image_176": "grp_5h",
-    "image_177": "grp_5h",
-    "rectangle_178": "grp_5h",
-    "text_179": "grp_5h",
-    "text_180": "grp_5h",
     "arrow_160": "grp_3",
     "arrow_161": "grp_3",
     "rectangle_162": "grp_3",
@@ -1151,20 +954,6 @@ var effects = {
     "text_159": "grp_1"
   },
   "byName": {
-    "grp_5h": [
-      "path_169",
-      "arrow_170",
-      "path_171",
-      "arrow_172",
-      "rectangle_173",
-      "text_174",
-      "rectangle_175",
-      "image_176",
-      "image_177",
-      "rectangle_178",
-      "text_179",
-      "text_180"
-    ],
     "grp_3": [
       "arrow_160",
       "arrow_161",

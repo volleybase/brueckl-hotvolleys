@@ -84,8 +84,8 @@ function onContextMenu(event) {
 
   // InternalError is unique for firefox - old firefox needs different handling of position when scrolled
   var isFirefox = !!window.InternalError,
-      x = isFirefox ? event.clientX : event.pageX,
-      y = isFirefox ? event.clientY : event.pageY;
+      x = isFirefox ? event.pageX : event.clientX,
+      y = isFirefox ? event.pageY : event.clientY;
   showContextMenu(x, y);
 }
 
@@ -324,7 +324,7 @@ var animation0 = {
     "playertype": "player set"
   },
   "player_2": {
-    "x": 750.0,
+    "x": 650.0,
     "y": 1500.0,
     "angle": 5.0,
     "scale": 1.0,
@@ -345,7 +345,7 @@ var animation0 = {
     "visible-common": true
   },
   "player_9": {
-    "x": 550.0,
+    "x": 450.0,
     "y": 1500.0,
     "angle": 10.0,
     "scale": 1.0,
@@ -407,7 +407,7 @@ var animation = {
   "ball_3": [
     {
       "type": "mov",
-      "x": 225.0,
+      "x": 125.0,
       "y": -525.0,
       "mode": "linear",
       "start": 1.0,
@@ -438,7 +438,7 @@ var animation = {
   "ball_6": [
     {
       "type": "mov",
-      "x": 225.0,
+      "x": 125.0,
       "y": -525.0,
       "mode": "linear",
       "start": 1.0,
@@ -489,7 +489,7 @@ var animation = {
   "ball_10": [
     {
       "type": "mov",
-      "x": 225.0,
+      "x": 125.0,
       "y": -525.0,
       "mode": "linear",
       "start": 1.0,
@@ -497,7 +497,7 @@ var animation = {
     },
     {
       "type": "mov",
-      "x": -500.0,
+      "x": -400.0,
       "y": 0.0,
       "mode": "linear",
       "start": 2.0,
