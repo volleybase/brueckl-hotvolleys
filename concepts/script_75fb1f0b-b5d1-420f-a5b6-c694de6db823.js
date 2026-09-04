@@ -29,6 +29,18 @@ function $$(selector, parent) {
 function $event(elem, event, handler) {
   elem.addEventListener(event, handler);
 }
+
+/**
+ * Finds the main svg image.
+ * @returns {DOMElement} The main svg image.
+ */
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
+}
 //-- create menu script -------------------------------------- (vvv) --
 // --- ios helper --------------------------------- vv ---
 var timer = null,
@@ -89,45 +101,12 @@ function onContextMenu(event) {
   showContextMenu(x, y);
 }
 
-function _getSvgImg() {
-  var svg = $('div.img > svg');
-  if (!svg) {
-    svg = $('svg');
-  }
-  return svg;
-}
-
 function showContextMenu(x, y) {
   // show context menu if not visible
   if (!contextmenu) {
     contextmenu = true;
 
-    /**
-     * Switch an option state.
-     * @param {NodeList} elems A list of html elements.
-     * @returns {void}
-     */
-    var setOpts = function(elems) {
-      if (elems) {
-        for (var i = 0, i2 = elems.length; i < i2; ++i) {
-          var elem = elems[i],
-              elemP = elem.parentNode;
-
-          if (elemP.dataset && elemP.dataset.item) {
-            var key = elemP.dataset.item;
-            if (option.data[key] === true || option.data[key] === false) {
-              elem.style.display = option.data[key] ? 'block' : 'none';
-     	    }
-          }
-        }
-      }
-    };
-
-    // handle all options: radios and checkboxes
-    var rbs = document.getElementsByClassName('rb2'),
-        cbs = document.getElementsByClassName('cb2');
-    setOpts(rbs);
-    setOpts(cbs);
+    ContextMenuUpdater.updateOptions();
 
     // show background + context menu
     cm.style.display = 'block';
@@ -138,23 +117,26 @@ function showContextMenu(x, y) {
       var box = cm.getBBox(),
           w = Math.floor(box.width) + 10;
       if (w > 200) {
-        var rcMenuBg = cm.querySelector('rect'),
-            rcsMi = cm.querySelectorAll('g.menuitem > rect.bg'),
-            smis = cm.querySelectorAll('g.submenuitem');
+        var rcMenuBg = cm.querySelector(':scope > rect'),
+            rcsMi = cm.querySelectorAll(':scope > g.menuitem > rect.bg, :scope > g > g.menuitem > rect.bg'),
+            smis = cm.querySelectorAll(':scope > g.submenuitem'),
+            seps = cm.querySelectorAll(':scope > rect.separator');
         if (rcMenuBg) {
           rcMenuBg.style.width = (w + 4) + 'px';
         }
         if (rcsMi) {
           rcsMi.forEach((rcMi) => rcMi.style.width = w + 'px');
         }
+        if (seps) {
+          seps.forEach((sep) => sep.style.width = (w - 4) + 'px');
+        }
         if (smis) {
           smis.forEach((smi) => {
-            smi.querySelector('rect.bg').style.width = w + 'px';
-            smi.querySelector('g.submenu').setAttribute('transform', 'translate(' + (w + 4) + ' 0)');
-            smi.querySelector('path.marker_submenu').setAttribute('transform', 'translate(' + (w - 204) + ' 0)');
+            smi.querySelector(':scope > rect.bg').style.width = w + 'px';
+            smi.querySelector(':scope > g.submenu').setAttribute('transform', 'translate(' + (w + 4) + ' 0)');
+            smi.querySelector(':scope > path.marker_submenu').setAttribute('transform', 'translate(' + (w - 204) + ' 0)');
 
-            // TODO separators
-            // TODO extra handling for submenus
+            // TODO repeat this handling for submenus
           });
         }
       }
@@ -176,6 +158,36 @@ function showContextMenu(x, y) {
     cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.275)');
   }
 }
+var ContextMenuUpdater = {
+  updateOptions: function() {
+    /**
+     * Switch an option state.
+     * @param {NodeList} elems A list of html elements.
+     * @returns {void}
+     */
+    var setOpts = function(elems) {
+      if (elems) {
+        for (var i = 0, i2 = elems.length; i < i2; ++i) {
+          var elem = elems[i],
+              elemP = elem.parentNode;
+
+          if (elemP.dataset && elemP.dataset.item) {
+            var key = elemP.dataset.item;
+            if (option.data[key] === true || option.data[key] === false) {
+              elem.style.display = option.data[key] ? 'block' : 'none';
+            }
+          }
+        }
+      }
+    };
+
+    // handle all options: radios and checkboxes
+    var rbs = document.getElementsByClassName('rb2'),
+        cbs = document.getElementsByClassName('cb2');
+    setOpts(rbs);
+    setOpts(cbs);
+  }
+};
 
 function onClick(event) {
   if (contextmenu) {
@@ -372,7 +384,7 @@ var animation0 = {
   },
   "ball_12": {
     "x": 365.0,
-    "y": 150.0,
+    "y": 170.0,
     "angle": 0.0,
     "scale": 1.0
   }
@@ -384,14 +396,14 @@ var animation = {
       "x": -100.0,
       "y": 250.0,
       "mode": "linear",
-      "start": 1.3,
-      "end": 2.3
+      "start": 2.3,
+      "end": 3.3
     },
     {
       "type": "rot",
       "angle": -25.0,
-      "start": 1.9,
-      "end": 2.1999999999999997
+      "start": 2.9,
+      "end": 3.1999999999999997
     },
     {
       "type": "pla-typ",
@@ -401,12 +413,12 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player attack",
-      "at": "0.8"
+      "at": "1.8"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": "1.2"
+      "at": "2.2"
     }
   ],
   "player_2": [
@@ -425,12 +437,12 @@ var animation = {
     {
       "type": "vis",
       "visible": true,
-      "at": 1.2
+      "at": 2.2
     },
     {
       "type": "vis",
       "visible": false,
-      "at": 2.3
+      "at": 3.3
     }
   ],
   "path_5": [
@@ -442,12 +454,12 @@ var animation = {
     {
       "type": "vis",
       "visible": true,
-      "at": 1.2
+      "at": 2.2
     },
     {
       "type": "vis",
       "visible": false,
-      "at": 2.3
+      "at": 3.3
     }
   ],
   "text_6": [
@@ -459,12 +471,12 @@ var animation = {
     {
       "type": "vis",
       "visible": true,
-      "at": 1.2
+      "at": 2.2
     },
     {
       "type": "vis",
       "visible": false,
-      "at": 2.3
+      "at": 3.3
     }
   ],
   "ellipse_7": [
@@ -473,8 +485,8 @@ var animation = {
       "x": -50.0,
       "y": -250.0,
       "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
+      "start": 2.5,
+      "end": 3.2
     },
     {
       "type": "vis",
@@ -484,12 +496,12 @@ var animation = {
     {
       "type": "vis",
       "visible": true,
-      "at": 1.2
+      "at": 2.2
     },
     {
       "type": "vis",
       "visible": false,
-      "at": 2.3
+      "at": 3.3
     }
   ],
   "path_8": [
@@ -498,8 +510,8 @@ var animation = {
       "x": -50.0,
       "y": -250.0,
       "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
+      "start": 2.5,
+      "end": 3.2
     },
     {
       "type": "vis",
@@ -509,12 +521,12 @@ var animation = {
     {
       "type": "vis",
       "visible": true,
-      "at": 1.2
+      "at": 2.2
     },
     {
       "type": "vis",
       "visible": false,
-      "at": 2.3
+      "at": 3.3
     }
   ],
   "text_9": [
@@ -523,8 +535,8 @@ var animation = {
       "x": -50.0,
       "y": -250.0,
       "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
+      "start": 2.5,
+      "end": 3.2
     },
     {
       "type": "vis",
@@ -534,12 +546,12 @@ var animation = {
     {
       "type": "vis",
       "visible": true,
-      "at": 1.2
+      "at": 2.2
     },
     {
       "type": "vis",
       "visible": false,
-      "at": 2.3
+      "at": 3.3
     }
   ],
   "player_10": [
@@ -551,17 +563,17 @@ var animation = {
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": "0.5"
+      "at": "1.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player defense",
-      "at": "1.8"
+      "at": "2.8"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": "2.2"
+      "at": "3.2"
     }
   ],
   "player_11": [
@@ -570,47 +582,75 @@ var animation = {
       "x": -50.0,
       "y": -250.0,
       "mode": "linear",
-      "start": 1.5,
-      "end": 2.2
+      "start": 2.5,
+      "end": 3.2
     },
     {
       "type": "rot",
       "angle": -80.0,
-      "start": 1.8,
-      "end": 2.2
+      "start": 2.8,
+      "end": 3.1999999999999997
     },
     {
       "type": "pla-typ",
       "playertype": "player prepare-defense",
-      "at": "0.5"
+      "at": "1.5"
     },
     {
       "type": "pla-typ",
       "playertype": "player",
-      "at": "1.3"
+      "at": "2.3"
     },
     {
       "type": "pla-typ",
       "playertype": "player set",
-      "at": "2.2"
+      "at": "3.2"
     }
   ],
   "ball_12": [
     {
       "type": "mov",
-      "x": -53.0,
-      "y": 745.0,
+      "x": 35.0,
+      "y": -45.0,
+      "mode": "linear",
+      "start": -1.0,
+      "end": -1.0
+    },
+    {
+      "type": "mov",
+      "x": -35.0,
+      "y": 45.0,
       "mode": "linear",
       "start": 1.0,
       "end": 2.0
     },
     {
       "type": "mov",
-      "x": 163.0,
-      "y": -195.0,
+      "x": -53.0,
+      "y": 725.0,
       "mode": "linear",
       "start": 2.0,
       "end": 3.0
+    },
+    {
+      "type": "mov",
+      "x": 163.0,
+      "y": -195.0,
+      "mode": "linear",
+      "start": 3.0,
+      "end": 4.0
+    },
+    {
+      "type": "scale",
+      "scale": 0.6,
+      "start": 1.0,
+      "end": 1.55
+    },
+    {
+      "type": "scale",
+      "scale": -0.6,
+      "start": 1.55,
+      "end": 2.0
     }
   ]
 };
@@ -1082,10 +1122,21 @@ function onAnimClick(event) {
 }
 
 $event($('#ID_animation'), 'click', onAnimClick);
-animator.initAnimation(5.0, 0.0);
+animator.initAnimation(6.0, 0.0);
 /* global option, animation0 */
 
 if (typeof option !== 'undefined' && typeof animation0 !== 'undefined') {
   option.animation0 = animation0;
+}
+
+if (typeof animator !== 'undefined') {
+  $event($('#tree-toggle'), 'change', (event) => {
+    $$('g.actors').forEach((actors) => actors.className.baseVal = 'actors scratch');
+    animator.stop();
+    var menu = $('#ID_animation');
+    if (menu) {
+      menu.className.baseVal = 'ID_mi_stop';
+    }
+  });
 }
 }());

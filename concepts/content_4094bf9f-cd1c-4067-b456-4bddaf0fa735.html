@@ -86,13 +86,13 @@
       </g>
       <text x="0" y="0" dy="0.35em" style="stroke: none; font-family: Arial; fill: #ffff00; font-size: 45px; text-anchor: middle;">2</text>
     </g>
-    <line x1="0" y1="0" x2="-110" y2="-200" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(910 1500)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15; display: none;"/>
-    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(910 1500)" style="display: none;">
+    <line x1="0" y1="0" x2="-110" y2="-200" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(910 1500)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15;"/>
+    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(910 1500)">
       <line x1="0" y1="0" x2="-60" y2="-280" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"/>
       <polyline points="-68.342,-252.645 -60,-280 -41.181,-258.465" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; fill: none;"/>
     </g>
-    <line x1="0" y1="0" x2="65" y2="-200" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(735 1500)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15; display: none;"/>
-    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(735 1500)" style="display: none;">
+    <line x1="0" y1="0" x2="65" y2="-200" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(735 1500)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15;"/>
+    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(735 1500)">
       <line x1="0" y1="0" x2="-10" y2="-280" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"/>
       <polyline points="-22.988,-254.52 -10,-280 4.772,-255.512" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; fill: none;"/>
     </g>
@@ -168,8 +168,8 @@
       </g>
       <text x="0" y="0" dy="0.35em" style="stroke: none; font-family: Arial; fill: #ffff00; font-size: 45px; text-anchor: middle;">1</text>
     </g>
-    <line x1="0" y1="0" x2="40" y2="100" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(510 1250)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15; display: none;"/>
-    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(510 1250)" style="display: none;">
+    <line x1="0" y1="0" x2="40" y2="100" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(510 1250)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15;"/>
+    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(510 1250)">
       <line x1="0" y1="0" x2="30" y2="-220" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"/>
       <polyline points="12.861,-197.106 30,-220 40.384,-193.353" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; fill: none;"/>
     </g>
@@ -240,8 +240,8 @@
       </g>
       <text x="0" y="0" dy="0.35em" style="stroke: none; font-family: Arial; fill: #ffff00; font-size: 45px; text-anchor: middle;">3</text>
     </g>
-    <line x1="0" y1="0" x2="200" y2="0" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(100 1300)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15; display: none;"/>
-    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(100 1300)" style="display: none;">
+    <line x1="0" y1="0" x2="200" y2="0" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(100 1300)" style="fill: none; stroke: #808080; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15;"/>
+    <g data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_approach" transform="translate(100 1300)">
       <line x1="0" y1="0" x2="150" y2="-270" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"/>
       <polyline points="125.718,-254.891 150,-270 150,-241.401" style="stroke: #808080; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; fill: none;"/>
     </g>
@@ -386,6 +386,10 @@ g.menuitem > text, g.submenuitem > text {
   fill: #111;
   font-family: Arial;
   font-size: 22px;
+}
+g.menuitem.mono > text, g.submenuitem.mono > text {
+  font-family: Consolas, monospace;
+  white-space: pre;
 }
 g.menuitem > rect.cb, g.menuitem > circle.rb {
   stroke: gray;

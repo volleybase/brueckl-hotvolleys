@@ -49,13 +49,13 @@
       </g>
       <text x="0" y="0" dy="0.35em" style="stroke: none; font-family: Arial; fill: #ffff00; font-size: 45px; text-anchor: middle;">3</text>
     </g>
-    <g class="move" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" style="display: none;">
+    <g class="move" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4">
       <g transform="translate(125.194 1256.811)">
         <line x1="0" y1="0" x2="124.613" y2="-213.622" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
         <polyline points="100.019,-199.026 124.613,-213.622 124.013,-185.029" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
-    <g class="player" id="player_2" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" transform="translate(100 1300) rotate(30)" style="display: none;">
+    <g class="player" id="player_2" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" transform="translate(100 1300) rotate(30)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #b22222; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -97,7 +97,7 @@
     <text x="0" y="0" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_middle_target_4" text-anchor="middle" transform="translate(529 695) translate(0 28.5)" style="stroke: none; font-family: Arial; fill: #006400; font-size: 75px; font-weight: bold; display: none;">M</text>
     <ellipse cx="0" cy="0" rx="50" ry="75" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_middle_net_target_4" transform="translate(550 845) rotate(90)" style="stroke: none; fill: #008000; fill-opacity: 0.5; display: none;"/>
     <text x="0" y="0" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_middle_net_target_4" text-anchor="middle" transform="translate(550 845) translate(0 28.5)" style="stroke: none; font-family: Arial; fill: #006400; font-size: 75px; font-weight: bold; display: none;">M</text>
-    <g class="move" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" style="display: none;">
+    <g class="move" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4">
       <g transform="translate(275 950)">
         <line x1="0" y1="0" x2="0" y2="-650" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
         <polyline points="-13.889,-625 0,-650 13.889,-625" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
@@ -123,7 +123,7 @@
         <polyline points="202.507,-126.279 231.105,-126.057 215.809,-101.893" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
-    <g id="ball_15" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" transform="translate(275 1000)" style="display: none;">
+    <g id="ball_15" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" transform="translate(275 1000)">
       <ellipse cx="0" cy="0" rx="25" ry="25" style="stroke: none; fill: #ffff00;"/>
       <path id="path_16" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" d="M 70 124.5 C 53.333 107.833 45 88.25 66.667 77 C 58.333 85.333 61.667 104.5 85 123 L 70 124.488 L 85 123 Q 77.5 126.167 70 124.488" transform="translate(-75 -100)" style="stroke: none; fill: #0000ff;"/>
       <path id="path_17" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_attack4" d="M 95.661 114.167 C 83.161 101.667 78.994 89.167 76.661 81.667 Q 93.328 93.571 99.994 100.833 Q 99.828 108 95.647 114.167 Z" transform="translate(-75 -100)" style="stroke: none; fill: #0000ff;"/>
@@ -309,6 +309,10 @@ g.menuitem > text, g.submenuitem > text {
   fill: #111;
   font-family: Arial;
   font-size: 22px;
+}
+g.menuitem.mono > text, g.submenuitem.mono > text {
+  font-family: Consolas, monospace;
+  white-space: pre;
 }
 g.menuitem > rect.cb, g.menuitem > circle.rb {
   stroke: gray;

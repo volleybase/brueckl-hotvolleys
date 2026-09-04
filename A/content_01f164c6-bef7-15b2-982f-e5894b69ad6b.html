@@ -17,7 +17,7 @@
     <line x1="1100" y1="1165" x2="1100" y2="1180" style="fill: none; stroke: #0000b2; stroke-width: 5;"/>
   </g>
   <g class="actors">
-    <path data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_block_shadow" d="M 400 0 L 500 0 L 650 900 L 250 900 Z" transform="translate(200 250)" style="stroke: none; fill: #006400; fill-opacity: 0.5; display: none;"/>
+    <path data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_block_shadow" d="M 400 0 L 500 0 L 650 900 L 250 900 Z" transform="translate(200 250)" style="stroke: none; fill: #006400; fill-opacity: 0.5;"/>
     <g class="player prepare-defense" transform="translate(350 350) rotate(60)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #b22222;"/>
       <g class="prepare-block">
@@ -257,6 +257,10 @@ g.menuitem > text, g.submenuitem > text {
   fill: #111;
   font-family: Arial;
   font-size: 22px;
+}
+g.menuitem.mono > text, g.submenuitem.mono > text {
+  font-family: Consolas, monospace;
+  white-space: pre;
 }
 g.menuitem > rect.cb, g.menuitem > circle.rb {
   stroke: gray;

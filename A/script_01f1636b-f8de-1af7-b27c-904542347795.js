@@ -29,6 +29,18 @@ function $$(selector, parent) {
 function $event(elem, event, handler) {
   elem.addEventListener(event, handler);
 }
+
+/**
+ * Finds the main svg image.
+ * @returns {DOMElement} The main svg image.
+ */
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
+}
 /* global animator, animation0 */
 
 /**
@@ -181,7 +193,17 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_158": {
+  "path_156": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_157": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -198,7 +220,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_159": {
+  "text_158": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -215,7 +237,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_160": {
+  "path_159": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -232,7 +254,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_161": {
+  "arrow_160": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -249,7 +271,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_162": {
+  "path_161": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -266,7 +288,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_163": {
+  "arrow_162": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -283,7 +305,7 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_164": {
+  "rectangle_163": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -309,7 +331,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_165": {
+  "text_164": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -323,7 +345,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_166": {
+  "rectangle_165": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -349,7 +371,17 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_169": {
+  "path_166": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_167": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -366,7 +398,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_170": {
+  "text_168": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -383,7 +415,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_171": {
+  "arrow_169": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -400,7 +432,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_172": {
+  "arrow_170": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -415,6 +447,46 @@ var effects = {
     },
     "toFront": {
       "hover": true
+    }
+  },
+  "rectangle_171": {
+    "fill": {
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "text_172": {
+    "fill": {
+      "common": "#444444",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     }
   },
   "rectangle_173": {
@@ -443,48 +515,18 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_174": {
+  "path_174": {
     "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
+      "common": "#d3d3d3",
+      "hover": "#b22222"
     },
     "fill-opacity": {
       "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
+      "hover": "1"
     }
   },
   "rectangle_175": {
     "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "rectangle_178": {
-    "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
       "active": "#d3d3d3",
@@ -500,7 +542,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_179": {
+  "text_176": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -517,7 +559,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_180": {
+  "path_177": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -534,7 +576,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_181": {
+  "arrow_178": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -551,7 +593,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_182": {
+  "path_179": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -568,7 +610,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_183": {
+  "arrow_180": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -585,7 +627,7 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_184": {
+  "rectangle_181": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -611,7 +653,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_185": {
+  "text_182": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -625,7 +667,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_186": {
+  "rectangle_183": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -651,7 +693,17 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_189": {
+  "path_184": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_185": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -668,7 +720,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_190": {
+  "text_186": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -683,144 +735,154 @@ var effects = {
     },
     "toFront": {
       "hover": true
+    }
+  },
+  "text_187": {
+    "fill": {
+      "common": "#000000",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "arrow_188": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "arrow_189": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "rectangle_190": {
+    "fill": {
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     }
   },
   "text_191": {
     "fill": {
-      "common": "#000000",
+      "common": "#444444",
       "hover": "#b22222",
       "active": "#b22222",
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "rectangle_192": {
+    "fill": {
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
+    },
+    "fill-opacity": {
+      "common": "1",
       "hover": "1",
       "active": "1",
       "activehover": "1"
     },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_192": {
     "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_193": {
-    "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
     },
     "stroke-opacity": {
       "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "path_193": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
     },
-    "toFront": {
-      "hover": true
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
     }
   },
   "rectangle_194": {
     "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
+      "common": "#d3d3d3",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
     },
     "fill-opacity": {
-      "common": "1",
+      "common": "0",
       "hover": "1",
       "active": "1",
       "activehover": "1"
     },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
+    "toFront": {
+      "hover": true
     }
   },
   "text_195": {
     "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "rectangle_196": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "rectangle_199": {
-    "fill": {
-      "common": "#d3d3d3",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "text_200": {
-    "fill": {
       "common": "#000000",
       "hover": "#b22222",
       "active": "#b22222",
@@ -836,7 +898,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_201": {
+  "arrow_196": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -853,7 +915,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_202": {
+  "arrow_197": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -870,7 +932,7 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_203": {
+  "rectangle_198": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -896,7 +958,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_204": {
+  "text_199": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -910,7 +972,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_205": {
+  "rectangle_200": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -934,138 +996,148 @@ var effects = {
       "hover": "1",
       "active": "1",
       "activehover": "1"
+    }
+  },
+  "path_201": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_202": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "fill-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "text_203": {
+    "fill": {
+      "common": "#000000",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_204": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "arrow_205": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_206": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "arrow_207": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
     }
   },
   "rectangle_208": {
     "fill": {
-      "common": "#d3d3d3",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
     },
     "fill-opacity": {
-      "common": "0",
+      "common": "1",
       "hover": "1",
       "active": "1",
       "activehover": "1"
     },
-    "toFront": {
-      "hover": true
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     }
   },
   "text_209": {
     "fill": {
-      "common": "#000000",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_210": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_211": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_212": {
-    "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_213": {
-    "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "rectangle_214": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "text_215": {
-    "fill": {
       "common": "#444444",
       "hover": "#b22222",
       "active": "#b22222",
@@ -1078,7 +1150,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_216": {
+  "rectangle_210": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -1102,194 +1174,214 @@ var effects = {
       "hover": "1",
       "active": "1",
       "activehover": "1"
+    }
+  },
+  "path_211": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_212": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "fill-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "text_213": {
+    "fill": {
+      "common": "#000000",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "text_214": {
+    "fill": {
+      "common": "#000000",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_215": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "arrow_216": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_217": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "arrow_218": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
     }
   },
   "rectangle_219": {
     "fill": {
-      "common": "#d3d3d3",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
     },
     "fill-opacity": {
-      "common": "0",
+      "common": "1",
       "hover": "1",
       "active": "1",
       "activehover": "1"
     },
-    "toFront": {
-      "hover": true
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     }
   },
   "text_220": {
     "fill": {
-      "common": "#000000",
+      "common": "#444444",
       "hover": "#b22222",
       "active": "#b22222",
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
+      "common": "1",
       "hover": "1",
       "active": "1",
       "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
     }
   },
-  "text_221": {
+  "rectangle_221": {
     "fill": {
-      "common": "#000000",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
     },
     "fill-opacity": {
-      "common": "0",
+      "common": "1",
       "hover": "1",
       "active": "1",
       "activehover": "1"
     },
-    "toFront": {
-      "hover": true
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     }
   },
   "path_222": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_223": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_224": {
-    "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_225": {
-    "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "rectangle_226": {
     "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
+      "common": "#d3d3d3",
+      "hover": "#b22222"
     },
     "fill-opacity": {
       "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
+      "hover": "1"
     }
   },
-  "text_227": {
-    "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "rectangle_228": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "rectangle_231": {
+  "rectangle_223": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -1306,7 +1398,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_232": {
+  "text_224": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -1323,7 +1415,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_233": {
+  "text_225": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -1340,7 +1432,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_234": {
+  "path_226": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -1357,7 +1449,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_235": {
+  "arrow_227": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -1374,7 +1466,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_236": {
+  "path_228": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -1391,7 +1483,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_237": {
+  "arrow_229": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -1408,7 +1500,7 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_238": {
+  "rectangle_230": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -1434,7 +1526,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_239": {
+  "text_231": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -1448,7 +1540,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_240": {
+  "rectangle_232": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -1474,7 +1566,17 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_243": {
+  "path_233": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_234": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -1491,7 +1593,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_244": {
+  "text_235": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -1514,80 +1616,73 @@ var effects = {
    */
   'groups': {
   "byId": {
+    "path_215": "grp_5h",
+    "arrow_216": "grp_5h",
+    "path_217": "grp_5h",
+    "arrow_218": "grp_5h",
+    "rectangle_219": "grp_5h",
+    "text_220": "grp_5h",
+    "rectangle_221": "grp_5h",
     "path_222": "grp_5h",
-    "arrow_223": "grp_5h",
-    "path_224": "grp_5h",
-    "arrow_225": "grp_5h",
-    "rectangle_226": "grp_5h",
-    "text_227": "grp_5h",
-    "rectangle_228": "grp_5h",
-    "image_229": "grp_5h",
-    "image_230": "grp_5h",
-    "rectangle_231": "grp_5h",
-    "text_232": "grp_5h",
-    "text_233": "grp_5h",
-    "path_180": "grp_5v",
-    "arrow_181": "grp_5v",
-    "path_182": "grp_5v",
-    "arrow_183": "grp_5v",
-    "rectangle_184": "grp_5v",
-    "text_185": "grp_5v",
-    "rectangle_186": "grp_5v",
-    "image_187": "grp_5v",
-    "image_188": "grp_5v",
-    "rectangle_189": "grp_5v",
-    "text_190": "grp_5v",
-    "text_191": "grp_5v",
-    "arrow_192": "grp_1",
-    "arrow_193": "grp_1",
+    "rectangle_223": "grp_5h",
+    "text_224": "grp_5h",
+    "text_225": "grp_5h",
+    "path_177": "grp_5v",
+    "arrow_178": "grp_5v",
+    "path_179": "grp_5v",
+    "arrow_180": "grp_5v",
+    "rectangle_181": "grp_5v",
+    "text_182": "grp_5v",
+    "rectangle_183": "grp_5v",
+    "path_184": "grp_5v",
+    "rectangle_185": "grp_5v",
+    "text_186": "grp_5v",
+    "text_187": "grp_5v",
+    "arrow_188": "grp_1",
+    "arrow_189": "grp_1",
+    "rectangle_190": "grp_1",
+    "text_191": "grp_1",
+    "rectangle_192": "grp_1",
+    "path_193": "grp_1",
     "rectangle_194": "grp_1",
     "text_195": "grp_1",
-    "rectangle_196": "grp_1",
-    "image_197": "grp_1",
-    "image_198": "grp_1",
-    "rectangle_199": "grp_1",
-    "text_200": "grp_1",
-    "path_210": "grp_EE",
-    "arrow_211": "grp_EE",
-    "path_212": "grp_EE",
-    "arrow_213": "grp_EE",
-    "rectangle_214": "grp_EE",
-    "text_215": "grp_EE",
-    "rectangle_216": "grp_EE",
-    "image_217": "grp_EE",
-    "image_218": "grp_EE",
-    "rectangle_219": "grp_EE",
-    "text_220": "grp_EE",
-    "text_221": "grp_EE",
-    "path_234": "grp_2",
-    "arrow_235": "grp_2",
-    "path_236": "grp_2",
-    "arrow_237": "grp_2",
-    "rectangle_238": "grp_2",
-    "text_239": "grp_2",
-    "rectangle_240": "grp_2",
-    "image_241": "grp_2",
-    "image_242": "grp_2",
-    "rectangle_243": "grp_2",
-    "text_244": "grp_2",
-    "arrow_201": "grp_3",
-    "arrow_202": "grp_3",
-    "rectangle_203": "grp_3",
-    "text_204": "grp_3",
-    "rectangle_205": "grp_3",
-    "image_206": "grp_3",
-    "image_207": "grp_3",
-    "rectangle_208": "grp_3",
-    "text_209": "grp_3",
-    "arrow_171": "grp_4",
-    "arrow_172": "grp_4",
+    "path_204": "grp_EE",
+    "arrow_205": "grp_EE",
+    "path_206": "grp_EE",
+    "arrow_207": "grp_EE",
+    "rectangle_208": "grp_EE",
+    "text_209": "grp_EE",
+    "rectangle_210": "grp_EE",
+    "path_211": "grp_EE",
+    "rectangle_212": "grp_EE",
+    "text_213": "grp_EE",
+    "text_214": "grp_EE",
+    "path_226": "grp_2",
+    "arrow_227": "grp_2",
+    "path_228": "grp_2",
+    "arrow_229": "grp_2",
+    "rectangle_230": "grp_2",
+    "text_231": "grp_2",
+    "rectangle_232": "grp_2",
+    "path_233": "grp_2",
+    "rectangle_234": "grp_2",
+    "text_235": "grp_2",
+    "arrow_196": "grp_3",
+    "arrow_197": "grp_3",
+    "rectangle_198": "grp_3",
+    "text_199": "grp_3",
+    "rectangle_200": "grp_3",
+    "path_201": "grp_3",
+    "rectangle_202": "grp_3",
+    "text_203": "grp_3",
+    "arrow_169": "grp_4",
+    "arrow_170": "grp_4",
+    "rectangle_171": "grp_4",
+    "text_172": "grp_4",
     "rectangle_173": "grp_4",
-    "text_174": "grp_4",
+    "path_174": "grp_4",
     "rectangle_175": "grp_4",
-    "image_176": "grp_4",
-    "image_177": "grp_4",
-    "rectangle_178": "grp_4",
-    "text_179": "grp_4",
+    "text_176": "grp_4",
     "path_149": "grp_6",
     "arrow_150": "grp_6",
     "path_151": "grp_6",
@@ -1595,110 +1690,101 @@ var effects = {
     "rectangle_153": "grp_6",
     "text_154": "grp_6",
     "rectangle_155": "grp_6",
-    "image_156": "grp_6",
-    "image_157": "grp_6",
-    "rectangle_158": "grp_6",
-    "text_159": "grp_6",
-    "path_160": "grp_8",
-    "arrow_161": "grp_8",
-    "path_162": "grp_8",
-    "arrow_163": "grp_8",
-    "rectangle_164": "grp_8",
-    "text_165": "grp_8",
-    "rectangle_166": "grp_8",
-    "image_167": "grp_8",
-    "image_168": "grp_8",
-    "rectangle_169": "grp_8",
-    "text_170": "grp_8"
+    "path_156": "grp_6",
+    "rectangle_157": "grp_6",
+    "text_158": "grp_6",
+    "path_159": "grp_8",
+    "arrow_160": "grp_8",
+    "path_161": "grp_8",
+    "arrow_162": "grp_8",
+    "rectangle_163": "grp_8",
+    "text_164": "grp_8",
+    "rectangle_165": "grp_8",
+    "path_166": "grp_8",
+    "rectangle_167": "grp_8",
+    "text_168": "grp_8"
   },
   "byName": {
     "grp_5h": [
-      "path_222",
-      "arrow_223",
-      "path_224",
-      "arrow_225",
-      "rectangle_226",
-      "text_227",
-      "rectangle_228",
-      "image_229",
-      "image_230",
-      "rectangle_231",
-      "text_232",
-      "text_233"
-    ],
-    "grp_5v": [
-      "path_180",
-      "arrow_181",
-      "path_182",
-      "arrow_183",
-      "rectangle_184",
-      "text_185",
-      "rectangle_186",
-      "image_187",
-      "image_188",
-      "rectangle_189",
-      "text_190",
-      "text_191"
-    ],
-    "grp_1": [
-      "arrow_192",
-      "arrow_193",
-      "rectangle_194",
-      "text_195",
-      "rectangle_196",
-      "image_197",
-      "image_198",
-      "rectangle_199",
-      "text_200"
-    ],
-    "grp_EE": [
-      "path_210",
-      "arrow_211",
-      "path_212",
-      "arrow_213",
-      "rectangle_214",
-      "text_215",
-      "rectangle_216",
-      "image_217",
-      "image_218",
+      "path_215",
+      "arrow_216",
+      "path_217",
+      "arrow_218",
       "rectangle_219",
       "text_220",
-      "text_221"
+      "rectangle_221",
+      "path_222",
+      "rectangle_223",
+      "text_224",
+      "text_225"
+    ],
+    "grp_5v": [
+      "path_177",
+      "arrow_178",
+      "path_179",
+      "arrow_180",
+      "rectangle_181",
+      "text_182",
+      "rectangle_183",
+      "path_184",
+      "rectangle_185",
+      "text_186",
+      "text_187"
+    ],
+    "grp_1": [
+      "arrow_188",
+      "arrow_189",
+      "rectangle_190",
+      "text_191",
+      "rectangle_192",
+      "path_193",
+      "rectangle_194",
+      "text_195"
+    ],
+    "grp_EE": [
+      "path_204",
+      "arrow_205",
+      "path_206",
+      "arrow_207",
+      "rectangle_208",
+      "text_209",
+      "rectangle_210",
+      "path_211",
+      "rectangle_212",
+      "text_213",
+      "text_214"
     ],
     "grp_2": [
-      "path_234",
-      "arrow_235",
-      "path_236",
-      "arrow_237",
-      "rectangle_238",
-      "text_239",
-      "rectangle_240",
-      "image_241",
-      "image_242",
-      "rectangle_243",
-      "text_244"
+      "path_226",
+      "arrow_227",
+      "path_228",
+      "arrow_229",
+      "rectangle_230",
+      "text_231",
+      "rectangle_232",
+      "path_233",
+      "rectangle_234",
+      "text_235"
     ],
     "grp_3": [
-      "arrow_201",
-      "arrow_202",
-      "rectangle_203",
-      "text_204",
-      "rectangle_205",
-      "image_206",
-      "image_207",
-      "rectangle_208",
-      "text_209"
+      "arrow_196",
+      "arrow_197",
+      "rectangle_198",
+      "text_199",
+      "rectangle_200",
+      "path_201",
+      "rectangle_202",
+      "text_203"
     ],
     "grp_4": [
-      "arrow_171",
-      "arrow_172",
+      "arrow_169",
+      "arrow_170",
+      "rectangle_171",
+      "text_172",
       "rectangle_173",
-      "text_174",
+      "path_174",
       "rectangle_175",
-      "image_176",
-      "image_177",
-      "rectangle_178",
-      "text_179"
+      "text_176"
     ],
     "grp_6": [
       "path_149",
@@ -1708,23 +1794,21 @@ var effects = {
       "rectangle_153",
       "text_154",
       "rectangle_155",
-      "image_156",
-      "image_157",
-      "rectangle_158",
-      "text_159"
+      "path_156",
+      "rectangle_157",
+      "text_158"
     ],
     "grp_8": [
-      "path_160",
-      "arrow_161",
-      "path_162",
-      "arrow_163",
-      "rectangle_164",
-      "text_165",
-      "rectangle_166",
-      "image_167",
-      "image_168",
-      "rectangle_169",
-      "text_170"
+      "path_159",
+      "arrow_160",
+      "path_161",
+      "arrow_162",
+      "rectangle_163",
+      "text_164",
+      "rectangle_165",
+      "path_166",
+      "rectangle_167",
+      "text_168"
     ]
   }
 },
@@ -1755,9 +1839,9 @@ var effects = {
     // the ids of all controls with effects
     this.ids = Object.keys(this.infos);
     // connect event handling
-    $event($('svg'), 'click', this.onClick.bind(this));
-    $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
-    $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+    $event(_getSvgImg(), 'click', this.onClick.bind(this));
+    $event(_getSvgImg(), 'mouseover', this.onMouseOver.bind(this));
+    $event(_getSvgImg(), 'mouseout', this.onMouseOut.bind(this));
 
     // prepare topmost handling
     this.ids.forEach((id) => {
@@ -1974,4 +2058,15 @@ function onContextMenu(event) {
 
 // set a context menu handler
 document.addEventListener('contextmenu', onContextMenu);
+
+if (typeof animator !== 'undefined') {
+  $event($('#tree-toggle'), 'change', (event) => {
+    $$('g.actors').forEach((actors) => actors.className.baseVal = 'actors scratch');
+    animator.stop();
+    var menu = $('#ID_animation');
+    if (menu) {
+      menu.className.baseVal = 'ID_mi_stop';
+    }
+  });
+}
 }());

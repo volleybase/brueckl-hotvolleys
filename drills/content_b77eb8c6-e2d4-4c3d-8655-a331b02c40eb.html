@@ -17,7 +17,7 @@
     <line x1="1100" y1="1015" x2="1100" y2="1030" style="fill: none; stroke: #0000b2; stroke-width: 5;"/>
   </g>
   <g class="actors">
-    <g class="move" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" style="display: none;">
+    <g class="move" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player">
       <g transform="translate(313.736 198.076)">
         <line x1="0" y1="0" x2="65.66" y2="229.81" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4;"/>
         <polyline points="72.146,201.956 65.66,229.81 45.437,209.587" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
@@ -31,7 +31,7 @@
         <polyline points="96.29,-198.095 120.699,-212.998 120.457,-184.4" style="stroke: #000000; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 4; fill: none;"/>
       </g>
     </g>
-    <g class="player" id="player_1" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(300 150)" style="display: none;">
+    <g class="player" id="player_1" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(300 150)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #777777; fill-opacity: 0.67;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #777777; stroke-opacity: 0.67; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -62,7 +62,7 @@
       </g>
       <text x="0" y="0" dy="0.35em" style="stroke: none; font-family: Arial; fill: #111111; fill-opacity: 0.67; font-size: 45px; text-anchor: middle;">1</text>
     </g>
-    <g class="player" id="player_2" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(400 500) rotate(50)" style="display: none;">
+    <g class="player" id="player_2" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(400 500) rotate(50)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #777777; fill-opacity: 0.67;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #777777; stroke-opacity: 0.67; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -93,7 +93,7 @@
       </g>
       <text x="0" y="0" dy="0.35em" style="stroke: none; font-family: Arial; fill: #111111; fill-opacity: 0.67; font-size: 45px; text-anchor: middle;">2</text>
     </g>
-    <g class="player" id="player_3" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(100 500) rotate(30)" style="display: none;">
+    <g class="player" id="player_3" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(100 500) rotate(30)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #777777; fill-opacity: 0.67;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #777777; stroke-opacity: 0.67; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -124,7 +124,7 @@
       </g>
       <text x="0" y="0" dy="0.35em" style="stroke: none; font-family: Arial; fill: #111111; fill-opacity: 0.67; font-size: 45px; text-anchor: middle;">3</text>
     </g>
-    <g class="player attack" id="player_4" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(270 200) rotate(30)" style="display: none;">
+    <g class="player attack" id="player_4" data-option="ID_window_editor_control_graphics_actor_actor_Actor_option_player" transform="translate(270 200) rotate(30)">
       <ellipse cx="0" cy="0" rx="50" ry="25" style="stroke: none; fill: #777777; fill-opacity: 0.67;"/>
       <g class="prepare-block">
         <line x1="-37.5" y1="-25" x2="-22.5" y2="-25" style="fill: none; stroke: #777777; stroke-opacity: 0.67; stroke-width: 12.5; stroke-linecap: round; stroke-linejoin: round;"/>
@@ -265,6 +265,10 @@ g.menuitem > text, g.submenuitem > text {
   fill: #111;
   font-family: Arial;
   font-size: 22px;
+}
+g.menuitem.mono > text, g.submenuitem.mono > text {
+  font-family: Consolas, monospace;
+  white-space: pre;
 }
 g.menuitem > rect.cb, g.menuitem > circle.rb {
   stroke: gray;

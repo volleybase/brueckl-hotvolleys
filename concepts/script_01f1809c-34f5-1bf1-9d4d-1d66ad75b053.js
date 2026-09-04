@@ -29,6 +29,18 @@ function $$(selector, parent) {
 function $event(elem, event, handler) {
   elem.addEventListener(event, handler);
 }
+
+/**
+ * Finds the main svg image.
+ * @returns {DOMElement} The main svg image.
+ */
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
+}
 /* global animator, animation0 */
 
 /**
@@ -181,7 +193,47 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_110": {
+  "path_108": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_109": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_110": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_111": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_112": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -198,7 +250,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_111": {
+  "text_113": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -206,40 +258,6 @@ var effects = {
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_112": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_113": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
       "common": "0",
       "hover": "1",
       "active": "1",
@@ -251,16 +269,16 @@ var effects = {
   },
   "path_114": {
     "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
     },
     "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     },
     "toFront": {
       "hover": true
@@ -268,6 +286,23 @@ var effects = {
   },
   "arrow_115": {
     "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_116": {
+    "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
       "active": "#d3d3d3",
@@ -283,44 +318,21 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_116": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
+  "arrow_117": {
     "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
     },
     "stroke-opacity": {
       "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "text_117": {
-    "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
     },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
+    "toFront": {
+      "hover": true
     }
   },
   "rectangle_118": {
@@ -349,7 +361,57 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_121": {
+  "text_119": {
+    "fill": {
+      "common": "#444444",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "rectangle_120": {
+    "fill": {
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "path_121": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_122": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -366,7 +428,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_122": {
+  "text_123": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -389,17 +451,16 @@ var effects = {
    */
   'groups': {
   "byId": {
-    "path_112": "grp_2",
-    "arrow_113": "grp_2",
     "path_114": "grp_2",
     "arrow_115": "grp_2",
-    "rectangle_116": "grp_2",
-    "text_117": "grp_2",
+    "path_116": "grp_2",
+    "arrow_117": "grp_2",
     "rectangle_118": "grp_2",
-    "image_119": "grp_2",
-    "image_120": "grp_2",
-    "rectangle_121": "grp_2",
-    "text_122": "grp_2",
+    "text_119": "grp_2",
+    "rectangle_120": "grp_2",
+    "path_121": "grp_2",
+    "rectangle_122": "grp_2",
+    "text_123": "grp_2",
     "path_101": "grp_0",
     "arrow_102": "grp_0",
     "path_103": "grp_0",
@@ -407,24 +468,25 @@ var effects = {
     "rectangle_105": "grp_0",
     "text_106": "grp_0",
     "rectangle_107": "grp_0",
-    "image_108": "grp_0",
-    "image_109": "grp_0",
-    "rectangle_110": "grp_0",
-    "text_111": "grp_0"
+    "path_108": "grp_0",
+    "path_109": "grp_0",
+    "path_110": "grp_0",
+    "path_111": "grp_0",
+    "rectangle_112": "grp_0",
+    "text_113": "grp_0"
   },
   "byName": {
     "grp_2": [
-      "path_112",
-      "arrow_113",
       "path_114",
       "arrow_115",
-      "rectangle_116",
-      "text_117",
+      "path_116",
+      "arrow_117",
       "rectangle_118",
-      "image_119",
-      "image_120",
-      "rectangle_121",
-      "text_122"
+      "text_119",
+      "rectangle_120",
+      "path_121",
+      "rectangle_122",
+      "text_123"
     ],
     "grp_0": [
       "path_101",
@@ -434,10 +496,12 @@ var effects = {
       "rectangle_105",
       "text_106",
       "rectangle_107",
-      "image_108",
-      "image_109",
-      "rectangle_110",
-      "text_111"
+      "path_108",
+      "path_109",
+      "path_110",
+      "path_111",
+      "rectangle_112",
+      "text_113"
     ]
   }
 },
@@ -468,9 +532,9 @@ var effects = {
     // the ids of all controls with effects
     this.ids = Object.keys(this.infos);
     // connect event handling
-    $event($('svg'), 'click', this.onClick.bind(this));
-    $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
-    $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+    $event(_getSvgImg(), 'click', this.onClick.bind(this));
+    $event(_getSvgImg(), 'mouseover', this.onMouseOver.bind(this));
+    $event(_getSvgImg(), 'mouseout', this.onMouseOut.bind(this));
 
     // prepare topmost handling
     this.ids.forEach((id) => {
@@ -687,4 +751,15 @@ function onContextMenu(event) {
 
 // set a context menu handler
 document.addEventListener('contextmenu', onContextMenu);
+
+if (typeof animator !== 'undefined') {
+  $event($('#tree-toggle'), 'change', (event) => {
+    $$('g.actors').forEach((actors) => actors.className.baseVal = 'actors scratch');
+    animator.stop();
+    var menu = $('#ID_animation');
+    if (menu) {
+      menu.className.baseVal = 'ID_mi_stop';
+    }
+  });
+}
 }());

@@ -29,6 +29,18 @@ function $$(selector, parent) {
 function $event(elem, event, handler) {
   elem.addEventListener(event, handler);
 }
+
+/**
+ * Finds the main svg image.
+ * @returns {DOMElement} The main svg image.
+ */
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
+}
 /* global animator, animation0 */
 
 /**
@@ -173,7 +185,47 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_116": {
+  "path_114": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_115": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_116": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_117": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_118": {
     "fill": {
       "common": "#f7f7f7",
       "hover": "#f7f7f7",
@@ -190,7 +242,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_117": {
+  "text_119": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -198,40 +250,6 @@ var effects = {
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_118": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_119": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
       "common": "0",
       "hover": "1",
       "active": "1",
@@ -243,16 +261,16 @@ var effects = {
   },
   "path_120": {
     "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
     },
     "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     },
     "toFront": {
       "hover": true
@@ -260,6 +278,23 @@ var effects = {
   },
   "arrow_121": {
     "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_122": {
+    "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
       "active": "#d3d3d3",
@@ -275,44 +310,21 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_122": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
+  "arrow_123": {
     "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
     },
     "stroke-opacity": {
       "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "text_123": {
-    "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
     },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
+    "toFront": {
+      "hover": true
     }
   },
   "rectangle_124": {
@@ -341,29 +353,62 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_127": {
+  "text_125": {
+    "fill": {
+      "common": "#444444",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "rectangle_126": {
+    "fill": {
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "path_127": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_128": {
     "fill": {
       "common": "#f7f7f7",
       "hover": "#f7f7f7",
       "active": "#f7f7f7",
       "activehover": "#f7f7f7"
-    },
-    "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "text_128": {
-    "fill": {
-      "common": "#000000",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
     },
     "fill-opacity": {
       "common": "0",
@@ -392,7 +437,24 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_130": {
+  "text_130": {
+    "fill": {
+      "common": "#000000",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "arrow_131": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -409,7 +471,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_131": {
+  "arrow_132": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -426,7 +488,7 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_132": {
+  "rectangle_133": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -452,7 +514,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_133": {
+  "text_134": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -466,7 +528,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_134": {
+  "rectangle_135": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -490,6 +552,16 @@ var effects = {
       "hover": "1",
       "active": "1",
       "activehover": "1"
+    }
+  },
+  "path_136": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
     }
   },
   "rectangle_137": {
@@ -626,7 +698,17 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_146": {
+  "path_144": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_145": {
     "fill": {
       "common": "#f7f7f7",
       "hover": "#f7f7f7",
@@ -643,7 +725,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_147": {
+  "text_146": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -660,7 +742,7 @@ var effects = {
       "hover": true
     }
   },
-  "ball_148": {
+  "ball_147": {
     "topMost": {
       "common": true,
       "hover": true,
@@ -679,10 +761,9 @@ var effects = {
     "rectangle_141": "grp_3",
     "text_142": "grp_3",
     "rectangle_143": "grp_3",
-    "image_144": "grp_3",
-    "image_145": "grp_3",
-    "rectangle_146": "grp_3",
-    "text_147": "grp_3",
+    "path_144": "grp_3",
+    "rectangle_145": "grp_3",
+    "text_146": "grp_3",
     "path_107": "grp_0",
     "arrow_108": "grp_0",
     "path_109": "grp_0",
@@ -690,29 +771,29 @@ var effects = {
     "rectangle_111": "grp_0",
     "text_112": "grp_0",
     "rectangle_113": "grp_0",
-    "image_114": "grp_0",
-    "image_115": "grp_0",
-    "rectangle_116": "grp_0",
-    "text_117": "grp_0",
-    "path_118": "grp_5v",
-    "arrow_119": "grp_5v",
+    "path_114": "grp_0",
+    "path_115": "grp_0",
+    "path_116": "grp_0",
+    "path_117": "grp_0",
+    "rectangle_118": "grp_0",
+    "text_119": "grp_0",
     "path_120": "grp_5v",
     "arrow_121": "grp_5v",
-    "rectangle_122": "grp_5v",
-    "text_123": "grp_5v",
+    "path_122": "grp_5v",
+    "arrow_123": "grp_5v",
     "rectangle_124": "grp_5v",
-    "image_125": "grp_5v",
-    "image_126": "grp_5v",
-    "rectangle_127": "grp_5v",
-    "text_128": "grp_5v",
+    "text_125": "grp_5v",
+    "rectangle_126": "grp_5v",
+    "path_127": "grp_5v",
+    "rectangle_128": "grp_5v",
     "text_129": "grp_5v",
-    "arrow_130": "grp_1",
+    "text_130": "grp_5v",
     "arrow_131": "grp_1",
-    "rectangle_132": "grp_1",
-    "text_133": "grp_1",
-    "rectangle_134": "grp_1",
-    "image_135": "grp_1",
-    "image_136": "grp_1",
+    "arrow_132": "grp_1",
+    "rectangle_133": "grp_1",
+    "text_134": "grp_1",
+    "rectangle_135": "grp_1",
+    "path_136": "grp_1",
     "rectangle_137": "grp_1",
     "text_138": "grp_1"
   },
@@ -723,10 +804,9 @@ var effects = {
       "rectangle_141",
       "text_142",
       "rectangle_143",
-      "image_144",
-      "image_145",
-      "rectangle_146",
-      "text_147"
+      "path_144",
+      "rectangle_145",
+      "text_146"
     ],
     "grp_0": [
       "path_107",
@@ -736,33 +816,33 @@ var effects = {
       "rectangle_111",
       "text_112",
       "rectangle_113",
-      "image_114",
-      "image_115",
-      "rectangle_116",
-      "text_117"
+      "path_114",
+      "path_115",
+      "path_116",
+      "path_117",
+      "rectangle_118",
+      "text_119"
     ],
     "grp_5v": [
-      "path_118",
-      "arrow_119",
       "path_120",
       "arrow_121",
-      "rectangle_122",
-      "text_123",
+      "path_122",
+      "arrow_123",
       "rectangle_124",
-      "image_125",
-      "image_126",
-      "rectangle_127",
-      "text_128",
-      "text_129"
+      "text_125",
+      "rectangle_126",
+      "path_127",
+      "rectangle_128",
+      "text_129",
+      "text_130"
     ],
     "grp_1": [
-      "arrow_130",
       "arrow_131",
-      "rectangle_132",
-      "text_133",
-      "rectangle_134",
-      "image_135",
-      "image_136",
+      "arrow_132",
+      "rectangle_133",
+      "text_134",
+      "rectangle_135",
+      "path_136",
       "rectangle_137",
       "text_138"
     ]
@@ -795,9 +875,9 @@ var effects = {
     // the ids of all controls with effects
     this.ids = Object.keys(this.infos);
     // connect event handling
-    $event($('svg'), 'click', this.onClick.bind(this));
-    $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
-    $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+    $event(_getSvgImg(), 'click', this.onClick.bind(this));
+    $event(_getSvgImg(), 'mouseover', this.onMouseOver.bind(this));
+    $event(_getSvgImg(), 'mouseout', this.onMouseOut.bind(this));
 
     // prepare topmost handling
     this.ids.forEach((id) => {
@@ -1014,4 +1094,15 @@ function onContextMenu(event) {
 
 // set a context menu handler
 document.addEventListener('contextmenu', onContextMenu);
+
+if (typeof animator !== 'undefined') {
+  $event($('#tree-toggle'), 'change', (event) => {
+    $$('g.actors').forEach((actors) => actors.className.baseVal = 'actors scratch');
+    animator.stop();
+    var menu = $('#ID_animation');
+    if (menu) {
+      menu.className.baseVal = 'ID_mi_stop';
+    }
+  });
+}
 }());

@@ -29,6 +29,18 @@ function $$(selector, parent) {
 function $event(elem, event, handler) {
   elem.addEventListener(event, handler);
 }
+
+/**
+ * Finds the main svg image.
+ * @returns {DOMElement} The main svg image.
+ */
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
+}
 //-- create menu script -------------------------------------- (vvv) --
 // --- ios helper --------------------------------- vv ---
 var timer = null,
@@ -89,45 +101,12 @@ function onContextMenu(event) {
   showContextMenu(x, y);
 }
 
-function _getSvgImg() {
-  var svg = $('div.img > svg');
-  if (!svg) {
-    svg = $('svg');
-  }
-  return svg;
-}
-
 function showContextMenu(x, y) {
   // show context menu if not visible
   if (!contextmenu) {
     contextmenu = true;
 
-    /**
-     * Switch an option state.
-     * @param {NodeList} elems A list of html elements.
-     * @returns {void}
-     */
-    var setOpts = function(elems) {
-      if (elems) {
-        for (var i = 0, i2 = elems.length; i < i2; ++i) {
-          var elem = elems[i],
-              elemP = elem.parentNode;
-
-          if (elemP.dataset && elemP.dataset.item) {
-            var key = elemP.dataset.item;
-            if (option.data[key] === true || option.data[key] === false) {
-              elem.style.display = option.data[key] ? 'block' : 'none';
-     	    }
-          }
-        }
-      }
-    };
-
-    // handle all options: radios and checkboxes
-    var rbs = document.getElementsByClassName('rb2'),
-        cbs = document.getElementsByClassName('cb2');
-    setOpts(rbs);
-    setOpts(cbs);
+    ContextMenuUpdater.updateOptions();
 
     // show background + context menu
     cm.style.display = 'block';
@@ -138,23 +117,26 @@ function showContextMenu(x, y) {
       var box = cm.getBBox(),
           w = Math.floor(box.width) + 10;
       if (w > 200) {
-        var rcMenuBg = cm.querySelector('rect'),
-            rcsMi = cm.querySelectorAll('g.menuitem > rect.bg'),
-            smis = cm.querySelectorAll('g.submenuitem');
+        var rcMenuBg = cm.querySelector(':scope > rect'),
+            rcsMi = cm.querySelectorAll(':scope > g.menuitem > rect.bg, :scope > g > g.menuitem > rect.bg'),
+            smis = cm.querySelectorAll(':scope > g.submenuitem'),
+            seps = cm.querySelectorAll(':scope > rect.separator');
         if (rcMenuBg) {
           rcMenuBg.style.width = (w + 4) + 'px';
         }
         if (rcsMi) {
           rcsMi.forEach((rcMi) => rcMi.style.width = w + 'px');
         }
+        if (seps) {
+          seps.forEach((sep) => sep.style.width = (w - 4) + 'px');
+        }
         if (smis) {
           smis.forEach((smi) => {
-            smi.querySelector('rect.bg').style.width = w + 'px';
-            smi.querySelector('g.submenu').setAttribute('transform', 'translate(' + (w + 4) + ' 0)');
-            smi.querySelector('path.marker_submenu').setAttribute('transform', 'translate(' + (w - 204) + ' 0)');
+            smi.querySelector(':scope > rect.bg').style.width = w + 'px';
+            smi.querySelector(':scope > g.submenu').setAttribute('transform', 'translate(' + (w + 4) + ' 0)');
+            smi.querySelector(':scope > path.marker_submenu').setAttribute('transform', 'translate(' + (w - 204) + ' 0)');
 
-            // TODO separators
-            // TODO extra handling for submenus
+            // TODO repeat this handling for submenus
           });
         }
       }
@@ -176,6 +158,36 @@ function showContextMenu(x, y) {
     cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.65)');
   }
 }
+var ContextMenuUpdater = {
+  updateOptions: function() {
+    /**
+     * Switch an option state.
+     * @param {NodeList} elems A list of html elements.
+     * @returns {void}
+     */
+    var setOpts = function(elems) {
+      if (elems) {
+        for (var i = 0, i2 = elems.length; i < i2; ++i) {
+          var elem = elems[i],
+              elemP = elem.parentNode;
+
+          if (elemP.dataset && elemP.dataset.item) {
+            var key = elemP.dataset.item;
+            if (option.data[key] === true || option.data[key] === false) {
+              elem.style.display = option.data[key] ? 'block' : 'none';
+            }
+          }
+        }
+      }
+    };
+
+    // handle all options: radios and checkboxes
+    var rbs = document.getElementsByClassName('rb2'),
+        cbs = document.getElementsByClassName('cb2');
+    setOpts(rbs);
+    setOpts(cbs);
+  }
+};
 
 function onClick(event) {
   if (contextmenu) {
@@ -465,7 +477,47 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_130": {
+  "path_128": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_129": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_130": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_131": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_132": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -482,7 +534,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_131": {
+  "text_133": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -499,7 +551,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_132": {
+  "arrow_134": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -516,7 +568,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_133": {
+  "arrow_135": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -531,46 +583,6 @@ var effects = {
     },
     "toFront": {
       "hover": true
-    }
-  },
-  "rectangle_134": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
-    },
-    "stroke-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "text_135": {
-    "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
     }
   },
   "rectangle_136": {
@@ -599,7 +611,57 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_139": {
+  "text_137": {
+    "fill": {
+      "common": "#444444",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "rectangle_138": {
+    "fill": {
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "path_139": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_140": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -616,7 +678,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_140": {
+  "text_141": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -633,7 +695,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_141": {
+  "path_142": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -650,7 +712,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_142": {
+  "arrow_143": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -667,7 +729,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_143": {
+  "path_144": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -684,7 +746,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_144": {
+  "arrow_145": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -701,7 +763,7 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_145": {
+  "rectangle_146": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -727,7 +789,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_146": {
+  "text_147": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -741,7 +803,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_147": {
+  "rectangle_148": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -758,7 +820,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_148": {
+  "text_149": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -775,7 +837,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_149": {
+  "path_150": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -792,7 +854,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_150": {
+  "arrow_151": {
     "stroke": {
       "common": "#b22222",
       "hover": "#b22222",
@@ -809,7 +871,7 @@ var effects = {
       "hover": true
     }
   },
-  "path_151": {
+  "path_152": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -826,7 +888,7 @@ var effects = {
       "hover": true
     }
   },
-  "arrow_152": {
+  "arrow_153": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -843,7 +905,7 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_153": {
+  "rectangle_154": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -869,7 +931,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_154": {
+  "text_155": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -883,7 +945,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_155": {
+  "rectangle_156": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -907,6 +969,16 @@ var effects = {
       "hover": "1",
       "active": "1",
       "activehover": "1"
+    }
+  },
+  "path_157": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
     }
   },
   "rectangle_158": {
@@ -1123,19 +1195,20 @@ var effects = {
     "rectangle_125": "grp_0",
     "text_126": "grp_0",
     "rectangle_127": "grp_0",
-    "image_128": "grp_0",
-    "image_129": "grp_0",
-    "rectangle_130": "grp_0",
-    "text_131": "grp_0",
-    "path_149": "grp_5v",
-    "arrow_150": "grp_5v",
-    "path_151": "grp_5v",
-    "arrow_152": "grp_5v",
-    "rectangle_153": "grp_5v",
-    "text_154": "grp_5v",
-    "rectangle_155": "grp_5v",
-    "image_156": "grp_5v",
-    "image_157": "grp_5v",
+    "path_128": "grp_0",
+    "path_129": "grp_0",
+    "path_130": "grp_0",
+    "path_131": "grp_0",
+    "rectangle_132": "grp_0",
+    "text_133": "grp_0",
+    "path_150": "grp_5v",
+    "arrow_151": "grp_5v",
+    "path_152": "grp_5v",
+    "arrow_153": "grp_5v",
+    "rectangle_154": "grp_5v",
+    "text_155": "grp_5v",
+    "rectangle_156": "grp_5v",
+    "path_157": "grp_5v",
     "rectangle_158": "grp_5v",
     "text_159": "grp_5v",
     "text_160": "grp_5v",
@@ -1147,23 +1220,22 @@ var effects = {
     "text_166": "grp_P",
     "rectangle_167": "grp_P",
     "text_168": "grp_P",
-    "arrow_132": "grp_1",
-    "arrow_133": "grp_1",
-    "rectangle_134": "grp_1",
-    "text_135": "grp_1",
+    "arrow_134": "grp_1",
+    "arrow_135": "grp_1",
     "rectangle_136": "grp_1",
-    "image_137": "grp_1",
-    "image_138": "grp_1",
-    "rectangle_139": "grp_1",
-    "text_140": "grp_1",
-    "path_141": "grp_A",
-    "arrow_142": "grp_A",
-    "path_143": "grp_A",
-    "arrow_144": "grp_A",
-    "rectangle_145": "grp_A",
-    "text_146": "grp_A",
-    "rectangle_147": "grp_A",
-    "text_148": "grp_A"
+    "text_137": "grp_1",
+    "rectangle_138": "grp_1",
+    "path_139": "grp_1",
+    "rectangle_140": "grp_1",
+    "text_141": "grp_1",
+    "path_142": "grp_A",
+    "arrow_143": "grp_A",
+    "path_144": "grp_A",
+    "arrow_145": "grp_A",
+    "rectangle_146": "grp_A",
+    "text_147": "grp_A",
+    "rectangle_148": "grp_A",
+    "text_149": "grp_A"
   },
   "byName": {
     "grp_0": [
@@ -1174,21 +1246,22 @@ var effects = {
       "rectangle_125",
       "text_126",
       "rectangle_127",
-      "image_128",
-      "image_129",
-      "rectangle_130",
-      "text_131"
+      "path_128",
+      "path_129",
+      "path_130",
+      "path_131",
+      "rectangle_132",
+      "text_133"
     ],
     "grp_5v": [
-      "path_149",
-      "arrow_150",
-      "path_151",
-      "arrow_152",
-      "rectangle_153",
-      "text_154",
-      "rectangle_155",
-      "image_156",
-      "image_157",
+      "path_150",
+      "arrow_151",
+      "path_152",
+      "arrow_153",
+      "rectangle_154",
+      "text_155",
+      "rectangle_156",
+      "path_157",
       "rectangle_158",
       "text_159",
       "text_160"
@@ -1204,25 +1277,24 @@ var effects = {
       "text_168"
     ],
     "grp_1": [
-      "arrow_132",
-      "arrow_133",
-      "rectangle_134",
-      "text_135",
+      "arrow_134",
+      "arrow_135",
       "rectangle_136",
-      "image_137",
-      "image_138",
-      "rectangle_139",
-      "text_140"
+      "text_137",
+      "rectangle_138",
+      "path_139",
+      "rectangle_140",
+      "text_141"
     ],
     "grp_A": [
-      "path_141",
-      "arrow_142",
-      "path_143",
-      "arrow_144",
-      "rectangle_145",
-      "text_146",
-      "rectangle_147",
-      "text_148"
+      "path_142",
+      "arrow_143",
+      "path_144",
+      "arrow_145",
+      "rectangle_146",
+      "text_147",
+      "rectangle_148",
+      "text_149"
     ]
   }
 },
@@ -1253,9 +1325,9 @@ var effects = {
     // the ids of all controls with effects
     this.ids = Object.keys(this.infos);
     // connect event handling
-    $event($('svg'), 'click', this.onClick.bind(this));
-    $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
-    $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+    $event(_getSvgImg(), 'click', this.onClick.bind(this));
+    $event(_getSvgImg(), 'mouseover', this.onMouseOver.bind(this));
+    $event(_getSvgImg(), 'mouseout', this.onMouseOut.bind(this));
 
     // prepare topmost handling
     this.ids.forEach((id) => {
@@ -1458,5 +1530,16 @@ effects.init();
 
 if (typeof option !== 'undefined' && typeof animation0 !== 'undefined') {
   option.animation0 = animation0;
+}
+
+if (typeof animator !== 'undefined') {
+  $event($('#tree-toggle'), 'change', (event) => {
+    $$('g.actors').forEach((actors) => actors.className.baseVal = 'actors scratch');
+    animator.stop();
+    var menu = $('#ID_animation');
+    if (menu) {
+      menu.className.baseVal = 'ID_mi_stop';
+    }
+  });
 }
 }());

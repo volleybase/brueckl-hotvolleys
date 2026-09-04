@@ -29,6 +29,18 @@ function $$(selector, parent) {
 function $event(elem, event, handler) {
   elem.addEventListener(event, handler);
 }
+
+/**
+ * Finds the main svg image.
+ * @returns {DOMElement} The main svg image.
+ */
+function _getSvgImg() {
+  var svg = $('div.img > svg');
+  if (!svg) {
+    svg = $('svg');
+  }
+  return svg;
+}
 //-- create menu script -------------------------------------- (vvv) --
 // --- ios helper --------------------------------- vv ---
 var timer = null,
@@ -89,45 +101,12 @@ function onContextMenu(event) {
   showContextMenu(x, y);
 }
 
-function _getSvgImg() {
-  var svg = $('div.img > svg');
-  if (!svg) {
-    svg = $('svg');
-  }
-  return svg;
-}
-
 function showContextMenu(x, y) {
   // show context menu if not visible
   if (!contextmenu) {
     contextmenu = true;
 
-    /**
-     * Switch an option state.
-     * @param {NodeList} elems A list of html elements.
-     * @returns {void}
-     */
-    var setOpts = function(elems) {
-      if (elems) {
-        for (var i = 0, i2 = elems.length; i < i2; ++i) {
-          var elem = elems[i],
-              elemP = elem.parentNode;
-
-          if (elemP.dataset && elemP.dataset.item) {
-            var key = elemP.dataset.item;
-            if (option.data[key] === true || option.data[key] === false) {
-              elem.style.display = option.data[key] ? 'block' : 'none';
-     	    }
-          }
-        }
-      }
-    };
-
-    // handle all options: radios and checkboxes
-    var rbs = document.getElementsByClassName('rb2'),
-        cbs = document.getElementsByClassName('cb2');
-    setOpts(rbs);
-    setOpts(cbs);
+    ContextMenuUpdater.updateOptions();
 
     // show background + context menu
     cm.style.display = 'block';
@@ -138,23 +117,26 @@ function showContextMenu(x, y) {
       var box = cm.getBBox(),
           w = Math.floor(box.width) + 10;
       if (w > 200) {
-        var rcMenuBg = cm.querySelector('rect'),
-            rcsMi = cm.querySelectorAll('g.menuitem > rect.bg'),
-            smis = cm.querySelectorAll('g.submenuitem');
+        var rcMenuBg = cm.querySelector(':scope > rect'),
+            rcsMi = cm.querySelectorAll(':scope > g.menuitem > rect.bg, :scope > g > g.menuitem > rect.bg'),
+            smis = cm.querySelectorAll(':scope > g.submenuitem'),
+            seps = cm.querySelectorAll(':scope > rect.separator');
         if (rcMenuBg) {
           rcMenuBg.style.width = (w + 4) + 'px';
         }
         if (rcsMi) {
           rcsMi.forEach((rcMi) => rcMi.style.width = w + 'px');
         }
+        if (seps) {
+          seps.forEach((sep) => sep.style.width = (w - 4) + 'px');
+        }
         if (smis) {
           smis.forEach((smi) => {
-            smi.querySelector('rect.bg').style.width = w + 'px';
-            smi.querySelector('g.submenu').setAttribute('transform', 'translate(' + (w + 4) + ' 0)');
-            smi.querySelector('path.marker_submenu').setAttribute('transform', 'translate(' + (w - 204) + ' 0)');
+            smi.querySelector(':scope > rect.bg').style.width = w + 'px';
+            smi.querySelector(':scope > g.submenu').setAttribute('transform', 'translate(' + (w + 4) + ' 0)');
+            smi.querySelector(':scope > path.marker_submenu').setAttribute('transform', 'translate(' + (w - 204) + ' 0)');
 
-            // TODO separators
-            // TODO extra handling for submenus
+            // TODO repeat this handling for submenus
           });
         }
       }
@@ -176,6 +158,36 @@ function showContextMenu(x, y) {
     cm.setAttribute('transform', 'translate(' + svgP.x + ' ' + svgP.y + ') scale(1.65)');
   }
 }
+var ContextMenuUpdater = {
+  updateOptions: function() {
+    /**
+     * Switch an option state.
+     * @param {NodeList} elems A list of html elements.
+     * @returns {void}
+     */
+    var setOpts = function(elems) {
+      if (elems) {
+        for (var i = 0, i2 = elems.length; i < i2; ++i) {
+          var elem = elems[i],
+              elemP = elem.parentNode;
+
+          if (elemP.dataset && elemP.dataset.item) {
+            var key = elemP.dataset.item;
+            if (option.data[key] === true || option.data[key] === false) {
+              elem.style.display = option.data[key] ? 'block' : 'none';
+            }
+          }
+        }
+      }
+    };
+
+    // handle all options: radios and checkboxes
+    var rbs = document.getElementsByClassName('rb2'),
+        cbs = document.getElementsByClassName('cb2');
+    setOpts(rbs);
+    setOpts(cbs);
+  }
+};
 
 function onClick(event) {
   if (contextmenu) {
@@ -463,7 +475,47 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_131": {
+  "path_129": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_130": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_131": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "path_132": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_133": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -480,7 +532,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_132": {
+  "text_134": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -488,40 +540,6 @@ var effects = {
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_133": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_134": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
       "common": "0",
       "hover": "1",
       "active": "1",
@@ -533,22 +551,39 @@ var effects = {
   },
   "path_135": {
     "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
     },
     "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     },
     "toFront": {
       "hover": true
     }
   },
   "arrow_136": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_137": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -565,7 +600,24 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_137": {
+  "arrow_138": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "rectangle_139": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -591,7 +643,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_138": {
+  "text_140": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -605,7 +657,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_139": {
+  "rectangle_141": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -622,7 +674,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_140": {
+  "text_142": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -630,40 +682,6 @@ var effects = {
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_141": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_142": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
       "common": "0",
       "hover": "1",
       "active": "1",
@@ -675,22 +693,39 @@ var effects = {
   },
   "path_143": {
     "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
     },
     "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     },
     "toFront": {
       "hover": true
     }
   },
   "arrow_144": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_145": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -707,7 +742,24 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_145": {
+  "arrow_146": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "rectangle_147": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -733,7 +785,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_146": {
+  "text_148": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -747,7 +799,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_147": {
+  "rectangle_149": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -764,7 +816,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_148": {
+  "text_150": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -772,40 +824,6 @@ var effects = {
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_149": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_150": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
       "common": "0",
       "hover": "1",
       "active": "1",
@@ -817,22 +835,39 @@ var effects = {
   },
   "path_151": {
     "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
     },
     "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     },
     "toFront": {
       "hover": true
     }
   },
   "arrow_152": {
+    "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_153": {
     "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
@@ -849,7 +884,24 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_153": {
+  "arrow_154": {
+    "stroke": {
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "rectangle_155": {
     "fill": {
       "common": "#808080",
       "hover": "#ffff00",
@@ -875,7 +927,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "text_154": {
+  "text_156": {
     "fill": {
       "common": "#444444",
       "hover": "#b22222",
@@ -889,7 +941,7 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_155": {
+  "rectangle_157": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -906,7 +958,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_156": {
+  "text_158": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -914,40 +966,6 @@ var effects = {
       "activehover": "#b22222"
     },
     "fill-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "path_157": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
-      "common": "0",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
-    "toFront": {
-      "hover": true
-    }
-  },
-  "arrow_158": {
-    "stroke": {
-      "common": "#b22222",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
-    },
-    "stroke-opacity": {
       "common": "0",
       "hover": "1",
       "active": "1",
@@ -959,16 +977,16 @@ var effects = {
   },
   "path_159": {
     "stroke": {
-      "common": "#000000",
-      "hover": "#d3d3d3",
-      "active": "#d3d3d3",
-      "activehover": "#d3d3d3"
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
     },
     "stroke-opacity": {
-      "common": "1",
-      "hover": "0.5",
-      "active": "0.5",
-      "activehover": "0.5"
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
     },
     "toFront": {
       "hover": true
@@ -976,6 +994,23 @@ var effects = {
   },
   "arrow_160": {
     "stroke": {
+      "common": "#b22222",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "stroke-opacity": {
+      "common": "0",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "toFront": {
+      "hover": true
+    }
+  },
+  "path_161": {
+    "stroke": {
       "common": "#000000",
       "hover": "#d3d3d3",
       "active": "#d3d3d3",
@@ -991,44 +1026,21 @@ var effects = {
       "hover": true
     }
   },
-  "rectangle_161": {
-    "fill": {
-      "common": "#808080",
-      "hover": "#ffff00",
-      "active": "#ffff00",
-      "activehover": "#ffff00"
-    },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    },
+  "arrow_162": {
     "stroke": {
-      "common": "#696969",
-      "hover": "#ffa500",
-      "active": "#ffa500",
-      "activehover": "#ffa500"
+      "common": "#000000",
+      "hover": "#d3d3d3",
+      "active": "#d3d3d3",
+      "activehover": "#d3d3d3"
     },
     "stroke-opacity": {
       "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
-    }
-  },
-  "text_162": {
-    "fill": {
-      "common": "#444444",
-      "hover": "#b22222",
-      "active": "#b22222",
-      "activehover": "#b22222"
+      "hover": "0.5",
+      "active": "0.5",
+      "activehover": "0.5"
     },
-    "fill-opacity": {
-      "common": "1",
-      "hover": "1",
-      "active": "1",
-      "activehover": "1"
+    "toFront": {
+      "hover": true
     }
   },
   "rectangle_163": {
@@ -1057,7 +1069,57 @@ var effects = {
       "activehover": "1"
     }
   },
-  "rectangle_166": {
+  "text_164": {
+    "fill": {
+      "common": "#444444",
+      "hover": "#b22222",
+      "active": "#b22222",
+      "activehover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "rectangle_165": {
+    "fill": {
+      "common": "#808080",
+      "hover": "#ffff00",
+      "active": "#ffff00",
+      "activehover": "#ffff00"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    },
+    "stroke": {
+      "common": "#696969",
+      "hover": "#ffa500",
+      "active": "#ffa500",
+      "activehover": "#ffa500"
+    },
+    "stroke-opacity": {
+      "common": "1",
+      "hover": "1",
+      "active": "1",
+      "activehover": "1"
+    }
+  },
+  "path_166": {
+    "fill": {
+      "common": "#d3d3d3",
+      "hover": "#b22222"
+    },
+    "fill-opacity": {
+      "common": "1",
+      "hover": "1"
+    }
+  },
+  "rectangle_167": {
     "fill": {
       "common": "#d3d3d3",
       "hover": "#d3d3d3",
@@ -1074,7 +1136,7 @@ var effects = {
       "hover": true
     }
   },
-  "text_167": {
+  "text_168": {
     "fill": {
       "common": "#000000",
       "hover": "#b22222",
@@ -1091,7 +1153,7 @@ var effects = {
       "hover": true
     }
   },
-  "ball_168": {
+  "ball_169": {
     "topMost": {
       "common": true,
       "hover": true,
@@ -1105,41 +1167,40 @@ var effects = {
    */
   'groups': {
   "byId": {
-    "path_149": "grp_B",
-    "arrow_150": "grp_B",
     "path_151": "grp_B",
     "arrow_152": "grp_B",
-    "rectangle_153": "grp_B",
-    "text_154": "grp_B",
+    "path_153": "grp_B",
+    "arrow_154": "grp_B",
     "rectangle_155": "grp_B",
     "text_156": "grp_B",
-    "path_157": "grp_2",
-    "arrow_158": "grp_2",
+    "rectangle_157": "grp_B",
+    "text_158": "grp_B",
     "path_159": "grp_2",
     "arrow_160": "grp_2",
-    "rectangle_161": "grp_2",
-    "text_162": "grp_2",
+    "path_161": "grp_2",
+    "arrow_162": "grp_2",
     "rectangle_163": "grp_2",
-    "image_164": "grp_2",
-    "image_165": "grp_2",
-    "rectangle_166": "grp_2",
-    "text_167": "grp_2",
-    "path_141": "grp_C",
-    "arrow_142": "grp_C",
+    "text_164": "grp_2",
+    "rectangle_165": "grp_2",
+    "path_166": "grp_2",
+    "rectangle_167": "grp_2",
+    "text_168": "grp_2",
     "path_143": "grp_C",
     "arrow_144": "grp_C",
-    "rectangle_145": "grp_C",
-    "text_146": "grp_C",
+    "path_145": "grp_C",
+    "arrow_146": "grp_C",
     "rectangle_147": "grp_C",
     "text_148": "grp_C",
-    "path_133": "grp_D",
-    "arrow_134": "grp_D",
+    "rectangle_149": "grp_C",
+    "text_150": "grp_C",
     "path_135": "grp_D",
     "arrow_136": "grp_D",
-    "rectangle_137": "grp_D",
-    "text_138": "grp_D",
+    "path_137": "grp_D",
+    "arrow_138": "grp_D",
     "rectangle_139": "grp_D",
     "text_140": "grp_D",
+    "rectangle_141": "grp_D",
+    "text_142": "grp_D",
     "path_122": "grp_0",
     "arrow_123": "grp_0",
     "path_124": "grp_0",
@@ -1147,54 +1208,55 @@ var effects = {
     "rectangle_126": "grp_0",
     "text_127": "grp_0",
     "rectangle_128": "grp_0",
-    "image_129": "grp_0",
-    "image_130": "grp_0",
-    "rectangle_131": "grp_0",
-    "text_132": "grp_0"
+    "path_129": "grp_0",
+    "path_130": "grp_0",
+    "path_131": "grp_0",
+    "path_132": "grp_0",
+    "rectangle_133": "grp_0",
+    "text_134": "grp_0"
   },
   "byName": {
     "grp_B": [
-      "path_149",
-      "arrow_150",
       "path_151",
       "arrow_152",
-      "rectangle_153",
-      "text_154",
+      "path_153",
+      "arrow_154",
       "rectangle_155",
-      "text_156"
+      "text_156",
+      "rectangle_157",
+      "text_158"
     ],
     "grp_2": [
-      "path_157",
-      "arrow_158",
       "path_159",
       "arrow_160",
-      "rectangle_161",
-      "text_162",
+      "path_161",
+      "arrow_162",
       "rectangle_163",
-      "image_164",
-      "image_165",
-      "rectangle_166",
-      "text_167"
+      "text_164",
+      "rectangle_165",
+      "path_166",
+      "rectangle_167",
+      "text_168"
     ],
     "grp_C": [
-      "path_141",
-      "arrow_142",
       "path_143",
       "arrow_144",
-      "rectangle_145",
-      "text_146",
+      "path_145",
+      "arrow_146",
       "rectangle_147",
-      "text_148"
+      "text_148",
+      "rectangle_149",
+      "text_150"
     ],
     "grp_D": [
-      "path_133",
-      "arrow_134",
       "path_135",
       "arrow_136",
-      "rectangle_137",
-      "text_138",
+      "path_137",
+      "arrow_138",
       "rectangle_139",
-      "text_140"
+      "text_140",
+      "rectangle_141",
+      "text_142"
     ],
     "grp_0": [
       "path_122",
@@ -1204,10 +1266,12 @@ var effects = {
       "rectangle_126",
       "text_127",
       "rectangle_128",
-      "image_129",
-      "image_130",
-      "rectangle_131",
-      "text_132"
+      "path_129",
+      "path_130",
+      "path_131",
+      "path_132",
+      "rectangle_133",
+      "text_134"
     ]
   }
 },
@@ -1238,9 +1302,9 @@ var effects = {
     // the ids of all controls with effects
     this.ids = Object.keys(this.infos);
     // connect event handling
-    $event($('svg'), 'click', this.onClick.bind(this));
-    $event($('svg'), 'mouseover', this.onMouseOver.bind(this));
-    $event($('svg'), 'mouseout', this.onMouseOut.bind(this));
+    $event(_getSvgImg(), 'click', this.onClick.bind(this));
+    $event(_getSvgImg(), 'mouseover', this.onMouseOver.bind(this));
+    $event(_getSvgImg(), 'mouseout', this.onMouseOut.bind(this));
 
     // prepare topmost handling
     this.ids.forEach((id) => {
@@ -1443,5 +1507,16 @@ effects.init();
 
 if (typeof option !== 'undefined' && typeof animation0 !== 'undefined') {
   option.animation0 = animation0;
+}
+
+if (typeof animator !== 'undefined') {
+  $event($('#tree-toggle'), 'change', (event) => {
+    $$('g.actors').forEach((actors) => actors.className.baseVal = 'actors scratch');
+    animator.stop();
+    var menu = $('#ID_animation');
+    if (menu) {
+      menu.className.baseVal = 'ID_mi_stop';
+    }
+  });
 }
 }());

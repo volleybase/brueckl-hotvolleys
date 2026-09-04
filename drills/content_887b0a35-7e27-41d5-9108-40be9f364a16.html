@@ -22,7 +22,7 @@
     <line x1="1100" y1="185" x2="1100" y2="170" style="fill: none; stroke: #0000b2; stroke-width: 5;"/>
   </g>
   <g class="actors">
-    <path d="M 260 -3 A 100 100 0 1 1 170 0" transform="translate(200 1100)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
+    <path d="M 260 -3 A 100 100 0 1 1 430 -3" transform="translate(200 1100)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
     <ellipse cx="0" cy="0" rx="110" ry="110" transform="translate(600 865)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
     <ellipse cx="0" cy="0" rx="120" ry="120" transform="translate(650 680)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
     <text x="0" y="0" text-anchor="middle" transform="translate(550 1020) translate(0 68.4)" style="stroke: none; fill: #000000; fill-opacity: 0.36; font-size: 180px; font-family: Arial Rounded MT bold, Arial;">A</text>
@@ -139,7 +139,7 @@
       <path id="path_11" d="M 845 -90.5 C 828.333 -107.167 820 -126.75 841.667 -138 C 833.333 -129.667 836.667 -110.5 860 -92 L 845 -90.512 L 860 -92 Q 852.5 -88.833 845 -90.512" transform="translate(-850 115)" style="stroke: none; fill: #0000ff;"/>
       <path id="path_12" d="M 870.661 -100.833 C 858.161 -113.333 853.994 -125.833 851.661 -133.333 Q 868.328 -121.429 874.994 -114.167 Q 874.828 -107 870.647 -100.833 Z" transform="translate(-850 115)" style="stroke: none; fill: #0000ff;"/>
     </g>
-    <path d="M 465 3 A 100 103 0 1 0 170 0" transform="translate(200 1100)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
+    <path d="M 465 3 A 100 103 0 1 0 635 3" transform="translate(200 1100)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
     <ellipse cx="0" cy="0" rx="110" ry="110" transform="translate(700 1335)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
     <ellipse cx="0" cy="0" rx="120" ry="120" transform="translate(650 1520)" style="stroke: none; fill: #d3d3d3; fill-opacity: 0.75;"/>
     <text x="0" y="0" text-anchor="middle" transform="translate(750 1170) translate(0 68.4)" style="stroke: none; fill: #000000; fill-opacity: 0.36; font-size: 180px; font-family: Arial Rounded MT bold, Arial;">A</text>
@@ -315,6 +315,10 @@ g.menuitem > text, g.submenuitem > text {
   fill: #111;
   font-family: Arial;
   font-size: 22px;
+}
+g.menuitem.mono > text, g.submenuitem.mono > text {
+  font-family: Consolas, monospace;
+  white-space: pre;
 }
 g.menuitem > rect.cb, g.menuitem > circle.rb {
   stroke: gray;
